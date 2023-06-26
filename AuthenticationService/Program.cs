@@ -22,7 +22,7 @@ namespace AuthenticationService
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<ITokenService, TokenService>();
 
-            //JWT
+            //JWT CONFIGURATION
             var key = Encoding.ASCII.GetBytes("2445361D-43F8-4066-BBC8-4777CA0129BB");
             builder.Services.AddAuthentication(options =>
             {
