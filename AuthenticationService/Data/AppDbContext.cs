@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
-namespace MinhaApiUsuarios.Data
+namespace AuthenticationService.Data
 {
     public class AppDbContext : DbContext
     {

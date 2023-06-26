@@ -33,6 +33,8 @@ namespace AuthenticationService.Controllers
             var token = _tokenService.GenerateToken(model.Username);
             return Ok(new { token });
         }
+
+        [HttpPost]
         [AllowAnonymous]
         public IActionResult Signup([FromBody] User user)
         {
