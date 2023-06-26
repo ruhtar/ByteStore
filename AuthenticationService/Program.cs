@@ -1,3 +1,4 @@
+using AuthenticationService.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -19,6 +20,7 @@ namespace AuthenticationService
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<ITokenService, TokenService>();
 
             //JWT
             var key = Encoding.ASCII.GetBytes("2445361D-43F8-4066-BBC8-4777CA0129BB");
@@ -40,6 +42,8 @@ namespace AuthenticationService
             }); ;
 
 
+            builder.Services.AddAuthorization();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -51,8 +55,8 @@ namespace AuthenticationService
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
             app.UseAuthorization();
-
 
             app.MapControllers();
 
