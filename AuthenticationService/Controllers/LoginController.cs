@@ -33,5 +33,15 @@ namespace AuthenticationService.Controllers
             var token = _tokenService.GenerateToken(model.Username);
             return Ok(new { token });
         }
+        [AllowAnonymous]
+        public IActionResult Signup([FromBody] User user)
+        {
+            if (user == null)
+            {
+                return BadRequest("Por favor, insira um usuário.");
+            }
+
+            return Ok();
+        }
     }
 }
