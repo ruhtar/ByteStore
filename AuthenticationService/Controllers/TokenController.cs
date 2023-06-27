@@ -31,7 +31,7 @@ namespace AuthenticationService.Controllers
             });
             if (userAuthenticated)
             {
-                var token = _tokenService.GenerateToken(user.Username);
+                var token = _tokenService.GenerateToken(user.Username, user.Role);
                 return Ok(new { token });
             }
             return BadRequest("Username or password are incorrect.");
