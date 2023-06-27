@@ -47,7 +47,7 @@ namespace AuthenticationService
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
-            }); ;
+            });
 
             //DB CONECTION
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

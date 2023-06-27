@@ -27,6 +27,7 @@ namespace AuthenticationService.Controllers
             {
                 return BadRequest("User is required.");
             }
+            if(user.Role!="Admin" && user.Role != "User") return BadRequest("Role must be User or Admin.");
 
             var registeredUser = await _userService.GetUserByUsername(user.Username);
             if (registeredUser != null) return BadRequest("User already exists. Please, try other username.");
@@ -44,7 +45,7 @@ namespace AuthenticationService.Controllers
         [HttpGet("signin")]
         public IActionResult Signin()
         {
-            return Ok("You are signed in :)");
+            return Ok("You are signed in! :D");
         }
     }
 }
