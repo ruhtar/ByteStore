@@ -1,8 +1,8 @@
 ﻿using AuthenticationService.Models;
 
-namespace AuthenticationService.Repository
+namespace AuthenticationService.Services
 {
-    public interface IUserRepository
+    public interface IUserService
     {
         Task AddUser(User user);
     }

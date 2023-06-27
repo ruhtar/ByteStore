@@ -1,9 +1,12 @@
+using AuthenticationService.Authentication;
+using AuthenticationService.Data;
+using AuthenticationService.Repository;
 using AuthenticationService.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using MinhaApiUsuarios.Data;
 using System.Text;
 
 namespace AuthenticationService
@@ -20,7 +23,12 @@ namespace AuthenticationService
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            //DEPENDENCY INJECTION CONFIGURATION
             builder.Services.AddScoped<ITokenService, TokenService>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 
             //JWT CONFIGURATION
             var key = Encoding.ASCII.GetBytes("2445361D-43F8-4066-BBC8-4777CA0129BB");

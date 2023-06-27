@@ -15,10 +15,13 @@ namespace AuthenticationService.Controllers
     {
 
         private readonly ITokenService _tokenService;
+        private readonly IUserService _userService;
 
-        public LoginController(ITokenService tokenService)
+
+        public LoginController(ITokenService tokenService, IUserService userService)
         {
             _tokenService = tokenService;
+            _userService = userService;
         }
 
         [AllowAnonymous]
@@ -34,14 +37,16 @@ namespace AuthenticationService.Controllers
             return Ok(new { token });
         }
 
-        [HttpPost]
+        [HttpPost("signup")]
         [AllowAnonymous]
-        public IActionResult Signup([FromBody] User user)
+        public async Task<IActionResult> SignupAsync([FromBody] User user)
         {
             if (user == null)
             {
                 return BadRequest("Por favor, insira um usuário.");
             }
+
+            await _userService.AddUser(user);
 
             return Ok();
         }
