@@ -35,7 +35,8 @@ namespace AuthenticationService.Controllers
             await _userService.AddUser(new User
             {
                 Username = user.Username,
-                Password = user.Password
+                Password = user.Password,
+                Role = user.Role
             });
 
             return Ok("User registered.");

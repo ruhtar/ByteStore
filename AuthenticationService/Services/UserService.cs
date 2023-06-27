@@ -31,11 +31,14 @@ namespace AuthenticationService.Services
             {
                 Username = username
             });
-            return new UserDTO
-            {
-                Username = userRegistered.Username,
-                Password= userRegistered.Password
-            };
+            if (userRegistered != null) {
+                return new UserDTO
+                {
+                    Username = userRegistered.Username,
+                    Password = userRegistered.Password,
+                };
+            }
+            return null;
         }
 
         public async Task AddUser(User user)
@@ -44,7 +47,8 @@ namespace AuthenticationService.Services
             await _userRepository.AddUser(new User
             {
                 Username = user.Username,
-                Password = hashedPassword
+                Password = hashedPassword,
+                Role = user.Role
             });
         }
     }

@@ -2,7 +2,6 @@
 using AuthenticationService.Entities;
 using AuthenticationService.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthenticationService.Controllers
