@@ -1,6 +1,7 @@
 ﻿
 using AuthenticationService.Data;
 using AuthenticationService.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AuthenticationService.Repository
 {
@@ -17,6 +18,10 @@ namespace AuthenticationService.Repository
         {
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<User> GetUser(User user) {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username && user.Password == u.Password);
         }
     }
 }

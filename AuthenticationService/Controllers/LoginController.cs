@@ -26,20 +26,25 @@ namespace AuthenticationService.Controllers
 
         [AllowAnonymous]
         [HttpPost("token")]
-        public IActionResult GenerateToken([FromBody] User model)
+        public async Task<IActionResult> GenerateTokenAsync([FromBody] User user)
         {
-            if (model.Username != "string" || model.Password != "string")
+            if (user.Username != "string" || user.Password != "string")
             {
                 return Unauthorized();
             }
+            var userAuthenticated = await _userService.ValidateUser(user);
+            if (userAuthenticated) 
+            {
+                var token = _tokenService.GenerateToken(user.Username);
+                return Ok(new { token });
 
-            var token = _tokenService.GenerateToken(model.Username);
-            return Ok(new { token });
+            }
+            return BadRequest("Usuário ou senha incorretos.");
         }
 
         [HttpPost("signup")]
         [AllowAnonymous]
-        public async Task<IActionResult> SignupAsync([FromBody] User user)
+        public async Task<IActionResult> Signup([FromBody] User user)
         {
             if (user == null)
             {

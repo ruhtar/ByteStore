@@ -16,10 +16,20 @@ namespace AuthenticationService.Services
             _passwordHasher = passwordHasher;
         }
 
+        public async Task<bool> ValidateUser(User user)
+        {
+            var hashedPassword = _passwordHasher.Hash(user.Password);
+            user.Password = hashedPassword;
+            var userAuthenticated = await _userRepository.GetUser(user);
+            if (userAuthenticated!=null) return true;
+            return false;
+        }
+
+
+
         public async Task AddUser(User user)
         {
             var hashedPassword = _passwordHasher.Hash(user.Password);
-            var hashedPasswordValidated = _passwordHasher.Validate(hashedPassword, user.Password);
             user.Password = hashedPassword;
             await _userRepository.AddUser(user);
         }
