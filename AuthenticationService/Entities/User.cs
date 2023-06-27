@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AuthenticationService.Models
+namespace AuthenticationService.Entities
 {
     public class User
     {
@@ -12,5 +12,9 @@ namespace AuthenticationService.Models
 
         [Required]
         public string Password { get; set; }
+
+        //[Required]
+        //public string Role { get; set; }
+
     }
 }

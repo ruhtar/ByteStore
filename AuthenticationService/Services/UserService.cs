@@ -1,6 +1,6 @@
 ﻿using AuthenticationService.Authentication;
 using AuthenticationService.DTO;
-using AuthenticationService.Models;
+using AuthenticationService.Entities;
 using AuthenticationService.Repository;
 
 namespace AuthenticationService.Services
@@ -23,6 +23,19 @@ namespace AuthenticationService.Services
             });
             if (userRegistered == null) return false;
             return _passwordHasher.Validate(userRegistered.Password, user.Password);
+        }
+
+        public async Task<UserDTO> GetUserByUsername(string username)
+        {
+            var userRegistered = await _userRepository.GetUser(new User
+            {
+                Username = username
+            });
+            return new UserDTO
+            {
+                Username = userRegistered.Username,
+                Password= userRegistered.Password
+            };
         }
 
         public async Task AddUser(User user)

@@ -1,5 +1,5 @@
 ﻿using AuthenticationService.DTO;
-using AuthenticationService.Models;
+using AuthenticationService.Entities;
 
 namespace AuthenticationService.Services
 {
@@ -7,5 +7,6 @@ namespace AuthenticationService.Services
     {
         Task AddUser(User user);
         Task<bool> ValidateUser(User user);
+        Task<UserDTO> GetUserByUsername(string username);
     }
 }

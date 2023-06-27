@@ -1,5 +1,5 @@
 using AuthenticationService.DTO;
-using AuthenticationService.Models;
+using AuthenticationService.Entities;
 using AuthenticationService.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -45,6 +45,9 @@ namespace AuthenticationService.Controllers
             {
                 return BadRequest("User is required.");
             }
+
+            var registeredUser = await _userService.GetUserByUsername(user.Username);
+            if (registeredUser != null) return BadRequest("User already exists. Please, try other username.");
 
             await _userService.AddUser(new User
             {

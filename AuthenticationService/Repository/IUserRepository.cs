@@ -1,4 +1,4 @@
-﻿using AuthenticationService.Models;
+﻿using AuthenticationService.Entities;
 
 namespace AuthenticationService.Repository
 {
