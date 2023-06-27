@@ -1,3 +1,4 @@
+using AuthenticationService.DTO;
 using AuthenticationService.Models;
 using AuthenticationService.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -13,10 +14,8 @@ namespace AuthenticationService.Controllers
     [Route("login")]
     public class LoginController : ControllerBase
     {
-
         private readonly ITokenService _tokenService;
         private readonly IUserService _userService;
-
 
         public LoginController(ITokenService tokenService, IUserService userService)
         {
@@ -26,34 +25,37 @@ namespace AuthenticationService.Controllers
 
         [AllowAnonymous]
         [HttpPost("token")]
-        public async Task<IActionResult> GenerateTokenAsync([FromBody] User user)
+        public async Task<IActionResult> GenerateToken([FromBody] UserDTO user)
         {
-            if (user.Username != "string" || user.Password != "string")
+            var userAuthenticated = await _userService.ValidateUser(new User
             {
-                return Unauthorized();
-            }
-            var userAuthenticated = await _userService.ValidateUser(user);
+                Username = user.Username,
+                Password = user.Password
+            });
             if (userAuthenticated) 
             {
                 var token = _tokenService.GenerateToken(user.Username);
                 return Ok(new { token });
-
             }
             return BadRequest("Usuário ou senha incorretos.");
         }
 
         [HttpPost("signup")]
         [AllowAnonymous]
-        public async Task<IActionResult> Signup([FromBody] User user)
+        public async Task<IActionResult> Signup([FromBody] UserDTO user)
         {
             if (user == null)
             {
                 return BadRequest("Por favor, insira um usuário.");
             }
 
-            await _userService.AddUser(user);
+            await _userService.AddUser(new User
+            {
+                Username = user.Username,
+                Password = user.Password
+            });
 
-            return Ok();
+            return Ok("Usuário registrado com sucesso.");
         }
     }
 }

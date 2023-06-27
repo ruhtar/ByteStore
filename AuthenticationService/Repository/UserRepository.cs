@@ -21,7 +21,8 @@ namespace AuthenticationService.Repository
         }
 
         public async Task<User> GetUser(User user) {
-            return await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username && user.Password == u.Password);
+            var result = await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
+            return result;
         }
     }
 }

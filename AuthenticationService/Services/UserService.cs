@@ -1,4 +1,5 @@
 ﻿using AuthenticationService.Authentication;
+using AuthenticationService.DTO;
 using AuthenticationService.Models;
 using AuthenticationService.Repository;
 
@@ -9,7 +10,6 @@ namespace AuthenticationService.Services
         private readonly IUserRepository _userRepository;
         private readonly IPasswordHasher _passwordHasher;
 
-
         public UserService(IUserRepository userRepository, IPasswordHasher passwordHasher)
         {
             _userRepository = userRepository;
@@ -18,21 +18,21 @@ namespace AuthenticationService.Services
 
         public async Task<bool> ValidateUser(User user)
         {
-            var hashedPassword = _passwordHasher.Hash(user.Password);
-            user.Password = hashedPassword;
-            var userAuthenticated = await _userRepository.GetUser(user);
-            if (userAuthenticated!=null) return true;
-            return false;
+            var userRegistered = await _userRepository.GetUser(new User { 
+                Username = user.Username
+            });
+            if (userRegistered == null) return false;
+            return _passwordHasher.Validate(userRegistered.Password, user.Password);
         }
-
-
 
         public async Task AddUser(User user)
         {
             var hashedPassword = _passwordHasher.Hash(user.Password);
-            user.Password = hashedPassword;
-            await _userRepository.AddUser(user);
+            await _userRepository.AddUser(new User
+            {
+                Username = user.Username,
+                Password = hashedPassword
+            });
         }
-
     }
 }

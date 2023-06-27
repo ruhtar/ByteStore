@@ -4,8 +4,8 @@ namespace AuthenticationService.Authentication
 {
     public class PasswordHasher : IPasswordHasher
     {
-        private const int SaltSize = 16; //128 / 8, length in bytes
-        private const int KeySize = 32; //256 / 8, length in bytes
+        private const int SaltSize = 128 / 8; //128 / 8, length in bytes
+        private const int KeySize = 256 / 8; //256 / 8, length in bytes
         private const int Iterations = 10000;
         private static readonly HashAlgorithmName _hashAlgorithmName = HashAlgorithmName.SHA256;
         private const char SaltDelimeter = ';';
