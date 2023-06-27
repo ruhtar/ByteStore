@@ -11,31 +11,13 @@ namespace AuthenticationService.Controllers
     [Route("login")]
     public class LoginController : ControllerBase
     {
-        private readonly ITokenService _tokenService;
         private readonly IUserService _userService;
 
-        public LoginController(ITokenService tokenService, IUserService userService)
+        public LoginController(IUserService userService)
         {
-            _tokenService = tokenService;
             _userService = userService;
         }
 
-        [AllowAnonymous]
-        [HttpPost("token")]
-        public async Task<IActionResult> GenerateToken([FromBody] UserDTO user)
-        {
-            var userAuthenticated = await _userService.ValidateUser(new User
-            {
-                Username = user.Username,
-                Password = user.Password
-            });
-            if (userAuthenticated) 
-            {
-                var token = _tokenService.GenerateToken(user.Username);
-                return Ok(new { token });
-            }
-            return BadRequest("Username or password are incorrect.");
-        }
 
         [HttpPost("signup")]
         [AllowAnonymous]
@@ -59,7 +41,7 @@ namespace AuthenticationService.Controllers
         }
 
         [Authorize]
-        [HttpGet("/signin")]
+        [HttpGet("signin")]
         public IActionResult Signin()
         {
             return Ok("You are signed in :)");
