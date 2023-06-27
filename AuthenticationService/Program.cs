@@ -66,6 +66,7 @@ namespace AuthenticationService
 
             app.UseHttpsRedirection();
 
+            //Nessa ordem
             app.UseAuthentication();
             app.UseAuthorization();
 

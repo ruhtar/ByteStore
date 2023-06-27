@@ -20,9 +20,9 @@ namespace AuthenticationService.Repository
             await _context.SaveChangesAsync();
         }
 
-        public async Task<User> GetUser(User user) {
-            var result = await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
-            return result;
+        public async Task<User> GetUser(User user)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
         }
     }
 }

@@ -3,10 +3,7 @@ using AuthenticationService.Models;
 using AuthenticationService.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
+
 
 namespace AuthenticationService.Controllers
 {
@@ -37,7 +34,7 @@ namespace AuthenticationService.Controllers
                 var token = _tokenService.GenerateToken(user.Username);
                 return Ok(new { token });
             }
-            return BadRequest("Usuário ou senha incorretos.");
+            return BadRequest("Username or password are incorrect.");
         }
 
         [HttpPost("signup")]
@@ -46,7 +43,7 @@ namespace AuthenticationService.Controllers
         {
             if (user == null)
             {
-                return BadRequest("Por favor, insira um usuário.");
+                return BadRequest("User is required.");
             }
 
             await _userService.AddUser(new User
@@ -55,7 +52,14 @@ namespace AuthenticationService.Controllers
                 Password = user.Password
             });
 
-            return Ok("Usuário registrado com sucesso.");
+            return Ok("User registered.");
+        }
+
+        [Authorize]
+        [HttpGet("/signin")]
+        public IActionResult Signin()
+        {
+            return Ok("You are signed in :)");
         }
     }
 }
