@@ -42,11 +42,18 @@ namespace AuthenticationService.Controllers
             return Ok("User registered.");
         }
 
-        [Authorize]
-        [HttpGet("signin")]
-        public IActionResult Signin()
+        [Authorize(Roles = "Admin")]
+        [HttpGet("signin/admin")]
+        public IActionResult SigninAdmin()
         {
-            return Ok("You are signed in! :D");
+            return Ok("Admin, you are signed in! :D");
+        }
+
+        [Authorize(Roles = "User")]
+        [HttpGet("signin/user")]
+        public IActionResult SigninUser()
+        {
+            return Ok("User, uou are signed in! :D");
         }
     }
 }
