@@ -49,11 +49,11 @@ namespace AuthenticationService.Controllers
             return Ok("Admin, you are signed in! :D");
         }
 
-        [Authorize(Roles = "User")]
+        [Authorize(Roles = "User, Admin")]
         [HttpGet("signin/user")]
         public IActionResult SigninUser()
         {
-            return Ok("User, uou are signed in! :D");
+            return Ok("User, you are signed in! :D");
         }
     }
 }
