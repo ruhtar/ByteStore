@@ -25,8 +25,9 @@ namespace AuthenticationService
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
+            //Adding In-Memory cache.
             builder.Services.AddMemoryCache();
-            //docker run -d -p 6379:6379 --name redis redis
+            //docker run -d -p 6379:6379 --name redis redis.
             builder.Services.AddStackExchangeRedisCache(o => 
             {
                 o.InstanceName = "instance";
