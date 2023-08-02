@@ -1,18 +1,21 @@
 ﻿using AuthenticationService.Entities;
 using AuthenticationService.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Distributed;
 
 namespace AuthenticationService.Controllers
 {
-    [Route("product")]
+    [Route("product/redis")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductRedisController : ControllerBase
     {
         private readonly IProductService _productService;
+        private readonly IDistributedCache _redis;
 
-        public ProductController(IProductService productService)
+        public ProductRedisController(IProductService productService, IDistributedCache redis)
         {
             _productService = productService;
+            _redis = redis;
         }
 
         [HttpGet]

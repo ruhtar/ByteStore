@@ -18,7 +18,8 @@ namespace AuthenticationService.Services
 
         public async Task<bool> ValidateUser(User user)
         {
-            var userRegistered = await _userRepository.GetUser(new User { 
+            var userRegistered = await _userRepository.GetUser(new User
+            {
                 Username = user.Username
             });
             if (userRegistered == null) return false;
@@ -31,7 +32,8 @@ namespace AuthenticationService.Services
             {
                 Username = username
             });
-            if (userRegistered != null) {
+            if (userRegistered != null)
+            {
                 return new UserDTO
                 {
                     Username = userRegistered.Username,

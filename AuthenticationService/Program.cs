@@ -54,7 +54,7 @@ namespace AuthenticationService
 
             //DEPENDENCY INJECTION CONFIGURATION
             builder.Services.AddScoped<ITokenService, TokenService>();
-            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<IProductRedisRepository, ProductRepository>();
             builder.Services.AddScoped<IProductService, ProductService>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IUserService, UserService>();

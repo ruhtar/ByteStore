@@ -5,7 +5,7 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace AuthenticationService.Repository
 {
-    public class ProductRepository : IProductRedisRepository
+    public class ProductRedisRepository : IProductRedisRepository
     {
         private readonly AppDbContext _context;
         private readonly IMemoryCache _cache;
@@ -15,7 +15,7 @@ namespace AuthenticationService.Repository
         private const string UpdateProductKey = "UpdateProductKey";
         private const string DeleteProductKey = "DeleteProductKey";
 
-        public ProductRepository(AppDbContext context, IMemoryCache memoryCache)
+        public ProductRedisRepository(AppDbContext context, IMemoryCache memoryCache)
         {
             _context = context;
             _cache = memoryCache;
@@ -23,8 +23,9 @@ namespace AuthenticationService.Repository
 
         public async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
-            var products =  _cache.GetOrCreate(AllProductsKey, async entry => {
-                
+            var products = _cache.GetOrCreate(AllProductsKey, async entry =>
+            {
+
                 //Relative expiration => If not requested, will expire in the given time.
                 entry.SlidingExpiration = TimeSpan.FromSeconds(7);
                 //Absolute expiration => Will expire in the given time, no matter if it was requested or not.
