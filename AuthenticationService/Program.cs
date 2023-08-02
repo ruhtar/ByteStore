@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using StackExchange.Redis;
+using AuthenticationService.Cache;
 
 namespace AuthenticationService
 {
@@ -24,6 +26,12 @@ namespace AuthenticationService
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddMemoryCache();
+            //docker run -d -p 6379:6379 --name redis redis
+            builder.Services.AddStackExchangeRedisCache(o => 
+            {
+                o.InstanceName = "instance";
+                o.Configuration = "localhost://6379";
+            });
             builder.Services.AddSwaggerGen(opt => 
             {
                 opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -54,8 +62,11 @@ namespace AuthenticationService
 
             //DEPENDENCY INJECTION CONFIGURATION
             builder.Services.AddScoped<ITokenService, TokenService>();
-            builder.Services.AddScoped<IProductRedisRepository, ProductRepository>();
+            builder.Services.AddScoped<IRedisProductRepository, RedisProductRepository>();
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<ICacheConfigs, CacheConfigs>();
             builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddScoped<IRedisProductService, RedisProductService>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();

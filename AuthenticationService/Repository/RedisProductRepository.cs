@@ -8,32 +8,28 @@ using System.Text.Json;
 
 namespace AuthenticationService.Repository
 {
-    public class ProductRedisRepository : IProductRedisRepository
+    public class RedisProductRepository : IRedisProductRepository
     {
         private readonly AppDbContext _context;
-        private readonly IDistributedCache _redis;
+        private readonly ICacheConfigs _cache;
         private const string AllProductsKey = "AllProductsKeys";
-        private const string ProductByIdKey = "ProductByIdKey";
-        private const string CreateProductKey = "CreateProductKey";
-        private const string UpdateProductKey = "UpdateProductKey";
-        private const string DeleteProductKey = "DeleteProductKey";
 
-        public ProductRedisRepository(AppDbContext context, IDistributedCache redis)
+        public RedisProductRepository(AppDbContext context, ICacheConfigs cache)
         {
             _context = context;
-            _redis = redis;
+            _cache = cache;
         }
 
         public async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
-            var cache = CacheConfigs.GetFromCache(AllProductsKey);
+            var cache = await _cache.GetFromCacheAsync(AllProductsKey);
             if (cache != null) return cache;
             var products = await _context.Products.ToListAsync();
 
             Thread.Sleep(5000);
             
             var cacheData = JsonSerializer.Serialize(products);
-            _redis.SetString(AllProductsKey, cacheData, CacheConfigs.GetCacheOptions());
+            await _cache.SetAsync(AllProductsKey, cacheData);
 
             return products;
         }

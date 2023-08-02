@@ -5,9 +5,9 @@ namespace AuthenticationService.Services
 {
     public class ProductService : IProductService
     {
-        private readonly IProductRedisRepository _productRepository;
+        private readonly IRedisProductRepository _productRepository;
 
-        public ProductService(IProductRedisRepository productRepository)
+        public ProductService(IRedisProductRepository productRepository)
         {
             _productRepository = productRepository;
         }

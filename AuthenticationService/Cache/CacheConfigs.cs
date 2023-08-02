@@ -4,28 +4,32 @@ using System.Text.Json;
 
 namespace AuthenticationService.Cache
 {
-    public abstract class CacheConfigs
+    public class CacheConfigs : ICacheConfigs
     {
-        private static IDistributedCache _redis;
+        private readonly IDistributedCache _redis;
 
         public CacheConfigs(IDistributedCache redis)
         {
             _redis = redis;
         }
 
-        public static IEnumerable<Product> GetFromCache(string cacheKey)
+        public async Task<IEnumerable<Product>> GetFromCacheAsync(string cacheKey)
         {
-            var cacheData = _redis.GetString(cacheKey);
+            var cacheData = await _redis.GetStringAsync(cacheKey);
             if (cacheData != null) return JsonSerializer.Deserialize<IEnumerable<Product>>(cacheData);
             return null;
         }
 
-        public static DistributedCacheEntryOptions GetCacheOptions()
+        private DistributedCacheEntryOptions GetCacheOptions()
         {
-            var cacheOptions = new DistributedCacheEntryOptions();
-            cacheOptions.SetSlidingExpiration(TimeSpan.FromSeconds(7));
-            cacheOptions.SetAbsoluteExpiration(TimeSpan.FromSeconds(15));
-            return cacheOptions;
+            var options = new DistributedCacheEntryOptions();
+            options.SetSlidingExpiration(TimeSpan.FromSeconds(7));
+            options.SetAbsoluteExpiration(TimeSpan.FromSeconds(15));
+            return options;
+        }
+
+        public async Task SetAsync(string key, string value) {
+            await _redis.SetStringAsync(key, value, GetCacheOptions());
         }
     }
 }

@@ -3,11 +3,11 @@ using AuthenticationService.Repository;
 
 namespace AuthenticationService.Services
 {
-    public class ProductRedisService : IProductRedisService
+    public class RedisProductService : IRedisProductService
     {
-        private readonly IProductRedisRepository _productRepository;
+        private readonly IRedisProductRepository _productRepository;
 
-        public ProductRedisService(IProductRedisRepository productRepository)
+        public RedisProductService(IRedisProductRepository productRepository)
         {
             _productRepository = productRepository;
         }

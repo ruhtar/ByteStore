@@ -1,8 +1,8 @@
 ﻿using AuthenticationService.Entities;
 
-namespace AuthenticationService.Services
+namespace AuthenticationService.Repository
 {
-    public interface IProductRedisService
+    public interface IRedisProductRepository
     {
         Task<Product> AddProductAsync(Product product);
         Task<bool> DeleteProductAsync(int id);
