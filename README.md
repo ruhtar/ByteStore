@@ -1,11 +1,13 @@
-# Projeto de autenticação de usuário utilizando JWT
+# User Authentication Project Using JWT and In-Memory Cache
 
-Este projeto é uma implementação de um sistema de autenticação de usuário utilizando JSON Web Tokens (JWT). Ele foi desenvolvido utilizando a linguagem de programação .NET, o Entity Framework Core e o banco de dados MySQL.
+This project is an implementation of a user authentication system using JSON Web Tokens (JWT). It has been developed using the .NET programming language, Entity Framework Core, and the MySQL database.
 
-## Funcionalidades
+## Features
 
-O sistema de autenticação de usuário possui as seguintes funcionalidades:
+The user authentication system includes the following features:
 
-- **Signup** (registro de usuário): Os usuários podem se cadastrar no sistema fornecendo um nome de usuário e uma senha. As senhas dos usuários são processadas por um algoritmo de hash e salt antes de serem armazenadas no banco de dados. Isso garante a segurança das senhas, protegendo a informação confidencial dos usuários.
+- **Signup**: Users can register in the system by providing a username and password. User passwords are processed using a hash and salt algorithm before being stored in the database. This ensures the security of passwords, protecting users' sensitive information.
 
-- **Signin** (login de usuário): Os usuários registrados podem fazer login fornecendo suas credenciais (nome de usuário e senha). O sistema valida as credenciais e gera um token JWT válido, que é retornado ao usuário. Esse token pode ser usado posteriormente para acessar rotas e recursos protegidos.
+- **Signin**: Registered users can log in by providing their credentials (username and password). The system validates the credentials and generates a valid JWT token, which is returned to the user. This token can be used later to access protected routes and resources.
+
+- **In-Memory Cache**: An in-memory cache has been implemented using the MemoryCache class provided by ASP.NET Core within the Product CRUD. The cache is used to temporarily store the data of products retrieved from the database. This cache reduces response time by serving data directly from memory instead of querying the database on every request.
