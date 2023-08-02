@@ -12,7 +12,9 @@
           "Microsoft.EntityFrameworkCore": "6.0.19",
           "Microsoft.EntityFrameworkCore.Design": "6.0.19",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.19",
+          "Microsoft.Extensions.Caching.StackExchangeRedis": "6.0.20",
           "Pomelo.EntityFrameworkCore.MySql": "6.0.2",
+          "StackExchange.Redis": "2.6.122",
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "runtime": {
@@ -112,6 +114,19 @@
           "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll": {
             "assemblyVersion": "6.0.0.0",
             "fileVersion": "6.0.222.6406"
+          }
+        }
+      },
+      "Microsoft.Extensions.Caching.StackExchangeRedis/6.0.20": {
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Abstractions": "6.0.0",
+          "Microsoft.Extensions.Options": "6.0.0",
+          "StackExchange.Redis": "2.6.122"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Caching.StackExchangeRedis.dll": {
+            "assemblyVersion": "6.0.20.0",
+            "fileVersion": "6.0.2023.32106"
           }
         }
       },
@@ -226,6 +241,17 @@
           }
         }
       },
+      "Pipelines.Sockets.Unofficial/2.2.8": {
+        "dependencies": {
+          "System.IO.Pipelines": "5.0.1"
+        },
+        "runtime": {
+          "lib/net5.0/Pipelines.Sockets.Unofficial.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "2.2.8.1080"
+          }
+        }
+      },
       "Pomelo.EntityFrameworkCore.MySql/6.0.2": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Relational": "6.0.19",
@@ -236,6 +262,17 @@
           "lib/net6.0/Pomelo.EntityFrameworkCore.MySql.dll": {
             "assemblyVersion": "6.0.2.0",
             "fileVersion": "6.0.2.0"
+          }
+        }
+      },
+      "StackExchange.Redis/2.6.122": {
+        "dependencies": {
+          "Pipelines.Sockets.Unofficial": "2.2.8"
+        },
+        "runtime": {
+          "lib/net6.0/StackExchange.Redis.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.6.122.38350"
           }
         }
       },
@@ -305,6 +342,7 @@
           }
         }
       },
+      "System.IO.Pipelines/5.0.1": {},
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
       "System.Security.Cryptography.Cng/4.5.0": {}
     }
@@ -398,6 +436,13 @@
       "sha512": "sha512-B4y+Cev05eMcjf1na0v9gza6GUtahXbtY1JCypIgx3B4Ea/KAgsWyXEmW4q6zMbmTMtKzmPVk09rvFJirvMwTg==",
       "path": "microsoft.extensions.caching.memory/6.0.1",
       "hashPath": "microsoft.extensions.caching.memory.6.0.1.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Caching.StackExchangeRedis/6.0.20": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pyIPQJMGmRY406xomjplGUJp5LTx/UtWMmrkEhMe1Xiw1JJqwKvrHVaKDZ/55GrulySVuQoBkGR6OfNjj+uzqQ==",
+      "path": "microsoft.extensions.caching.stackexchangeredis/6.0.20",
+      "hashPath": "microsoft.extensions.caching.stackexchangeredis.6.0.20.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration.Abstractions/6.0.0": {
       "type": "package",
@@ -497,12 +542,26 @@
       "path": "mysqlconnector/2.1.2",
       "hashPath": "mysqlconnector.2.1.2.nupkg.sha512"
     },
+    "Pipelines.Sockets.Unofficial/2.2.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zG2FApP5zxSx6OcdJQLbZDk2AVlN2BNQD6MorwIfV6gVj0RRxWPEp2LXAxqDGZqeNV1Zp0BNPcNaey/GXmTdvQ==",
+      "path": "pipelines.sockets.unofficial/2.2.8",
+      "hashPath": "pipelines.sockets.unofficial.2.2.8.nupkg.sha512"
+    },
     "Pomelo.EntityFrameworkCore.MySql/6.0.2": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-KvlZ800CnEuEGnxj5OT1fCKGjQXxW5kpPlCP91JqBYG+2Z3927eqXmlX6LLKUt4swqE8ZsEQ+Zkpab8bqstf4g==",
       "path": "pomelo.entityframeworkcore.mysql/6.0.2",
       "hashPath": "pomelo.entityframeworkcore.mysql.6.0.2.nupkg.sha512"
+    },
+    "StackExchange.Redis/2.6.122": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wp7mvGpFXaevfZ07/SDeh/6YHUJEgwJIGyjbDWKBYbPwKMJQYFz9zFEmBptqtVzqvSgft5nlewwutoaMaG0LPA==",
+      "path": "stackexchange.redis/2.6.122",
+      "hashPath": "stackexchange.redis.2.6.122.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.2.3": {
       "type": "package",
@@ -552,6 +611,13 @@
       "sha512": "sha512-C+Q5ORsFycRkRuvy/Xd0Pv5xVpmWSAvQYZAGs7VQogmkqlLhvfZXTgBIlHqC3cxkstSoLJAYx6xZB7foQ2y5eg==",
       "path": "system.identitymodel.tokens.jwt/6.10.0",
       "hashPath": "system.identitymodel.tokens.jwt.6.10.0.nupkg.sha512"
+    },
+    "System.IO.Pipelines/5.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qEePWsaq9LoEEIqhbGe6D5J8c9IqQOUuTzzV6wn1POlfdLkJliZY3OlB0j0f17uMWlqZYjH7txj+2YbyrIA8Yg==",
+      "path": "system.io.pipelines/5.0.1",
+      "hashPath": "system.io.pipelines.5.0.1.nupkg.sha512"
     },
     "System.Runtime.CompilerServices.Unsafe/6.0.0": {
       "type": "package",

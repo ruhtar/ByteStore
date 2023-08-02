@@ -9,13 +9,11 @@ namespace AuthenticationService.Controllers
     [ApiController]
     public class ProductRedisController : ControllerBase
     {
-        private readonly IProductService _productService;
-        private readonly IDistributedCache _redis;
+        private readonly IRedisProductService _productService;
 
-        public ProductRedisController(IProductService productService, IDistributedCache redis)
+        public ProductRedisController(IRedisProductService productService)
         {
             _productService = productService;
-            _redis = redis;
         }
 
         [HttpGet]

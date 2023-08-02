@@ -30,7 +30,7 @@ namespace AuthenticationService
             builder.Services.AddStackExchangeRedisCache(o => 
             {
                 o.InstanceName = "instance";
-                o.Configuration = "localhost://6379";
+                o.Configuration = "localhost:6379";
             });
             builder.Services.AddSwaggerGen(opt => 
             {

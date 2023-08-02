@@ -47,3 +47,6 @@ D:\PROGRAMAÇÃO\Projetos\AuthenticationService\AuthenticationService\obj\Debug\
 D:\PROGRAMAÇÃO\Projetos\AuthenticationService\AuthenticationService\obj\Debug\net6.0\AuthenticationService.pdb
 D:\PROGRAMAÇÃO\Projetos\AuthenticationService\AuthenticationService\obj\Debug\net6.0\AuthenticationService.genruntimeconfig.cache
 D:\PROGRAMAÇÃO\Projetos\AuthenticationService\AuthenticationService\obj\Debug\net6.0\ref\AuthenticationService.dll
+D:\PROGRAMAÇÃO\Projetos\AuthenticationService\AuthenticationService\bin\Debug\net6.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+D:\PROGRAMAÇÃO\Projetos\AuthenticationService\AuthenticationService\bin\Debug\net6.0\Pipelines.Sockets.Unofficial.dll
+D:\PROGRAMAÇÃO\Projetos\AuthenticationService\AuthenticationService\bin\Debug\net6.0\StackExchange.Redis.dll
