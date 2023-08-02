@@ -1,6 +1,6 @@
 # User Authentication Project Using JWT and Cache
 
-This project is an implementation of a user authentication system using JSON Web Tokens (JWT). It has been developed using the .NET programming language, Entity Framework Core, and the MySQL database.
+This project is an implementation of a user authentication system using JSON Web Tokens (JWT). It has been developed using the .NET programming language, Entity Framework Core, the MySQL database and Redis cache.
 
 ## Features
 
@@ -16,6 +16,6 @@ The user authentication system includes the following features:
 
     - To use the Redis distributed cache, I have added the `StackExchange.Redis` package and configured it in the `Program.cs` file. Besides that, I'm running a local instance of Redis on docker: ```docker run -d -p 6379:6379 --name redis redis```
 
-    - When the `GetAllProductsAsync` method in the `ProductRepository` is called, it first checks if the requested data exists in the Redis cache. If the data is found, it is returned directly from the cache. If not, the data is fetched from the database, serialized, and stored in the Redis cache for future use. We have set an absolute expiration of 15 seconds for the cached data to ensure it remains up-to-date with changes in the database.
+    - When the `GetAllProductsAsync` method in the `ProductRepository` is called, it first checks if the requested data exists in the Redis cache. If the data is found, it is returned directly from the cache. If not, the data is fetched from the database, serialized, and stored in the Redis cache for future use.
 
     - This distributed cache allows the application to share cached data across multiple instances, reducing the need to query the database frequently and improving overall performance.
