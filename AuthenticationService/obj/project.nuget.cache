@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/0HiHvqJf6LNBJzO0xK2pZGBrsAhPp8UP8TVaSCdBboRoIidOXvIRPQwzPTKhkdQElwigcHvF6cwdAsxKdJRrQ==",
+  "dgSpecHash": "sdFfkDnl472rC1mh8d+Hfi1XEn5mm0UXCr9OSLk16fRFo5UO2+jdhkRYLe2LKPR+SkbiXGyb7S70WD5iN/XUcQ==",
   "success": true,
   "projectFilePath": "D:\\PROGRAMAÇÃO\\Projetos\\AuthenticationService\\AuthenticationService\\AuthenticationService.csproj",
   "expectedPackageFiles": [
@@ -30,6 +30,7 @@
     "C:\\Users\\Arthur\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.10.0\\microsoft.identitymodel.protocols.openidconnect.6.10.0.nupkg.sha512",
     "C:\\Users\\Arthur\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.10.0\\microsoft.identitymodel.tokens.6.10.0.nupkg.sha512",
     "C:\\Users\\Arthur\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Arthur\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.0\\microsoft.visualstudio.azure.containers.tools.targets.1.17.0.nupkg.sha512",
     "C:\\Users\\Arthur\\.nuget\\packages\\mysqlconnector\\2.1.2\\mysqlconnector.2.1.2.nupkg.sha512",
     "C:\\Users\\Arthur\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
     "C:\\Users\\Arthur\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\6.0.2\\pomelo.entityframeworkcore.mysql.6.0.2.nupkg.sha512",
