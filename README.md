@@ -1,4 +1,4 @@
-# User Authentication Project Using JWT
+# User Authentication Project Using JWT and Cache
 
 This project is an implementation of a user authentication system using JSON Web Tokens (JWT). It has been developed using the .NET programming language, Entity Framework Core, and the MySQL database.
 
