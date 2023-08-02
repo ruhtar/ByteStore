@@ -2,7 +2,7 @@
 
 namespace AuthenticationService.Repository
 {
-    public interface IProductRedisRepository
+    public interface IProductRepository
     {
         Task<Product> AddProductAsync(Product product);
         Task<bool> DeleteProductAsync(int id);

@@ -5,7 +5,7 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace AuthenticationService.Repository
 {
-    public class ProductRepository : IProductRedisRepository
+    public class ProductRepository : IProductRepository
     {
         private readonly AppDbContext _context;
         private readonly IMemoryCache _cache;
