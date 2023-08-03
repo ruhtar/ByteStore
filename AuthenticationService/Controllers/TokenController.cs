@@ -21,7 +21,7 @@ namespace AuthenticationService.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> GenerateToken([FromBody] UserDTO user)
+        public async Task<IActionResult> GenerateToken([FromBody] CreateUserDTO user)
         {
             var userAuthenticated = await _userService.ValidateUser(new User
             {

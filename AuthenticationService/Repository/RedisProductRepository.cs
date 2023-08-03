@@ -31,7 +31,7 @@ namespace AuthenticationService.Repository
             {
                 stopwatch.Stop();
 
-                Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalMilliseconds} ms");
+                Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
                 return cache;
             }
             var products = await _context.Products.ToListAsync();
@@ -44,7 +44,7 @@ namespace AuthenticationService.Repository
 
             stopwatch.Stop();
 
-            Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalMilliseconds} ms");
+            Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
             return products;
         }
 
@@ -75,7 +75,6 @@ namespace AuthenticationService.Repository
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
 
-            // Clear the "AllProductsCache" key after deleting the product
             return true;
         }
     }

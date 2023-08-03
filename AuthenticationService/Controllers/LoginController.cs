@@ -21,7 +21,7 @@ namespace AuthenticationService.Controllers
 
         [HttpPost("signup")]
         [AllowAnonymous]
-        public async Task<IActionResult> Signup([FromBody] UserDTO user)
+        public async Task<IActionResult> Signup([FromBody] CreateUserDTO user)
         {
             if (user == null)
             {

@@ -26,7 +26,7 @@ namespace AuthenticationService.Services
             return _passwordHasher.Validate(userRegistered.Password, user.Password);
         }
 
-        public async Task<UserDTO> GetUserByUsername(string username)
+        public async Task<CreateUserDTO> GetUserByUsername(string username)
         {
             var userRegistered = await _userRepository.GetUser(new User
             {
@@ -34,7 +34,7 @@ namespace AuthenticationService.Services
             });
             if (userRegistered != null)
             {
-                return new UserDTO
+                return new CreateUserDTO
                 {
                     Username = userRegistered.Username,
                     Password = userRegistered.Password,

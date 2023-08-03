@@ -11,6 +11,8 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using StackExchange.Redis;
 using AuthenticationService.Cache;
+using AuthenticationService.Configs.DI;
+using AuthenticationService.Configs.Authentication;
 
 namespace AuthenticationService
 {
@@ -33,6 +35,7 @@ namespace AuthenticationService
                 o.InstanceName = "instance";
                 o.Configuration = "localhost:6379";
             });
+
             builder.Services.AddSwaggerGen(opt => 
             {
                 opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -62,36 +65,11 @@ namespace AuthenticationService
             });
 
             //DEPENDENCY INJECTION CONFIGURATION
-            builder.Services.AddScoped<ITokenService, TokenService>();
-            builder.Services.AddScoped<IRedisProductRepository, RedisProductRepository>();
-            builder.Services.AddScoped<IProductRepository, ProductRepository>();
-            builder.Services.AddScoped<ICacheConfigs, CacheConfigs>();
-            builder.Services.AddScoped<IProductService, ProductService>();
-            builder.Services.AddScoped<IRedisProductService, RedisProductService>();
-            builder.Services.AddScoped<IUserRepository, UserRepository>();
-            builder.Services.AddScoped<IUserService, UserService>();
-            builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
+            DependencyRegistration.RegisterDependencies(builder.Services);
 
             //JWT CONFIGURATION
-            var key = Encoding.ASCII.GetBytes("2445361D-43F8-4066-BBC8-4777CA0129BB");
-            builder.Services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options =>
-            {
-                options.RequireHttpsMetadata = false;
-                options.SaveToken = true;
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
-            });
+            AuthenticationConfiguration.Configure(builder.Services);
 
-            //DB CONECTION
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
@@ -108,7 +86,6 @@ namespace AuthenticationService
 
             app.UseHttpsRedirection();
 
-            //Nessa ordem
             app.UseAuthentication();
             app.UseAuthorization();
 

@@ -2,7 +2,7 @@
 
 namespace AuthenticationService.DTO
 {
-    public class UserDTO
+    public class CreateUserDTO
     {
         public string Username { get; set; }
 
