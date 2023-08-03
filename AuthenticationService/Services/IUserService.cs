@@ -7,6 +7,6 @@ namespace AuthenticationService.Services
     {
         Task AddUser(User user);
         Task<bool> ValidateUser(User user);
-        Task<CreateUserDTO> GetUserByUsername(string username);
+        Task<CreateUserDto> GetUserByUsername(string username);
     }
 }

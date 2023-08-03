@@ -36,6 +36,8 @@ namespace AuthenticationService
                 o.Configuration = "localhost:6379";
             });
 
+            DotNetEnv.Env.Load();
+
             builder.Services.AddSwaggerGen(opt => 
             {
                 opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -70,8 +72,7 @@ namespace AuthenticationService
             //JWT CONFIGURATION
             AuthenticationConfiguration.Configure(builder.Services);
 
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-            builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(Environment.GetEnvironmentVariable("CONNECTION_STRING"), ServerVersion.AutoDetect(Environment.GetEnvironmentVariable("CONNECTION_STRING"))));
 
             builder.Services.AddAuthorization();
 
@@ -83,6 +84,8 @@ namespace AuthenticationService
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseHttpLogging();
 
             app.UseHttpsRedirection();
 
