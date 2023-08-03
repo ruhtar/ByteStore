@@ -50,3 +50,5 @@ D:\PROGRAMAÇÃO\Projetos\AuthenticationService\AuthenticationService\obj\Debug\
 D:\PROGRAMAÇÃO\Projetos\AuthenticationService\AuthenticationService\bin\Debug\net6.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
 D:\PROGRAMAÇÃO\Projetos\AuthenticationService\AuthenticationService\bin\Debug\net6.0\Pipelines.Sockets.Unofficial.dll
 D:\PROGRAMAÇÃO\Projetos\AuthenticationService\AuthenticationService\bin\Debug\net6.0\StackExchange.Redis.dll
+D:\PROGRAMAÇÃO\Projetos\AuthenticationService\AuthenticationService\bin\Debug\net6.0\DotNetEnv.dll
+D:\PROGRAMAÇÃO\Projetos\AuthenticationService\AuthenticationService\bin\Debug\net6.0\Sprache.dll

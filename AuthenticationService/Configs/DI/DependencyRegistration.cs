@@ -1,7 +1,8 @@
-﻿using AuthenticationService.Authentication;
-using AuthenticationService.Cache;
-using AuthenticationService.Repository;
-using AuthenticationService.Services;
+﻿using AuthenticationService.Application.Services;
+using AuthenticationService.Configs.Cache;
+using AuthenticationService.Infrastructure.Hasher;
+using AuthenticationService.Infrastructure.Repository;
+using AuthenticationService.Shared.Validator;
 
 namespace AuthenticationService.Configs.DI
 {
@@ -18,6 +19,7 @@ namespace AuthenticationService.Configs.DI
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
+            services.AddScoped<IUserValidator, UserValidator>();
         }
     }
 }

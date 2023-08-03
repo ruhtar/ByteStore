@@ -1,18 +1,8 @@
-using AuthenticationService.Authentication;
-using AuthenticationService.Data;
-using AuthenticationService.Repository;
-using AuthenticationService.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Text;
-using StackExchange.Redis;
-using AuthenticationService.Cache;
 using AuthenticationService.Configs.DI;
 using AuthenticationService.Configs.Authentication;
+using AuthenticationService.Infrastructure;
 
 namespace AuthenticationService
 {
@@ -20,6 +10,8 @@ namespace AuthenticationService
     {
         public static void Main(string[] args)
         {
+            DotNetEnv.Env.Load();
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -30,15 +22,13 @@ namespace AuthenticationService
             //Adding In-Memory cache.
             builder.Services.AddMemoryCache();
             //docker run -d -p 6379:6379 --name redis redis.
-            builder.Services.AddStackExchangeRedisCache(o => 
+            builder.Services.AddStackExchangeRedisCache(o =>
             {
                 o.InstanceName = "instance";
-                o.Configuration = "localhost:6379";
+                o.Configuration = Environment.GetEnvironmentVariable("REDIS_LOCALHOST");
             });
 
-            DotNetEnv.Env.Load();
-
-            builder.Services.AddSwaggerGen(opt => 
+            builder.Services.AddSwaggerGen(opt =>
             {
                 opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
@@ -52,7 +42,7 @@ namespace AuthenticationService
 
                 opt.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
-                {       
+                {
                 new OpenApiSecurityScheme
                 {
                     Reference = new OpenApiReference
