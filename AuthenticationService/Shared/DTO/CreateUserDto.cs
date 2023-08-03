@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using AuthenticationService.Domain.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace AuthenticationService.Shared.DTO
 {
@@ -8,6 +9,6 @@ namespace AuthenticationService.Shared.DTO
 
         public string Password { get; set; }
 
-        public string Role { get; set; }
+        public Roles Role { get; set; }
     }
 }

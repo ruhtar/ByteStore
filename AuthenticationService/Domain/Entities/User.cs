@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using AuthenticationService.Domain.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace AuthenticationService.Domain.Entities
 {
@@ -11,7 +12,7 @@ namespace AuthenticationService.Domain.Entities
 
         public string Password { get; set; }
 
-        public string Role { get; set; }
+        public Roles Role { get; set; }
 
     }
 }

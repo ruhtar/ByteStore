@@ -31,13 +31,23 @@ namespace AuthenticationService.Host.Controllers
                 return BadRequest("User is required.");
             }
 
-            if (user.Role != "Admin" && user.Role != "User") return BadRequest("Role must be User or Admin.");
-
-            var isUsernameValid = await _userValidator.IsUsernameValid(user.Username);
-            if(!isUsernameValid) return BadRequest("User already exists. Please, try other username.");
-
-            var isPassworValid = _userValidator.IsPasswordValid(user.Password);
-            if(!isPassworValid) return BadRequest("Your password must have capital letters, numbers and special characters");
+            var userValidatorStatus = await _userValidator.ValidateUser(user);
+            switch (userValidatorStatus)
+            {
+                case UserValidatorStatus.Success:
+                    break;
+                case UserValidatorStatus.UsernameAlreadyExists:
+                    return BadRequest("User already exists. Please, try other username.");
+                    break;
+                case UserValidatorStatus.InvalidPassword:
+                    return BadRequest("Your password must have capital letters, numbers and special characters");
+                    break;
+                case UserValidatorStatus.InvalidRole:
+                    return BadRequest("User must be have Admin or User role");
+                    break;
+                default:
+                    break;
+            }
 
             await _userService.AddUser(new User
             {

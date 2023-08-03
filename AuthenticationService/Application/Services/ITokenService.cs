@@ -1,7 +1,9 @@
-﻿namespace AuthenticationService.Application.Services
+﻿using AuthenticationService.Domain.Enums;
+
+namespace AuthenticationService.Application.Services
 {
     public interface ITokenService
     {
-        string GenerateToken(string username, string token);
+        string GenerateToken(string username, Roles token);
     }
 }

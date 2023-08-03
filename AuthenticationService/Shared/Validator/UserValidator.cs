@@ -1,4 +1,5 @@
 ﻿using AuthenticationService.Domain.Entities;
+using AuthenticationService.Domain.Enums;
 using AuthenticationService.Infrastructure.Hasher;
 using AuthenticationService.Infrastructure.Repository;
 using AuthenticationService.Shared.DTO;
@@ -16,13 +17,18 @@ namespace AuthenticationService.Shared.Validator
             _passwordHasher = passwordHasher;
         }
 
-        public async Task<bool> ValidateUser(CreateUserDto user)
+        public async Task<UserValidatorStatus> ValidateUser(CreateUserDto user)
         {
-            var isUserValid = await IsUsernameValid(user.Username)
-                && IsPasswordValid(user.Password)
-                && (user.Role == "Admin" || user.Role == "User");
+            var isPasswordValid = IsPasswordValid(user.Password);
+            if (!isPasswordValid) return UserValidatorStatus.InvalidPassword;
 
-            return isUserValid;
+            var isRoleValid = IsRoleValid(user.Role);
+            if (!isRoleValid) return UserValidatorStatus.InvalidRole;
+
+            var isUsernameValid = await IsUsernameValid(user.Username);
+            if (!isUsernameValid) return UserValidatorStatus.UsernameAlreadyExists;
+
+            return UserValidatorStatus.Success;
         }
 
         public async Task<bool> IsUsernameValid(string username)
@@ -54,6 +60,11 @@ namespace AuthenticationService.Shared.Validator
             }
 
             return true;
+        }
+
+        public bool IsRoleValid(Roles role)
+        {
+            return role.ToString() == "Admin" || role.ToString() == "User";
         }
     }
 }
