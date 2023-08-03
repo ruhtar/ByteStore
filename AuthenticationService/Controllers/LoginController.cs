@@ -3,7 +3,7 @@ using AuthenticationService.Entities;
 using AuthenticationService.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Net;
 
 namespace AuthenticationService.Controllers
 {
@@ -21,25 +21,25 @@ namespace AuthenticationService.Controllers
 
         [HttpPost("signup")]
         [AllowAnonymous]
-        public async Task<IActionResult> Signup([FromBody] CreateUserDTO user)
+        public async Task<IActionResult> Signup([FromBody] CreateUserDto user)
         {
-            if (user == null)
-            {
-                return BadRequest("User is required.");
-            }
-            if(user.Role!="Admin" && user.Role != "User") return BadRequest("Role must be User or Admin.");
+                if (user == null)
+                {
+                    return BadRequest("User is required.");
+                }
+                if (user.Role != "Admin" && user.Role != "User") return BadRequest("Role must be User or Admin.");
 
-            var registeredUser = await _userService.GetUserByUsername(user.Username);
-            if (registeredUser != null) return BadRequest("User already exists. Please, try other username.");
+                var registeredUser = await _userService.GetUserByUsername(user.Username);
+                if (registeredUser != null) return BadRequest("User already exists. Please, try other username.");
 
-            await _userService.AddUser(new User
-            {
-                Username = user.Username,
-                Password = user.Password,
-                Role = user.Role
-            });
+                await _userService.AddUser(new User
+                {
+                    Username = user.Username,
+                    Password = user.Password,
+                    Role = user.Role
+                });
 
-            return Ok("User registered.");
+                return Ok("User registered.");
         }
 
         [Authorize(Roles = "Admin")]
