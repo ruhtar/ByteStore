@@ -20,16 +20,17 @@ namespace AuthenticationService.Cache
             return null;
         }
 
-        private DistributedCacheEntryOptions GetCacheOptions()
+        public async Task SetAsync(string key, string value)
+        {
+            await _redis.SetStringAsync(key, value, GetCacheOptions());
+        }
+
+        private static DistributedCacheEntryOptions GetCacheOptions()
         {
             var options = new DistributedCacheEntryOptions();
             options.SetSlidingExpiration(TimeSpan.FromSeconds(7));
             options.SetAbsoluteExpiration(TimeSpan.FromSeconds(15));
             return options;
-        }
-
-        public async Task SetAsync(string key, string value) {
-            await _redis.SetStringAsync(key, value, GetCacheOptions());
         }
     }
 }

@@ -4,6 +4,7 @@ using AuthenticationService.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
+using System.Diagnostics;
 using System.Text.Json;
 
 namespace AuthenticationService.Repository
@@ -22,8 +23,17 @@ namespace AuthenticationService.Repository
 
         public async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             var cache = await _cache.GetFromCacheAsync(AllProductsKey);
-            if (cache != null) return cache;
+            if (cache != null) 
+            {
+                stopwatch.Stop();
+
+                Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalMilliseconds} ms");
+                return cache;
+            }
             var products = await _context.Products.ToListAsync();
 
             //This is just for testing if cache is avaible.
@@ -32,6 +42,9 @@ namespace AuthenticationService.Repository
             var cacheData = JsonSerializer.Serialize(products);
             await _cache.SetAsync(AllProductsKey, cacheData);
 
+            stopwatch.Stop();
+
+            Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalMilliseconds} ms");
             return products;
         }
 
