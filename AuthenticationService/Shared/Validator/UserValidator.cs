@@ -1,6 +1,5 @@
 ﻿using AuthenticationService.Domain.Entities;
 using AuthenticationService.Domain.Enums;
-using AuthenticationService.Infrastructure.Hasher;
 using AuthenticationService.Infrastructure.Repository;
 using AuthenticationService.Shared.DTO;
 

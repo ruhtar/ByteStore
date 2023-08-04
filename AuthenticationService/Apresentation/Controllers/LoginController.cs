@@ -4,8 +4,6 @@ using AuthenticationService.Shared.DTO;
 using AuthenticationService.Shared.Validator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Net;
 
 namespace AuthenticationService.Host.Controllers
 {
