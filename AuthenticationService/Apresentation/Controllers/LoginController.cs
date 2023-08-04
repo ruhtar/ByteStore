@@ -4,6 +4,7 @@ using AuthenticationService.Shared.DTO;
 using AuthenticationService.Shared.Validator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Net;
 
 namespace AuthenticationService.Host.Controllers
@@ -14,13 +15,14 @@ namespace AuthenticationService.Host.Controllers
     {
         private readonly IUserService _userService;
         private readonly IUserValidator _userValidator;
+        private readonly ITokenService _tokenService;
 
-        public LoginController(IUserService userService, IUserValidator userValidator)
+        public LoginController(IUserService userService, IUserValidator userValidator, ITokenService tokenService)
         {
             _userService = userService;
             _userValidator = userValidator;
+            _tokenService = tokenService;
         }
-
 
         [HttpPost("signup")]
         [AllowAnonymous]
@@ -38,13 +40,10 @@ namespace AuthenticationService.Host.Controllers
                     break;
                 case UserValidatorStatus.UsernameAlreadyExists:
                     return BadRequest("User already exists. Please, try other username.");
-                    break;
                 case UserValidatorStatus.InvalidPassword:
                     return BadRequest("Your password must have capital letters, numbers and special characters");
-                    break;
                 case UserValidatorStatus.InvalidRole:
                     return BadRequest("User must be have Admin or User role");
-                    break;
                 default:
                     break;
             }
@@ -59,18 +58,18 @@ namespace AuthenticationService.Host.Controllers
             return Ok("User registered.");
         }
 
-        [Authorize(Roles = "Admin")]
-        [HttpGet("signin/admin")]
-        public IActionResult SigninAdmin()
+        [HttpPost("signin")]
+        public async Task<IActionResult> Signin([FromBody] LoginUserDto user)
         {
-            return Ok("Admin, you are signed in! :D");
-        }
-
-        [Authorize(Roles = "User, Admin")]
-        [HttpGet("signin/user")]
-        public IActionResult SigninUser()
-        {
-            return Ok("User, you are signed in! :D");
+            var token = await _userService.AuthenticateUser(new User
+            {
+                Username = user.Username,
+                Password = user.Password
+            });
+            if (string.IsNullOrEmpty(token)) {
+                return Problem("Error during authentication.");
+            }
+            return Ok(token);
         }
     }
 }

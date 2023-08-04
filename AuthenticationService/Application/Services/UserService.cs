@@ -2,6 +2,7 @@
 using AuthenticationService.Infrastructure.Hasher;
 using AuthenticationService.Infrastructure.Repository;
 using AuthenticationService.Shared.DTO;
+using AuthenticationService.Shared.Validator;
 
 namespace AuthenticationService.Application.Services
 {
@@ -9,21 +10,32 @@ namespace AuthenticationService.Application.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IPasswordHasher _passwordHasher;
+        private readonly IUserValidator _userValidator;
+        private readonly ITokenService _tokenService;
 
-        public UserService(IUserRepository userRepository, IPasswordHasher passwordHasher)
+
+        public UserService(IUserRepository userRepository, IPasswordHasher passwordHasher, IUserValidator userValidator, ITokenService tokenService)
         {
             _userRepository = userRepository;
             _passwordHasher = passwordHasher;
+            _userValidator = userValidator;
+            _tokenService = tokenService;
         }
 
-        public async Task<bool> AuthenticateUser(User user)
+        public async Task<string> AuthenticateUser(User user)
         {
             var userRegistered = await _userRepository.GetUser(new User
             {
                 Username = user.Username
             });
-            if (userRegistered == null) return false;
-            return _passwordHasher.Validate(userRegistered.Password, user.Password);
+
+            var isPasswordValid = _passwordHasher.Validate(userRegistered.Password, user.Password);
+            if (isPasswordValid) 
+            {
+                return _tokenService.GenerateToken(user.Username, user.Role);
+            }
+
+            return "";
         }
 
         public async Task<CreateUserDto> GetUserByUsername(string username)

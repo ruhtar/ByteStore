@@ -9,12 +9,10 @@ namespace AuthenticationService.Shared.Validator
     public class UserValidator : IUserValidator
     {
         private readonly IUserRepository _userRepository;
-        private readonly IPasswordHasher _passwordHasher;
 
-        public UserValidator(IUserRepository userRepository, IPasswordHasher passwordHasher)
+        public UserValidator(IUserRepository userRepository)
         {
             _userRepository = userRepository;
-            _passwordHasher = passwordHasher;
         }
 
         public async Task<UserValidatorStatus> ValidateUser(CreateUserDto user)
