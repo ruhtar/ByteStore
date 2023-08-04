@@ -7,6 +7,6 @@ namespace AuthenticationService.Application.Services
     {
         Task AddUser(User user);
         Task<string> AuthenticateUser(User user);
-        Task<CreateUserDto> GetUserByUsername(string username);
+        //Task<CreateUserDto> GetUserByUsername(string username);
     }
 }

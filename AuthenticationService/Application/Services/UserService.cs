@@ -10,15 +10,13 @@ namespace AuthenticationService.Application.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IPasswordHasher _passwordHasher;
-        private readonly IUserValidator _userValidator;
         private readonly ITokenService _tokenService;
 
 
-        public UserService(IUserRepository userRepository, IPasswordHasher passwordHasher, IUserValidator userValidator, ITokenService tokenService)
+        public UserService(IUserRepository userRepository, IPasswordHasher passwordHasher, ITokenService tokenService)
         {
             _userRepository = userRepository;
             _passwordHasher = passwordHasher;
-            _userValidator = userValidator;
             _tokenService = tokenService;
         }
 
@@ -38,22 +36,22 @@ namespace AuthenticationService.Application.Services
             return "";
         }
 
-        public async Task<CreateUserDto> GetUserByUsername(string username)
-        {
-            var userRegistered = await _userRepository.GetUser(new User
-            {
-                Username = username
-            });
-            if (userRegistered != null)
-            {
-                return new CreateUserDto
-                {
-                    Username = userRegistered.Username,
-                    Password = userRegistered.Password,
-                };
-            }
-            return null;
-        }
+        //public async Task<CreateUserDto> GetUserByUsername(string username)
+        //{
+        //    var userRegistered = await _userRepository.GetUser(new User
+        //    {
+        //        Username = username
+        //    });
+        //    if (userRegistered != null)
+        //    {
+        //        return new CreateUserDto
+        //        {
+        //            Username = userRegistered.Username,
+        //            Password = userRegistered.Password,
+        //        };
+        //    }
+        //    return null;
+        //}
 
         public async Task AddUser(User user)
         {

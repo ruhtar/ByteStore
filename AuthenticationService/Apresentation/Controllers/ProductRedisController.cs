@@ -1,7 +1,6 @@
 ﻿using AuthenticationService.Application.Services;
 using AuthenticationService.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Distributed;
 
 namespace AuthenticationService.Host.Controllers
 {
