@@ -15,13 +15,11 @@ namespace AuthenticationService.Host.Controllers
     {
         private readonly IUserService _userService;
         private readonly IUserValidator _userValidator;
-        private readonly ITokenService _tokenService;
 
-        public LoginController(IUserService userService, IUserValidator userValidator, ITokenService tokenService)
+        public LoginController(IUserService userService, IUserValidator userValidator)
         {
             _userService = userService;
             _userValidator = userValidator;
-            _tokenService = tokenService;
         }
 
         [HttpPost("signup")]

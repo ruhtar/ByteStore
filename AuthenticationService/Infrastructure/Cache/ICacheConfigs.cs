@@ -1,7 +1,7 @@
 ﻿using AuthenticationService.Domain.Entities;
 using Microsoft.Extensions.Caching.Distributed;
 
-namespace AuthenticationService.Configs.Cache
+namespace AuthenticationService.Infrastructure.Cache
 {
     public interface ICacheConfigs
     {

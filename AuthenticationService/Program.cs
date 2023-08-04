@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using AuthenticationService.Configs.DI;
-using AuthenticationService.Configs.Authentication;
 using AuthenticationService.Infrastructure;
+using AuthenticationService.Shared.Configs.Authentication;
+using AuthenticationService.Shared.Configs.DI;
 
 namespace AuthenticationService
 {

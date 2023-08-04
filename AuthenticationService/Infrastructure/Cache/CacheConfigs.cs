@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;
 
-namespace AuthenticationService.Configs.Cache
+namespace AuthenticationService.Infrastructure.Cache
 {
     public class CacheConfigs : ICacheConfigs
     {

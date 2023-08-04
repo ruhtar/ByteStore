@@ -1,1 +1,12 @@
 ﻿.env
+bin/
+obj/
+.vscode/
+*.suo
+*.user
+*.sln.docstates
+*.rsuser
+*.userosscache
+packages/
+*.nupkg
+*.pdb

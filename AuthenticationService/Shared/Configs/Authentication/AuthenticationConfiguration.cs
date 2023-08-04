@@ -3,11 +3,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace AuthenticationService.Configs.Authentication
+namespace AuthenticationService.Shared.Configs.Authentication
 {
     public class AuthenticationConfiguration
     {
-        public static void Configure(IServiceCollection services) {
+        public static void Configure(IServiceCollection services)
+        {
             var key = Encoding.ASCII.GetBytes("2445361D-43F8-4066-BBC8-4777CA0129BB");
             services.AddAuthentication(options =>
             {

@@ -1,10 +1,10 @@
 ﻿using AuthenticationService.Application.Services;
-using AuthenticationService.Configs.Cache;
+using AuthenticationService.Infrastructure.Cache;
 using AuthenticationService.Infrastructure.Hasher;
 using AuthenticationService.Infrastructure.Repository;
 using AuthenticationService.Shared.Validator;
 
-namespace AuthenticationService.Configs.DI
+namespace AuthenticationService.Shared.Configs.DI
 {
     public class DependencyRegistration
     {

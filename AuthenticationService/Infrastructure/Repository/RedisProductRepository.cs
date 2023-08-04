@@ -1,6 +1,6 @@
-﻿using AuthenticationService.Configs.Cache;
-using AuthenticationService.Domain.Entities;
+﻿using AuthenticationService.Domain.Entities;
 using AuthenticationService.Infrastructure;
+using AuthenticationService.Infrastructure.Cache;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
