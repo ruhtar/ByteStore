@@ -7,6 +7,6 @@ namespace AuthenticationService.Domain.Entities
         public int ProductId { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public IList<ShoppingCartProducts> ShoppingCartProduct { get; set; }
+        public IList<ShoppingCartProducts> ShoppingCartProducts { get; set; }
     }
 }

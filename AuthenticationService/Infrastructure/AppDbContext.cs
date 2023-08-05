@@ -17,7 +17,7 @@ namespace AuthenticationService.Infrastructure
         public DbSet<Product> Products { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<ShoppingCartProducts> ShoppingCartProducts { get; set; }
-        public DbSet<UserAggregate> UserAggregates{ get; set; }
+        public DbSet<UserAggregate> UserAggregates { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -28,8 +28,17 @@ namespace AuthenticationService.Infrastructure
             .WithOne(e => e.UserAggregate)
             .HasForeignKey<ShoppingCart>(e => e.UserAggregateId);
 
-            //product-shopping cart N:N
-            modelBuilder.Entity<Product>()
+            modelBuilder.Entity<ShoppingCartProducts>().HasKey(c => new { c.ShoppingCartId, c.ProductId });
+
+            modelBuilder.Entity<ShoppingCartProducts>()
+                .HasOne(c => c.Product)
+                .WithMany(c => c.ShoppingCartProducts)
+                .HasForeignKey(c => c.ProductId);
+
+            modelBuilder.Entity<ShoppingCartProducts>()
+                .HasOne(c => c.ShoppingCart)
+                .WithMany(c => c.ShoppingCartProducts)
+                .HasForeignKey(c => c.ShoppingCartId);
         }
     }
 }

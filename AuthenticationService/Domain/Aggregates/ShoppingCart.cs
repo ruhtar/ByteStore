@@ -8,7 +8,7 @@ namespace AuthenticationService.Domain.Aggregates
         public int UserAggregateId { get; set; }
         public UserAggregate UserAggregate { get; set; }
         public List<CartItem> Items { get; set; }
-        public IList<ShoppingCartProducts> ShoppingCartProduct { get; set; }
+        public IList<ShoppingCartProducts> ShoppingCartProducts { get; set; }
     }
 
     public class ShoppingCartProducts 
