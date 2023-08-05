@@ -1,4 +1,4 @@
-﻿using AuthenticationService.Domain.Enums;
+﻿using AuthenticationService.Domain.ValueObjects;
 
 namespace AuthenticationService.Application.Services
 {

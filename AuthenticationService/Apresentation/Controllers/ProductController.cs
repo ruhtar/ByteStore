@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AuthenticationService.Host.Controllers
 {
-    [Route("product")]
+    [Route("products")]
     [ApiController]
     public class ProductController : ControllerBase
     {

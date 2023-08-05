@@ -1,60 +1,73 @@
 ﻿using AuthenticationService.Domain.Entities;
 using AuthenticationService.Infrastructure;
+using AuthenticationService.Infrastructure.Cache;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
+using System.Diagnostics;
+using System.Text.Json;
 
 namespace AuthenticationService.Infrastructure.Repository
 {
     public class ProductRepository : IProductRepository
     {
         private readonly AppDbContext _context;
-        private readonly IMemoryCache _cache;
+        private readonly ICacheConfigs _cache;
         private const string AllProductsKey = "AllProductsKeys";
 
-        public ProductRepository(AppDbContext context, IMemoryCache memoryCache)
+        public ProductRepository(AppDbContext context, ICacheConfigs cache)
         {
             _context = context;
-            _cache = memoryCache;
+            _cache = cache;
         }
 
-        public async Task<IEnumerable<Product>> GetAllProductsAsync()
+        public async Task<IEnumerable<Product>> GetAllProducts()
         {
-            var products = _cache.GetOrCreate(AllProductsKey, async entry =>
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            var cache = await _cache.GetFromCacheAsync(AllProductsKey);
+            if (cache != null)
             {
+                stopwatch.Stop();
 
-                //Relative expiration => If not requested, will expire in the given time.
-                entry.SlidingExpiration = TimeSpan.FromSeconds(7);
-                //Absolute expiration => Will expire in the given time, no matter if it was requested or not.
-                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(15);
-                entry.SetPriority(CacheItemPriority.High);
+                Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
+                return cache;
+            }
+            var products = await _context.Products.ToListAsync();
 
-                Thread.Sleep(5000);
+            //This is just for testing if cache is avaible.
+            Thread.Sleep(5000);
 
-                return await _context.Products.ToListAsync();
-            });
-            return await products;
+            var cacheData = JsonSerializer.Serialize(products);
+            await _cache.SetAsync(AllProductsKey, cacheData);
+
+            stopwatch.Stop();
+
+            Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
+            return products;
         }
 
-        public async Task<Product> GetProductByIdAsync(int id)
+        public async Task<Product> GetProductById(int id)
         {
             return await _context.Products.FindAsync(id);
         }
 
-        public async Task<Product> AddProductAsync(Product product)
+        public async Task<Product> AddProduct(Product product)
         {
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
             return product;
         }
 
-        public async Task<Product> UpdateProductAsync(Product product)
+        public async Task<Product> UpdateProduct(Product product)
         {
             _context.Entry(product).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return product;
         }
 
-        public async Task<bool> DeleteProductAsync(int id)
+        public async Task<bool> DeleteProduct(int id)
         {
             var product = await _context.Products.FindAsync(id);
             if (product == null) return false;
@@ -62,8 +75,6 @@ namespace AuthenticationService.Infrastructure.Repository
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
 
-            // Clear the "AllProductsCache" key after deleting the product
-            _cache.Remove(AllProductsKey);
             return true;
         }
     }

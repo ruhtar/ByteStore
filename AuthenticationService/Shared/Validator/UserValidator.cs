@@ -1,5 +1,5 @@
 ﻿using AuthenticationService.Domain.Entities;
-using AuthenticationService.Domain.Enums;
+using AuthenticationService.Domain.ValueObjects;
 using AuthenticationService.Infrastructure.Repository;
 using AuthenticationService.Shared.DTO;
 

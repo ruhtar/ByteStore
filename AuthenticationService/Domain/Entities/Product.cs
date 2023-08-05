@@ -1,9 +1,12 @@
-﻿namespace AuthenticationService.Domain.Entities
+﻿using AuthenticationService.Domain.Aggregates;
+
+namespace AuthenticationService.Domain.Entities
 {
     public class Product
     {
-        public int Id { get; set; }
+        public int ProductId { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
+        public IList<ShoppingCartProducts> ShoppingCartProduct { get; set; }
     }
 }

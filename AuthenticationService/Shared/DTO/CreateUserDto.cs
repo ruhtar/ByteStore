@@ -1,4 +1,4 @@
-﻿using AuthenticationService.Domain.Enums;
+﻿using AuthenticationService.Domain.ValueObjects;
 using System.ComponentModel.DataAnnotations;
 
 namespace AuthenticationService.Shared.DTO

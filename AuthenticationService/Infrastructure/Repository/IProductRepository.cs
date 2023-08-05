@@ -4,10 +4,10 @@ namespace AuthenticationService.Infrastructure.Repository
 {
     public interface IProductRepository
     {
-        Task<Product> AddProductAsync(Product product);
-        Task<bool> DeleteProductAsync(int id);
-        Task<IEnumerable<Product>> GetAllProductsAsync();
-        Task<Product> GetProductByIdAsync(int id);
-        Task<Product> UpdateProductAsync(Product product);
+        Task<Product> AddProduct(Product product);
+        Task<bool> DeleteProduct(int id);
+        Task<IEnumerable<Product>> GetAllProducts();
+        Task<Product> GetProductById(int id);
+        Task<Product> UpdateProduct(Product product);
     }
 }

@@ -1,4 +1,4 @@
-﻿using AuthenticationService.Domain.Enums;
+﻿using AuthenticationService.Domain.ValueObjects;
 using AuthenticationService.Shared.DTO;
 
 namespace AuthenticationService.Shared.Validator
