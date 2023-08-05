@@ -1,9 +1,11 @@
 using AuthenticationService.Application.Services;
+using AuthenticationService.Domain.Aggregates;
 using AuthenticationService.Domain.Entities;
 using AuthenticationService.Shared.DTO;
 using AuthenticationService.Shared.Validator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using StackExchange.Redis;
 
 namespace AuthenticationService.Host.Controllers
 {
@@ -44,10 +46,13 @@ namespace AuthenticationService.Host.Controllers
                     break;
             }
 
-            await _userService.AddUser(new User
+            await _userService.AddUser(new UserAggregate
             {
-                Username = user.Username,
-                Password = user.Password,
+                User = new User
+                {
+                    Username = user.Username,
+                    Password = user.Password,
+                },
                 Role = user.Role
             });
 
@@ -57,12 +62,14 @@ namespace AuthenticationService.Host.Controllers
         [HttpPost("signin")]
         public async Task<IActionResult> Signin([FromBody] LoginUserDto user)
         {
-            var token = await _userService.AuthenticateUser(new User
+            var token = await _userService.AuthenticateUser(
+            new User
             {
                 Username = user.Username,
                 Password = user.Password
             });
-            if (string.IsNullOrEmpty(token)) {
+            if (string.IsNullOrEmpty(token))
+            {
                 return Problem("Error during authentication.");
             }
             return Ok(token);

@@ -1,9 +1,6 @@
 ﻿using AuthenticationService.Domain.Aggregates;
 using AuthenticationService.Domain.Entities;
-using AuthenticationService.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Reflection.Metadata;
 
 namespace AuthenticationService.Infrastructure
 {

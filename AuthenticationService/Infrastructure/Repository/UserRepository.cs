@@ -1,5 +1,5 @@
-﻿using AuthenticationService.Domain.Entities;
-using AuthenticationService.Infrastructure;
+﻿using AuthenticationService.Domain.Aggregates;
+using AuthenticationService.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuthenticationService.Infrastructure.Repository
@@ -13,15 +13,22 @@ namespace AuthenticationService.Infrastructure.Repository
             _context = context;
         }
 
-        public async Task AddUser(User user)
+        public async Task AddUser(UserAggregate userAggregate)
         {
+            //TODO: UNIT OF WORK
+            var user = new User
+            {
+                Username = userAggregate.User.Username,
+                Password= userAggregate.User.Password,
+            };
             await _context.Users.AddAsync(user);
+            await _context.UserAggregates.AddAsync(userAggregate);
             await _context.SaveChangesAsync();
         }
 
-        public async Task<User> GetUser(User user)
+        public async Task<UserAggregate> GetUser(UserAggregate user)
         {
-            return await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
+            return await _context.UserAggregates.FirstOrDefaultAsync(u => u.User.Username == user.User.Username);
         }
     }
 }

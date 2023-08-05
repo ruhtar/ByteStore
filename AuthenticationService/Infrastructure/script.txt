@@ -1,0 +1,16 @@
+﻿Criar:
+
+- Visual Studio
+Add-Migration InitialCreate
+
+- CLI
+dotnet ef migrations add InitialCreate
+
+
+Rodar:
+
+- Visual Studio
+Update-Database
+
+- CLI
+dotnet ef database update

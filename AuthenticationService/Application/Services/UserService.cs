@@ -1,8 +1,7 @@
-﻿using AuthenticationService.Domain.Entities;
+﻿using AuthenticationService.Domain.Aggregates;
+using AuthenticationService.Domain.Entities;
 using AuthenticationService.Infrastructure.Hasher;
 using AuthenticationService.Infrastructure.Repository;
-using AuthenticationService.Shared.DTO;
-using AuthenticationService.Shared.Validator;
 
 namespace AuthenticationService.Application.Services
 {
@@ -22,15 +21,15 @@ namespace AuthenticationService.Application.Services
 
         public async Task<string> AuthenticateUser(User user)
         {
-            var userRegistered = await _userRepository.GetUser(new User
+            var userRegistered = await _userRepository.GetUser(new UserAggregate() { User = new User
             {
                 Username = user.Username
-            });
+            }});
 
-            var isPasswordValid = _passwordHasher.Validate(userRegistered.Password, user.Password);
+            var isPasswordValid = _passwordHasher.Validate(userRegistered.User.Password, user.Password);
             if (isPasswordValid) 
             {
-                return _tokenService.GenerateToken(user.Username, user.Role);
+                return _tokenService.GenerateToken(user.Username, userRegistered.Role);
             }
 
             return "";
@@ -53,13 +52,16 @@ namespace AuthenticationService.Application.Services
         //    return null;
         //}
 
-        public async Task AddUser(User user)
+        public async Task AddUser(UserAggregate user)
         {
-            var hashedPassword = _passwordHasher.Hash(user.Password);
-            await _userRepository.AddUser(new User
+            var hashedPassword = _passwordHasher.Hash(user.User.Password);
+            await _userRepository.AddUser(new UserAggregate
             {
-                Username = user.Username,
-                Password = hashedPassword,
+                User = new User
+                {
+                    Username = user.User.Username,
+                    Password = hashedPassword,
+                },
                 Role = user.Role
             });
         }

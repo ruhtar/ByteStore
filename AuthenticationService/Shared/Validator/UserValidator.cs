@@ -1,4 +1,5 @@
-﻿using AuthenticationService.Domain.Entities;
+﻿using AuthenticationService.Domain.Aggregates;
+using AuthenticationService.Domain.Entities;
 using AuthenticationService.Domain.ValueObjects;
 using AuthenticationService.Infrastructure.Repository;
 using AuthenticationService.Shared.DTO;
@@ -30,7 +31,7 @@ namespace AuthenticationService.Shared.Validator
 
         public async Task<bool> IsUsernameValid(string username)
         {
-            var user = await _userRepository.GetUser(new User { Username = username });
+            var user = await _userRepository.GetUser(new UserAggregate { User = new User() { Username = username } });
             return user == null;
         }
 

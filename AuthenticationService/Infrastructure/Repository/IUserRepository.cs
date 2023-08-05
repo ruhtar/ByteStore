@@ -1,10 +1,11 @@
-﻿using AuthenticationService.Domain.Entities;
+﻿using AuthenticationService.Domain.Aggregates;
+using AuthenticationService.Domain.Entities;
 
 namespace AuthenticationService.Infrastructure.Repository
 {
     public interface IUserRepository
     {
-        Task AddUser(User user);
-        Task<User> GetUser(User user);
+        Task AddUser(UserAggregate user);
+        Task<UserAggregate> GetUser(UserAggregate user);
     }
 }

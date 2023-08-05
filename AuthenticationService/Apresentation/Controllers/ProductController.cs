@@ -37,13 +37,13 @@ namespace AuthenticationService.Host.Controllers
         public async Task<ActionResult<Product>> CreateProduct([FromBody] Product product)
         {
             var newProduct = await _productService.AddProduct(product);
-            return CreatedAtAction(nameof(GetProduct), new { id = newProduct.Id }, newProduct);
+            return CreatedAtAction(nameof(GetProduct), new { id = newProduct.ProductId }, newProduct);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult<Product>> UpdateProduct(int id, [FromBody] Product product)
         {
-            if (id != product.Id)
+            if (id != product.ProductId)
             {
                 return BadRequest();
             }
