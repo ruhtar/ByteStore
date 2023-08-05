@@ -63,11 +63,11 @@ namespace AuthenticationService.Host.Controllers
         public async Task<IActionResult> Signin([FromBody] LoginUserDto user)
         {
             var token = await _userService.AuthenticateUser(
-            new User
-            {
-                Username = user.Username,
-                Password = user.Password
-            });
+                new User
+                {
+                    Username = user.Username,
+                    Password = user.Password
+                });
             if (string.IsNullOrEmpty(token))
             {
                 return Problem("Error during authentication.");
