@@ -1,6 +1,6 @@
-# User Authentication Project Using JWT and Cache
+# Ecommer project 🤑
 
-This project is an implementation of a user authentication system using JSON Web Tokens (JWT). The application also has some endpooints that are protected behind some authorization roles. The project has been developed using .NET, Entity Framework Core, MySQL, JWT and Redis cache.
+This project is an implementation of an E-commerce. The project has some entities like Users and their Shopping Carts, Products and Orders. The project also has a user authentication and authorization system using JSON Web Tokens (JWT). The application has some endpoints that are protected behind some authorization roles. The project has been developed using .NET, Entity Framework Core, MySQL, JWT and Redis cache.
 
 ## Features
 
