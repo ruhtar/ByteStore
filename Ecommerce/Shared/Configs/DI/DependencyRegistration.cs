@@ -22,6 +22,7 @@ namespace AuthenticationService.Shared.Configs.DI
             services.AddScoped<IPasswordHasher, PasswordHasher>();
             services.AddScoped<IUserValidator, UserValidator>();
             services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
         }
     }
 }

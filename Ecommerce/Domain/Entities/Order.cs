@@ -11,7 +11,7 @@ namespace AuthenticationService.Domain.Entities
         [Column("Id")]
         public int OrderId { get; set; }
         public int ShoppingCartId { get; set; }
-        public byte[] ItemsInfo { get; set; }
+        public byte[]? OrderItems { get; set; }
         public ShoppingCart ShoppingCart { get; set; }
         [JsonIgnore]
         public ICollection<OrderProduct> OrderProducts { get; set; }
