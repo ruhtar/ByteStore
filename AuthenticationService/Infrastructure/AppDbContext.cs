@@ -1,5 +1,6 @@
 ﻿using AuthenticationService.Domain.Aggregates;
 using AuthenticationService.Domain.Entities;
+using AuthenticationService.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuthenticationService.Infrastructure
@@ -25,8 +26,22 @@ namespace AuthenticationService.Infrastructure
             .WithOne(e => e.UserAggregate)
             .HasForeignKey<ShoppingCart>(e => e.UserAggregateId);
 
+            modelBuilder.Ignore<Address>();
 
-            //Order - ShoppingCart (1:1)
+            modelBuilder.Entity<UserAggregate>(entity =>
+            {
+                entity.OwnsOne(u => u.Address, address =>
+                {
+                    address.Property(a => a.Street).HasColumnName("Street");
+                    address.Property(a => a.Number).HasColumnName("Number");
+                    address.Property(a => a.City).HasColumnName("City");
+                    address.Property(a => a.State).HasColumnName("State");
+                    address.Property(a => a.Country).HasColumnName("Country");
+                });
+            });
+
+            modelBuilder.Entity<UserAggregate>().Property(e => e.Role)
+                .HasConversion<string>();
 
             modelBuilder.Entity<ShoppingCart>()
             .HasOne(e => e.Order)

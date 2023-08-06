@@ -16,19 +16,18 @@ namespace AuthenticationService.Infrastructure.Repository
         public async Task AddUser(UserAggregate userAggregate)
         {
             //TODO: UNIT OF WORK
-            var user = new User
-            {
-                Username = userAggregate.User.Username,
-                Password= userAggregate.User.Password,
-            };
-            await _context.Users.AddAsync(user);
             await _context.UserAggregates.AddAsync(userAggregate);
             await _context.SaveChangesAsync();
         }
 
-        public async Task<UserAggregate> GetUser(UserAggregate user)
+        public async Task<UserAggregate> GetUserAggregate(UserAggregate user)
         {
-            return await _context.UserAggregates.FirstOrDefaultAsync(u => u.User.Username == user.User.Username);
+            return await _context.UserAggregates.Include(x=>x.User).FirstOrDefaultAsync(u => u.User.Username == user.User.Username);
+        }
+
+        public async Task<User> GetUser(User user)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
         }
     }
 }

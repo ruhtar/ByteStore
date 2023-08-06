@@ -53,6 +53,7 @@ namespace AuthenticationService.Host.Controllers
                     Username = user.Username,
                     Password = user.Password,
                 },
+                Address= user.Address,
                 Role = user.Role
             });
 

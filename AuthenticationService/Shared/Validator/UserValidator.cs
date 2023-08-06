@@ -31,7 +31,7 @@ namespace AuthenticationService.Shared.Validator
 
         public async Task<bool> IsUsernameValid(string username)
         {
-            var user = await _userRepository.GetUser(new UserAggregate { User = new User() { Username = username } });
+            var user = await _userRepository.GetUserAggregate(new UserAggregate { User = new User() { Username = username } });
             return user == null;
         }
 

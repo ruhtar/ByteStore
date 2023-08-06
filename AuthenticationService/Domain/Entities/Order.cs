@@ -1,9 +1,13 @@
 ﻿using AuthenticationService.Domain.Aggregates;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace AuthenticationService.Domain.Entities
 {
     public class Order
     {
+        [Key]
+        [Column("Id")]
         public int OrderId { get; set; }
         public int Quantity { get; set; }
         public int ShoppingCartId { get; set; }

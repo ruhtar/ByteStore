@@ -21,7 +21,7 @@ namespace AuthenticationService.Application.Services
 
         public async Task<string> AuthenticateUser(User user)
         {
-            var userRegistered = await _userRepository.GetUser(new UserAggregate() { User = new User
+            var userRegistered = await _userRepository.GetUserAggregate(new UserAggregate() { User = new User
             {
                 Username = user.Username
             }});
@@ -62,6 +62,7 @@ namespace AuthenticationService.Application.Services
                     Username = user.User.Username,
                     Password = hashedPassword,
                 },
+                Address = user.Address,
                 Role = user.Role
             });
         }
