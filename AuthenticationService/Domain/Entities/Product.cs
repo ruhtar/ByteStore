@@ -1,6 +1,7 @@
 ﻿using AuthenticationService.Domain.Aggregates;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace AuthenticationService.Domain.Entities
 {
@@ -12,6 +13,7 @@ namespace AuthenticationService.Domain.Entities
         public int ProductQuantity { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
+        [JsonIgnore]
         public ICollection<OrderProduct> OrderProducts { get; set; }
     }
 }
