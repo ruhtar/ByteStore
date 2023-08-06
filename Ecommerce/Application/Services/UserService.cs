@@ -25,6 +25,7 @@ namespace AuthenticationService.Application.Services
             {
                 Username = user.Username
             }});
+            if (userRegistered == null) return "";
 
             var isPasswordValid = _passwordHasher.Validate(userRegistered.User.Password, user.Password);
             if (isPasswordValid) 

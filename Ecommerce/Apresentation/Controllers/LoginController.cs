@@ -71,7 +71,7 @@ namespace AuthenticationService.Host.Controllers
                 });
             if (string.IsNullOrEmpty(token))
             {
-                return Problem("Error during authentication.");
+                return Problem("Username or password incorrect.");
             }
             return Ok(token);
         }

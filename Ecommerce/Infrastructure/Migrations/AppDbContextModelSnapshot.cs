@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace AuthenticationService.Migrations
+namespace Ecommerce.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
@@ -26,8 +26,8 @@ namespace AuthenticationService.Migrations
                         .HasColumnType("int")
                         .HasColumnName("Id");
 
-                    b.Property<int?>("OrderId")
-                        .HasColumnType("int");
+                    b.Property<byte[]>("OrderItems")
+                        .HasColumnType("longblob");
 
                     b.Property<int>("UserAggregateId")
                         .HasColumnType("int");
@@ -38,6 +38,21 @@ namespace AuthenticationService.Migrations
                         .IsUnique();
 
                     b.ToTable("ShoppingCarts");
+                });
+
+            modelBuilder.Entity("AuthenticationService.Domain.Aggregates.ShoppingCartProduct", b =>
+                {
+                    b.Property<int>("ShoppingCartId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ShoppingCartId", "ProductId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ShoppingCartProduct");
                 });
 
             modelBuilder.Entity("AuthenticationService.Domain.Aggregates.UserAggregate", b =>
@@ -59,42 +74,6 @@ namespace AuthenticationService.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserAggregates");
-                });
-
-            modelBuilder.Entity("AuthenticationService.Domain.Entities.Order", b =>
-                {
-                    b.Property<int>("OrderId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("Id");
-
-                    b.Property<byte[]>("OrderItems")
-                        .HasColumnType("longblob");
-
-                    b.Property<int>("ShoppingCartId")
-                        .HasColumnType("int");
-
-                    b.HasKey("OrderId");
-
-                    b.HasIndex("ShoppingCartId")
-                        .IsUnique();
-
-                    b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("AuthenticationService.Domain.Entities.OrderProduct", b =>
-                {
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("OrderId", "ProductId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("OrderProduct");
                 });
 
             modelBuilder.Entity("AuthenticationService.Domain.Entities.Product", b =>
@@ -150,6 +129,21 @@ namespace AuthenticationService.Migrations
                     b.Navigation("UserAggregate");
                 });
 
+            modelBuilder.Entity("AuthenticationService.Domain.Aggregates.ShoppingCartProduct", b =>
+                {
+                    b.HasOne("AuthenticationService.Domain.Entities.Product", "Product")
+                        .WithMany("ShoppingCartProducts")
+                        .HasForeignKey("ProductId");
+
+                    b.HasOne("AuthenticationService.Domain.Aggregates.ShoppingCart", "ShoppingCart")
+                        .WithMany("ShoppingCartProducts")
+                        .HasForeignKey("ShoppingCartId");
+
+                    b.Navigation("Product");
+
+                    b.Navigation("ShoppingCart");
+                });
+
             modelBuilder.Entity("AuthenticationService.Domain.Aggregates.UserAggregate", b =>
                 {
                     b.HasOne("AuthenticationService.Domain.Entities.User", "User")
@@ -173,10 +167,6 @@ namespace AuthenticationService.Migrations
                                 .HasColumnType("longtext")
                                 .HasColumnName("Country");
 
-                            b1.Property<int>("Number")
-                                .HasColumnType("int")
-                                .HasColumnName("Number");
-
                             b1.Property<string>("State")
                                 .IsRequired()
                                 .HasColumnType("longtext")
@@ -186,6 +176,10 @@ namespace AuthenticationService.Migrations
                                 .IsRequired()
                                 .HasColumnType("longtext")
                                 .HasColumnName("Street");
+
+                            b1.Property<int>("StreetNumber")
+                                .HasColumnType("int")
+                                .HasColumnName("StreetNumber");
 
                             b1.HasKey("UserAggregateId");
 
@@ -201,37 +195,9 @@ namespace AuthenticationService.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("AuthenticationService.Domain.Entities.Order", b =>
-                {
-                    b.HasOne("AuthenticationService.Domain.Aggregates.ShoppingCart", "ShoppingCart")
-                        .WithOne("Order")
-                        .HasForeignKey("AuthenticationService.Domain.Entities.Order", "ShoppingCartId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ShoppingCart");
-                });
-
-            modelBuilder.Entity("AuthenticationService.Domain.Entities.OrderProduct", b =>
-                {
-                    b.HasOne("AuthenticationService.Domain.Entities.Order", "Order")
-                        .WithMany("OrderProducts")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AuthenticationService.Domain.Entities.Product", "Product")
-                        .WithMany("OrderProducts")
-                        .HasForeignKey("ProductId");
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("AuthenticationService.Domain.Aggregates.ShoppingCart", b =>
                 {
-                    b.Navigation("Order");
+                    b.Navigation("ShoppingCartProducts");
                 });
 
             modelBuilder.Entity("AuthenticationService.Domain.Aggregates.UserAggregate", b =>
@@ -240,14 +206,9 @@ namespace AuthenticationService.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("AuthenticationService.Domain.Entities.Order", b =>
-                {
-                    b.Navigation("OrderProducts");
-                });
-
             modelBuilder.Entity("AuthenticationService.Domain.Entities.Product", b =>
                 {
-                    b.Navigation("OrderProducts");
+                    b.Navigation("ShoppingCartProducts");
                 });
 #pragma warning restore 612, 618
         }
