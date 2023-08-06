@@ -52,10 +52,10 @@ namespace AuthenticationService.Application.Services
         //    return null;
         //}
 
-        public async Task AddUser(UserAggregate user)
+        public async Task RegisterUser(UserAggregate user)
         {
             var hashedPassword = _passwordHasher.Hash(user.User.Password);
-            await _userRepository.AddUser(new UserAggregate
+            await _userRepository.RegisterUser(new UserAggregate
             {
                 User = new User
                 {

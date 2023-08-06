@@ -7,7 +7,7 @@ namespace AuthenticationService.Application.Services
     public interface IUserService
     {
         Task<string> AuthenticateUser(User user);
-        Task AddUser(UserAggregate user);
+        Task RegisterUser(UserAggregate user);
 
         //Task<CreateUserDto> GetUserByUsername(string username);
     }

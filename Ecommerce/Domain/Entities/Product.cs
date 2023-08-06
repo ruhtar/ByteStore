@@ -9,7 +9,6 @@ namespace AuthenticationService.Domain.Entities
     {
         [Key]
         [Column("Id")]
-        [JsonIgnore]
         public int ProductId { get; set; }
         public int ProductQuantity { get; set; }
         public string Name { get; set; }

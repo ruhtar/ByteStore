@@ -1,5 +1,6 @@
 ﻿using AuthenticationService.Domain.Aggregates;
 using AuthenticationService.Domain.Entities;
+using Ecommerce.Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuthenticationService.Infrastructure.Repository
@@ -7,16 +8,19 @@ namespace AuthenticationService.Infrastructure.Repository
     public class UserRepository : IUserRepository
     {
         private readonly AppDbContext _context;
+        private readonly IShoppingCartRepository _shoppingCartRepository;
 
-        public UserRepository(AppDbContext context)
+        public UserRepository(AppDbContext context, IShoppingCartRepository shoppingCartRepository)
         {
             _context = context;
+            _shoppingCartRepository = shoppingCartRepository;
         }
 
-        public async Task AddUser(UserAggregate userAggregate)
+        public async Task RegisterUser(UserAggregate userAggregate)
         {
             await _context.UserAggregates.AddAsync(userAggregate);
             await _context.SaveChangesAsync();
+            await _shoppingCartRepository.CreateShoppingCart(userAggregate.UserAggregateId);
         }
 
         public async Task<UserAggregate> GetUserAggregate(UserAggregate user)

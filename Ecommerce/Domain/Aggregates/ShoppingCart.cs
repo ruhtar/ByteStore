@@ -11,7 +11,8 @@ namespace AuthenticationService.Domain.Aggregates
         public int ShoppingCartId { get; set; }
         public int UserAggregateId { get; set; }
         public UserAggregate UserAggregate { get; set; }
-        public Order Order { get; set; }
+        public int? OrderId { get; set; }
+        public Order? Order { get; set; }
         //Todo: Valor total
     }
 

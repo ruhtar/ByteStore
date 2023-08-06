@@ -43,6 +43,8 @@ namespace AuthenticationService.Infrastructure
             modelBuilder.Entity<UserAggregate>().Property(e => e.Role)
                 .HasConversion<string>();
 
+            //Order - ShoppingCart (1:1)
+
             modelBuilder.Entity<ShoppingCart>()
             .HasOne(e => e.Order)
             .WithOne(e => e.ShoppingCart)

@@ -10,8 +10,8 @@ namespace AuthenticationService.Domain.Entities
         [Key]
         [Column("Id")]
         public int OrderId { get; set; }
-        public int Quantity { get; set; }
         public int ShoppingCartId { get; set; }
+        public byte[] ItemsInfo { get; set; }
         public ShoppingCart ShoppingCart { get; set; }
         [JsonIgnore]
         public ICollection<OrderProduct> OrderProducts { get; set; }

@@ -5,7 +5,7 @@ namespace AuthenticationService.Infrastructure.Repository
 {
     public interface IUserRepository
     {
-        Task AddUser(UserAggregate user);
+        Task RegisterUser(UserAggregate user);
         Task<UserAggregate> GetUserAggregate(UserAggregate user);
         Task<User> GetUser(User user);
     }

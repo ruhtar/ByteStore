@@ -46,7 +46,7 @@ namespace AuthenticationService.Host.Controllers
                     break;
             }
 
-            await _userService.AddUser(new UserAggregate
+            await _userService.RegisterUser(new UserAggregate
             {
                 User = new User
                 {

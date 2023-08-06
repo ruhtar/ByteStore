@@ -3,6 +3,7 @@ using AuthenticationService.Infrastructure.Cache;
 using AuthenticationService.Infrastructure.Hasher;
 using AuthenticationService.Infrastructure.Repository;
 using AuthenticationService.Shared.Validator;
+using Ecommerce.Infrastructure.Repository;
 
 namespace AuthenticationService.Shared.Configs.DI
 {
@@ -20,6 +21,7 @@ namespace AuthenticationService.Shared.Configs.DI
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
             services.AddScoped<IUserValidator, UserValidator>();
+            services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
         }
     }
 }
