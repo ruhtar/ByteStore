@@ -15,7 +15,6 @@ namespace AuthenticationService.Infrastructure.Repository
 
         public async Task AddUser(UserAggregate userAggregate)
         {
-            //TODO: UNIT OF WORK
             await _context.UserAggregates.AddAsync(userAggregate);
             await _context.SaveChangesAsync();
         }

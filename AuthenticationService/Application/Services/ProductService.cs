@@ -27,9 +27,9 @@ namespace AuthenticationService.Application.Services
             return await _productRepository.AddProduct(product);
         }
 
-        public async Task<Product> UpdateProduct(Product product)
+        public async Task<Product> UpdateProduct(int id, Product product)
         {
-            return await _productRepository.UpdateProduct(product);
+            return await _productRepository.UpdateProduct(id, product);
         }
 
         public async Task<bool> DeleteProduct(int id)

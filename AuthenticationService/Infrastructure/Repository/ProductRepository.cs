@@ -55,14 +55,17 @@ namespace AuthenticationService.Infrastructure.Repository
 
         public async Task<Product> AddProduct(Product product)
         {
-            _context.Products.Add(product);
+            await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
             return product;
         }
 
-        public async Task<Product> UpdateProduct(Product product)
+        public async Task<Product> UpdateProduct(int id, Product product)
         {
-            _context.Entry(product).State = EntityState.Modified;
+            var oldProduct = await _context.Products.FindAsync(id);
+            oldProduct.ProductQuantity = product.ProductQuantity;
+            oldProduct.Price = product.Price;
+            oldProduct.Name = product.Name;
             await _context.SaveChangesAsync();
             return product;
         }

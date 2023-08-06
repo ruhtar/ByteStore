@@ -9,11 +9,12 @@ namespace AuthenticationService.Domain.Entities
     {
         [Key]
         [Column("Id")]
+        [JsonIgnore]
         public int ProductId { get; set; }
         public int ProductQuantity { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
         [JsonIgnore]
-        public ICollection<OrderProduct> OrderProducts { get; set; }
+        public ICollection<OrderProduct>? OrderProducts { get; set; }
     }
 }

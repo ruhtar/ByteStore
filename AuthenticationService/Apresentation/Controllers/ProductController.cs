@@ -43,12 +43,8 @@ namespace AuthenticationService.Host.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<Product>> UpdateProduct(int id, [FromBody] Product product)
         {
-            if (id != product.ProductId)
-            {
-                return BadRequest();
-            }
 
-            var updatedProduct = await _productService.UpdateProduct(product);
+            var updatedProduct = await _productService.UpdateProduct(id, product);
             if (updatedProduct == null)
             {
                 return NotFound();

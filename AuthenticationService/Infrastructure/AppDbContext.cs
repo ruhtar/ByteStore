@@ -61,6 +61,7 @@ namespace AuthenticationService.Infrastructure
             modelBuilder.Entity<OrderProduct>()
                 .HasOne(op => op.Product)
                 .WithMany(p => p.OrderProducts)
+                .IsRequired(false)
                 .HasForeignKey(op => op.ProductId);
         }
     }

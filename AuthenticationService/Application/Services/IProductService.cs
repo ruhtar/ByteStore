@@ -8,6 +8,6 @@ namespace AuthenticationService.Application.Services
         Task<bool> DeleteProduct(int id);
         Task<IEnumerable<Product>> GetAllProducts();
         Task<Product> GetProductById(int id);
-        Task<Product> UpdateProduct(Product product);
+        Task<Product> UpdateProduct(int id, Product product);
     }
 }
