@@ -3,6 +3,7 @@ using Ecommerce.Application.Services;
 using Ecommerce.Domain.ValueObjects;
 using Ecommerce.Infrastructure.Repository;
 using Ecommerce.Shared.DTO;
+using Ecommerce.Shared.Enums;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Apresentation.Controllers
@@ -19,10 +20,9 @@ namespace Ecommerce.Apresentation.Controllers
         }
 
         [HttpPost("order")]
-        public async Task<ActionResult> AddToShoppingCart(List<OrderItem> orderItems, int userId)
+        public async Task<ActionResult<OrderStatus>> MakeOrder(OrderItem item, int userId)
         {
-            await _shoppingCartService.MakeOrder(orderItems, userId);
-            return Ok("Sucess.");
+            return Ok(await _shoppingCartService.MakeOrder(item, userId));
         }
 
         [HttpGet("buy")]

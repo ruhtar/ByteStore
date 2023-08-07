@@ -3,6 +3,7 @@ using AuthenticationService.Infrastructure.Repository;
 using Ecommerce.Domain.ValueObjects;
 using Ecommerce.Infrastructure.Repository;
 using Ecommerce.Shared.DTO;
+using Ecommerce.Shared.Enums;
 
 namespace Ecommerce.Application.Services
 {
@@ -21,15 +22,17 @@ namespace Ecommerce.Application.Services
             await _shoppingCartRepository.BuyOrder( userAggregateId);
         }
 
-        public async Task MakeOrder(List<OrderItem> newItems, int userAggregateId)
+        public async Task<OrderStatus> MakeOrder(OrderItem item, int userAggregateId)
         {
-            //var availableProducts = new List<OrderItem>();
-            //foreach (var item in newItems)
-            //{
-            //    var isProductAvailable = await CheckIfProductAreAvailable(item);
-            //    if(isProductAvailable) availableProducts.Add(item);
-            //}
-            await _shoppingCartRepository.MakeOrder(newItems, userAggregateId);
+            var product = await _productRepository.GetProductById(item.ProductId);
+
+            if (product == null) 
+                return OrderStatus.ProductNotFound;
+
+            if (product.ProductQuantity < item.Quantity) 
+                return OrderStatus.InvalidQuantity;
+
+            return await _shoppingCartRepository.MakeOrder(item, userAggregateId);
         }
 
         public async Task<ShoppingCartDto?> GetShoppingCartById(int shoppingCartId)

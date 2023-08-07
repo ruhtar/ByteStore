@@ -3,6 +3,7 @@ using AuthenticationService.Domain.Entities;
 using AuthenticationService.Infrastructure;
 using Ecommerce.Domain.ValueObjects;
 using Ecommerce.Shared.DTO;
+using Ecommerce.Shared.Enums;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
 using System.Text.Json;
@@ -46,18 +47,18 @@ namespace Ecommerce.Infrastructure.Repository
 
         public async Task<ShoppingCartDto?> GetShoppingCartById(int shoppingCartId)
         {
-            var cart = await _context.ShoppingCarts.SingleOrDefaultAsync(x => x.ShoppingCartId == shoppingCartId);
+            var cart = await _context.ShoppingCarts.FirstOrDefaultAsync(x => x.ShoppingCartId == shoppingCartId);
             if (cart == null) { return null; }
             var orderItem = JsonSerializer.Deserialize<List<OrderItem>>(cart.OrderItems);
             return new ShoppingCartDto
             {
                 ShoppingCartId = shoppingCartId,
-                UserAggregateId= cart.UserAggregateId,
+                UserAggregateId = cart.UserAggregateId,
                 OrderItems = orderItem
             };
         }
 
-        public async Task MakeOrder(List<OrderItem> newItems, int userAggregateId)
+        public async Task<OrderStatus> MakeOrder(OrderItem newItem, int userAggregateId)
         {
             var shoppingCart = await _context.ShoppingCarts.FirstOrDefaultAsync(x => x.UserAggregateId == userAggregateId);
             var orderItems = new List<OrderItem>();
@@ -66,27 +67,22 @@ namespace Ecommerce.Infrastructure.Repository
                 orderItems = JsonSerializer.Deserialize<List<OrderItem>>(shoppingCart.OrderItems);
             }
 
-            //TODO: Checar se todos os produtos existem e ESTÃO DISPONÍVEIS
+            var existingItem = orderItems.FirstOrDefault(x => x.ProductId == newItem.ProductId);
 
-
-            foreach (var newItem in newItems)
+            if (existingItem != null)
             {
-                var existingItem = orderItems.FirstOrDefault(x => x.ProductId == newItem.ProductId);
-
-                if (existingItem != null)
-                {
-                    existingItem.Quantity += newItem.Quantity;
-                }
-                else
-                {
-                    orderItems.Add(newItem);
-                }
+                existingItem.Quantity += newItem.Quantity;
+            }
+            else
+            {
+                orderItems.Add(newItem);
             }
 
             var json = JsonSerializer.Serialize(orderItems, new JsonSerializerOptions());
             var bytes = Encoding.ASCII.GetBytes(json);
             shoppingCart.OrderItems = bytes;
             await _context.SaveChangesAsync();
+            return OrderStatus.Approved;
         }
 
         public async Task BuyOrder(int userAggregateId)
