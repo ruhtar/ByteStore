@@ -30,9 +30,17 @@ namespace Ecommerce.Application.Services
             if (product == null)
                 return OrderStatus.ProductNotFound;
 
-            var cart = await _shoppingCartRepository.GetShoppingCartByUserAggregateId(userAggregateId);
+            var shoppingCart = await _shoppingCartRepository.GetShoppingCartByUserAggregateId(userAggregateId);
 
-            var orderItem = cart.OrderItems.FirstOrDefault(x => x.ProductId == item.ProductId);
+            var orderItem = shoppingCart.OrderItems.FirstOrDefault(x => x.ProductId == item.ProductId);
+            if (orderItem == null) 
+            {
+                orderItem = new OrderItem
+                {
+                    ProductId = item.ProductId,
+                    Quantity = 0,
+                };
+            }
 
             if (product.ProductQuantity < orderItem.Quantity + item.Quantity)
                 return OrderStatus.InvalidQuantity;

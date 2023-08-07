@@ -16,7 +16,6 @@ namespace AuthenticationService.Domain.Aggregates
         public UserAggregate UserAggregate { get; set; }
         public byte[]? OrderItems { get; set; }
         public ICollection<ShoppingCartProduct> ShoppingCartProducts { get; set; }
-        public decimal TotalValue { get; set; }
     }
     
     public class ShoppingCartProduct
