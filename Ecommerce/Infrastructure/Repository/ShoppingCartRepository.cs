@@ -39,13 +39,22 @@ namespace Ecommerce.Infrastructure.Repository
             return new ShoppingCartDto
             {
                 UserAggregateId = userAggregateId,
+                ShoppingCartId = cart.ShoppingCartId,
                 OrderItems = orderItem
             };
         }
 
-        public async Task<ShoppingCart> GetShoppingCartById(int shoppingCartId)
+        public async Task<ShoppingCartDto?> GetShoppingCartById(int shoppingCartId)
         {
-            return await _context.ShoppingCarts.SingleOrDefaultAsync(x => x.ShoppingCartId == shoppingCartId);
+            var cart = await _context.ShoppingCarts.SingleOrDefaultAsync(x => x.ShoppingCartId == shoppingCartId);
+            if (cart == null) { return null; }
+            var orderItem = JsonSerializer.Deserialize<List<OrderItem>>(cart.OrderItems);
+            return new ShoppingCartDto
+            {
+                ShoppingCartId = shoppingCartId,
+                UserAggregateId= cart.UserAggregateId,
+                OrderItems = orderItem
+            };
         }
 
         public async Task MakeOrder(List<OrderItem> newItems, int userAggregateId)
@@ -62,7 +71,7 @@ namespace Ecommerce.Infrastructure.Repository
 
             foreach (var newItem in newItems)
             {
-                var existingItem = orderItems.FirstOrDefault(x => x.Product.ProductId == newItem.Product.ProductId);
+                var existingItem = orderItems.FirstOrDefault(x => x.ProductId == newItem.ProductId);
 
                 if (existingItem != null)
                 {
@@ -77,6 +86,21 @@ namespace Ecommerce.Infrastructure.Repository
             var json = JsonSerializer.Serialize(orderItems, new JsonSerializerOptions());
             var bytes = Encoding.ASCII.GetBytes(json);
             shoppingCart.OrderItems = bytes;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task BuyOrder(int userAggregateId)
+        {
+            var shoppingCart = await _context.ShoppingCarts.FirstOrDefaultAsync(x => x.UserAggregateId == userAggregateId);
+            if (shoppingCart == null) return;
+            var orderItems = JsonSerializer.Deserialize<List<OrderItem>>(shoppingCart.OrderItems);
+            foreach (var item in orderItems)
+            {
+                var product = await _context.Products.FindAsync(item.ProductId);
+                product.ProductQuantity -= item.Quantity;
+                await _context.SaveChangesAsync();
+                orderItems.Remove(item);
+            }
             await _context.SaveChangesAsync();
         }
 

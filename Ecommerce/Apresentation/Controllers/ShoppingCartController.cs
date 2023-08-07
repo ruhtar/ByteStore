@@ -2,6 +2,7 @@
 using Ecommerce.Application.Services;
 using Ecommerce.Domain.ValueObjects;
 using Ecommerce.Infrastructure.Repository;
+using Ecommerce.Shared.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Apresentation.Controllers
@@ -18,9 +19,16 @@ namespace Ecommerce.Apresentation.Controllers
         }
 
         [HttpPost("order")]
-        public async Task<ActionResult> AddToShoppingCart([FromBody] List<OrderItem> orderItems, int userId)
+        public async Task<ActionResult> AddToShoppingCart(List<OrderItem> orderItems, int userId)
         {
             await _shoppingCartService.MakeOrder(orderItems, userId);
+            return Ok("Sucess.");
+        }
+
+        [HttpGet("buy")]
+        public async Task<ActionResult> BuyOrder(int userId)
+        {
+            await _shoppingCartService.BuyOrder(userId);
             return Ok("Sucess.");
         }
 
@@ -33,7 +41,7 @@ namespace Ecommerce.Apresentation.Controllers
         }
 
         [HttpGet("/cart/{shoppingCartId}")]
-        public async Task<ActionResult<ShoppingCart>> GetShoppingCartById([FromRoute] int shoppingCartId)
+        public async Task<ActionResult<ShoppingCartDto?>> GetShoppingCartById([FromRoute] int shoppingCartId)
         {
             var cart = await _shoppingCartService.GetShoppingCartById(shoppingCartId);
             if (cart == null) return Problem("The shopping cart is not available.");

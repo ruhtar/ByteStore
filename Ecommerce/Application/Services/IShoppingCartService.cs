@@ -6,7 +6,8 @@ namespace Ecommerce.Application.Services
 {
     public interface IShoppingCartService
     {
-        Task<ShoppingCart> GetShoppingCartById(int shoppingCartId);
+        Task BuyOrder(int userAggregateId);
+        Task<ShoppingCartDto?> GetShoppingCartById(int shoppingCartId);
         Task<ShoppingCartDto?> GetShoppingCartByUserAggregateId(int userAggregateId);
         Task MakeOrder(List<OrderItem> newItems, int userAggregateId);
     }

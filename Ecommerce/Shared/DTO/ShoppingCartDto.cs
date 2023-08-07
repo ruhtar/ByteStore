@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Domain.ValueObjects;
+using System.Text.Json.Serialization;
 
 namespace Ecommerce.Shared.DTO
 {
