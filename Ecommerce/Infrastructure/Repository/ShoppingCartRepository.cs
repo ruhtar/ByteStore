@@ -78,6 +78,8 @@ namespace Ecommerce.Infrastructure.Repository
                 orderItems.Add(newItem);
             }
 
+            if(existingItem.Quantity < 0 ) { existingItem.Quantity = 0; }
+
             var json = JsonSerializer.Serialize(orderItems, new JsonSerializerOptions());
             var bytes = Encoding.ASCII.GetBytes(json);
             shoppingCart.OrderItems = bytes;

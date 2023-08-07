@@ -18,18 +18,23 @@ namespace Ecommerce.Application.Services
             _productRepository = productRepository;
         }
 
-        public async Task BuyOrder(int userAggregateId) {
-            await _shoppingCartRepository.BuyOrder( userAggregateId);
+        public async Task BuyOrder(int userAggregateId)
+        {
+            await _shoppingCartRepository.BuyOrder(userAggregateId);
         }
 
         public async Task<OrderStatus> MakeOrder(OrderItem item, int userAggregateId)
         {
             var product = await _productRepository.GetProductById(item.ProductId);
 
-            if (product == null) 
+            if (product == null)
                 return OrderStatus.ProductNotFound;
 
-            if (product.ProductQuantity < item.Quantity) 
+            var cart = await _shoppingCartRepository.GetShoppingCartByUserAggregateId(userAggregateId);
+
+            var orderItem = cart.OrderItems.FirstOrDefault(x => x.ProductId == item.ProductId);
+
+            if (product.ProductQuantity < orderItem.Quantity + item.Quantity)
                 return OrderStatus.InvalidQuantity;
 
             return await _shoppingCartRepository.MakeOrder(item, userAggregateId);
@@ -44,12 +49,5 @@ namespace Ecommerce.Application.Services
         {
             return await _shoppingCartRepository.GetShoppingCartByUserAggregateId(userAggregateId);
         }
-
-        //private async Task<bool> CheckIfProductAreAvailable(OrderItem item)
-        //{
-        //    var product = await _productRepository.GetProductById(item.Product.ProductId);
-        //    if (product == null || product.ProductQuantity < item.Quantity) return false;
-        //    return true;
-        //}
     }
 }
