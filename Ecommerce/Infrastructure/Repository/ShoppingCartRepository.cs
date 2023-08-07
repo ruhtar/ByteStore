@@ -55,13 +55,14 @@ namespace Ecommerce.Infrastructure.Repository
             if (shoppingCart.OrderItems != null && shoppingCart.OrderItems.Length != 0)
             {
                 orderItems = JsonSerializer.Deserialize<List<OrderItem>>(shoppingCart.OrderItems);
-
             }
+
             //TODO: Checar se todos os produtos existem e ESTÃO DISPONÍVEIS
+
 
             foreach (var newItem in newItems)
             {
-                var existingItem = orderItems.FirstOrDefault(x => x.ProductId == newItem.ProductId);
+                var existingItem = orderItems.FirstOrDefault(x => x.Product.ProductId == newItem.Product.ProductId);
 
                 if (existingItem != null)
                 {
@@ -78,5 +79,6 @@ namespace Ecommerce.Infrastructure.Repository
             shoppingCart.OrderItems = bytes;
             await _context.SaveChangesAsync();
         }
+
     }
 }

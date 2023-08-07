@@ -1,4 +1,5 @@
 ﻿using AuthenticationService.Domain.Aggregates;
+using Ecommerce.Application.Services;
 using Ecommerce.Domain.ValueObjects;
 using Ecommerce.Infrastructure.Repository;
 using Microsoft.AspNetCore.Mvc;
@@ -9,24 +10,24 @@ namespace Ecommerce.Apresentation.Controllers
     [ApiController]
     public class ShoppingCartController : ControllerBase
     {
-        private readonly IShoppingCartRepository _shoppingCartRepository;
+        private readonly IShoppingCartService _shoppingCartService;
 
-        public ShoppingCartController(IShoppingCartRepository shoppingCartRepository)
+        public ShoppingCartController(IShoppingCartService shoppingCartService)
         {
-            _shoppingCartRepository = shoppingCartRepository;
+            _shoppingCartService = shoppingCartService;
         }
 
-        [HttpPost("/order")]
-        public async Task<OkResult> AddToShoppingCart([FromBody] List<OrderItem> orderItems, int userId)
+        [HttpPost("order")]
+        public async Task<ActionResult> AddToShoppingCart([FromBody] List<OrderItem> orderItems, int userId)
         {
-            await _shoppingCartRepository.MakeOrder(orderItems, userId);
-            return Ok();
+            await _shoppingCartService.MakeOrder(orderItems, userId);
+            return Ok("Sucess.");
         }
 
         [HttpGet("/user/{userAggregateId}/cart")]
         public async Task<ActionResult<ShoppingCart>> GetShoppingCartByUserAggregateId([FromRoute] int userAggregateId)
         {
-            var cart = await _shoppingCartRepository.GetShoppingCartByUserAggregateId(userAggregateId);
+            var cart = await _shoppingCartService.GetShoppingCartByUserAggregateId(userAggregateId);
             if (cart == null) return Problem("The shopping cart of the current user is not available.");
             return Ok(cart);
         }
@@ -34,7 +35,7 @@ namespace Ecommerce.Apresentation.Controllers
         [HttpGet("/cart/{shoppingCartId}")]
         public async Task<ActionResult<ShoppingCart>> GetShoppingCartById([FromRoute] int shoppingCartId)
         {
-            var cart = await _shoppingCartRepository.GetShoppingCartById(shoppingCartId);
+            var cart = await _shoppingCartService.GetShoppingCartById(shoppingCartId);
             if (cart == null) return Problem("The shopping cart is not available.");
             return Ok(cart);
         }

@@ -58,30 +58,6 @@ namespace AuthenticationService.Infrastructure
                 .WithMany(p => p.ShoppingCartProducts)
                 .IsRequired(false)
                 .HasForeignKey(scp => scp.ProductId);
-
-
-            //Order - ShoppingCart (1:1)
-
-            //modelBuilder.Entity<ShoppingCart>()
-            //.HasOne(e => e.Order)
-            //.WithOne(e => e.ShoppingCart)
-            //.HasForeignKey<Order>(e => e.ShoppingCartId);
-
-            ////Order - Products (N:N)
-
-            //modelBuilder.Entity<OrderProduct>()
-            //    .HasKey(op => new { op.OrderId, op.ProductId });
-
-            //modelBuilder.Entity<OrderProduct>()
-            //    .HasOne(op => op.Order)
-            //    .WithMany(o => o.OrderProducts)
-            //    .HasForeignKey(op => op.OrderId);
-
-            //modelBuilder.Entity<OrderProduct>()
-            //    .HasOne(op => op.Product)
-            //    .WithMany(p => p.OrderProducts)
-            //    .IsRequired(false)
-            //    .HasForeignKey(op => op.ProductId);
         }
     }
 }
