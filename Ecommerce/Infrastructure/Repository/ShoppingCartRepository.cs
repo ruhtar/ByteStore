@@ -64,7 +64,7 @@ namespace Ecommerce.Infrastructure.Repository
 
         public async Task<OrderStatus> MakeOrder(OrderItem newItem, int userAggregateId)
         {
-            //TODO: refatorar
+            //TODO: refatorar para camada de serviço
             var shoppingCart = await _context.ShoppingCarts.FirstOrDefaultAsync(x => x.UserAggregateId == userAggregateId);
 
             var orderItems = new List<OrderItem>();
@@ -85,12 +85,12 @@ namespace Ecommerce.Infrastructure.Repository
                 };
                 orderItems.Add(existingItem);
             }
-            else {
+            else
+            {
                 existingItem.Quantity += newItem.Quantity;
             }
 
-
-            if(existingItem.Quantity < 0 ) { existingItem.Quantity = 0; }
+            if (existingItem.Quantity < 0) { existingItem.Quantity = 0; }
 
             var json = JsonSerializer.Serialize(orderItems, new JsonSerializerOptions());
             var bytes = Encoding.ASCII.GetBytes(json);
