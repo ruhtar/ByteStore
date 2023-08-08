@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { IUser } from 'src/app/interfaces/IUser';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +11,16 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
+  user: IUser = {
+    username: 'string',
+    password: '!123Qwe'
+  }
+
+  constructor(private loginService: LoginService) {
+  }
+
   login() {
-    if (this.username === 'usuario' && this.password === 'senha') {
-      alert('Login bem-sucedido!');
-    } else {
-      alert('Credenciais inválidas. Tente novamente.');
-    }
+    let result = this.loginService.signIn(this.user);
+    console.log(result)
   }
 }

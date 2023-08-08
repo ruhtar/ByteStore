@@ -61,7 +61,7 @@ namespace AuthenticationService.Host.Controllers
         }
 
         [HttpPost("signin")]
-        public async Task<IActionResult> Signin([FromBody] LoginUserDto user)
+        public async Task<ActionResult<string>> Signin([FromBody] LoginUserDto user)
         {
             var token = await _userService.AuthenticateUser(
                 new User
