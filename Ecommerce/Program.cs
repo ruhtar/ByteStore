@@ -66,7 +66,29 @@ namespace AuthenticationService
 
             builder.Services.AddAuthorization();
 
+            builder.Services.AddCors();
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+                    });
+            });
+
             var app = builder.Build();
+
+            app.UseCors(builder =>
+            {
+                builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            });
+
+            app.UseCors("AllowOrigin");
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

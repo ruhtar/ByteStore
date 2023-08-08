@@ -73,7 +73,7 @@ namespace AuthenticationService.Host.Controllers
             {
                 return Problem("Username or password incorrect.");
             }
-            return Ok(token);
+            return Ok(new { token });
         }
     }
 }

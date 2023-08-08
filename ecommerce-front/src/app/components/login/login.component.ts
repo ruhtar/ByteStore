@@ -20,7 +20,8 @@ export class LoginComponent {
   }
 
   login() {
-    let result = this.loginService.signIn(this.user);
-    console.log(result)
+    this.loginService.signIn(this.user).subscribe(item=>
+        console.log(item)
+      );
   }
 }

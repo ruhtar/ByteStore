@@ -6,10 +6,10 @@ import { IUser } from '../interfaces/IUser';
   providedIn: 'root'
 })
 export class LoginService {
-  baseUrl: string = "https://localhost:7062"
+  baseUrl: string = "https://localhost:7010"
   constructor(private http: HttpClient) { }
   
   signIn(user: IUser){
-    return this.http.post<string>(this.baseUrl + "/login/signin", user).subscribe();
+    return this.http.post<string>(this.baseUrl + "/login/signin", user);
   }
 }
