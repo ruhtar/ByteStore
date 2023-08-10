@@ -1,8 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { IToken } from 'src/app/interfaces/IToken';
 import { IUser } from 'src/app/interfaces/IUser';
-import { LoginService } from 'src/app/services/login.service';
+import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +13,8 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent {
   loginForm!: FormGroup;
-  token!: any
 
-  constructor(private loginService: LoginService, private formBuilder: FormBuilder) {
+  constructor(private loginService: LoginService, private formBuilder: FormBuilder, private router: Router) {
   }
   ngOnInit(){
     this.loginForm = this.formBuilder.group({
@@ -30,19 +31,24 @@ export class LoginComponent {
         username: username,
         password: password
       }
-
-        this.loginService.signIn(user).subscribe(item=>
-          {this.token = item}, (error: HttpErrorResponse) => {
-            this.handleError(error)
-          }
-        );
-      
+      this.loginService.signIn(user).subscribe( (token: IToken) => {
+        console.log(token);
+        localStorage.setItem('token', token.token);
+        this.router.navigateByUrl('/home')
+      },
+        (error: HttpErrorResponse) => {
+          this.handleError(error)
+        }
+      );
     }
   }
 
   handleError(error: HttpErrorResponse){
     if(error.status == 401){
       alert("Incorrect username or password.")
+    }
+    if(error.status == 500){
+      alert("We are facing some problems. Please, try again later.")
     }
   }
 }
