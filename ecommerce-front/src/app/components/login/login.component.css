@@ -19,6 +19,12 @@
   margin-bottom: 20px;
 }
 
+.login-box a {
+  color: #ac7f2b;
+  font-size: 16px;
+  text-decoration: none;
+}
+
 .login-box form label {
   display: block;
   margin-bottom: 5px;
@@ -34,11 +40,18 @@
 }
 
 .login-box form button {
+  font-size: 16px;
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #febc41;
   color: #ffffff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
+
+.login-box form button:hover{
+  background-color: #ac7f2b;
+}
+

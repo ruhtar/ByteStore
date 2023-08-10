@@ -7,13 +7,17 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './services/login/login.service';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './components/home/home.component';
+import { HeaderComponent } from './components/home/header/header.component';
+import { FooterComponent } from './components/home/footer/footer.component';
+import { MainPageComponent } from './components/home/main-page/main-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HeaderComponent,
+    FooterComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
