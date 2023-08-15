@@ -34,7 +34,7 @@ namespace AuthenticationService.Infrastructure.Repository
             var products = await _context.Products.ToListAsync();
 
             //This is just for testing if cache is avaible.
-            Thread.Sleep(5000);
+            //Thread.Sleep(5000);
 
             var cacheData = JsonSerializer.Serialize(products);
             await _cache.SetAsync(AllProductsKey, cacheData);

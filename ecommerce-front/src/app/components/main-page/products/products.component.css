@@ -1,15 +1,19 @@
 .products {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     padding: 20px;
 }
 
 .product {
+    max-width: 300px;
+    flex: 0 0 calc(25% - 20px); /* Defina a largura para 25% menos o espaço entre produtos */
     border: 1px solid #ccc;
     padding: 20px;
     text-align: center;
     margin: 10px;
+    box-sizing: border-box; /* Inclui borda e padding na largura total do elemento */
+    border-radius: 8px;
 }
 
 .product img {

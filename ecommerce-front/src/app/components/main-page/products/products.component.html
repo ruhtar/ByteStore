@@ -1,14 +1,7 @@
 <section class="products">
-    <div class="product">
-        <img src="product1.jpg" alt="Produto 1">
-        <h2>Produto 1</h2>
-        <p>R$ 99,99</p>
-        <button>Adicionar ao Carrinho</button>
-    </div>
-    <div class="product">
-        <img src="product2.jpg" alt="Produto 2">
-        <h2>Produto 2</h2>
-        <p>R$ 149,99</p>
-        <button>Adicionar ao Carrinho</button>
+    <div *ngFor="let product of products" class="product">
+        <h2>{{ product.name }}</h2>
+        <p>R$ {{ product.price }}</p>
+        <button>Add to Cart</button>
     </div>
 </section>

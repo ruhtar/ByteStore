@@ -1,0 +1,79 @@
+/* Reset de Estilos Básicos */
+body, h1, h2, p, button {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Layout Geral */
+  header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  main {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+  }
+  
+  .cart-items {
+    flex: 2;
+  }
+  
+  .summary {
+    flex: 1;
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  /* Itens do Carrinho */
+  .cart-item {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  
+  .cart-item img {
+    width: 100px;
+    height: auto;
+    margin-right: 1rem;
+  }
+  
+  .item-details {
+    flex: 1;
+  }
+  
+  .remove-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Botão de Finalizar Compra */
+  .checkout-button {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 1rem;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .checkout-button:hover {
+    background-color: #27ae60;
+  }
+  
