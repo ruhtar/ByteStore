@@ -2,11 +2,17 @@ header {
     background-color: #131d7c;
     color: rgb(255, 255, 255);
     padding: 10px 0;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinhar verticalmente no centro */
+    padding-left: 20px;
+    padding-right: 30px;
 }
+
 
 nav ul {
     list-style: none;
+    margin-right: auto; /* Empurra o menu para a esquerda */
 }
 
 nav ul li {
@@ -17,4 +23,8 @@ nav ul li {
 nav a {
     text-decoration: none;
     color: rgb(255, 255, 255);
+}
+
+.login {
+    margin-right: 20px;
 }

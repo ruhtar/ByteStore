@@ -2,6 +2,6 @@
     <div *ngFor="let product of products" class="product">
         <h2>{{ product.name }}</h2>
         <p>R$ {{ product.price }}</p>
-        <button>Add to Cart</button>
+        <button (click)="addToCart(product.productId)">Add to Cart</button>
     </div>
 </section>
