@@ -1,7 +1,5 @@
-﻿using Ecommerce.Domain.Aggregates;
-using Ecommerce.Infrastructure.Repository;
+﻿using Ecommerce.Infrastructure.Repository;
 using Ecommerce.Domain.ValueObjects;
-using Ecommerce.Infrastructure.Repository;
 using Ecommerce.Shared.DTO;
 using Ecommerce.Shared.Enums;
 
@@ -12,15 +10,32 @@ namespace Ecommerce.Application.Services
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly IProductRepository _productRepository;
 
+
         public ShoppingCartService(IShoppingCartRepository shoppingCartRepository, IProductRepository productRepository)
         {
             _shoppingCartRepository = shoppingCartRepository;
             _productRepository = productRepository;
         }
 
-        public async Task BuyOrder(int userAggregateId)
+        public async Task<BuyOrderStatus> BuyOrder(int userAggregateId)
         {
-            await _shoppingCartRepository.BuyOrder(userAggregateId);
+            var shoppingCartDto = await _shoppingCartRepository.GetShoppingCartByUserAggregateId(userAggregateId);
+
+            foreach (var item in shoppingCartDto!.OrderItems)
+            {
+                var product = await _productRepository.GetProductById(item.ProductId);
+                if (product.ProductQuantity >= item.Quantity)
+                {
+                    product.ProductQuantity -= item.Quantity;
+                    await _productRepository.UpdateProduct(product.ProductId, product);
+                }
+                else
+                {
+                    return BuyOrderStatus.InvalidQuantity;                        
+                }
+            }
+
+            return await _shoppingCartRepository.BuyOrder(userAggregateId);
         }
 
         public async Task<OrderStatus> MakeOrder(OrderItem item, int userAggregateId)

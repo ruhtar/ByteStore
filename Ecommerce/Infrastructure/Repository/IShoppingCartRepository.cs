@@ -7,7 +7,7 @@ namespace Ecommerce.Infrastructure.Repository
 {
     public interface IShoppingCartRepository
     {
-        Task BuyOrder(int userAggregateId);
+        Task<BuyOrderStatus> BuyOrder(int userAggregateId);
         Task CreateShoppingCart(int userAggregateId);
         Task<ShoppingCartDto?> GetShoppingCartById(int shoppingCartId);
         Task<ShoppingCartDto?> GetShoppingCartByUserAggregateId(int userAggregateId);

@@ -75,13 +75,14 @@ namespace Ecommerce.Infrastructure.Repository
 
             var orderItems = new List<OrderItem>();
 
-            if (shoppingCart.OrderItems != null && shoppingCart.OrderItems.Length != 0)
+            if (shoppingCart!.OrderItems != null && shoppingCart.OrderItems.Length != 0)
             {
                 orderItems = JsonSerializer.Deserialize<List<OrderItem>>(shoppingCart.OrderItems);
             }
 
-            var existingItem = orderItems.FirstOrDefault(x => x.ProductId == newItem.ProductId);
+            var existingItem = orderItems!.FirstOrDefault(x => x.ProductId == newItem.ProductId);
 
+            //Primeira vez do item no carrinho
             if (existingItem == null)
             {
                 existingItem = new OrderItem
@@ -89,7 +90,7 @@ namespace Ecommerce.Infrastructure.Repository
                     ProductId = newItem.ProductId,
                     Quantity = newItem.Quantity,
                 };
-                orderItems.Add(existingItem);
+                orderItems!.Add(existingItem);
             }
             else
             {
@@ -105,20 +106,14 @@ namespace Ecommerce.Infrastructure.Repository
             return OrderStatus.Approved;
         }
 
-        public async Task BuyOrder(int userAggregateId)
+        public async Task<BuyOrderStatus> BuyOrder(int userAggregateId)
         {
             var shoppingCart = await _context.ShoppingCarts.FirstOrDefaultAsync(x => x.UserAggregateId == userAggregateId);
-            if (shoppingCart == null) return;
-            var orderItems = JsonSerializer.Deserialize<List<OrderItem>>(shoppingCart.OrderItems);
-            foreach (var item in orderItems)
-            {
-                var product = await _context.Products.FindAsync(item.ProductId);
-                product.ProductQuantity -= item.Quantity;
-                await _context.SaveChangesAsync();
-                orderItems.Remove(item);
-            }
+            var json = JsonSerializer.Serialize(new List<OrderItem>(), new JsonSerializerOptions());
+            var bytes = Encoding.ASCII.GetBytes(json);
+            shoppingCart!.OrderItems = bytes;
             await _context.SaveChangesAsync();
+            return BuyOrderStatus.Completed;
         }
-
     }
 }

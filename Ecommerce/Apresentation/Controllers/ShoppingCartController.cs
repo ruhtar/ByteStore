@@ -31,8 +31,14 @@ namespace Ecommerce.Apresentation.Controllers
         [HttpGet("buy")]
         public async Task<ActionResult> BuyOrder(int userId)
         {
-            await _shoppingCartService.BuyOrder(userId);
-            return Ok("Sucess.");
+            //vai até a tabela dos produtos 
+            //precisa checar novamente se as quantidades são válidas e retira as quantidades
+            //zera os produtos do carrinho do user
+            //ao finalizar a compra, a operação inteira precisa ser feita, ou seja, TODOS os produtos devem estar válidos para a compra ser efeutada.
+            //Retornar algo do tipo: Erro 500("Invalid buy order. Product 'id' avaiable quantity: X. Ordered quantity: Y")
+            var result = await _shoppingCartService.BuyOrder(userId);
+            if(result == BuyOrderStatus.InvalidQuantity) return BadRequest(result.ToString());
+            return Ok(BuyOrderStatus.Completed.ToString());
         }
 
         [HttpGet("/user/{userAggregateId}/cart")]
