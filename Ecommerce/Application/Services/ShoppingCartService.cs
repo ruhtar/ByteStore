@@ -32,6 +32,9 @@ namespace Ecommerce.Application.Services
 
             var shoppingCart = await _shoppingCartRepository.GetShoppingCartByUserAggregateId(userAggregateId);
 
+            if (shoppingCart == null)
+                return OrderStatus.ProductNotFound;
+
             var orderItem = shoppingCart.OrderItems.FirstOrDefault(x => x.ProductId == item.ProductId);
             if (orderItem == null) 
             {

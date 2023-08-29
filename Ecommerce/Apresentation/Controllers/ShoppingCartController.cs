@@ -22,7 +22,10 @@ namespace Ecommerce.Apresentation.Controllers
         [HttpPost("order")]
         public async Task<ActionResult<OrderStatus>> MakeOrder(OrderItem item, int userId)
         {
-            return Ok(await _shoppingCartService.MakeOrder(item, userId));
+            var result = await _shoppingCartService.MakeOrder(item, userId);
+            if (result == OrderStatus.Approved) return Ok(result.ToString());
+            if (result == OrderStatus.InvalidQuantity) return Problem(result.ToString());
+            return BadRequest(result.ToString());
         }
 
         [HttpGet("buy")]
