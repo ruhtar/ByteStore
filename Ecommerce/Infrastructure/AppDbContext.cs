@@ -42,8 +42,6 @@ namespace Ecommerce.Infrastructure
             modelBuilder.Entity<UserAggregate>().Property(e => e.Role)
                 .HasConversion<string>();
 
-            //TODO: ShoppingCart - Product (N:N)
-
             modelBuilder.Entity<ShoppingCartProduct>()
                 .HasKey(scp => new { scp.ShoppingCartId, scp.ProductId });
 

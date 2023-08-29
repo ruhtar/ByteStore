@@ -47,7 +47,7 @@ namespace Ecommerce.Infrastructure.Repository
 
         public async Task<Product> GetProductById(int id)
         {
-            return await _context.Products.FindAsync(id);
+            return await _context.Products.AsNoTracking().FirstOrDefaultAsync(x => x.ProductId == id);
         }
 
         public async Task<Product> AddProduct(Product product)
@@ -60,6 +60,10 @@ namespace Ecommerce.Infrastructure.Repository
         public async Task<Product> UpdateProduct(int id, Product product)
         {
             var oldProduct = await _context.Products.FindAsync(id);
+
+            if (oldProduct == null) {
+                return null;
+            }
 
             oldProduct.ProductQuantity = product.ProductQuantity;
             oldProduct.Price = product.Price;

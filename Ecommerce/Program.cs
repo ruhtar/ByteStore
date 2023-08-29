@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Ecommerce.Infrastructure;
-using Ecommerce.Shared.Configs.Authentication;
-using Ecommerce.Shared.Configs.DI;
+using Ecommerce.Shared.Configs;
+using Ecommerce.Shared.Extensions;
 
 namespace Ecommerce
 {
@@ -28,55 +28,20 @@ namespace Ecommerce
                 o.Configuration = Environment.GetEnvironmentVariable("REDIS_LOCALHOST");
             });
 
-            builder.Services.AddSwaggerGen(opt =>
-            {
-                opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    In = ParameterLocation.Header,
-                    Description = "Please enter a token",
-                    Name = "Authorization",
-                    Type = SecuritySchemeType.Http,
-                    BearerFormat = "JWT",
-                    Scheme = "bearer"
-                });
-
-                opt.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                {
-                new OpenApiSecurityScheme
-                {
-                    Reference = new OpenApiReference
-                    {
-                        Type=ReferenceType.SecurityScheme,
-                        Id="Bearer"
-                    }
-                },
-                Array.Empty<string>()
-                }
-                });
-            });
+            //SWAGGER GENERATOR
+            builder.Services.AddSwaggerGen();
 
             //DEPENDENCY INJECTION CONFIGURATION
-            DependencyRegistration.RegisterDependencies(builder.Services);
+            builder.Services.AddDependencies();
 
             //JWT CONFIGURATION
-            AuthenticationConfiguration.Configure(builder.Services);
+            builder.Services.AddJWTConfiguration();
 
             builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(Environment.GetEnvironmentVariable("CONNECTION_STRING"), ServerVersion.AutoDetect(Environment.GetEnvironmentVariable("CONNECTION_STRING"))));
 
             builder.Services.AddAuthorization();
 
             builder.Services.AddCors();
-            builder.Services.AddCors(options =>
-            {
-                options.AddDefaultPolicy(
-                    builder =>
-                    {
-                        builder.WithOrigins("http://localhost:4200")
-                                            .AllowAnyHeader()
-                                            .AllowAnyMethod();
-                    });
-            });
 
             var app = builder.Build();
 

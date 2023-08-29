@@ -3,14 +3,12 @@ using Ecommerce.Infrastructure.Cache;
 using Ecommerce.Infrastructure.Hasher;
 using Ecommerce.Infrastructure.Repository;
 using Ecommerce.Shared.Validator;
-using Ecommerce.Application.Services;
-using Ecommerce.Infrastructure.Repository;
 
-namespace Ecommerce.Shared.Configs.DI
+namespace Ecommerce.Shared.Configs
 {
-    public class DependencyRegistration
+    public static class DependencyInjectionExtensions
     {
-        public static void RegisterDependencies(IServiceCollection services)
+        public static IServiceCollection AddDependencies(this IServiceCollection services)
         {
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IProductRepository, ProductRepository>();
@@ -24,6 +22,8 @@ namespace Ecommerce.Shared.Configs.DI
             services.AddScoped<IUserValidator, UserValidator>();
             services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddScoped<IShoppingCartService, ShoppingCartService>();
+
+            return services;
         }
     }
 }

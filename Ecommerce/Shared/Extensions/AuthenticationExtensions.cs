@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace Ecommerce.Shared.Configs.Authentication
+namespace Ecommerce.Shared.Extensions
 {
-    public class AuthenticationConfiguration
+    public static class AuthenticationExtensions
     {
-        public static void Configure(IServiceCollection services)
+        public static IServiceCollection AddJWTConfiguration(this IServiceCollection services)
         {
             var key = Encoding.ASCII.GetBytes("2445361D-43F8-4066-BBC8-4777CA0129BB");
             services.AddAuthentication(options =>
@@ -26,6 +25,7 @@ namespace Ecommerce.Shared.Configs.Authentication
                     ValidateAudience = false
                 };
             });
+            return services;
         }
 
     }
