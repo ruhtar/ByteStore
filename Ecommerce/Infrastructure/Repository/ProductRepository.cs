@@ -31,7 +31,7 @@ namespace Ecommerce.Infrastructure.Repository
                 Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
                 return cache;
             }
-            var products = await _context.Products.ToListAsync();
+            var products = await _context.Products.AsNoTracking().ToListAsync();
 
             //This is just for testing if cache is avaible.
             //Thread.Sleep(5000);

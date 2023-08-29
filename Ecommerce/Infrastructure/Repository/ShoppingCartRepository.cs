@@ -34,7 +34,10 @@ namespace Ecommerce.Infrastructure.Repository
 
         public async Task<ShoppingCartDto?> GetShoppingCartById(int shoppingCartId)
         {
-            var cart = await _context.ShoppingCarts.FirstOrDefaultAsync(x => x.ShoppingCartId == shoppingCartId);
+            var cart = await _context.ShoppingCarts
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.ShoppingCartId == shoppingCartId);
+
             if (cart == null) { return null; }
             var orderItem = JsonSerializer.Deserialize<List<OrderItem>>(cart.OrderItems);
             return new ShoppingCartDto
@@ -46,7 +49,10 @@ namespace Ecommerce.Infrastructure.Repository
         }
         public async Task<ShoppingCartDto?> GetShoppingCartByUserAggregateId(int userAggregateId)
         {
-            var shoppingCart = await _context.ShoppingCarts.FirstOrDefaultAsync(x => x.UserAggregateId == userAggregateId);
+            var shoppingCart = await _context.ShoppingCarts
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.UserAggregateId == userAggregateId);
+
             if (shoppingCart == null) { return null; }
             var orderItems = new List<OrderItem>();
 

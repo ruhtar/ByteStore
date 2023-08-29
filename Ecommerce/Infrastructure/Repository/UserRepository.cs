@@ -25,12 +25,16 @@ namespace Ecommerce.Infrastructure.Repository
 
         public async Task<UserAggregate> GetUserAggregate(UserAggregate user)
         {
-            return await _context.UserAggregates.Include(x=>x.User).FirstOrDefaultAsync(u => u.User.Username == user.User.Username);
+            return await _context.UserAggregates
+                .AsNoTracking()
+                .Include(x => x.User).FirstOrDefaultAsync(u => u.User.Username == user.User.Username);
         }
 
         public async Task<User> GetUser(User user)
         {
-            return await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
+            return await _context.Users
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u => u.Username == user.Username);
         }
     }
 }
