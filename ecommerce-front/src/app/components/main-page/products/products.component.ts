@@ -6,21 +6,25 @@ import { ProductService } from 'src/app/services/product/product.service';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent {
-  products!: IProduct[]
+  products!: IProduct[];
 
-constructor(private productService: ProductService, private cartService: CartService) {
-}
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService,
+  ) {}
 
-  ngOnInit(){
-    this.productService.getAllProducts().subscribe((productList: IProduct[])=>{
-      this.products = productList;
-    });
+  ngOnInit() {
+    this.productService
+      .getAllProducts()
+      .subscribe((productList: IProduct[]) => {
+        this.products = productList;
+      });
   }
 
-  addToCart(productId: number): void{
+  addToCart(productId: number): void {
     this.cartService.addToCart(productId);
   }
 }

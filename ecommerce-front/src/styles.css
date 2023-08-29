@@ -1,60 +1,84 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
 /* Reset CSS */
 /* Adapted from the Eric Meyer's Reset CSS v2.0 */
 
 /* Box sizing reset */
 html {
-    box-sizing: border-box;
-  }
-  
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-  
-  /* Remove default margin and padding */
-  body, h1, h2, h3, h4, h5, h6, p, ol, ul, figure, blockquote, dl, dd {
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Remove list styles on ul, ol elements */
-  ul, ol {
-    list-style: none;
-  }
-  
-  /* Remove focus outline on some elements */
-  a, button, input, textarea {
-    outline: none;
-  }
-  
-  /* Set base font and line-height */
-  body {
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.5;
-  }
-  
-  /* Reset some default HTML5 styling */
-  article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
-    display: block;
-  }
-  
-  /* Ensure images don't overflow the container */
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  /* Add your own additional resets as needed */
-  
-  /* Add more CSS reset rules as needed */
-  
+  box-sizing: border-box;
+}
 
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
 
-  * {
-    font-family: 'Roboto', sans-serif; 
-  }
+/* Remove default margin and padding */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
 
-  * h2 {
-    font-weight: 500; 
-  }
+/* Remove list styles on ul, ol elements */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove focus outline on some elements */
+a,
+button,
+input,
+textarea {
+  outline: none;
+}
+
+/* Set base font and line-height */
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.5;
+}
+
+/* Reset some default HTML5 styling */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/* Ensure images don't overflow the container */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+* h2 {
+  font-weight: 500;
+}

@@ -7,16 +7,16 @@ import { CartComponent } from './components/main-page/cart/cart.component';
 import { ContactComponent } from './components/main-page/contact/contact.component';
 
 const routes: Routes = [
-  {path: "login", component: LoginComponent},
-  {path: "home", component: HomeComponent},
-  {path: "", component: HomeComponent},
-  {path: "products", component: ProductsComponent},
-  {path: "cart", component: CartComponent},
-  {path: "contact", component: ContactComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
+  { path: 'products', component: ProductsComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'contact', component: ContactComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
