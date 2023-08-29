@@ -1,4 +1,4 @@
-﻿namespace AuthenticationService.Shared.Validator
+﻿namespace Ecommerce.Shared.Validator
 {
     public enum UserValidatorStatus
     {

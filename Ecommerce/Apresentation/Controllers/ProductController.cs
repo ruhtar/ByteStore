@@ -1,8 +1,8 @@
-﻿using AuthenticationService.Application.Services;
-using AuthenticationService.Domain.Entities;
+﻿using Ecommerce.Application.Services;
+using Ecommerce.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AuthenticationService.Host.Controllers
+namespace Ecommerce.Host.Controllers
 {
     [Route("products")]
     [ApiController]

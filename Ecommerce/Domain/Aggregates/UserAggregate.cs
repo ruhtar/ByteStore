@@ -1,9 +1,9 @@
-﻿using AuthenticationService.Domain.Entities;
-using AuthenticationService.Domain.ValueObjects;
+﻿using Ecommerce.Domain.Entities;
+using Ecommerce.Domain.ValueObjects;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AuthenticationService.Domain.Aggregates
+namespace Ecommerce.Domain.Aggregates
 {
     public class UserAggregate
     {

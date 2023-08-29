@@ -1,10 +1,10 @@
-﻿using AuthenticationService.Domain.Entities;
-using AuthenticationService.Infrastructure.Cache;
+﻿using Ecommerce.Domain.Entities;
+using Ecommerce.Infrastructure.Cache;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Text.Json;
 
-namespace AuthenticationService.Infrastructure.Repository
+namespace Ecommerce.Infrastructure.Repository
 {
     public class ProductRepository : IProductRepository
     {

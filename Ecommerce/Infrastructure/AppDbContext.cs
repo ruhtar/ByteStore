@@ -1,9 +1,9 @@
-﻿using AuthenticationService.Domain.Aggregates;
-using AuthenticationService.Domain.Entities;
-using AuthenticationService.Domain.ValueObjects;
+﻿using Ecommerce.Domain.Aggregates;
+using Ecommerce.Domain.Entities;
+using Ecommerce.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
-namespace AuthenticationService.Infrastructure
+namespace Ecommerce.Infrastructure
 {
     public class AppDbContext : DbContext
     {

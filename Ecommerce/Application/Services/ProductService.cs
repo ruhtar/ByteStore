@@ -1,7 +1,7 @@
-﻿using AuthenticationService.Domain.Entities;
-using AuthenticationService.Infrastructure.Repository;
+﻿using Ecommerce.Domain.Entities;
+using Ecommerce.Infrastructure.Repository;
 
-namespace AuthenticationService.Application.Services
+namespace Ecommerce.Application.Services
 {
     public class ProductService : IProductService
     {

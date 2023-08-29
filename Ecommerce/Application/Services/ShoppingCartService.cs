@@ -1,5 +1,5 @@
-﻿using AuthenticationService.Domain.Aggregates;
-using AuthenticationService.Infrastructure.Repository;
+﻿using Ecommerce.Domain.Aggregates;
+using Ecommerce.Infrastructure.Repository;
 using Ecommerce.Domain.ValueObjects;
 using Ecommerce.Infrastructure.Repository;
 using Ecommerce.Shared.DTO;

@@ -1,4 +1,4 @@
-﻿namespace AuthenticationService.Domain.ValueObjects
+﻿namespace Ecommerce.Domain.ValueObjects
 {
     public class Address
     {

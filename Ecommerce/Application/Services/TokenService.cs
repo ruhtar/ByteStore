@@ -1,10 +1,10 @@
-﻿using AuthenticationService.Domain.ValueObjects;
+﻿using Ecommerce.Domain.ValueObjects;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace AuthenticationService.Application.Services
+namespace Ecommerce.Application.Services
 {
     public class TokenService : ITokenService
     {

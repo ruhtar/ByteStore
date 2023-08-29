@@ -1,4 +1,4 @@
-﻿namespace AuthenticationService.Shared.DTO
+﻿namespace Ecommerce.Shared.DTO
 {
     public class LoginUserDto
     {

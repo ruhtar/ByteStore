@@ -1,10 +1,10 @@
-﻿using AuthenticationService.Domain.Aggregates;
-using AuthenticationService.Domain.Entities;
-using AuthenticationService.Domain.ValueObjects;
-using AuthenticationService.Infrastructure.Repository;
-using AuthenticationService.Shared.DTO;
+﻿using Ecommerce.Domain.Aggregates;
+using Ecommerce.Domain.Entities;
+using Ecommerce.Domain.ValueObjects;
+using Ecommerce.Infrastructure.Repository;
+using Ecommerce.Shared.DTO;
 
-namespace AuthenticationService.Shared.Validator
+namespace Ecommerce.Shared.Validator
 {
     public class UserValidator : IUserValidator
     {

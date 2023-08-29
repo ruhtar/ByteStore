@@ -1,6 +1,6 @@
-﻿using AuthenticationService.Domain.Entities;
+﻿using Ecommerce.Domain.Entities;
 
-namespace AuthenticationService.Application.Services
+namespace Ecommerce.Application.Services
 {
     public interface IProductService
     {

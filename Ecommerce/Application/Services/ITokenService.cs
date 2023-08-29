@@ -1,6 +1,6 @@
-﻿using AuthenticationService.Domain.ValueObjects;
+﻿using Ecommerce.Domain.ValueObjects;
 
-namespace AuthenticationService.Application.Services
+namespace Ecommerce.Application.Services
 {
     public interface ITokenService
     {

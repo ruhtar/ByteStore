@@ -1,7 +1,7 @@
-﻿using AuthenticationService.Domain.Entities;
+﻿using Ecommerce.Domain.Entities;
 using Microsoft.Extensions.Caching.Distributed;
 
-namespace AuthenticationService.Infrastructure.Cache
+namespace Ecommerce.Infrastructure.Cache
 {
     public interface ICacheConfigs
     {

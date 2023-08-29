@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace AuthenticationService.Shared.Configs.Authentication
+namespace Ecommerce.Shared.Configs.Authentication
 {
     public class AuthenticationConfiguration
     {

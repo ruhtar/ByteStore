@@ -1,9 +1,9 @@
-﻿using AuthenticationService.Domain.Aggregates;
+﻿using Ecommerce.Domain.Aggregates;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace AuthenticationService.Domain.Entities
+namespace Ecommerce.Domain.Entities
 {
     public class Product
     {

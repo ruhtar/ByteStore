@@ -1,6 +1,6 @@
-﻿using AuthenticationService.Domain.Aggregates;
-using AuthenticationService.Domain.Entities;
-using AuthenticationService.Infrastructure;
+﻿using Ecommerce.Domain.Aggregates;
+using Ecommerce.Domain.Entities;
+using Ecommerce.Infrastructure;
 using Ecommerce.Domain.ValueObjects;
 using Ecommerce.Shared.DTO;
 using Ecommerce.Shared.Enums;

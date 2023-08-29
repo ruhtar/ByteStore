@@ -1,11 +1,8 @@
-﻿using AuthenticationService.Domain.Entities;
+﻿using Ecommerce.Domain.Entities;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using Ecommerce.Domain.ValueObjects;
-using System.Text.Json;
-using System.Text;
 
-namespace AuthenticationService.Domain.Aggregates
+namespace Ecommerce.Domain.Aggregates
 {
     public class ShoppingCart
     {

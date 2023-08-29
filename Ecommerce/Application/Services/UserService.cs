@@ -1,9 +1,9 @@
-﻿using AuthenticationService.Domain.Aggregates;
-using AuthenticationService.Domain.Entities;
-using AuthenticationService.Infrastructure.Hasher;
-using AuthenticationService.Infrastructure.Repository;
+﻿using Ecommerce.Domain.Aggregates;
+using Ecommerce.Domain.Entities;
+using Ecommerce.Infrastructure.Hasher;
+using Ecommerce.Infrastructure.Repository;
 
-namespace AuthenticationService.Application.Services
+namespace Ecommerce.Application.Services
 {
     public class UserService : IUserService
     {

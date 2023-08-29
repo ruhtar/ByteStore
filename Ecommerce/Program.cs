@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using AuthenticationService.Infrastructure;
-using AuthenticationService.Shared.Configs.Authentication;
-using AuthenticationService.Shared.Configs.DI;
+using Ecommerce.Infrastructure;
+using Ecommerce.Shared.Configs.Authentication;
+using Ecommerce.Shared.Configs.DI;
 
-namespace AuthenticationService
+namespace Ecommerce
 {
     public class Program
     {

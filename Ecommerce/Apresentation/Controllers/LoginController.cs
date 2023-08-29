@@ -1,13 +1,13 @@
-using AuthenticationService.Application.Services;
-using AuthenticationService.Domain.Aggregates;
-using AuthenticationService.Domain.Entities;
-using AuthenticationService.Shared.DTO;
-using AuthenticationService.Shared.Validator;
+using Ecommerce.Application.Services;
+using Ecommerce.Domain.Aggregates;
+using Ecommerce.Domain.Entities;
+using Ecommerce.Shared.DTO;
+using Ecommerce.Shared.Validator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StackExchange.Redis;
 
-namespace AuthenticationService.Host.Controllers
+namespace Ecommerce.Host.Controllers
 {
     [ApiController]
     [Route("login")]

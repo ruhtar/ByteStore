@@ -1,4 +1,4 @@
-﻿using AuthenticationService.Domain.Aggregates;
+﻿using Ecommerce.Domain.Aggregates;
 using Ecommerce.Application.Services;
 using Ecommerce.Domain.ValueObjects;
 using Ecommerce.Infrastructure.Repository;

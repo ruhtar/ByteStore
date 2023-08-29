@@ -1,9 +1,9 @@
-﻿using AuthenticationService.Domain.Aggregates;
-using AuthenticationService.Domain.Entities;
+﻿using Ecommerce.Domain.Aggregates;
+using Ecommerce.Domain.Entities;
 using Ecommerce.Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 
-namespace AuthenticationService.Infrastructure.Repository
+namespace Ecommerce.Infrastructure.Repository
 {
     public class UserRepository : IUserRepository
     {

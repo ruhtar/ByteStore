@@ -1,12 +1,12 @@
-﻿using AuthenticationService.Application.Services;
-using AuthenticationService.Infrastructure.Cache;
-using AuthenticationService.Infrastructure.Hasher;
-using AuthenticationService.Infrastructure.Repository;
-using AuthenticationService.Shared.Validator;
+﻿using Ecommerce.Application.Services;
+using Ecommerce.Infrastructure.Cache;
+using Ecommerce.Infrastructure.Hasher;
+using Ecommerce.Infrastructure.Repository;
+using Ecommerce.Shared.Validator;
 using Ecommerce.Application.Services;
 using Ecommerce.Infrastructure.Repository;
 
-namespace AuthenticationService.Shared.Configs.DI
+namespace Ecommerce.Shared.Configs.DI
 {
     public class DependencyRegistration
     {

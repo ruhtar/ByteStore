@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 
-namespace AuthenticationService.Infrastructure.Hasher
+namespace Ecommerce.Infrastructure.Hasher
 {
     public class PasswordHasher : IPasswordHasher
     {

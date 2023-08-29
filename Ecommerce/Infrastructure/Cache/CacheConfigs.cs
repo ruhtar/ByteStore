@@ -1,8 +1,8 @@
-﻿using AuthenticationService.Domain.Entities;
+﻿using Ecommerce.Domain.Entities;
 using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;
 
-namespace AuthenticationService.Infrastructure.Cache
+namespace Ecommerce.Infrastructure.Cache
 {
     public class CacheConfigs : ICacheConfigs
     {

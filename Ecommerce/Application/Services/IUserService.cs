@@ -1,8 +1,8 @@
-﻿using AuthenticationService.Domain.Aggregates;
-using AuthenticationService.Domain.Entities;
-using AuthenticationService.Shared.DTO;
+﻿using Ecommerce.Domain.Aggregates;
+using Ecommerce.Domain.Entities;
+using Ecommerce.Shared.DTO;
 
-namespace AuthenticationService.Application.Services
+namespace Ecommerce.Application.Services
 {
     public interface IUserService
     {

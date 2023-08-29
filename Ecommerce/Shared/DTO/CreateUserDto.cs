@@ -1,7 +1,7 @@
-﻿using AuthenticationService.Domain.ValueObjects;
+﻿using Ecommerce.Domain.ValueObjects;
 using System.ComponentModel.DataAnnotations;
 
-namespace AuthenticationService.Shared.DTO
+namespace Ecommerce.Shared.DTO
 {
     public class CreateUserDto
     {

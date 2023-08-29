@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "AuthenticationService": {
+    "Ecommerce": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

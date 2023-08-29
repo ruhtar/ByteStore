@@ -1,7 +1,7 @@
-﻿using AuthenticationService.Domain.Aggregates;
-using AuthenticationService.Domain.Entities;
+﻿using Ecommerce.Domain.Aggregates;
+using Ecommerce.Domain.Entities;
 
-namespace AuthenticationService.Infrastructure.Repository
+namespace Ecommerce.Infrastructure.Repository
 {
     public interface IUserRepository
     {

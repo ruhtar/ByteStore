@@ -1,6 +1,6 @@
-﻿using AuthenticationService.Domain.Entities;
+﻿using Ecommerce.Domain.Entities;
 
-namespace AuthenticationService.Infrastructure.Repository
+namespace Ecommerce.Infrastructure.Repository
 {
     public interface IProductRepository
     {

@@ -1,4 +1,4 @@
-﻿namespace AuthenticationService.Infrastructure.Hasher
+﻿namespace Ecommerce.Infrastructure.Hasher
 {
     public interface IPasswordHasher
     {

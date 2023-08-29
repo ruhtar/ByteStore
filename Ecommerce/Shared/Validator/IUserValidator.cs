@@ -1,7 +1,7 @@
-﻿using AuthenticationService.Domain.ValueObjects;
-using AuthenticationService.Shared.DTO;
+﻿using Ecommerce.Domain.ValueObjects;
+using Ecommerce.Shared.DTO;
 
-namespace AuthenticationService.Shared.Validator
+namespace Ecommerce.Shared.Validator
 {
     public interface IUserValidator
     {

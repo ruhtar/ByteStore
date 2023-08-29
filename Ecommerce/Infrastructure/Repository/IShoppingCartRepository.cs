@@ -1,4 +1,4 @@
-﻿using AuthenticationService.Domain.Aggregates;
+﻿using Ecommerce.Domain.Aggregates;
 using Ecommerce.Domain.ValueObjects;
 using Ecommerce.Shared.DTO;
 using Ecommerce.Shared.Enums;
