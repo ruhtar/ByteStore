@@ -41,7 +41,7 @@ namespace Ecommerce.Host.Controllers
                 case UserValidatorStatus.InvalidPassword:
                     return BadRequest("Your password must have capital letters, numbers and special characters");
                 case UserValidatorStatus.InvalidRole:
-                    return BadRequest("User must be have Admin or User role");
+                    return BadRequest("User must be have Seller or User role");
                 default:
                     break;
             }

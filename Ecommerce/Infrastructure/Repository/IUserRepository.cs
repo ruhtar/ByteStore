@@ -7,6 +7,5 @@ namespace Ecommerce.Infrastructure.Repository
     {
         Task RegisterUser(UserAggregate user);
         Task<UserAggregate> GetUserAggregate(UserAggregate user);
-        Task<User> GetUser(User user);
     }
 }

@@ -11,7 +11,6 @@ namespace Ecommerce.Application.Services
         private readonly IPasswordHasher _passwordHasher;
         private readonly ITokenService _tokenService;
 
-
         public UserService(IUserRepository userRepository, IPasswordHasher passwordHasher, ITokenService tokenService)
         {
             _userRepository = userRepository;

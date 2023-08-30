@@ -62,7 +62,7 @@ namespace Ecommerce.Shared.Validator
 
         public bool IsRoleValid(Roles role)
         {
-            return role.ToString() == "Admin" || role.ToString() == "User";
+            return role.ToString() == "Seller" || role.ToString() == "User";
         }
     }
 }

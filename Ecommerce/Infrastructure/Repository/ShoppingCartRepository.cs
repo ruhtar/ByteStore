@@ -1,9 +1,8 @@
 ﻿using Ecommerce.Domain.Aggregates;
-using Ecommerce.Domain.Entities;
-using Ecommerce.Infrastructure;
 using Ecommerce.Domain.ValueObjects;
 using Ecommerce.Shared.DTO;
 using Ecommerce.Shared.Enums;
+using Ecommerce.Shared.Utils;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
 using System.Text.Json;
@@ -21,12 +20,10 @@ namespace Ecommerce.Infrastructure.Repository
 
         public async Task CreateShoppingCart(int userAggregateId)
         {
-            var json = JsonSerializer.Serialize(new List<OrderItem>(), new JsonSerializerOptions());
-            var bytes = Encoding.ASCII.GetBytes(json);
             var shoppingCart = new ShoppingCart
             {
                 UserAggregateId = userAggregateId,
-                OrderItems = bytes
+                OrderItems = Utils.Serializer(new List<OrderItem>())
             };
             await _context.ShoppingCarts.AddAsync(shoppingCart);
             await _context.SaveChangesAsync();
@@ -97,11 +94,9 @@ namespace Ecommerce.Infrastructure.Repository
                 existingItem.Quantity += newItem.Quantity;
             }
 
-            if (existingItem.Quantity < 0) { existingItem.Quantity = 0; }
+            if (existingItem.Quantity < 0) existingItem.Quantity = 0; 
 
-            var json = JsonSerializer.Serialize(orderItems, new JsonSerializerOptions());
-            var bytes = Encoding.ASCII.GetBytes(json);
-            shoppingCart.OrderItems = bytes;
+            shoppingCart.OrderItems = Utils.Serializer(orderItems);
             await _context.SaveChangesAsync();
             return OrderStatus.Approved;
         }
@@ -109,9 +104,8 @@ namespace Ecommerce.Infrastructure.Repository
         public async Task<BuyOrderStatus> BuyOrder(int userAggregateId)
         {
             var shoppingCart = await _context.ShoppingCarts.FirstOrDefaultAsync(x => x.UserAggregateId == userAggregateId);
-            var json = JsonSerializer.Serialize(new List<OrderItem>(), new JsonSerializerOptions());
-            var bytes = Encoding.ASCII.GetBytes(json);
-            shoppingCart!.OrderItems = bytes;
+
+            shoppingCart!.OrderItems = Utils.Serializer(new OrderItem());
             await _context.SaveChangesAsync();
             return BuyOrderStatus.Completed;
         }

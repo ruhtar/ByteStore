@@ -1,7 +1,6 @@
 ﻿using Ecommerce.Domain.Entities;
 using Ecommerce.Infrastructure.Cache;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
 using System.Text.Json;
 
 namespace Ecommerce.Infrastructure.Repository
@@ -20,15 +19,15 @@ namespace Ecommerce.Infrastructure.Repository
 
         public async Task<IEnumerable<Product>> GetAllProducts()
         {
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
+            //var stopwatch = new Stopwatch();
+            //stopwatch.Start();
 
             var cache = await _cache.GetFromCacheAsync(AllProductsKey);
             if (cache != null)
             {
-                stopwatch.Stop();
+                //stopwatch.Stop();
 
-                Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
+                //Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
                 return cache;
             }
             var products = await _context.Products.AsNoTracking().ToListAsync();
@@ -39,9 +38,9 @@ namespace Ecommerce.Infrastructure.Repository
             var cacheData = JsonSerializer.Serialize(products);
             await _cache.SetAsync(AllProductsKey, cacheData);
 
-            stopwatch.Stop();
+            //stopwatch.Stop();
 
-            Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
+            //Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
             return products;
         }
 
