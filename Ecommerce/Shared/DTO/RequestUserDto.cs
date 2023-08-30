@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Ecommerce.Shared.DTO
 {
-    public class CreateUserDto
+    public class RequestUserDto
     {
         public string Username { get; set; }
 

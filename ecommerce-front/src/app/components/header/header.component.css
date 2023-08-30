@@ -1,5 +1,5 @@
 header {
-  background-color: #131d7c;
+  background: linear-gradient(to right, #2a80b9, #7c9eb6);
   color: rgb(255, 255, 255);
   padding: 10px 0;
   display: flex;
@@ -7,6 +7,7 @@ header {
   align-items: center; /* Alinhar verticalmente no centro */
   padding-left: 20px;
   padding-right: 30px;
+  text-align: justify;
 }
 
 nav ul {
@@ -19,11 +20,22 @@ nav ul li {
   margin-right: 20px;
 }
 
-nav a {
+a {
   text-decoration: none;
   color: rgb(255, 255, 255);
 }
 
 .login {
   margin-right: 20px;
+}
+
+.container {
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  gap: 20px;
+}
+
+img {
+  width: 80px;
 }

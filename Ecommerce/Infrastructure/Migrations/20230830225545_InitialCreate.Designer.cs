@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ecommerce.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230806233714_Initial2")]
-    partial class Initial2
+    [Migration("20230830225545_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace Ecommerce.Migrations
                 .HasAnnotation("ProductVersion", "6.0.19")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("AuthenticationService.Domain.Aggregates.ShoppingCart", b =>
+            modelBuilder.Entity("Ecommerce.Domain.Aggregates.ShoppingCart", b =>
                 {
                     b.Property<int>("ShoppingCartId")
                         .ValueGeneratedOnAdd()
@@ -42,7 +42,7 @@ namespace Ecommerce.Migrations
                     b.ToTable("ShoppingCarts");
                 });
 
-            modelBuilder.Entity("AuthenticationService.Domain.Aggregates.ShoppingCartProduct", b =>
+            modelBuilder.Entity("Ecommerce.Domain.Aggregates.ShoppingCartProduct", b =>
                 {
                     b.Property<int>("ShoppingCartId")
                         .HasColumnType("int");
@@ -57,7 +57,7 @@ namespace Ecommerce.Migrations
                     b.ToTable("ShoppingCartProduct");
                 });
 
-            modelBuilder.Entity("AuthenticationService.Domain.Aggregates.UserAggregate", b =>
+            modelBuilder.Entity("Ecommerce.Domain.Aggregates.UserAggregate", b =>
                 {
                     b.Property<int>("UserAggregateId")
                         .ValueGeneratedOnAdd()
@@ -78,7 +78,7 @@ namespace Ecommerce.Migrations
                     b.ToTable("UserAggregates");
                 });
 
-            modelBuilder.Entity("AuthenticationService.Domain.Entities.Product", b =>
+            modelBuilder.Entity("Ecommerce.Domain.Entities.Product", b =>
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
@@ -100,7 +100,7 @@ namespace Ecommerce.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("AuthenticationService.Domain.Entities.User", b =>
+            modelBuilder.Entity("Ecommerce.Domain.Entities.User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -120,24 +120,24 @@ namespace Ecommerce.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("AuthenticationService.Domain.Aggregates.ShoppingCart", b =>
+            modelBuilder.Entity("Ecommerce.Domain.Aggregates.ShoppingCart", b =>
                 {
-                    b.HasOne("AuthenticationService.Domain.Aggregates.UserAggregate", "UserAggregate")
+                    b.HasOne("Ecommerce.Domain.Aggregates.UserAggregate", "UserAggregate")
                         .WithOne("ShoppingCart")
-                        .HasForeignKey("AuthenticationService.Domain.Aggregates.ShoppingCart", "UserAggregateId")
+                        .HasForeignKey("Ecommerce.Domain.Aggregates.ShoppingCart", "UserAggregateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("UserAggregate");
                 });
 
-            modelBuilder.Entity("AuthenticationService.Domain.Aggregates.ShoppingCartProduct", b =>
+            modelBuilder.Entity("Ecommerce.Domain.Aggregates.ShoppingCartProduct", b =>
                 {
-                    b.HasOne("AuthenticationService.Domain.Entities.Product", "Product")
+                    b.HasOne("Ecommerce.Domain.Entities.Product", "Product")
                         .WithMany("ShoppingCartProducts")
                         .HasForeignKey("ProductId");
 
-                    b.HasOne("AuthenticationService.Domain.Aggregates.ShoppingCart", "ShoppingCart")
+                    b.HasOne("Ecommerce.Domain.Aggregates.ShoppingCart", "ShoppingCart")
                         .WithMany("ShoppingCartProducts")
                         .HasForeignKey("ShoppingCartId");
 
@@ -146,15 +146,15 @@ namespace Ecommerce.Migrations
                     b.Navigation("ShoppingCart");
                 });
 
-            modelBuilder.Entity("AuthenticationService.Domain.Aggregates.UserAggregate", b =>
+            modelBuilder.Entity("Ecommerce.Domain.Aggregates.UserAggregate", b =>
                 {
-                    b.HasOne("AuthenticationService.Domain.Entities.User", "User")
+                    b.HasOne("Ecommerce.Domain.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("AuthenticationService.Domain.ValueObjects.Address", "Address", b1 =>
+                    b.OwnsOne("Ecommerce.Domain.ValueObjects.Address", "Address", b1 =>
                         {
                             b1.Property<int>("UserAggregateId")
                                 .HasColumnType("int");
@@ -197,18 +197,18 @@ namespace Ecommerce.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("AuthenticationService.Domain.Aggregates.ShoppingCart", b =>
+            modelBuilder.Entity("Ecommerce.Domain.Aggregates.ShoppingCart", b =>
                 {
                     b.Navigation("ShoppingCartProducts");
                 });
 
-            modelBuilder.Entity("AuthenticationService.Domain.Aggregates.UserAggregate", b =>
+            modelBuilder.Entity("Ecommerce.Domain.Aggregates.UserAggregate", b =>
                 {
                     b.Navigation("ShoppingCart")
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("AuthenticationService.Domain.Entities.Product", b =>
+            modelBuilder.Entity("Ecommerce.Domain.Entities.Product", b =>
                 {
                     b.Navigation("ShoppingCartProducts");
                 });

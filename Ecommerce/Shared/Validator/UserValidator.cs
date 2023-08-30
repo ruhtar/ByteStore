@@ -15,7 +15,7 @@ namespace Ecommerce.Shared.Validator
             _userRepository = userRepository;
         }
 
-        public async Task<UserValidatorStatus> ValidateUser(CreateUserDto user)
+        public async Task<UserValidatorStatus> ValidateUser(RequestUserDto user)
         {
             var isPasswordValid = IsPasswordValid(user.Password);
             if (!isPasswordValid) return UserValidatorStatus.InvalidPassword;

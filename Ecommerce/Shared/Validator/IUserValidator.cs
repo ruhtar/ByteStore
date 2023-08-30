@@ -5,7 +5,7 @@ namespace Ecommerce.Shared.Validator
 {
     public interface IUserValidator
     {
-        Task<UserValidatorStatus> ValidateUser(CreateUserDto user);
+        Task<UserValidatorStatus> ValidateUser(RequestUserDto user);
         Task<bool> IsUsernameValid(string username);
         bool IsPasswordValid(string password);
         bool IsRoleValid(Roles role);

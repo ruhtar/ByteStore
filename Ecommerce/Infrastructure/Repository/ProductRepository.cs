@@ -60,9 +60,7 @@ namespace Ecommerce.Infrastructure.Repository
         {
             var oldProduct = await _context.Products.FindAsync(id);
 
-            if (oldProduct == null) {
-                return null;
-            }
+            if (oldProduct == null) return null;
 
             oldProduct.ProductQuantity = product.ProductQuantity;
             oldProduct.Price = product.Price;

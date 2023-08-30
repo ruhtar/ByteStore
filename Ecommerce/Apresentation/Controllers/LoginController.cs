@@ -24,7 +24,7 @@ namespace Ecommerce.Host.Controllers
 
         [HttpPost("signup")]
         [AllowAnonymous]
-        public async Task<IActionResult> Signup([FromBody] CreateUserDto user)
+        public async Task<IActionResult> Signup([FromBody] RequestUserDto user)
         {
             if (user == null)
             {
