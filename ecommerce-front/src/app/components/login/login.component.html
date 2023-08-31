@@ -2,16 +2,28 @@
   <div class="login-box">
     <h2>Login</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" #formDir="ngForm">
-      <label for="username" >Username:</label>
-      <input type="text" id="username" name="username" placeholder="Username" formControlName="username"/>
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        placeholder="Username"
+        formControlName="username"
+      />
 
-      <label for="password" >Password:</label>
-      <input type="password" id="password" name="password" placeholder="Password" formControlName="password"/>
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Password"
+        formControlName="password"
+      />
 
       <button type="submit" class="submit-button">Login</button>
     </form>
-    <div style="margin-top: 12px;">
-      <a href="">Register</a>
+    <div style="margin-top: 12px">
+      <a routerLink="/register">Register</a>
     </div>
   </div>
 </div>
