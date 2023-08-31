@@ -3,7 +3,13 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f0f0f0;
+  background-color: #709ab6;
+  background-image: radial-gradient(#ffffff 5%, transparent 5%),
+    radial-gradient(#ffffff 5%, transparent 5%);
+  background-position:
+    0 0,
+    25px 25px;
+  background-size: 50px 50px;
 }
 
 .login-box {
@@ -20,9 +26,10 @@
 }
 
 .login-box a {
-  color: #ac7f2b;
+  color: #2a80b9;
   font-size: 16px;
   text-decoration: none;
+  font-weight: 400;
 }
 
 .login-box form label {
@@ -43,7 +50,7 @@
   font-size: 16px;
   width: 100%;
   padding: 10px;
-  background-color: #febc41;
+  background-color: #2a80b9;
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -51,7 +58,6 @@
   transition: background-color 0.3s ease-in-out;
 }
 
-.login-box form button:hover{
-  background-color: #ac7f2b;
+.login-box form button:hover {
+  background-color: #194f74;
 }
-

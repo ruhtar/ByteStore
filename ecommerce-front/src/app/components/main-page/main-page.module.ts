@@ -23,7 +23,7 @@ const MainPageRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [MainPageComponent, HeaderComponent, FooterComponent],
+  declarations: [MainPageComponent],
   imports: [CommonModule, RouterModule.forChild(MainPageRoutes)],
 })
 export class MainPageModule {}
