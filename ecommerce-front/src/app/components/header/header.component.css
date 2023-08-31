@@ -1,5 +1,6 @@
 header {
-  background: linear-gradient(to right, #2a80b9, #7c9eb6);
+  /* background: linear-gradient(to right, #2a80b9, #7c9eb6); */
+  background-color: #2a80b9;
   color: rgb(255, 255, 255);
   padding: 10px 0;
   display: flex;

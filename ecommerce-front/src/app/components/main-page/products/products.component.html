@@ -1,7 +1,16 @@
-<section class="products">
+<!-- <section class="products">
   <div *ngFor="let product of products" class="product">
     <h2>{{ product.name }}</h2>
     <p>R$ {{ product.price }}</p>
     <button (click)="addToCart(product.productId)">Add to Cart</button>
+  </div>
+</section> -->
+
+<section class="products">
+  <div *ngFor="let product of products" class="product-card">
+    <img src="product-image.jpg" alt="Product Image" />
+    <h2 class="product-name">{{ product.name }}</h2>
+    <p class="product-price">{{ product.price }} $</p>
+    <p class="product-quantity">Stock: {{ product.productQuantity }}</p>
   </div>
 </section>
