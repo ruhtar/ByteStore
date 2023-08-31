@@ -9,7 +9,6 @@ import { LoginService } from './services/login/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { MainPageComponent } from './components/main-page/main-page.component';
 import { HomeComponent } from './components/main-page/home/home.component';
 import { ProductsComponent } from './components/main-page/products/products.component';
 import { CartComponent } from './components/main-page/cart/cart.component';

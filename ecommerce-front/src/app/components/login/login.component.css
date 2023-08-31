@@ -4,11 +4,6 @@
   align-items: center;
   min-height: 100vh;
   background-color: #709ab6;
-  background-image: radial-gradient(#ffffff 5%, transparent 5%),
-    radial-gradient(#ffffff 5%, transparent 5%);
-  background-position:
-    0 0,
-    25px 25px;
   background-size: 50px 50px;
 }
 
@@ -55,9 +50,18 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .login-box form button:hover {
   background-color: #194f74;
+}
+
+.signup-warning {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.signup-warning a {
+  font-size: 14px;
 }
