@@ -1,1 +1,44 @@
-<p>register-form works!</p>
+<div class="container">
+  <div class="registration-form">
+    <h2>User Registration</h2>
+    <form>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+
+      <label>
+        <input type="checkbox" id="isSeller" name="isSeller" />
+        Are you a seller?
+      </label>
+
+      <label>Address:</label>
+      <input
+        type="text"
+        id="street"
+        name="street"
+        placeholder="Street"
+        required
+      />
+      <input
+        type="number"
+        id="streetNumber"
+        name="streetNumber"
+        placeholder="Street Number"
+        required
+      />
+      <input type="text" id="city" name="city" placeholder="City" required />
+      <input type="text" id="state" name="state" placeholder="State" required />
+      <input
+        type="text"
+        id="country"
+        name="country"
+        placeholder="Country"
+        required
+      />
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+</div>
