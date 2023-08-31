@@ -21,7 +21,6 @@ import { ContactComponent } from './components/main-page/contact/contact.compone
     LoginComponent,
     HeaderComponent,
     FooterComponent,
-    MainPageComponent,
     HomeComponent,
     ProductsComponent,
     CartComponent,

@@ -6,6 +6,7 @@
   </div>
 </section> -->
 
+<app-header></app-header>
 <section class="products">
   <div *ngFor="let product of products" class="product-card">
     <img src="product-image.jpg" alt="Product Image" />
@@ -14,3 +15,4 @@
     <p class="product-quantity">Stock: {{ product.productQuantity }}</p>
   </div>
 </section>
+<app-footer></app-footer>
