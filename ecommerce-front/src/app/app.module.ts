@@ -14,7 +14,8 @@ import { ProductsComponent } from './components/main-page/products/products.comp
 import { CartComponent } from './components/main-page/cart/cart.component';
 import { ContactComponent } from './components/main-page/contact/contact.component';
 import { FormComponent } from './components/form/form.component';
-import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RegisterFormComponent } from './components/register-form/register-form.
     CartComponent,
     ContactComponent,
     FormComponent,
-    RegisterFormComponent,
+    PageNotFoundComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

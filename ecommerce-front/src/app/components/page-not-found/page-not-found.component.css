@@ -1,0 +1,17 @@
+.error-message {
+  margin-top: 200px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(20, 115, 224, 0.5);
+  padding: 20px;
+  text-align: center;
+}
+
+.error-message h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.error-message p {
+  font-size: 24px;
+}

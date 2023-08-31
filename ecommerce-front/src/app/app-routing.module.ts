@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { FormComponent } from './components/form/form.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterFormComponent },
+  { path: 'signup', component: SignupComponent },
   {
     path: '',
     loadChildren: () =>
@@ -13,6 +15,7 @@ const routes: Routes = [
         (m) => m.MainPageModule,
       ),
   },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IToken } from 'src/app/interfaces/IToken';
+import { IUser } from 'src/app/interfaces/IUser';
 import { IUserAggregate } from 'src/app/interfaces/IUserAggregate';
 import { LoginService } from 'src/app/services/login/login.service';
 
@@ -30,9 +31,9 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const username: string = this.loginForm.get('username')?.value;
       const password: string = this.loginForm.get('password')?.value;
-      const user: IUserAggregate = {
-        username: username,
-        password: password,
+      const user: IUser = {
+        Username: username,
+        Password: password,
       };
       this.loginService.signIn(user).subscribe(
         (token: IToken) => {

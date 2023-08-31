@@ -1,1 +1,84 @@
-<p>form works!</p>
+<div class="container">
+  <div class="registration-form">
+    <h2>{{ formTitle }}</h2>
+    <form [formGroup]="userForm" #formDir="ngForm" (ngSubmit)="submitForm()">
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        required
+        formControlName="username"
+      />
+
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        formControlName="password"
+      />
+
+      <label>
+        <input
+          type="checkbox"
+          id="isSeller"
+          name="isSeller"
+          formControlName="isSeller"
+        />
+        Are you a seller?
+      </label>
+
+      <label>Address:</label>
+      <input
+        type="text"
+        id="street"
+        name="street"
+        placeholder="Street"
+        formControlName="street"
+        required
+      />
+      <input
+        type="number"
+        id="streetNumber"
+        name="streetNumber"
+        placeholder="Street Number"
+        formControlName="streetNumber"
+        required
+      />
+      <input
+        type="text"
+        id="city"
+        name="city"
+        placeholder="City"
+        required
+        formControlName="city"
+      />
+      <input
+        type="text"
+        id="state"
+        name="state"
+        placeholder="State"
+        formControlName="state"
+        required
+      />
+      <input
+        type="text"
+        id="country"
+        name="country"
+        placeholder="Country"
+        formControlName="country"
+        required
+      />
+
+      <button type="submit">Sign up</button>
+      <div *ngIf="formSucess" class="form-sucess">
+        <p>All done!</p>
+      </div>
+      <label class="login-warning"
+        >Already have an account? <a routerLink="/login">Login now</a></label
+      >
+    </form>
+  </div>
+</div>
