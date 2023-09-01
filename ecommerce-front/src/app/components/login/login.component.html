@@ -3,7 +3,7 @@
     <a routerLink="/home"> <i class="fas fa-arrow-left"></i> Home page </a>
     <h2>Login</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" #formDir="ngForm">
-      <label for="username">Username:</label>
+      <label for="username"><i class="fa-solid fa-user"></i> Username:</label>
       <input
         type="text"
         id="username"
@@ -12,7 +12,7 @@
         formControlName="username"
       />
 
-      <label for="password">Password:</label>
+      <label for="password"><i class="fa-solid fa-key"></i> Password:</label>
       <input
         type="password"
         id="password"

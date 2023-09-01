@@ -1,7 +1,9 @@
 <div class="container">
   <div class="registration-form">
     <a routerLink="/home"> <i class="fas fa-arrow-left"></i> Home page </a>
-    <h2>{{ formTitle }}</h2>
+    <h2>
+      <i class="fa-regular fa-user" style="color: #000000"></i> {{ formTitle }}
+    </h2>
     <form [formGroup]="userForm" #formDir="ngForm" (ngSubmit)="submitForm()">
       <label for="username">{{ username }}:</label>
       <input
