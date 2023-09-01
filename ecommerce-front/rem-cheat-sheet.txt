@@ -1,0 +1,4 @@
+.25rem = 4px;
+.5rem = 8px;
+.75rem = 12px;
+1.5rem = 24px;

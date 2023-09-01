@@ -5,7 +5,6 @@ using Ecommerce.Shared.DTO;
 using Ecommerce.Shared.Validator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using StackExchange.Redis;
 
 namespace Ecommerce.Host.Controllers
 {
