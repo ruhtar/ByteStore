@@ -17,11 +17,11 @@ namespace Ecommerce.Shared.Validator
 
         public async Task<UserValidatorStatus> ValidateUser(RequestUserDto user)
         {
-            if (!IsPasswordValid(user.Password)) return UserValidatorStatus.InvalidPassword;
+            if (!IsPasswordValid(user.User.Password)) return UserValidatorStatus.InvalidPassword;
 
             if (!IsRoleValid(user.Role)) return UserValidatorStatus.InvalidRole;
 
-            if (!await IsUsernameValid(user.Username)) return UserValidatorStatus.UsernameAlreadyExists;
+            if (!await IsUsernameValid(user.User.Username)) return UserValidatorStatus.UsernameAlreadyExists;
 
             return UserValidatorStatus.Success;
         }

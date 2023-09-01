@@ -1,3 +1,5 @@
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
 .container {
   display: flex;
   justify-content: center;
@@ -65,4 +67,13 @@
 .form-sucess p {
   margin-top: 8px;
   color: green;
+}
+
+i {
+  margin-bottom: 0.75rem;
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
 }

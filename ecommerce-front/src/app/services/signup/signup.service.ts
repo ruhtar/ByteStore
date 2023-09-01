@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IUserAggregate } from 'src/app/interfaces/IUserAggregate';
+import { UserAggregate } from 'src/app/interfaces/UserAggregate';
 import { API_PATH } from 'src/environment/env';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { API_PATH } from 'src/environment/env';
 export class SignupService {
   constructor(private http: HttpClient) {}
 
-  signup(user: IUserAggregate) {
+  signup(user: UserAggregate) {
     return this.http.post(API_PATH + 'login/signup', user);
   }
 }

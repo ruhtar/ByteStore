@@ -49,8 +49,8 @@ namespace Ecommerce.Host.Controllers
             {
                 User = new User
                 {
-                    Username = user.Username,
-                    Password = user.Password,
+                    Username = user.User.Username,
+                    Password = user.User.Password,
                 },
                 Address= user.Address,
                 Role = user.Role

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IProduct } from 'src/app/interfaces/IProduct';
+import { Product } from 'src/app/interfaces/Product';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { ProductService } from 'src/app/services/product/product.service';
 
@@ -9,7 +9,7 @@ import { ProductService } from 'src/app/services/product/product.service';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent {
-  products!: IProduct[];
+  products!: Product[];
 
   constructor(
     private productService: ProductService,
@@ -17,11 +17,9 @@ export class ProductsComponent {
   ) {}
 
   ngOnInit() {
-    this.productService
-      .getAllProducts()
-      .subscribe((productList: IProduct[]) => {
-        this.products = productList;
-      });
+    this.productService.getAllProducts().subscribe((productList: Product[]) => {
+      this.products = productList;
+    });
   }
 
   addToCart(productId: number): void {
