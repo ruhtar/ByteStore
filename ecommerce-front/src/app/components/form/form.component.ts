@@ -9,6 +9,17 @@ import { IUserAggregate } from 'src/app/interfaces/IUserAggregate';
 })
 export class FormComponent {
   @Input() formTitle!: string;
+  @Input() username!: string;
+  @Input() password!: string;
+  @Input() address!: string;
+  @Input() street!: string;
+  @Input() streetNumber!: string;
+  @Input() city!: string;
+  @Input() state!: string;
+  @Input() country!: string;
+  @Input() submitButtonText!: string;
+  @Input() usernamePlaceholder!: string;
+  @Input() passwordPlaceholder!: string;
 
   userForm!: FormGroup;
   formSucess: boolean = false;

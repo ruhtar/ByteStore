@@ -8,6 +8,17 @@ import { IUserAggregate } from 'src/app/interfaces/IUserAggregate';
 })
 export class SignupComponent {
   formTitle: string = 'Sign up';
+  username: string = 'Username';
+  password: string = 'Password';
+  address: string = 'Address';
+  street: string = 'Street';
+  streetNumber: string = 'Street Number';
+  city: string = 'City';
+  state: string = 'State';
+  country: string = 'Country';
+  submitButtonText: string = 'Sign up';
+  usernamePlaceholder: string = 'Your username';
+  passwordPlaceholder: string = 'Your password';
 
   handler(user: IUserAggregate) {}
 }

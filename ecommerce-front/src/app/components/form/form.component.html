@@ -2,22 +2,24 @@
   <div class="registration-form">
     <h2>{{ formTitle }}</h2>
     <form [formGroup]="userForm" #formDir="ngForm" (ngSubmit)="submitForm()">
-      <label for="username">Username:</label>
+      <label for="username">{{ username }}:</label>
       <input
         type="text"
         id="username"
         name="username"
         required
         formControlName="username"
+        placeholder="{{ usernamePlaceholder }}"
       />
 
-      <label for="password">Password:</label>
+      <label for="password">{{ password }}:</label>
       <input
         type="password"
         id="password"
         name="password"
         required
         formControlName="password"
+        placeholder="{{ passwordPlaceholder }}"
       />
 
       <label>
@@ -30,12 +32,12 @@
         Are you a seller?
       </label>
 
-      <label>Address:</label>
+      <label>{{ address }}:</label>
       <input
         type="text"
         id="street"
         name="street"
-        placeholder="Street"
+        placeholder="{{ street }}"
         formControlName="street"
         required
       />
@@ -43,7 +45,7 @@
         type="number"
         id="streetNumber"
         name="streetNumber"
-        placeholder="Street Number"
+        placeholder="{{ streetNumber }}"
         formControlName="streetNumber"
         required
       />
@@ -51,7 +53,7 @@
         type="text"
         id="city"
         name="city"
-        placeholder="City"
+        placeholder="{{ city }}"
         required
         formControlName="city"
       />
@@ -59,7 +61,7 @@
         type="text"
         id="state"
         name="state"
-        placeholder="State"
+        placeholder="{{ state }}"
         formControlName="state"
         required
       />
@@ -67,12 +69,12 @@
         type="text"
         id="country"
         name="country"
-        placeholder="Country"
+        placeholder="{{ country }}"
         formControlName="country"
         required
       />
 
-      <button type="submit">Sign up</button>
+      <button type="submit">{{ submitButtonText }}</button>
       <div *ngIf="formSucess" class="form-sucess">
         <p>All done!</p>
       </div>
