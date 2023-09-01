@@ -46,7 +46,6 @@ export class FormComponent {
 
   submitForm() {
     //if (this.userForm.invalid) return;
-    alert('submit');
     this.onSubmit.emit(this.userForm.value);
     this.userForm.reset();
     this.formSucess = true;
