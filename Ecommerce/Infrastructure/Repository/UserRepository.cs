@@ -29,5 +29,9 @@ namespace Ecommerce.Infrastructure.Repository
                 .AsNoTracking()
                 .Include(x => x.User).FirstOrDefaultAsync(u => u.User.Username == user.User.Username);
         }
+
+        //public async Task<User> GetUserByUsername() {
+        //    await _context.UserAggregates.AsNoTracking().FirstOrDefaultAsync(u => u.User.Username);
+        //}
     }
 }

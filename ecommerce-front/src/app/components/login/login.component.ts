@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { IToken } from 'src/app/interfaces/IToken';
 import { User } from 'src/app/interfaces/User';
 import { UserAggregate } from 'src/app/interfaces/UserAggregate';
-import { LoginService } from 'src/app/services/login/login.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginComponent {
   loginForm!: FormGroup;
 
   constructor(
-    private loginService: LoginService,
+    private loginService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
   ) {}

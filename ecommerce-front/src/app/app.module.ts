@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginService } from './services/login/login.service';
+import { AuthService } from './services/auth/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -38,7 +38,7 @@ import { SignupComponent } from './components/signup/signup.component';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [LoginService],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

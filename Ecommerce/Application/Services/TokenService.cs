@@ -8,7 +8,7 @@ namespace Ecommerce.Application.Services
 {
     public class TokenService : ITokenService
     {
-        public string GenerateToken(string username, Roles role)
+        public string GenerateToken(int userId, Roles role)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET"));
@@ -17,7 +17,7 @@ namespace Ecommerce.Application.Services
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.Name, username),
+                    new Claim(ClaimTypes.NameIdentifier, userId.ToString()),
                     new Claim(ClaimTypes.Role, role.ToString()),
                 }),
                 Expires = DateTime.UtcNow.AddHours(1),

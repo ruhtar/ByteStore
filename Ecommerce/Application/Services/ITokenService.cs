@@ -4,6 +4,6 @@ namespace Ecommerce.Application.Services
 {
     public interface ITokenService
     {
-        string GenerateToken(string username, Roles token);
+        string GenerateToken(int userId, Roles token);
     }
 }

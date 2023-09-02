@@ -20,22 +20,25 @@ namespace Ecommerce.Application.Services
 
         public async Task<string> AuthenticateUser(User user)
         {
-            var userRegistered = await _userRepository.GetUserAggregate(new UserAggregate() { User = new User
+            var userRegistered = await _userRepository.GetUserAggregate(new UserAggregate()
             {
-                Username = user.Username
-            }});
+                User = new User
+                {
+                    Username = user.Username
+                }
+            });
             if (userRegistered == null) return "";
 
             var isPasswordValid = _passwordHasher.Validate(userRegistered.User.Password, user.Password);
-            if (isPasswordValid) 
+            if (isPasswordValid)
             {
-                return _tokenService.GenerateToken(user.Username, userRegistered.Role);
+                return _tokenService.GenerateToken(userRegistered.User.UserId, userRegistered.Role);
             }
 
             return "";
         }
 
-        //public async Task<CreateUserDto> GetUserByUsername(string username)
+        //public async Task<User> GetUserByUsername(string username)
         //{
         //    var userRegistered = await _userRepository.GetUser(new User
         //    {
@@ -43,8 +46,9 @@ namespace Ecommerce.Application.Services
         //    });
         //    if (userRegistered != null)
         //    {
-        //        return new CreateUserDto
+        //        return new User
         //        {
+        //            UserId = userRegistered.UserId,
         //            Username = userRegistered.Username,
         //            Password = userRegistered.Password,
         //        };

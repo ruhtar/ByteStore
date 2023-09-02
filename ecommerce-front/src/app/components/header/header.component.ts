@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoginService } from 'src/app/services/login/login.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +7,7 @@ import { LoginService } from 'src/app/services/login/login.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  constructor(public loginService: LoginService) {}
+  constructor(public authService: AuthService) {}
   logged!: boolean;
 
   signOut() {
@@ -16,7 +16,7 @@ export class HeaderComponent {
   }
 
   ngOnInit() {
-    this.loginService.isLoggedIn.subscribe((response) => {
+    this.authService.isLoggedIn.subscribe((response) => {
       this.logged = response;
     });
   }
