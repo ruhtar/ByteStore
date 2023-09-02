@@ -1,7 +1,7 @@
 header {
   height: 11rem;
   background: linear-gradient(to bottom, #2a80b9, white);
-  color: white;
+  color: #fff;
   padding: 10px 0;
   display: flex;
   justify-content: space-between;
@@ -24,11 +24,12 @@ nav ul li {
 }
 
 a {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   text-decoration: none;
-  cursor: pointer;
   /* color: rgba(255, 193, 110, 255); */
-  color: white;
+  color: #fff;
+  /* -webkit-text-stroke-width: 0.4px;
+  -webkit-text-stroke-color: #ffc16e; */
   transition: 0.2s ease-in-out;
 }
 
@@ -49,4 +50,9 @@ a:hover {
 
 img {
   width: 80px;
+}
+
+i {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #000000;
 }
