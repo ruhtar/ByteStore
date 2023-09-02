@@ -1,7 +1,9 @@
 ﻿using Ecommerce.Application.Services;
+using Ecommerce.Application.Services.Interfaces;
 using Ecommerce.Infrastructure.Cache;
 using Ecommerce.Infrastructure.Hasher;
 using Ecommerce.Infrastructure.Repository;
+using Ecommerce.Infrastructure.Repository.Interfaces;
 using Ecommerce.Shared.Validator;
 
 namespace Ecommerce.Shared.Configs

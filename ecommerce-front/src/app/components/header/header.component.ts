@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { TokenService } from 'src/app/services/token/token.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,10 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  constructor(public authService: AuthService) {}
+  constructor(
+    public authService: AuthService,
+    private tokenService: TokenService,
+  ) {}
   logged!: boolean;
 
   signOut() {
@@ -19,5 +23,8 @@ export class HeaderComponent {
     this.authService.isLoggedIn.subscribe((response) => {
       this.logged = response;
     });
+    if (this.logged) {
+      this.tokenService.getUserIdFromToken();
+    }
   }
 }

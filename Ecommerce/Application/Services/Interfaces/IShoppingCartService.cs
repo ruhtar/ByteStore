@@ -4,7 +4,7 @@ using Ecommerce.Shared.DTO;
 using Ecommerce.Shared.Enums;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Application.Services
+namespace Ecommerce.Application.Services.Interfaces
 {
     public interface IShoppingCartService
     {

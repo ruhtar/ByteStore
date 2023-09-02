@@ -1,8 +1,8 @@
 ﻿using Ecommerce.Domain.Entities;
 
-namespace Ecommerce.Infrastructure.Repository
+namespace Ecommerce.Application.Services.Interfaces
 {
-    public interface IProductRepository
+    public interface IProductService
     {
         Task<Product> AddProduct(Product product);
         Task<bool> DeleteProduct(int id);

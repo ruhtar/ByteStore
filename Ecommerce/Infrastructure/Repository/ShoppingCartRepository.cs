@@ -1,5 +1,6 @@
 ﻿using Ecommerce.Domain.Aggregates;
 using Ecommerce.Domain.ValueObjects;
+using Ecommerce.Infrastructure.Repository.Interfaces;
 using Ecommerce.Shared.DTO;
 using Ecommerce.Shared.Enums;
 using Ecommerce.Shared.Utils;

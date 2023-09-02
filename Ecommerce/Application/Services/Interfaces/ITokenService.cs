@@ -1,6 +1,6 @@
 ﻿using Ecommerce.Domain.ValueObjects;
 
-namespace Ecommerce.Application.Services
+namespace Ecommerce.Application.Services.Interfaces
 {
     public interface ITokenService
     {

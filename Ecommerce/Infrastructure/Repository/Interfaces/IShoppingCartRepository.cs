@@ -3,7 +3,7 @@ using Ecommerce.Domain.ValueObjects;
 using Ecommerce.Shared.DTO;
 using Ecommerce.Shared.Enums;
 
-namespace Ecommerce.Infrastructure.Repository
+namespace Ecommerce.Infrastructure.Repository.Interfaces
 {
     public interface IShoppingCartRepository
     {

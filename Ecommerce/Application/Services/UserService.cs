@@ -1,7 +1,8 @@
-﻿using Ecommerce.Domain.Aggregates;
+﻿using Ecommerce.Application.Services.Interfaces;
+using Ecommerce.Domain.Aggregates;
 using Ecommerce.Domain.Entities;
 using Ecommerce.Infrastructure.Hasher;
-using Ecommerce.Infrastructure.Repository;
+using Ecommerce.Infrastructure.Repository.Interfaces;
 
 namespace Ecommerce.Application.Services
 {

@@ -1,7 +1,7 @@
 ﻿using Ecommerce.Domain.Aggregates;
 using Ecommerce.Domain.Entities;
 
-namespace Ecommerce.Infrastructure.Repository
+namespace Ecommerce.Infrastructure.Repository.Interfaces
 {
     public interface IUserRepository
     {

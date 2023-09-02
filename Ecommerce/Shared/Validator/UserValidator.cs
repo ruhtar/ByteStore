@@ -1,7 +1,7 @@
 ﻿using Ecommerce.Domain.Aggregates;
 using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.ValueObjects;
-using Ecommerce.Infrastructure.Repository;
+using Ecommerce.Infrastructure.Repository.Interfaces;
 using Ecommerce.Shared.DTO;
 
 namespace Ecommerce.Shared.Validator

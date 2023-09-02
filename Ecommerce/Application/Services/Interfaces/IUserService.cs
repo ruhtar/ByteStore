@@ -2,7 +2,7 @@
 using Ecommerce.Domain.Entities;
 using Ecommerce.Shared.DTO;
 
-namespace Ecommerce.Application.Services
+namespace Ecommerce.Application.Services.Interfaces
 {
     public interface IUserService
     {

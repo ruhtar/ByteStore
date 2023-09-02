@@ -1,5 +1,6 @@
 ﻿using Ecommerce.Domain.Entities;
 using Ecommerce.Infrastructure.Cache;
+using Ecommerce.Infrastructure.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 

@@ -1,7 +1,8 @@
-﻿using Ecommerce.Infrastructure.Repository;
-using Ecommerce.Domain.ValueObjects;
+﻿using Ecommerce.Domain.ValueObjects;
 using Ecommerce.Shared.DTO;
 using Ecommerce.Shared.Enums;
+using Ecommerce.Application.Services.Interfaces;
+using Ecommerce.Infrastructure.Repository.Interfaces;
 
 namespace Ecommerce.Application.Services
 {

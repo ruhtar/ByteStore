@@ -1,4 +1,4 @@
-﻿using Ecommerce.Application.Services;
+﻿using Ecommerce.Application.Services.Interfaces;
 using Ecommerce.Domain.Aggregates;
 using Ecommerce.Domain.ValueObjects;
 using Ecommerce.Shared.DTO;

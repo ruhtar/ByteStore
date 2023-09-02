@@ -1,5 +1,6 @@
-﻿using Ecommerce.Domain.Entities;
-using Ecommerce.Infrastructure.Repository;
+﻿using Ecommerce.Application.Services.Interfaces;
+using Ecommerce.Domain.Entities;
+using Ecommerce.Infrastructure.Repository.Interfaces;
 
 namespace Ecommerce.Application.Services
 {
