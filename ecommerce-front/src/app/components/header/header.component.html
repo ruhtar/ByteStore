@@ -12,7 +12,7 @@
     </ul>
   </nav>
   <div *ngIf="logged">
-    <a routerLink="/login">Sign out</a>
+    <a href="#" (click)="signOut()">Sign Out</a>
   </div>
   <div *ngIf="!logged">
     <a routerLink="/login">Login</a>

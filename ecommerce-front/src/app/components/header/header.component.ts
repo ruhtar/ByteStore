@@ -10,6 +10,11 @@ export class HeaderComponent {
   constructor(public loginService: LoginService) {}
   logged!: boolean;
 
+  signOut() {
+    localStorage.removeItem('acess_token');
+    location.reload();
+  }
+
   ngOnInit() {
     this.loginService.isLoggedIn.subscribe((response) => {
       this.logged = response;

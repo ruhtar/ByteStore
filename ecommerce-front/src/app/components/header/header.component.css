@@ -23,6 +23,7 @@ nav ul li {
 
 a {
   text-decoration: none;
+  cursor: pointer;
   color: rgba(255, 193, 110, 255);
   transition: 0.2s ease-in-out;
 }
