@@ -11,7 +11,10 @@
   <div *ngFor="let product of products" class="product-card">
     <img src="product-image.jpg" alt="Product Image" />
     <h2 class="product-name">{{ product.name }}</h2>
-    <p class="product-price">{{ product.price }} $</p>
+    <p class="product-price">
+      <i class="fa-solid fa-hand-holding-dollar"></i> {{ product.price }} $
+    </p>
+
     <p class="product-quantity">Stock: {{ product.productQuantity }}</p>
   </div>
 </section>

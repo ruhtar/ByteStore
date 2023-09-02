@@ -37,9 +37,7 @@ export class LoginComponent {
         Password: password,
       };
       this.loginService.signIn(user).subscribe(
-        (token: IToken) => {
-          console.log(token);
-          localStorage.setItem('token', token.token);
+        (response) => {
           this.router.navigateByUrl('/home');
         },
         (error: HttpErrorResponse) => {

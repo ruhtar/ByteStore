@@ -11,7 +11,10 @@
       <li><a href="/contact">Contact</a></li>
     </ul>
   </nav>
-  <div>
+  <div *ngIf="logged">
+    <a routerLink="/login">Sign out</a>
+  </div>
+  <div *ngIf="!logged">
     <a routerLink="/login">Login</a>
   </div>
 </header>
