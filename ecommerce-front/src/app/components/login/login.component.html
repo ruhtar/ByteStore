@@ -1,6 +1,8 @@
 ﻿<div class="login-container">
   <div class="login-box">
-    <a routerLink="/home"> <i class="fas fa-arrow-left"></i> Home page </a>
+    <a routerLink="/home">
+      <i class="fa-solid fa-house" style="color: #709ab6"></i> Home page
+    </a>
     <h2>Login</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" #formDir="ngForm">
       <label for="username"><i class="fa-solid fa-user"></i> Username:</label>

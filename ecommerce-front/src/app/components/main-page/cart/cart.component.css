@@ -68,15 +68,21 @@ footer {
 
 /* Botão de Finalizar Compra */
 .checkout-button {
-  background-color: #2ecc71;
-  color: white;
+  background-color: #ffc16e;
+  color: black;
   border: none;
   padding: 1rem;
   width: 100%;
   border-radius: 4px;
   cursor: pointer;
+  transition: 0.2s ease-in-out;
 }
 
 .checkout-button:hover {
-  background-color: #27ae60;
+  background-color: #a07844;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
 }

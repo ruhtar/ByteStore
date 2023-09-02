@@ -5,18 +5,24 @@
   </div>
   <nav>
     <ul>
-      <li><a href="/home">Home</a></li>
-      <li><a href="/products">Products</a></li>
-      <li><a href="/cart">Cart</a></li>
-      <li><a href="/contact">Contact</a></li>
+      <i class="fa-solid fa-house" style="color: #ffc16e"></i>
+      <li><a href="/home"> Home</a></li>
+      <i class="fa-solid fa-bag-shopping" style="color: #ffc16e"></i>
+      <li><a href="/products"> Products</a></li>
+      <i class="fa-solid fa-cart-shopping" style="color: #ffc16e"></i>
+      <li><a href="/cart"> Cart</a></li>
+      <i class="fa-solid fa-phone" style="color: #ffc16e"></i>
+      <li><a href="/contact"> Contact</a></li>
     </ul>
   </nav>
   <div *ngIf="logged">
     <a href="#" (click)="signOut()">
-      <i class="fa-regular fa-user"></i>Sign Out</a
+      <i class="fa-regular fa-user" style="color: #ffc16e"></i> Sign Out</a
     >
   </div>
   <div *ngIf="!logged">
-    <a routerLink="/login"><i class="fa-regular fa-user"></i> Login</a>
+    <a routerLink="/login"
+      ><i class="fa-regular fa-user" style="color: #ffc16e"></i> Login</a
+    >
   </div>
 </header>

@@ -1,12 +1,11 @@
 header {
-  /* background: linear-gradient(to right, #2a80b9, #7c9eb6); */
-  background-color: #2a80b9;
-  /* color: rgba(255, 193, 110, 255); */
+  height: 11rem;
+  background: linear-gradient(to bottom, #2a80b9, white);
   color: white;
   padding: 10px 0;
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Alinhar verticalmente no centro */
+  align-items: center;
   padding-left: 20px;
   padding-right: 30px;
   text-align: justify;
@@ -25,6 +24,7 @@ nav ul li {
 }
 
 a {
+  font-size: 1.3rem;
   text-decoration: none;
   cursor: pointer;
   /* color: rgba(255, 193, 110, 255); */

@@ -1,0 +1,43 @@
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+h1,
+p,
+a {
+  text-decoration: none;
+  color: #354a57;
+  margin-top: 2rem;
+}
+
+.contact-info p a {
+  text-decoration: none;
+  color: #445e6f;
+}
+
+.contact-container {
+  text-align: center;
+  padding: 1.25rem;
+}
+
+.contact-info {
+  background-color: white;
+  border-radius: 0.625rem;
+  padding: 1.25rem;
+  box-shadow: 0 0 0.625rem #709ab6;
+}
+
+.contact-icon {
+  font-size: 2rem;
+  margin-right: 0.625rem;
+  vertical-align: middle;
+}
+
+.contact-link {
+  text-decoration: none;
+  color: #333;
+  vertical-align: middle;
+}
