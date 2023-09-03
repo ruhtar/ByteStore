@@ -13,11 +13,16 @@ namespace Ecommerce.Infrastructure.Cache
             _redis = redis;
         }
 
-        public async Task<IEnumerable<Product>> GetFromCacheAsync(string cacheKey)
+        public async Task<T> GetFromCacheAsync<T>(string cacheKey)
         {
             var cacheData = await _redis.GetStringAsync(cacheKey);
-            if (cacheData != null) return JsonSerializer.Deserialize<IEnumerable<Product>>(cacheData);
-            return null;
+
+            if (cacheData != null)
+            {
+                return JsonSerializer.Deserialize<T>(cacheData);
+            }
+
+            return default; // Retorna o valor padrão para o tipo T se não houver dados em cache.
         }
 
         public async Task SetAsync(string key, string value)

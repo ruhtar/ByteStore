@@ -5,7 +5,7 @@ namespace Ecommerce.Infrastructure.Cache
 {
     public interface ICacheConfigs
     {
-        Task<IEnumerable<Product>> GetFromCacheAsync(string cacheKey);
+        Task<T> GetFromCacheAsync<T>(string cacheKey);
         Task SetAsync(string key, string value);
     }
 }

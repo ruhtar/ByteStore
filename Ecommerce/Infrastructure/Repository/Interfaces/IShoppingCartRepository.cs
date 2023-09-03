@@ -9,7 +9,7 @@ namespace Ecommerce.Infrastructure.Repository.Interfaces
     {
         Task<BuyOrderStatus> BuyOrder(int userAggregateId);
         Task CreateShoppingCart(int userAggregateId);
-        Task<ShoppingCartDto?> GetShoppingCartById(int shoppingCartId);
+        //Task<ShoppingCartDto?> GetShoppingCartById(int shoppingCartId);
         Task<ShoppingCartDto?> GetShoppingCartByUserAggregateId(int userAggregateId);
         Task<OrderStatus> MakeOrder(OrderItem newItem, int shoppingCartId);
     }

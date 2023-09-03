@@ -30,21 +30,21 @@ namespace Ecommerce.Infrastructure.Repository
             await _context.SaveChangesAsync();
         }
 
-        public async Task<ShoppingCartDto?> GetShoppingCartById(int shoppingCartId)
-        {
-            var cart = await _context.ShoppingCarts
-                .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.ShoppingCartId == shoppingCartId);
+        //public async Task<ShoppingCartDto?> GetShoppingCartById(int shoppingCartId)
+        //{
+        //    var cart = await _context.ShoppingCarts
+        //        .AsNoTracking()
+        //        .FirstOrDefaultAsync(x => x.ShoppingCartId == shoppingCartId);
 
-            if (cart == null) { return null; }
-            var orderItem = JsonSerializer.Deserialize<List<OrderItem>>(cart.OrderItems);
-            return new ShoppingCartDto
-            {
-                ShoppingCartId = shoppingCartId,
-                UserAggregateId = cart.UserAggregateId,
-                OrderItems = orderItem
-            };
-        }
+        //    if (cart == null) { return null; }
+        //    var orderItem = JsonSerializer.Deserialize<List<OrderItem>>(cart.OrderItems);
+        //    return new ShoppingCartDto
+        //    {
+        //        ShoppingCartId = shoppingCartId,
+        //        UserAggregateId = cart.UserAggregateId,
+        //        OrderItems = orderItem
+        //    };
+        //}
         public async Task<ShoppingCartDto?> GetShoppingCartByUserAggregateId(int userAggregateId)
         {
             var shoppingCart = await _context.ShoppingCarts

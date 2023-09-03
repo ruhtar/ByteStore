@@ -36,19 +36,19 @@ namespace Ecommerce.Apresentation.Controllers
         }
 
         [HttpGet("/user/{userAggregateId}/cart")]
-        public async Task<ActionResult<ShoppingCart>> GetShoppingCartByUserAggregateId([FromRoute] int userAggregateId)
+        public async Task<ActionResult<ShoppingCartResponseDto>> GetShoppingCartByUserAggregateId([FromRoute] int userAggregateId)
         {
             var cart = await _shoppingCartService.GetShoppingCartByUserAggregateId(userAggregateId);
             if (cart == null) return Problem("The shopping cart of the current user is not available.");
             return Ok(cart);
         }
 
-        [HttpGet("/cart/{shoppingCartId}")]
-        public async Task<ActionResult<ShoppingCartDto?>> GetShoppingCartById([FromRoute] int shoppingCartId)
-        {
-            var cart = await _shoppingCartService.GetShoppingCartById(shoppingCartId);
-            if (cart == null) return Problem("The shopping cart is not available.");
-            return Ok(cart);
-        }
+        //[HttpGet("/cart/{shoppingCartId}")]
+        //public async Task<ActionResult<ShoppingCartDto?>> GetShoppingCartById([FromRoute] int shoppingCartId)
+        //{
+        //    var cart = await _shoppingCartService.GetShoppingCartById(shoppingCartId);
+        //    if (cart == null) return Problem("The shopping cart is not available.");
+        //    return Ok(cart);
+        //}
     }
 }

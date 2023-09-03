@@ -3,6 +3,8 @@ using Ecommerce.Shared.DTO;
 using Ecommerce.Shared.Enums;
 using Ecommerce.Application.Services.Interfaces;
 using Ecommerce.Infrastructure.Repository.Interfaces;
+using Ecommerce.Infrastructure.Cache;
+using System.Text.Json;
 
 namespace Ecommerce.Application.Services
 {
@@ -10,12 +12,15 @@ namespace Ecommerce.Application.Services
     {
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly IProductRepository _productRepository;
+        private readonly ICacheConfigs _cache;
+        private const string CartItemKey = "CartItemKey";
 
 
-        public ShoppingCartService(IShoppingCartRepository shoppingCartRepository, IProductRepository productRepository)
+        public ShoppingCartService(IShoppingCartRepository shoppingCartRepository, IProductRepository productRepository, ICacheConfigs cache)
         {
             _shoppingCartRepository = shoppingCartRepository;
             _productRepository = productRepository;
+            _cache = cache;
         }
 
         public async Task<BuyOrderStatus> BuyOrder(int userAggregateId)
@@ -32,7 +37,7 @@ namespace Ecommerce.Application.Services
                 }
                 else
                 {
-                    return BuyOrderStatus.InvalidQuantity;                        
+                    return BuyOrderStatus.InvalidQuantity;
                 }
             }
 
@@ -52,7 +57,7 @@ namespace Ecommerce.Application.Services
                 return OrderStatus.ProductNotFound;
 
             var orderItem = shoppingCart.OrderItems.FirstOrDefault(x => x.ProductId == item.ProductId);
-            if (orderItem == null) 
+            if (orderItem == null)
             {
                 orderItem = new OrderItem
                 {
@@ -67,14 +72,53 @@ namespace Ecommerce.Application.Services
             return await _shoppingCartRepository.MakeOrder(item, userAggregateId);
         }
 
-        public async Task<ShoppingCartDto?> GetShoppingCartById(int shoppingCartId)
-        {
-            return await _shoppingCartRepository.GetShoppingCartById(shoppingCartId);
-        }
+        //public async Task<ShoppingCartDto?> GetShoppingCartById(int shoppingCartId)
+        //{
+        //    return await _shoppingCartRepository.GetShoppingCartById(shoppingCartId);
+        //}
 
-        public async Task<ShoppingCartDto?> GetShoppingCartByUserAggregateId(int userAggregateId)
+        public async Task<ShoppingCartResponseDto> GetShoppingCartByUserAggregateId(int userAggregateId)
         {
-            return await _shoppingCartRepository.GetShoppingCartByUserAggregateId(userAggregateId);
+            var cart = await _shoppingCartRepository.GetShoppingCartByUserAggregateId(userAggregateId);
+            var cartDto = new ShoppingCartResponseDto
+            {
+                UserAggregateId = cart.UserAggregateId,
+                ShoppingCartId = cart.ShoppingCartId,
+                Products = null
+            };
+            var cache = await _cache.GetFromCacheAsync<ShoppingCartResponseDto>(CartItemKey);
+            if (cache != null)
+            {
+                //cartDto.Products = cache.Products.Select(c => new RequestProductDto
+                //{
+                //    Name = c.Name,
+                //    Price = c.Price,
+                //    ProductQuantity = c.ProductQuantity,
+                //}).ToList();
+                return cache;
+            }
+
+            var products = new List<RequestProductDto>();
+
+            foreach (var item in cart.OrderItems)
+            {
+                var product = await _productRepository.GetProductById(item.ProductId);
+
+                if (product != null)
+                {
+                    var productDto = new RequestProductDto
+                    {
+                        Name = product.Name,
+                        Price = product.Price,
+                        ProductQuantity = product.ProductQuantity,
+                    };
+                    products.Add(productDto);
+                }
+            }
+            cartDto.Products = products;
+            var cacheData = JsonSerializer.Serialize(cartDto);
+            await _cache.SetAsync(CartItemKey, cacheData);
+            return cartDto;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Ecommerce.Infrastructure.Repository
             //var stopwatch = new Stopwatch();
             //stopwatch.Start();
 
-            var cache = await _cache.GetFromCacheAsync(AllProductsKey);
+            var cache = await _cache.GetFromCacheAsync<IEnumerable<Product>>(AllProductsKey);
             if (cache != null)
             {
                 //stopwatch.Stop();
