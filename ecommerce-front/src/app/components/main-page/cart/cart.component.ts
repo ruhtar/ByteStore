@@ -55,7 +55,7 @@ export class CartComponent {
 
   calculateTotalPrice() {
     this.cart.products.forEach((element) => {
-      this.totalPrice += element.price;
+      this.totalPrice += element.price * element.productQuantity;
     });
   }
 }

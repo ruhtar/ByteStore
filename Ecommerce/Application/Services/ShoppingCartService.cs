@@ -110,7 +110,7 @@ namespace Ecommerce.Application.Services
                     {
                         Name = product.Name,
                         Price = product.Price,
-                        ProductQuantity = product.ProductQuantity,
+                        ProductQuantity = item.Quantity,
                     };
                     products.Add(productDto);
                 }
