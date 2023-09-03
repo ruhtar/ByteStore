@@ -54,6 +54,7 @@ export class CartComponent {
             alert('Completed');
           }
         });
+      location.reload();
     }
   }
 

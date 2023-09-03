@@ -1,5 +1,5 @@
-<app-header></app-header>
 <div id="page-container">
+  <app-header></app-header>
   <section class="cart-items" *ngIf="logged">
     <ng-container *ngIf="!isCartEmpty">
       <div class="cart-item" *ngFor="let product of products">

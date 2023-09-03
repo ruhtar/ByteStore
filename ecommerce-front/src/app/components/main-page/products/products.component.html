@@ -1,11 +1,3 @@
-<!-- <section class="products">
-  <div *ngFor="let product of products" class="product">
-    <h2>{{ product.name }}</h2>
-    <p>R$ {{ product.price }}</p>
-    <button (click)="addToCart(product.productId)">Add to Cart</button>
-  </div>
-</section> -->
-
 <app-header></app-header>
 <section class="products">
   <div *ngFor="let product of products" class="product-card">
@@ -14,8 +6,8 @@
     <p class="product-price">
       <i class="fa-solid fa-hand-holding-dollar"></i> {{ product.price }} $
     </p>
-
     <p class="product-quantity">Stock: {{ product.productQuantity }}</p>
+    <button (click)="addToCart(userId, product)">ADICIONAR PROVISORIO</button>
   </div>
 </section>
 <app-footer></app-footer>
