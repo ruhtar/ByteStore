@@ -51,6 +51,13 @@ textarea {
 body {
   font-family: "Roboto", sans-serif;
   line-height: 1.5;
+  /* aparentemente isso libera algumas funções de certas fontes. Coloquei pra testar (não vi diferença) */
+  /* https://twitter.com/ericvna/status/1697997486684610975?t=JmnSv_x9Y_KYBHD9a8tZeg&s=08 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "cv11", "salt", "ss01", "ss03", "cv01", "cv02", "cv03",
+    "cv04", "cv05", "cv06", "cv09", "cv10";
 }
 
 /* Reset some default HTML5 styling */

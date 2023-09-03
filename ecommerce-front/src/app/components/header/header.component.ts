@@ -13,6 +13,7 @@ export class HeaderComponent {
     private tokenService: TokenService,
   ) {}
   logged!: boolean;
+  username!: string;
 
   signOut() {
     localStorage.removeItem('acess_token');
@@ -24,7 +25,7 @@ export class HeaderComponent {
       this.logged = response;
     });
     if (this.logged) {
-      this.tokenService.getUserIdFromToken();
+      this.username = this.tokenService.getUserIdFromToken().name;
     }
   }
 }

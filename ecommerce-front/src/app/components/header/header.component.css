@@ -23,7 +23,7 @@ nav ul li {
   margin-right: 20px;
 }
 
-a {
+nav a {
   font-size: 1.5rem;
   text-decoration: none;
   /* color: rgba(255, 193, 110, 255); */
@@ -55,4 +55,17 @@ img {
 i {
   /* -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #000000; */
+}
+
+.user-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.user-container a,
+p {
+  color: #fff;
+  text-decoration: none;
+  margin-left: auto;
 }

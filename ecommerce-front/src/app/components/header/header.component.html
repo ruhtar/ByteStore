@@ -32,9 +32,18 @@
       </li>
     </ul>
   </nav>
-  <div *ngIf="logged">
-    <a href="#" (click)="signOut()">
-      <i class="fa-solid fa-user" style="color: #ffc16e"></i> Sign Out</a
+  <div *ngIf="logged" class="user-container">
+    <p>
+      <i class="fa-solid fa-user" style="color: #ffc16e"></i> Hello,
+      {{ username }}
+    </p>
+    <a href="#"
+      ><i class="fa-solid fa-gears" style="color: #ffc16e"></i>
+      Configurations</a
+    >
+    <a href="#" (click)="signOut()"
+      ><i class="fa-solid fa-right-from-bracket" style="color: #ffc16e"></i>
+      Sign Out</a
     >
   </div>
   <div *ngIf="!logged">

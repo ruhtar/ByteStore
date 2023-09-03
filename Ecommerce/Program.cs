@@ -48,12 +48,14 @@ namespace Ecommerce
             app.UseCors(builder =>
             {
                 builder
+                .WithOrigins("http://localhost:4200")
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader();
             });
 
-            app.UseCors("AllowOrigin");
+            app.UseCors("AllowSpecificOrigin");
+
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
