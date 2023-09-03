@@ -1,6 +1,7 @@
 header {
   height: 11rem;
-  background: linear-gradient(to bottom, #2a80b9, white);
+  background: linear-gradient(to bottom, #226694, #521ff8);
+  /* #3B3FC9 */
   color: #fff;
   padding: 10px 0;
   display: flex;

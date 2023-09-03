@@ -72,7 +72,8 @@ footer {
   color: black;
   border: none;
   padding: 1rem;
-  width: 100%;
+  font-size: 1.2rem;
+  width: 15rem;
   border-radius: 4px;
   cursor: pointer;
   transition: 0.2s ease-in-out;
