@@ -89,3 +89,8 @@ img {
 * h2 {
   font-weight: 500;
 }
+
+:root {
+  --purple: #383dca;
+  --yellow: #ffc26e;
+}

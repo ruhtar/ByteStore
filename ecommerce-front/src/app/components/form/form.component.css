@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #709ab6;
+  background-color: var(--purple);
   background-size: 50px 50px;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .registration-form button {
-  background-color: #007bff;
+  background-color: var(--purple);
   font-size: 16px;
   color: #fff;
   border: none;
@@ -51,7 +51,7 @@
 }
 
 .registration-form button:hover {
-  background-color: #194f74;
+  background-color: #1f2271;
 }
 
 .login-warning {
@@ -62,6 +62,7 @@
 .login-warning a {
   text-decoration: none;
   font-size: 14px;
+  color: (--purple);
 }
 
 .form-sucess p {
@@ -75,5 +76,5 @@ i {
 
 a {
   text-decoration: none;
-  color: #007bff;
+  color: var(--purple);
 }

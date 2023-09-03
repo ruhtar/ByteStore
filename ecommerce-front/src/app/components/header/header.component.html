@@ -7,48 +7,53 @@
     <ul>
       <li>
         <a href="/home"
-          ><i class="fa-solid fa-house" style="color: #ffc16e"></i> Home</a
+          ><i class="fa-solid fa-house" style="color: var(--yellow)"></i>
+          Home</a
         >
       </li>
 
       <li>
         <a href="/products"
-          ><i class="fa-solid fa-bag-shopping" style="color: #ffc16e"></i>
+          ><i class="fa-solid fa-bag-shopping" style="color: var(--yellow)"></i>
           Products</a
         >
       </li>
 
       <li>
         <a href="/cart">
-          <i class="fa-solid fa-cart-shopping" style="color: #ffc16e"></i>
+          <i class="fa-solid fa-cart-shopping" style="color: var(--yellow)"></i>
           Cart</a
         >
       </li>
 
       <li>
         <a href="/contact"
-          ><i class="fa-solid fa-phone" style="color: #ffc16e"></i> Contact</a
+          ><i class="fa-solid fa-phone" style="color: var(--yellow)"></i>
+          Contact</a
         >
       </li>
     </ul>
   </nav>
   <div *ngIf="logged" class="user-container">
     <p>
-      <i class="fa-solid fa-user" style="color: #ffc16e"></i> Hello,
+      <i class="fa-solid fa-user" style="color: var(--yellow)"></i> Hello,
       {{ username }}
     </p>
     <a href="#"
-      ><i class="fa-solid fa-gears" style="color: #ffc16e"></i>
+      ><i class="fa-solid fa-gears" style="color: var(--yellow)"></i>
       Configurations</a
     >
     <a href="#" (click)="signOut()"
-      ><i class="fa-solid fa-right-from-bracket" style="color: #ffc16e"></i>
+      ><i
+        class="fa-solid fa-right-from-bracket"
+        style="color: var(--yellow)"
+      ></i>
       Sign Out</a
     >
   </div>
   <div *ngIf="!logged" class="user-container">
     <a routerLink="/login"
-      ><i class="fa-solid fa-user" style="color: #ffc16e"></i> Login</a
+      ><i class="fa-solid fa-user" style="color: var(--yellow)"></i> Login</a
     >
   </div>
 </header>

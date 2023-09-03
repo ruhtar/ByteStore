@@ -25,7 +25,7 @@
     You are not logged in and cannot access the cart.
   </section>
 
-  <section class="empty-cart-message" *ngIf="isCartEmpty">
+  <section class="empty-cart-message" *ngIf="logged && isCartEmpty">
     Your cart is empty.
   </section>
 </div>

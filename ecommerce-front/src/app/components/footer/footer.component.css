@@ -3,9 +3,9 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: #2a80b9;
+  background-color: var(--purple);
   color: white;
   padding: 10px;
   text-align: center;
-  background: linear-gradient(to top, #2a80b9, white);
+  background: linear-gradient(to bottom, #226694, #521ff8);
 }

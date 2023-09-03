@@ -41,3 +41,7 @@ a {
   color: #333;
   vertical-align: middle;
 }
+
+i {
+  color: var(--yellow);
+}
