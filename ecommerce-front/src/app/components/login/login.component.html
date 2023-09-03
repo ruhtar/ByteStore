@@ -13,16 +13,26 @@
         placeholder="Username"
         formControlName="username"
       />
-
       <label for="password"><i class="fa-solid fa-key"></i> Password:</label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        placeholder="Password"
-        formControlName="password"
-      />
-
+      <span class="password-input-container">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <i
+          class="fa-solid fa-eye input-icon"
+          (click)="togglePassword()"
+          *ngIf="showPassword"
+        ></i>
+        <i
+          class="fa-solid fa-eye-slash input-icon"
+          (click)="togglePassword()"
+          *ngIf="!showPassword"
+        ></i>
+      </span>
       <button type="submit" class="submit-button">Login</button>
     </form>
     <div class="signup-warning">

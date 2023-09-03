@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class LoginComponent {
   loginForm!: FormGroup;
+  showPassword: boolean = false;
 
   constructor(
     private loginService: AuthService,
@@ -51,6 +52,16 @@ export class LoginComponent {
     }
     if (error.status == 500) {
       alert('We are facing some problems. Please, try again later.');
+    }
+  }
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+    const passwordInput = document.getElementById(
+      'password',
+    ) as HTMLInputElement;
+    if (passwordInput) {
+      passwordInput.type = this.showPassword ? 'text' : 'password';
     }
   }
 }

@@ -78,3 +78,15 @@ a {
   text-decoration: none;
   color: var(--purple);
 }
+
+.password-input-container {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Ajuste a distância da borda direita conforme necessário */
+  transform: translateY(-50%);
+  cursor: pointer;
+}

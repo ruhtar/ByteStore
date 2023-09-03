@@ -16,14 +16,27 @@
       />
 
       <label for="password">{{ password }}:</label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        required
-        formControlName="password"
-        placeholder="{{ passwordPlaceholder }}"
-      />
+      <span class="password-input-container">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          formControlName="password"
+          placeholder="{{ passwordPlaceholder }}"
+          class="password-input"
+        />
+        <i
+          class="fa-solid fa-eye input-icon"
+          (click)="togglePassword()"
+          *ngIf="showPassword"
+        ></i>
+        <i
+          class="fa-solid fa-eye-slash input-icon"
+          (click)="togglePassword()"
+          *ngIf="!showPassword"
+        ></i>
+      </span>
 
       <label>
         <input

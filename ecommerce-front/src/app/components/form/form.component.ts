@@ -20,6 +20,7 @@ export class FormComponent {
   @Input() submitButtonText!: string;
   @Input() usernamePlaceholder!: string;
   @Input() passwordPlaceholder!: string;
+  showPassword: boolean = false;
 
   userForm!: FormGroup;
   userAggregate!: UserAggregate;
@@ -50,5 +51,15 @@ export class FormComponent {
     this.onSubmit.emit(this.userForm.value);
     this.userForm.reset();
     this.formSucess = true;
+  }
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+    const passwordInput = document.getElementById(
+      'password',
+    ) as HTMLInputElement;
+    if (passwordInput) {
+      passwordInput.type = this.showPassword ? 'text' : 'password';
+    }
   }
 }
