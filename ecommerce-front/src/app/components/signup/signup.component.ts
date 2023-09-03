@@ -27,8 +27,6 @@ export class SignupComponent {
   constructor(private signupService: SignupService) {}
 
   handler(user: any) {
-    console.log(user);
-
     let role;
 
     var checkbox = <HTMLInputElement>document.getElementById('isSeller');

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ShoppingCart } from 'src/app/types/ShoppingCart';
+import { ShoppingCartDto } from 'src/app/types/ShoppingCartDto';
 import { API_PATH } from 'src/environment/env';
 
 @Injectable({
@@ -12,6 +12,6 @@ export class CartService {
   addToCart(productId: number): void {}
 
   getCartByUserId(userId: number) {
-    return this.http.get<ShoppingCart>(API_PATH + `user/${userId}/cart`);
+    return this.http.get<ShoppingCartDto>(API_PATH + `user/${userId}/cart`);
   }
 }

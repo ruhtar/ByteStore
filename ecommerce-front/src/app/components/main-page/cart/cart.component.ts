@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { TokenService } from 'src/app/services/token/token.service';
+import { Product } from 'src/app/types/Product';
 import { ShoppingCart } from 'src/app/types/ShoppingCart';
+import { ShoppingCartDto } from 'src/app/types/ShoppingCartDto';
 
 @Component({
   selector: 'app-cart',
@@ -17,7 +19,7 @@ export class CartComponent {
   ) {}
   logged!: boolean;
   userId!: number;
-  cart!: ShoppingCart;
+  cart!: ShoppingCartDto;
 
   ngOnInit() {
     this.authService.isLoggedIn.subscribe((response) => {
@@ -28,10 +30,11 @@ export class CartComponent {
       this.userId = this.tokenService.getUserIdFromToken().nameid;
       this.cartService
         .getCartByUserId(this.userId)
-        .subscribe((cart: ShoppingCart) => {
-          this.cart = cart;
+        .subscribe((response: ShoppingCartDto) => {
+          this.cart = response;
+          console.log(this.cart.products);
+          // console.log(this.products);
         });
     }
-    console.log(this.cart);
   }
 }
