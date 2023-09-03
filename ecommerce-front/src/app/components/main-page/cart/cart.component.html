@@ -1,21 +1,22 @@
 <div id="page-container">
   <app-header></app-header>
-
-  <section class="cart-items" *ngFor="let product of cart.products">
+  <section class="cart-items" *ngFor="let product of products">
     <div class="cart-item">
       <!-- <img src="product1.jpg" alt="Produto 1" /> -->
       <div class="item-details">
         <h2>Name: {{ product.name }}</h2>
         <p>Price: {{ product.price }}</p>
         <p>Quantity: {{ product.productQuantity }}</p>
-        <button class="remove-button">Remover</button>
+        <button class="remove-button">Remove</button>
       </div>
     </div>
   </section>
   <section class="summary">
-    <h2>Resumo do Carrinho</h2>
-    <p>Total: R$ 50,00</p>
-    <button class="checkout-button">Finalizar Compra</button>
+    <h2>Cart summary</h2>
+    <p>Total: {{ totalPrice }}</p>
+    <button class="checkout-button" (click)="buyOrder()">
+      Complete purchase
+    </button>
   </section>
   <app-footer></app-footer>
 </div>

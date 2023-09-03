@@ -49,7 +49,6 @@ textarea {
 
 /* Set base font and line-height */
 body {
-  font-family: "Roboto", sans-serif;
   line-height: 1.5;
   /* aparentemente isso libera algumas funções de certas fontes. Coloquei pra testar (não vi diferença) */
   /* https://twitter.com/ericvna/status/1697997486684610975?t=JmnSv_x9Y_KYBHD9a8tZeg&s=08 */
@@ -83,7 +82,7 @@ img {
 }
 
 * {
-  font-family: "Roboto", sans-serif;
+  font-family: Arial, sans-serif;
   font-weight: 400;
 }
 

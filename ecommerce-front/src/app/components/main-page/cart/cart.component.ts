@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BuyOrderStatus } from 'src/app/enums/BuyOrderStatus';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { TokenService } from 'src/app/services/token/token.service';
@@ -20,6 +21,8 @@ export class CartComponent {
   logged!: boolean;
   userId!: number;
   cart!: ShoppingCartDto;
+  products!: Product[];
+  totalPrice: number = 0;
 
   ngOnInit() {
     this.authService.isLoggedIn.subscribe((response) => {
@@ -32,9 +35,27 @@ export class CartComponent {
         .getCartByUserId(this.userId)
         .subscribe((response: ShoppingCartDto) => {
           this.cart = response;
-          console.log(this.cart.products);
-          // console.log(this.products);
+          this.products = response.products;
+          this.calculateTotalPrice();
         });
     }
+  }
+
+  buyOrder() {
+    if (this.logged) {
+      this.cartService
+        .buyOrder(this.userId)
+        .subscribe((response: BuyOrderStatus) => {
+          if (response === BuyOrderStatus.Completed) {
+            alert('Completed');
+          }
+        });
+    }
+  }
+
+  calculateTotalPrice() {
+    this.cart.products.forEach((element) => {
+      this.totalPrice += element.price;
+    });
   }
 }
