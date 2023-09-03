@@ -86,17 +86,17 @@ namespace Ecommerce.Application.Services
                 ShoppingCartId = cart.ShoppingCartId,
                 Products = null
             };
-            var cache = await _cache.GetFromCacheAsync<ShoppingCartResponseDto>(CartItemKey);
-            if (cache != null)
-            {
+            //var cache = await _cache.GetFromCacheAsync<ShoppingCartResponseDto>(CartItemKey);
+            //if (cache != null)
+            //{
                 //cartDto.Products = cache.Products.Select(c => new RequestProductDto
                 //{
                 //    Name = c.Name,
                 //    Price = c.Price,
                 //    ProductQuantity = c.ProductQuantity,
                 //}).ToList();
-                return cache;
-            }
+            //    return cache;
+            //}
 
             var products = new List<RequestProductDto>();
 
@@ -116,8 +116,8 @@ namespace Ecommerce.Application.Services
                 }
             }
             cartDto.Products = products;
-            var cacheData = JsonSerializer.Serialize(cartDto);
-            await _cache.SetAsync(CartItemKey, cacheData);
+            //var cacheData = JsonSerializer.Serialize(cartDto);
+            //await _cache.SetAsync(CartItemKey, cacheData);
             return cartDto;
         }
     }

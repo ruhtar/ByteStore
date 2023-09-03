@@ -19,6 +19,7 @@ export class CartComponent {
     public authService: AuthService,
   ) {}
   logged!: boolean;
+  isCartEmpty: boolean = true;
   userId!: number;
   cart!: ShoppingCartDto;
   products!: Product[];
@@ -36,7 +37,10 @@ export class CartComponent {
         .subscribe((response: ShoppingCartDto) => {
           this.cart = response;
           this.products = response.products;
-          this.calculateTotalPrice();
+          if (this.products.length != 0) {
+            this.isCartEmpty = false;
+            this.calculateTotalPrice();
+          }
         });
     }
   }

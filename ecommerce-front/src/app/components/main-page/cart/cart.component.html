@@ -1,22 +1,32 @@
+<app-header></app-header>
 <div id="page-container">
-  <app-header></app-header>
-  <section class="cart-items" *ngFor="let product of products">
-    <div class="cart-item">
-      <!-- <img src="product1.jpg" alt="Produto 1" /> -->
-      <div class="item-details">
-        <h2>Name: {{ product.name }}</h2>
-        <p>Price: {{ product.price }}</p>
-        <p>Quantity: {{ product.productQuantity }}</p>
-        <button class="remove-button">Remove</button>
+  <section class="cart-items" *ngIf="logged">
+    <ng-container *ngIf="!isCartEmpty">
+      <div class="cart-item" *ngFor="let product of products">
+        <!-- <img src="product1.jpg" alt="Produto 1" /> -->
+        <div class="item-details">
+          <h2>Name: {{ product.name }}</h2>
+          <p>Price: {{ product.price }}</p>
+          <p>Quantity: {{ product.productQuantity }}</p>
+          <button class="remove-button">Remove</button>
+        </div>
       </div>
-    </div>
+
+      <div class="summary"></div>
+      <h2>Cart summary</h2>
+      <p>Total: {{ totalPrice }}</p>
+      <button class="checkout-button" (click)="buyOrder()">
+        Complete purchase
+      </button>
+    </ng-container>
   </section>
-  <section class="summary">
-    <h2>Cart summary</h2>
-    <p>Total: {{ totalPrice }}</p>
-    <button class="checkout-button" (click)="buyOrder()">
-      Complete purchase
-    </button>
+
+  <section class="cart-message" *ngIf="!logged">
+    You are not logged in and cannot access the cart.
   </section>
-  <app-footer></app-footer>
+
+  <section class="empty-cart-message" *ngIf="isCartEmpty">
+    Your cart is empty.
+  </section>
 </div>
+<app-footer></app-footer>

@@ -24,6 +24,7 @@ main {
 }
 
 .cart-items {
+  margin: 2rem;
   flex: 2;
 }
 
@@ -86,4 +87,22 @@ footer {
 #page-container {
   position: relative;
   min-height: 100vh;
+}
+
+.cart-message {
+  background-color: #f2dede;
+  border: 1px solid #ebccd1;
+  color: #a94442;
+  padding: 10px;
+  text-align: center;
+  margin: 20px;
+}
+
+.empty-cart-message {
+  background-color: #f2dede;
+  border: 1px solid #ebccd1;
+  color: #a94442;
+  padding: 10px;
+  text-align: center;
+  margin: 20px;
 }

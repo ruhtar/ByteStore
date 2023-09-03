@@ -106,7 +106,7 @@ namespace Ecommerce.Infrastructure.Repository
         {
             var shoppingCart = await _context.ShoppingCarts.FirstOrDefaultAsync(x => x.UserAggregateId == userAggregateId);
 
-            shoppingCart!.OrderItems = Utils.Serializer(new OrderItem());
+            shoppingCart!.OrderItems = Utils.Serializer(new List<OrderItem>());
             await _context.SaveChangesAsync();
             return BuyOrderStatus.Completed;
         }
