@@ -11,21 +11,17 @@ export class TokenService {
 
     if (jwt) {
       const decodedToken = this.decodeJwt(jwt);
-      console.log('Informações do usuário do JWT:', decodedToken);
+      console.log('InformaÃ§Ãµes do usuÃ¡rio do JWT:', decodedToken);
       return decodedToken;
-    } else {
-      // JWT não encontrado no Local Storage
-      console.log('JWT não encontrado no Local Storage');
     }
   }
 
   private decodeJwt(jwt: string): any {
     const tokenParts = jwt.split('.');
     if (tokenParts.length !== 3) {
-      throw new Error('Token JWT inválido');
+      throw new Error('Invalid JWT');
     }
 
-    // Decodifique a parte de carga do JWT (segunda parte)
     const payload = atob(tokenParts[1]);
     return JSON.parse(payload);
   }

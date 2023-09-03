@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserAggregate } from 'src/app/interfaces/UserAggregate';
+import { UserAggregate } from 'src/app/types/UserAggregate';
 
 @Component({
   selector: 'app-form',

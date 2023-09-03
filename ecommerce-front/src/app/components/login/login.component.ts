@@ -2,9 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IToken } from 'src/app/interfaces/IToken';
-import { User } from 'src/app/interfaces/User';
-import { UserAggregate } from 'src/app/interfaces/UserAggregate';
+import { IToken } from 'src/app/types/IToken';
+import { User } from 'src/app/types/User';
+import { UserAggregate } from 'src/app/types/UserAggregate';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({

@@ -33,7 +33,7 @@ namespace Ecommerce.Application.Services
             var isPasswordValid = _passwordHasher.Validate(userRegistered.User.Password, user.Password);
             if (isPasswordValid)
             {
-                return _tokenService.GenerateToken(userRegistered.User.UserId, userRegistered.Role);
+                return _tokenService.GenerateToken(userRegistered.User.UserId, userRegistered.User.Username, userRegistered.Role);
             }
 
             return "";

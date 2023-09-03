@@ -36,3 +36,28 @@ section {
   position: relative;
   min-height: 100vh;
 }
+
+/* Adiciona uma animação de fade-in aos textos */
+p {
+  text-align: center;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  animation: slideIn 1s ease-in-out;
+}
+
+.image {
+  max-width: 45%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

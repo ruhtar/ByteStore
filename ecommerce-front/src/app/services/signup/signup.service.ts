@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserAggregate } from 'src/app/interfaces/UserAggregate';
+import { UserAggregate } from 'src/app/types/UserAggregate';
 import { API_PATH } from 'src/environment/env';
 
 @Injectable({

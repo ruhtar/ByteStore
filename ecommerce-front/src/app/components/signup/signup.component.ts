@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Roles } from 'src/app/enums/Roles';
-import { Address } from 'src/app/interfaces/Address';
-import { User } from 'src/app/interfaces/User';
-import { UserAggregate } from 'src/app/interfaces/UserAggregate';
+import { Address } from 'src/app/types/Address';
+import { User } from 'src/app/types/User';
+import { UserAggregate } from 'src/app/types/UserAggregate';
 import { SignupService } from 'src/app/services/signup/signup.service';
 
 @Component({

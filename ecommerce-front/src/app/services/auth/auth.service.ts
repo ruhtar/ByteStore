@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IToken } from 'src/app/interfaces/IToken';
-import { User } from 'src/app/interfaces/User';
+import { IToken } from 'src/app/types/IToken';
+import { User } from 'src/app/types/User';
 import { API_PATH } from 'src/environment/env';
 import { BehaviorSubject, tap } from 'rxjs';
 
