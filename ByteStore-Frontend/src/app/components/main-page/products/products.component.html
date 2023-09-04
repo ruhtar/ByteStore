@@ -1,13 +1,15 @@
-<app-header></app-header>
-<section class="products">
-  <div *ngFor="let product of products" class="product-card">
-    <img src="product-image.jpg" alt="Product Image" />
-    <h2 class="product-name">{{ product.name }}</h2>
-    <p class="product-price">
-      <i class="fa-solid fa-hand-holding-dollar"></i> {{ product.price }} $
-    </p>
-    <p class="product-quantity">Stock: {{ product.productQuantity }}</p>
-    <button *ngIf="logged" (click)="addToCart(userId, product)">ADD 1</button>
-  </div>
-</section>
-<app-footer></app-footer>
+<div id="page-container">
+  <app-header></app-header>
+  <section class="products">
+    <div *ngFor="let product of products" class="product-card">
+      <img src="product-image.jpg" alt="Product Image" />
+      <h2 class="product-name">{{ product.name }}</h2>
+      <p class="product-price">
+        <i class="fa-solid fa-hand-holding-dollar"></i> {{ product.price }} $
+      </p>
+      <p class="product-quantity">Stock: {{ product.productQuantity }}</p>
+      <button *ngIf="logged" (click)="addToCart(userId, product)">ADD 1</button>
+    </div>
+  </section>
+  <app-footer></app-footer>
+</div>
