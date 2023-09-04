@@ -4,6 +4,7 @@ import { IToken } from 'src/app/types/IToken';
 import { User } from 'src/app/types/User';
 import { API_PATH } from 'src/environment/env';
 import { BehaviorSubject, tap } from 'rxjs';
+import { UserAggregate } from 'src/app/types/UserAggregate';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +17,10 @@ export class AuthService {
     const token = localStorage.getItem('acess_token');
     //without this, if we reload the page, it counts as if we are not logged in
     this._isLoggedIn.next(!!token); //transforms the token value in a boolean
+  }
+
+  signup(user: UserAggregate) {
+    return this.http.post(API_PATH + 'login/signup', user);
   }
 
   signIn(user: User) {
