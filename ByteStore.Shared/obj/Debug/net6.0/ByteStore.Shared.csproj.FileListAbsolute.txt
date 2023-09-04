@@ -1,0 +1,17 @@
+D:\PROGRAMAÇÃO\Projetos\Ecommerce\ByteStore.Shared\obj\Debug\net6.0\ByteStore.Shared.csproj.AssemblyReference.cache
+D:\PROGRAMAÇÃO\Projetos\Ecommerce\ByteStore.Shared\obj\Debug\net6.0\ByteStore.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\PROGRAMAÇÃO\Projetos\Ecommerce\ByteStore.Shared\obj\Debug\net6.0\ByteStore.Shared.AssemblyInfoInputs.cache
+D:\PROGRAMAÇÃO\Projetos\Ecommerce\ByteStore.Shared\obj\Debug\net6.0\ByteStore.Shared.AssemblyInfo.cs
+D:\PROGRAMAÇÃO\Projetos\Ecommerce\ByteStore.Shared\obj\Debug\net6.0\ByteStore.Shared.csproj.CoreCompileInputs.cache
+D:\PROGRAMAÇÃO\Projetos\Ecommerce\ByteStore.Shared\bin\Debug\net6.0\ByteStore.Shared.deps.json
+D:\PROGRAMAÇÃO\Projetos\Ecommerce\ByteStore.Shared\bin\Debug\net6.0\ByteStore.Shared.runtimeconfig.json
+D:\PROGRAMAÇÃO\Projetos\Ecommerce\ByteStore.Shared\bin\Debug\net6.0\ByteStore.Shared.dll
+D:\PROGRAMAÇÃO\Projetos\Ecommerce\ByteStore.Shared\bin\Debug\net6.0\ByteStore.Shared.pdb
+D:\PROGRAMAÇÃO\Projetos\Ecommerce\ByteStore.Shared\bin\Debug\net6.0\ByteStore.Domain.dll
+D:\PROGRAMAÇÃO\Projetos\Ecommerce\ByteStore.Shared\bin\Debug\net6.0\ByteStore.Domain.pdb
+D:\PROGRAMAÇÃO\Projetos\Ecommerce\ByteStore.Shared\obj\Debug\net6.0\ByteStore.Shared.csproj.CopyComplete
+D:\PROGRAMAÇÃO\Projetos\Ecommerce\ByteStore.Shared\obj\Debug\net6.0\ByteStore.Shared.dll
+D:\PROGRAMAÇÃO\Projetos\Ecommerce\ByteStore.Shared\obj\Debug\net6.0\refint\ByteStore.Shared.dll
+D:\PROGRAMAÇÃO\Projetos\Ecommerce\ByteStore.Shared\obj\Debug\net6.0\ByteStore.Shared.pdb
+D:\PROGRAMAÇÃO\Projetos\Ecommerce\ByteStore.Shared\obj\Debug\net6.0\ByteStore.Shared.genruntimeconfig.cache
+D:\PROGRAMAÇÃO\Projetos\Ecommerce\ByteStore.Shared\obj\Debug\net6.0\ref\ByteStore.Shared.dll

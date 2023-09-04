@@ -1,10 +1,12 @@
 {
   "ExpandedNodes": [
     "",
+    "\\ByteStore.Shared",
     "\\Ecommerce",
+    "\\Ecommerce\\Apresentation",
+    "\\Ecommerce\\Apresentation\\Controllers",
     "\\Ecommerce\\Infrastructure",
     "\\Ecommerce\\Infrastructure\\Repository"
   ],
-  "SelectedNode": "\\Ecommerce\\Infrastructure\\Repository\\ProductRepository.cs",
   "PreviewInSolutionExplorer": false
 }
