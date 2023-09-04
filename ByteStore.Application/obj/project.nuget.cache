@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SjixCRJHbQSerreFXBS7Yw27wGT4p0eHwMD0+TkocT2182eoL0ofGSnqNIGCEN8RfjQYo0BT2dRB84efzxkutg==",
+  "dgSpecHash": "82xLzQR87ibCElz6tlMsP0XiaE5BjBWjyeORYOIIS2pHnzFTgiO18USmfG5mhh4YBYsJnovCaduBr/RvZ49JNA==",
   "success": true,
-  "projectFilePath": "D:\\PROGRAMAÇÃO\\Projetos\\Ecommerce\\ByteStore.Application\\ByteStore.Application.csproj",
+  "projectFilePath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Application\\ByteStore.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Arthur\\.nuget\\packages\\dotnetenv\\2.5.0\\dotnetenv.2.5.0.nupkg.sha512",
     "C:\\Users\\Arthur\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

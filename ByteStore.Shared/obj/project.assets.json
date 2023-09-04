@@ -7139,11 +7139,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\PROGRAMAÇÃO\\Projetos\\Ecommerce\\ByteStore.Shared\\ByteStore.Shared.csproj",
+      "projectUniqueName": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj",
       "projectName": "ByteStore.Shared",
-      "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\Ecommerce\\ByteStore.Shared\\ByteStore.Shared.csproj",
+      "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj",
       "packagesPath": "C:\\Users\\Arthur\\.nuget\\packages\\",
-      "outputPath": "D:\\PROGRAMAÇÃO\\Projetos\\Ecommerce\\ByteStore.Shared\\obj\\",
+      "outputPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Arthur\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7160,8 +7160,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\PROGRAMAÇÃO\\Projetos\\Ecommerce\\ByteStore.Domain\\ByteStore.Domain.csproj": {
-              "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\Ecommerce\\ByteStore.Domain\\ByteStore.Domain.csproj"
+            "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj": {
+              "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj"
             }
           }
         }

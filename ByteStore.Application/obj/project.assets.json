@@ -7196,11 +7196,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\PROGRAMAÇÃO\\Projetos\\Ecommerce\\ByteStore.Application\\ByteStore.Application.csproj",
+      "projectUniqueName": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Application\\ByteStore.Application.csproj",
       "projectName": "ByteStore.Application",
-      "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\Ecommerce\\ByteStore.Application\\ByteStore.Application.csproj",
+      "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Application\\ByteStore.Application.csproj",
       "packagesPath": "C:\\Users\\Arthur\\.nuget\\packages\\",
-      "outputPath": "D:\\PROGRAMAÇÃO\\Projetos\\Ecommerce\\ByteStore.Application\\obj\\",
+      "outputPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Arthur\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7217,14 +7217,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\PROGRAMAÇÃO\\Projetos\\Ecommerce\\ByteStore.Domain\\ByteStore.Domain.csproj": {
-              "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\Ecommerce\\ByteStore.Domain\\ByteStore.Domain.csproj"
+            "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj": {
+              "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj"
             },
-            "D:\\PROGRAMAÇÃO\\Projetos\\Ecommerce\\ByteStore.Infraestructure\\ByteStore.Infraestructure.csproj": {
-              "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\Ecommerce\\ByteStore.Infraestructure\\ByteStore.Infraestructure.csproj"
+            "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Infraestructure\\ByteStore.Infraestructure.csproj": {
+              "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Infraestructure\\ByteStore.Infraestructure.csproj"
             },
-            "D:\\PROGRAMAÇÃO\\Projetos\\Ecommerce\\ByteStore.Shared\\ByteStore.Shared.csproj": {
-              "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\Ecommerce\\ByteStore.Shared\\ByteStore.Shared.csproj"
+            "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj": {
+              "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj"
             }
           }
         }

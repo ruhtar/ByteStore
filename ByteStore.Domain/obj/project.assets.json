@@ -7112,11 +7112,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\PROGRAMAÇÃO\\Projetos\\Ecommerce\\ByteStore.Domain\\ByteStore.Domain.csproj",
+      "projectUniqueName": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj",
       "projectName": "ByteStore.Domain",
-      "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\Ecommerce\\ByteStore.Domain\\ByteStore.Domain.csproj",
+      "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj",
       "packagesPath": "C:\\Users\\Arthur\\.nuget\\packages\\",
-      "outputPath": "D:\\PROGRAMAÇÃO\\Projetos\\Ecommerce\\ByteStore.Domain\\obj\\",
+      "outputPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Arthur\\AppData\\Roaming\\NuGet\\NuGet.Config",
