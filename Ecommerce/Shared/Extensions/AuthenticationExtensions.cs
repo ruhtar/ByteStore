@@ -8,7 +8,7 @@ namespace Ecommerce.Shared.Extensions
     {
         public static IServiceCollection AddJWTConfiguration(this IServiceCollection services)
         {
-            var key = Encoding.ASCII.GetBytes("2445361D-43F8-4066-BBC8-4777CA0129BB");
+            var key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET"));
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

@@ -3,6 +3,7 @@ using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.ValueObjects;
 using Ecommerce.Infrastructure.Repository.Interfaces;
 using Ecommerce.Shared.DTO;
+using Ecommerce.Shared.Enums;
 
 namespace Ecommerce.Shared.Validator
 {

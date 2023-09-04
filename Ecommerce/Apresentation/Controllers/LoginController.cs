@@ -2,6 +2,7 @@ using Ecommerce.Application.Services.Interfaces;
 using Ecommerce.Domain.Aggregates;
 using Ecommerce.Domain.Entities;
 using Ecommerce.Shared.DTO;
+using Ecommerce.Shared.Enums;
 using Ecommerce.Shared.Validator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

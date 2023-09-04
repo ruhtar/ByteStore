@@ -12,7 +12,7 @@ main {
 }
 
 .image {
-  max-width: 45%;
+  max-width: 49.5rem;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -43,12 +43,6 @@ p {
   font-size: 1.6rem;
   line-height: 1.4;
   animation: slideIn 1s ease-in-out;
-}
-
-.image {
-  max-width: 45%;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes slideIn {
