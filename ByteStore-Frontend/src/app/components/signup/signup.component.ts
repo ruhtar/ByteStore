@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Roles } from 'src/app/enums/Roles';
-import { UserAggregate } from 'src/app/types/UserAggregate';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { UserAggregate } from 'src/app/types/UserAggregate';
 
 @Component({
   selector: 'app-signup',
@@ -50,6 +50,9 @@ export class SignupComponent {
       },
     };
 
+    //TODO: Validar o signup, logar e redirecionar.
     this.authService.signup(userAggregate).subscribe();
+    this.authService.signIn(user).subscribe();
+    window.location.replace('/home');
   }
 }

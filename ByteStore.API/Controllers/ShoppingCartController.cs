@@ -1,5 +1,4 @@
 ﻿using ByteStore.Application.Services.Interfaces;
-using ByteStore.Domain.Aggregates;
 using ByteStore.Domain.ValueObjects;
 using ByteStore.Shared.DTO;
 using ByteStore.Shared.Enums;
@@ -12,10 +11,12 @@ namespace ByteStore.Apresentation.Controllers
     public class ShoppingCartController : ControllerBase
     {
         private readonly IShoppingCartService _shoppingCartService;
+        private readonly ITokenService _tokenService;
 
-        public ShoppingCartController(IShoppingCartService shoppingCartService)
+        public ShoppingCartController(IShoppingCartService shoppingCartService, ITokenService tokenService)
         {
             _shoppingCartService = shoppingCartService;
+            _tokenService = tokenService;
         }
 
         [HttpPost("order")]

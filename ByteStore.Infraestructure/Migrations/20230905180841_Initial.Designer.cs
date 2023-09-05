@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace ByteStore.Migrations
+namespace ByteStore.Infraestructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230830225545_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230905180841_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

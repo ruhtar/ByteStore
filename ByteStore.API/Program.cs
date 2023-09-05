@@ -2,6 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using ByteStore.Infrastructure;
 using ByteStore.API.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace ByteStore
 {
@@ -36,7 +40,8 @@ namespace ByteStore
             //JWT CONFIGURATION
             builder.Services.AddJWTConfiguration();
 
-            builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(Environment.GetEnvironmentVariable("CONNECTION_STRING"), ServerVersion.AutoDetect(Environment.GetEnvironmentVariable("CONNECTION_STRING"))));
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(Environment.GetEnvironmentVariable("CONNECTION_STRING"), ServerVersion.AutoDetect(Environment.GetEnvironmentVariable("CONNECTION_STRING")), 
+                x => x.MigrationsAssembly("ByteStore.Infraestructure")));
 
             builder.Services.AddAuthorization();
 
