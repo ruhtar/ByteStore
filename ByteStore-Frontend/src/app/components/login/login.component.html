@@ -33,6 +33,12 @@
           *ngIf="!showPassword"
         ></i>
       </span>
+      <div class="error-span" *ngIf="invalidAuth">
+        Incorrect username or password.
+      </div>
+      <div class="error-span" *ngIf="systemError">
+        We are facing some problems. Please, try again later.
+      </div>
       <button type="submit" class="submit-button">Login</button>
     </form>
     <div class="signup-warning">

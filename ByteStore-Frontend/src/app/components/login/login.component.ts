@@ -13,6 +13,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class LoginComponent {
   loginForm!: FormGroup;
   showPassword: boolean = false;
+  invalidAuth: boolean = false;
+  systemError: boolean = false;
 
   constructor(
     private loginService: AuthService,
@@ -23,6 +25,14 @@ export class LoginComponent {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
+    });
+
+    this.onChanges();
+  }
+  onChanges() {
+    this.loginForm.valueChanges.subscribe(() => {
+      this.systemError = false;
+      this.invalidAuth = false;
     });
   }
 
@@ -48,10 +58,10 @@ export class LoginComponent {
 
   handleError(error: HttpErrorResponse) {
     if (error.status == 401) {
-      alert('Incorrect username or password.');
+      this.invalidAuth = true;
     }
     if (error.status == 500) {
-      alert('We are facing some problems. Please, try again later.');
+      this.systemError = true;
     }
   }
 

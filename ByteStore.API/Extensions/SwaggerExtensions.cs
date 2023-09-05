@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
-namespace Ecommerce.API.Extensions
+namespace ByteStore.API.Extensions
 {
     public static class SwaggerExtensions
     {

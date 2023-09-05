@@ -1,4 +1,4 @@
-﻿namespace Ecommerce.Infrastructure.Hasher
+﻿namespace ByteStore.Infrastructure.Hasher
 {
     public interface IPasswordHasher
     {

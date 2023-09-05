@@ -1,9 +1,9 @@
-﻿using Ecommerce.Domain.Aggregates;
-using Ecommerce.Domain.Entities;
-using Ecommerce.Domain.ValueObjects;
+﻿using ByteStore.Domain.Aggregates;
+using ByteStore.Domain.Entities;
+using ByteStore.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
-namespace Ecommerce.Infrastructure
+namespace ByteStore.Infrastructure
 {
     public class AppDbContext : DbContext
     {

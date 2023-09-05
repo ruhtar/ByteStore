@@ -1,10 +1,10 @@
-﻿using Ecommerce.Domain.Aggregates;
-using Ecommerce.Domain.ValueObjects;
-using Ecommerce.Shared.DTO;
-using Ecommerce.Shared.Enums;
+﻿using ByteStore.Domain.Aggregates;
+using ByteStore.Domain.ValueObjects;
+using ByteStore.Shared.DTO;
+using ByteStore.Shared.Enums;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Application.Services.Interfaces
+namespace ByteStore.Application.Services.Interfaces
 {
     public interface IShoppingCartService
     {

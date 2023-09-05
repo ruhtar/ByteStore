@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace Ecommerce.API.Extensions
+namespace ByteStore.API.Extensions
 {
     public static class AuthenticationExtensions
     {

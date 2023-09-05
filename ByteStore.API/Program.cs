@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using Ecommerce.Infrastructure;
-using Ecommerce.API.Extensions;
+using ByteStore.Infrastructure;
+using ByteStore.API.Extensions;
 
-namespace Ecommerce
+namespace ByteStore
 {
     public class Program
     {

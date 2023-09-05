@@ -1,6 +1,6 @@
-﻿using Ecommerce.Domain.ValueObjects;
+﻿using ByteStore.Domain.ValueObjects;
 
-namespace Ecommerce.Shared.DTO
+namespace ByteStore.Shared.DTO
 {
     public class ShoppingCartDto
     {

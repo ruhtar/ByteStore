@@ -1,6 +1,6 @@
-﻿namespace Ecommerce.Shared.DTO
+﻿namespace ByteStore.Shared.DTO
 {
-    public class LoginUserDto
+    public class LoginDto
     {
         public string Username { get; set; }
 

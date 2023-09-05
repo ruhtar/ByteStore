@@ -1,12 +1,12 @@
-﻿using Ecommerce.Domain.ValueObjects;
-using Ecommerce.Shared.DTO;
-using Ecommerce.Shared.Enums;
-using Ecommerce.Application.Services.Interfaces;
-using Ecommerce.Infrastructure.Repository.Interfaces;
-using Ecommerce.Infrastructure.Cache;
+﻿using ByteStore.Domain.ValueObjects;
+using ByteStore.Shared.DTO;
+using ByteStore.Shared.Enums;
+using ByteStore.Application.Services.Interfaces;
+using ByteStore.Infrastructure.Repository.Interfaces;
+using ByteStore.Infrastructure.Cache;
 using System.Text.Json;
 
-namespace Ecommerce.Application.Services
+namespace ByteStore.Application.Services
 {
     public class ShoppingCartService : IShoppingCartService
     {
@@ -98,7 +98,7 @@ namespace Ecommerce.Application.Services
             //    return cache;
             //}
 
-            var products = new List<RequestProductDto>();
+            var products = new List<ProductDto>();
 
             foreach (var item in cart.OrderItems)
             {
@@ -106,7 +106,7 @@ namespace Ecommerce.Application.Services
 
                 if (product != null)
                 {
-                    var productDto = new RequestProductDto
+                    var productDto = new ProductDto
                     {
                         Name = product.Name,
                         Price = product.Price,

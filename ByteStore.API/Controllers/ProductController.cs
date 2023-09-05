@@ -1,9 +1,9 @@
-﻿using Ecommerce.Application.Services.Interfaces;
-using Ecommerce.Domain.Entities;
-using Ecommerce.Shared.DTO;
+﻿using ByteStore.Application.Services.Interfaces;
+using ByteStore.Domain.Entities;
+using ByteStore.Shared.DTO;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Ecommerce.Host.Controllers
+namespace ByteStore.Host.Controllers
 {
     [Route("products")]
     [ApiController]
@@ -33,28 +33,20 @@ namespace Ecommerce.Host.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Product>> CreateProduct([FromBody] RequestProductDto productDto)
+        public async Task<ActionResult<Product>> CreateProduct([FromBody] ProductDto productDto)
         {
-            var product = new Product
-            {
-                Name = productDto.Name,
-                ProductQuantity = productDto.ProductQuantity,
-                Price = productDto.Price,
-            };
-            var newProduct = await _productService.AddProduct(product);
+            if (productDto.Price <= 0 ) return BadRequest("Invalid price");
+            if (productDto.ProductQuantity <= 0) return BadRequest("Invalid quantity");
+            var newProduct = await _productService.AddProduct(productDto);
             return CreatedAtAction(nameof(GetProduct), new { id = newProduct.ProductId }, newProduct);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Product>> UpdateProduct(int id, [FromBody] RequestProductDto productDto)
+        public async Task<ActionResult<Product>> UpdateProduct(int id, [FromBody] ProductDto productDto)
         {
-            var product = new Product
-            {
-                Name = productDto.Name,
-                ProductQuantity = productDto.ProductQuantity,
-                Price = productDto.Price,
-            };
-            var updatedProduct = await _productService.UpdateProduct(id, product);
+            if (productDto.Price <= 0) return BadRequest("Invalid price");
+            if (productDto.ProductQuantity <= 0) return BadRequest("Invalid quantity");
+            var updatedProduct = await _productService.UpdateProduct(id, productDto);
             if (updatedProduct == null) return NotFound();
             return Ok(updatedProduct);
         }

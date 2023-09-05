@@ -1,4 +1,4 @@
-﻿namespace Ecommerce.Shared.Enums
+﻿namespace ByteStore.Shared.Enums
 {
     public enum BuyOrderStatus
     {

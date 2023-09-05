@@ -1,9 +1,9 @@
-﻿using Ecommerce.Domain.Entities;
-using Ecommerce.Domain.ValueObjects;
+﻿using ByteStore.Domain.Entities;
+using ByteStore.Domain.ValueObjects;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Ecommerce.Domain.Aggregates
+namespace ByteStore.Domain.Aggregates
 {
     public class UserAggregate
     {

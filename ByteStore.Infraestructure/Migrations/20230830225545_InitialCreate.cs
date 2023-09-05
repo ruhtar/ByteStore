@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Ecommerce.Migrations
+namespace ByteStore.Migrations
 {
     public partial class InitialCreate : Migration
     {

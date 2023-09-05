@@ -1,13 +1,13 @@
-﻿using Ecommerce.Application.Services;
-using Ecommerce.Application.Services.Interfaces;
-using Ecommerce.Infrastructure.Cache;
-using Ecommerce.Infrastructure.Hasher;
-using Ecommerce.Infrastructure.Repository;
-using Ecommerce.Infrastructure.Repository.Interfaces;
-using Ecommerce.Shared.Validator;
+﻿using ByteStore.Application.Services;
+using ByteStore.Application.Services.Interfaces;
+using ByteStore.Infrastructure.Cache;
+using ByteStore.Infrastructure.Hasher;
+using ByteStore.Infrastructure.Repository;
+using ByteStore.Infrastructure.Repository.Interfaces;
+using ByteStore.Shared.Validator;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Ecommerce.API.Extensions
+namespace ByteStore.API.Extensions
 {
     public static class DependencyInjectionExtensions
     {

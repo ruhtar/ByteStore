@@ -1,9 +1,9 @@
-﻿using Ecommerce.Domain.Aggregates;
-using Ecommerce.Domain.ValueObjects;
-using Ecommerce.Shared.DTO;
-using Ecommerce.Shared.Enums;
+﻿using ByteStore.Domain.Aggregates;
+using ByteStore.Domain.ValueObjects;
+using ByteStore.Shared.DTO;
+using ByteStore.Shared.Enums;
 
-namespace Ecommerce.Infrastructure.Repository.Interfaces
+namespace ByteStore.Infrastructure.Repository.Interfaces
 {
     public interface IShoppingCartRepository
     {

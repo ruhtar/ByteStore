@@ -1,14 +1,14 @@
-﻿using Ecommerce.Domain.Aggregates;
-using Ecommerce.Domain.ValueObjects;
-using Ecommerce.Infrastructure.Repository.Interfaces;
-using Ecommerce.Shared.DTO;
-using Ecommerce.Shared.Enums;
-using Ecommerce.Shared.Utils;
+﻿using ByteStore.Domain.Aggregates;
+using ByteStore.Domain.ValueObjects;
+using ByteStore.Infrastructure.Repository.Interfaces;
+using ByteStore.Shared.DTO;
+using ByteStore.Shared.Enums;
+using ByteStore.Shared.Utils;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
 using System.Text.Json;
 
-namespace Ecommerce.Infrastructure.Repository
+namespace ByteStore.Infrastructure.Repository
 {
     public class ShoppingCartRepository : IShoppingCartRepository
     {

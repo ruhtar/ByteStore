@@ -1,11 +1,11 @@
-﻿using Ecommerce.Application.Services.Interfaces;
-using Ecommerce.Domain.Aggregates;
-using Ecommerce.Domain.ValueObjects;
-using Ecommerce.Shared.DTO;
-using Ecommerce.Shared.Enums;
+﻿using ByteStore.Application.Services.Interfaces;
+using ByteStore.Domain.Aggregates;
+using ByteStore.Domain.ValueObjects;
+using ByteStore.Shared.DTO;
+using ByteStore.Shared.Enums;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Ecommerce.Apresentation.Controllers
+namespace ByteStore.Apresentation.Controllers
 {
     [Route("cart")]
     [ApiController]

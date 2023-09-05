@@ -12,6 +12,7 @@ export class SignupComponent {
   formTitle: string = 'Sign up';
   username: string = 'Username';
   password: string = 'Password';
+  rePassword: string = 'Confirm your password';
   address: string = 'Address';
   street: string = 'Street';
   streetNumber: string = 'Street Number';

@@ -1,8 +1,9 @@
-﻿using Ecommerce.Application.Services.Interfaces;
-using Ecommerce.Domain.Entities;
-using Ecommerce.Infrastructure.Repository.Interfaces;
+﻿using ByteStore.Application.Services.Interfaces;
+using ByteStore.Domain.Entities;
+using ByteStore.Infrastructure.Repository.Interfaces;
+using ByteStore.Shared.DTO;
 
-namespace Ecommerce.Application.Services
+namespace ByteStore.Application.Services
 {
     public class ProductService : IProductService
     {
@@ -23,13 +24,26 @@ namespace Ecommerce.Application.Services
             return await _productRepository.GetProductById(id);
         }
 
-        public async Task<Product> AddProduct(Product product)
+        public async Task<Product> AddProduct(ProductDto productDto)
         {
+            var product = new Product
+            {
+                Name = productDto.Name,
+                ProductQuantity = productDto.ProductQuantity,
+                Price = productDto.Price,
+            };
             return await _productRepository.AddProduct(product);
         }
 
-        public async Task<Product> UpdateProduct(int id, Product product)
+        public async Task<Product> UpdateProduct(int id, ProductDto productDto)
         {
+
+            var product = new Product
+            {
+                Name = productDto.Name,
+                ProductQuantity = productDto.ProductQuantity,
+                Price = productDto.Price,
+            };
             return await _productRepository.UpdateProduct(id, product);
         }
 

@@ -1,9 +1,9 @@
-﻿using Ecommerce.Domain.Aggregates;
+﻿using ByteStore.Domain.Aggregates;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Ecommerce.Domain.Entities
+namespace ByteStore.Domain.Entities
 {
     public class Product
     {

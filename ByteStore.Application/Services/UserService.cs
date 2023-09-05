@@ -1,16 +1,20 @@
-﻿using Ecommerce.Application.Services.Interfaces;
-using Ecommerce.Domain.Aggregates;
-using Ecommerce.Domain.Entities;
-using Ecommerce.Infrastructure.Hasher;
-using Ecommerce.Infrastructure.Repository.Interfaces;
+﻿using ByteStore.Application.Services.Interfaces;
+using ByteStore.Domain.Aggregates;
+using ByteStore.Domain.Entities;
+using ByteStore.Infrastructure.Hasher;
+using ByteStore.Infrastructure.Repository.Interfaces;
+using ByteStore.Shared.DTO;
+using ByteStore.Shared.Enums;
+using ByteStore.Shared.Validator;
 
-namespace Ecommerce.Application.Services
+namespace ByteStore.Application.Services
 {
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
         private readonly IPasswordHasher _passwordHasher;
         private readonly ITokenService _tokenService;
+
 
         public UserService(IUserRepository userRepository, IPasswordHasher passwordHasher, ITokenService tokenService)
         {
@@ -57,7 +61,7 @@ namespace Ecommerce.Application.Services
         //    return null;
         //}
 
-        public async Task RegisterUser(UserAggregate user)
+        public async Task RegisterUser(SignupUserDto user)
         {
             var hashedPassword = _passwordHasher.Hash(user.User.Password);
             await _userRepository.RegisterUser(new UserAggregate

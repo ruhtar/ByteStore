@@ -1,8 +1,8 @@
-﻿using Ecommerce.Domain.Aggregates;
-using Ecommerce.Infrastructure.Repository.Interfaces;
+﻿using ByteStore.Domain.Aggregates;
+using ByteStore.Infrastructure.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Ecommerce.Infrastructure.Repository
+namespace ByteStore.Infrastructure.Repository
 {
     public class UserRepository : IUserRepository
     {

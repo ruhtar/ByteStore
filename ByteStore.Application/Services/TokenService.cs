@@ -1,11 +1,11 @@
-﻿using Ecommerce.Application.Services.Interfaces;
-using Ecommerce.Domain.ValueObjects;
+﻿using ByteStore.Application.Services.Interfaces;
+using ByteStore.Domain.ValueObjects;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Ecommerce.Application.Services
+namespace ByteStore.Application.Services
 {
     public class TokenService : ITokenService
     {

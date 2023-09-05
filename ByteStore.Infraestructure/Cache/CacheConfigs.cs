@@ -1,8 +1,8 @@
-﻿using Ecommerce.Domain.Entities;
+﻿using ByteStore.Domain.Entities;
 using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;
 
-namespace Ecommerce.Infrastructure.Cache
+namespace ByteStore.Infrastructure.Cache
 {
     public class CacheConfigs : ICacheConfigs
     {

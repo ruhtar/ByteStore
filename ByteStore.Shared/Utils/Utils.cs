@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text;
 
-namespace Ecommerce.Shared.Utils
+namespace ByteStore.Shared.Utils
 {
     public static class Utils
     {

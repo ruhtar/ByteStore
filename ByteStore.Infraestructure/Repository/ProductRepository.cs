@@ -1,10 +1,10 @@
-﻿using Ecommerce.Domain.Entities;
-using Ecommerce.Infrastructure.Cache;
-using Ecommerce.Infrastructure.Repository.Interfaces;
+﻿using ByteStore.Domain.Entities;
+using ByteStore.Infrastructure.Cache;
+using ByteStore.Infrastructure.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 
-namespace Ecommerce.Infrastructure.Repository
+namespace ByteStore.Infrastructure.Repository
 {
     public class ProductRepository : IProductRepository
     {

@@ -48,7 +48,7 @@
         Are you a seller?
       </label>
 
-      <label>{{ address }}:</label>
+      <label class="address-label">{{ address }}:</label>
       <input
         type="text"
         id="street"
@@ -63,6 +63,7 @@
         name="streetNumber"
         placeholder="{{ streetNumber }}"
         formControlName="streetNumber"
+        min="0"
         required
       />
       <input

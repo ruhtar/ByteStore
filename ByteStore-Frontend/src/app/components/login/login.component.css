@@ -88,3 +88,9 @@ a {
   transform: translateY(-50%);
   cursor: pointer;
 }
+
+.error-span {
+  color: red;
+  margin-top: -0.4rem;
+  margin-bottom: 0.4rem;
+}

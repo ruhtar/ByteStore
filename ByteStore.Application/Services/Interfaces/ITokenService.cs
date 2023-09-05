@@ -1,6 +1,6 @@
-﻿using Ecommerce.Domain.ValueObjects;
+﻿using ByteStore.Domain.ValueObjects;
 
-namespace Ecommerce.Application.Services.Interfaces
+namespace ByteStore.Application.Services.Interfaces
 {
     public interface ITokenService
     {

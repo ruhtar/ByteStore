@@ -1,8 +1,8 @@
-﻿using Ecommerce.Domain.Entities;
+﻿using ByteStore.Domain.Entities;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace Ecommerce.Domain.Aggregates
+namespace ByteStore.Domain.Aggregates
 {
     public class ShoppingCart
     {

@@ -1,6 +1,6 @@
-﻿ using Ecommerce.Domain.Entities;
+﻿ using ByteStore.Domain.Entities;
 
-namespace Ecommerce.Domain.ValueObjects
+namespace ByteStore.Domain.ValueObjects
 {
     public class OrderItem
     {

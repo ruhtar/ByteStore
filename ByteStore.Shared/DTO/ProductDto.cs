@@ -1,6 +1,6 @@
-﻿namespace Ecommerce.Shared.DTO
+﻿namespace ByteStore.Shared.DTO
 {
-    public class RequestProductDto
+    public class ProductDto
     {
         public string Name { get; set; }
         public decimal Price { get; set; }

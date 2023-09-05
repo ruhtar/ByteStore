@@ -1,4 +1,4 @@
-﻿namespace Ecommerce.Domain.ValueObjects
+﻿namespace ByteStore.Domain.ValueObjects
 {
     public class Address
     {

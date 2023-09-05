@@ -1,11 +1,11 @@
-﻿using Ecommerce.Domain.Aggregates;
-using Ecommerce.Domain.Entities;
-using Ecommerce.Domain.ValueObjects;
-using Ecommerce.Infrastructure.Repository.Interfaces;
-using Ecommerce.Shared.DTO;
-using Ecommerce.Shared.Enums;
+﻿using ByteStore.Domain.Aggregates;
+using ByteStore.Domain.Entities;
+using ByteStore.Domain.ValueObjects;
+using ByteStore.Infrastructure.Repository.Interfaces;
+using ByteStore.Shared.DTO;
+using ByteStore.Shared.Enums;
 
-namespace Ecommerce.Shared.Validator
+namespace ByteStore.Shared.Validator
 {
     public class UserValidator : IUserValidator
     {
@@ -16,7 +16,7 @@ namespace Ecommerce.Shared.Validator
             _userRepository = userRepository;
         }
 
-        public async Task<UserValidatorStatus> ValidateUser(RequestUserDto user)
+        public async Task<UserValidatorStatus> ValidateUser(SignupUserDto user)
         {
             if (!IsPasswordValid(user.User.Password)) return UserValidatorStatus.InvalidPassword;
 

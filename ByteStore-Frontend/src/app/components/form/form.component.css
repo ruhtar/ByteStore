@@ -90,3 +90,7 @@ a {
   transform: translateY(-50%);
   cursor: pointer;
 }
+
+.address-label {
+  margin-top: 1.5rem;
+}

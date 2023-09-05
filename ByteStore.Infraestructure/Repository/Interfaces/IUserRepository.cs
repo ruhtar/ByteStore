@@ -1,7 +1,7 @@
-﻿using Ecommerce.Domain.Aggregates;
-using Ecommerce.Domain.Entities;
+﻿using ByteStore.Domain.Aggregates;
+using ByteStore.Domain.Entities;
 
-namespace Ecommerce.Infrastructure.Repository.Interfaces
+namespace ByteStore.Infrastructure.Repository.Interfaces
 {
     public interface IUserRepository
     {

@@ -1,7 +1,7 @@
-﻿using Ecommerce.Domain.Entities;
+﻿using ByteStore.Domain.Entities;
 using Microsoft.Extensions.Caching.Distributed;
 
-namespace Ecommerce.Infrastructure.Cache
+namespace ByteStore.Infrastructure.Cache
 {
     public interface ICacheConfigs
     {

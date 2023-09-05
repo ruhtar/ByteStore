@@ -24,9 +24,9 @@ main {
 }
 
 .cart-items {
-  margin: 2rem;
+  padding: 2rem;
+  padding-bottom: 5rem;
   flex: 2;
-  padding: 1.1rem 5rem 5rem 5rem;
 }
 
 .summary {
