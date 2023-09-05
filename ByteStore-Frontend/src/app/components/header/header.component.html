@@ -39,7 +39,7 @@
       <i class="fa-solid fa-user" style="color: var(--yellow)"></i> Hello,
       {{ username }}
     </p>
-    <a href="#"
+    <a href="/settings"
       ><i class="fa-solid fa-gears" style="color: var(--yellow)"></i>
       Settings</a
     >
@@ -52,7 +52,7 @@
     >
   </div>
   <div *ngIf="!logged" class="user-container">
-    <a routerLink="/login"
+    <a href="/login"
       ><i class="fa-solid fa-user" style="color: var(--yellow)"></i> Login</a
     >
   </div>

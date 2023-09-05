@@ -4,8 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { InfoComponent } from './info/info.component';
 import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
+import { UserSettingsComponent } from './user-settings.component';
 
 const UserSettingsRoutes: Routes = [
+  { path: '', component: UserSettingsComponent },
   {
     path: '',
     children: [

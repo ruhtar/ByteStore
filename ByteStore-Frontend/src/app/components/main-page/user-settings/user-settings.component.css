@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+}
+
+.menu {
+  width: 250px;
+  background-color: #333;
+  color: #fff;
+  height: 100vh;
+  padding: 20px;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu li {
+  margin-bottom: 10px;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+/* Estilos para os links do menu */
+.menu a {
+  text-decoration: none;
+  color: #fff;
+}
+
+#page-container {
+  position: relative;
+}

@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FooterModule } from '../footer/footer.module';
+import { HeaderModule } from '../header/header.module';
 import { CartComponent } from './cart/cart.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
@@ -35,6 +37,11 @@ const MainPageRoutes: Routes = [
     ProductDetailComponent,
     UserSettingsComponent,
   ],
-  imports: [CommonModule, RouterModule.forChild(MainPageRoutes)],
+  imports: [
+    CommonModule,
+    HeaderModule,
+    FooterModule,
+    RouterModule.forChild(MainPageRoutes),
+  ],
 })
 export class MainPageModule {}
