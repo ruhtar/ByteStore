@@ -1,6 +1,6 @@
 # ByteStore Ecommerce project - WIP 🤑
 
-This project is an implementation of an E-commerce. The project has some entities like Users and their Shopping Carts, Products and Orders. The project also has a user authentication and authorization system using JSON Web Tokens (JWT). The application has some endpoints that are protected behind some authorization roles. The project has been developed using .NET, Entity Framework Core, Angular, MySQL, JWT and Redis cache.
+This fullstack project is an implementation of an E-commerce called ByteStore. The project has some entities like Users and their Shopping Carts, Products and Orders. The project also has a user authentication and authorization system using JSON Web Tokens (JWT). The application has some endpoints that are protected behind some authorization roles. The project has been developed using .NET, Entity Framework Core, Angular, MySQL, JWT and Redis cache.
 
 ## Features
 
@@ -9,6 +9,8 @@ The user authentication system includes the following features:
 - **Signup**: Users can register in the system by providing a username and password. Passwords are processed using a hash and salt algorithm before being stored in the database. This ensures the security of passwords, protecting users' sensitive information. Usernames must be unique.
 
 - **Signin**: Registered users can log in by providing their credentials (username and password). The system validates the credentials and generates a valid JWT token, which is returned to the user. This token can be used later to access protected routes and resources.
+
+- **Add to cart and make a buy order**: Users can add products to their shopping carts. After that, they can make a buy order. 
 
 - **In-Memory Cache**: An in-memory cache has been implemented using the MemoryCache class provided by ASP.NET Core within the Product CRUD. The cache is used to temporarily store the data of products retrieved from the database. This cache reduces response time by serving data directly from memory instead of querying the database on every request.
 
