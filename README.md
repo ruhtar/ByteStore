@@ -10,7 +10,9 @@ The user authentication system includes the following features:
 
 - **Signin**: Registered users can log in by providing their credentials (username and password). The system validates the credentials and generates a valid JWT token, which is returned to the user. This token can be used later to access protected routes and resources.
 
-- **Add to cart and make a buy order**: Users can add products to their shopping carts. After that, they can make a buy order. 
+- **Add to cart and make a buy order**: Users can add products to their shopping carts. After that, they can make a buy order.
+
+- **Edit a User**: Also, the user can edit some informations that where given in the registration screen. 
 
 - **In-Memory Cache**: An in-memory cache has been implemented using the MemoryCache class provided by ASP.NET Core within the Product CRUD. The cache is used to temporarily store the data of products retrieved from the database. This cache reduces response time by serving data directly from memory instead of querying the database on every request.
 
