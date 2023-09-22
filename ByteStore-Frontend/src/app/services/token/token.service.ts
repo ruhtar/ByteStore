@@ -11,7 +11,6 @@ export class TokenService {
 
     if (jwt) {
       const decodedToken = this.decodeJwt(jwt);
-      console.log('Informações do usuário do JWT:', decodedToken);
       return decodedToken;
     }
   }

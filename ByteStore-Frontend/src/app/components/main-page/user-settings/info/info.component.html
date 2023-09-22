@@ -1,1 +1,50 @@
-<p>INFO TESTE</p>
+<div class="container">
+  <div class="registration-form">
+    <form onsubmit="editInfos()">
+      <label class="address-label">{{ address }}:</label>
+      <input
+        type="text"
+        id="street"
+        name="street"
+        placeholder="{{ street }}"
+        formControlName="street"
+        required
+      />
+      <input
+        type="number"
+        id="streetNumber"
+        name="streetNumber"
+        placeholder="{{ streetNumber }}"
+        formControlName="streetNumber"
+        min="0"
+        required
+      />
+      <input
+        type="text"
+        id="city"
+        name="city"
+        placeholder="{{ city }}"
+        required
+        formControlName="city"
+      />
+      <input
+        type="text"
+        id="state"
+        name="state"
+        placeholder="{{ state }}"
+        formControlName="state"
+        required
+      />
+      <input
+        type="text"
+        id="country"
+        name="country"
+        placeholder="{{ country }}"
+        formControlName="country"
+        required
+      />
+
+      <button type="submit">{{ submitButtonText }}</button>
+    </form>
+  </div>
+</div>
