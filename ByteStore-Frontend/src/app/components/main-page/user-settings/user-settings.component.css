@@ -1,12 +1,18 @@
 .container {
   display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
 }
 
 .menu {
   width: 250px;
   background-color: #333;
   color: #fff;
-  height: 100vh;
   padding: 20px;
 }
 
@@ -19,15 +25,14 @@
   margin-bottom: 10px;
 }
 
-.content {
-  flex-grow: 1;
-  padding: 20px;
-}
-
 /* Estilos para os links do menu */
 .menu a {
   text-decoration: none;
   color: #fff;
+}
+
+.router-container {
+  flex-grow: 1;
 }
 
 #page-container {

@@ -9,14 +9,13 @@ import { HomeComponent } from './home/home.component';
 import { MainPageComponent } from './main-page.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { ProductsComponent } from './products/products.component';
-import { UserSettingsComponent } from './user-settings/user-settings.component';
 
 const MainPageRoutes: Routes = [
   {
     path: '',
     children: [
       { path: 'home', component: HomeComponent },
-      { path: '', component: HomeComponent },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'products', component: ProductsComponent },
       { path: 'cart', component: CartComponent },
       { path: 'contact', component: ContactComponent },
@@ -35,7 +34,7 @@ const MainPageRoutes: Routes = [
   declarations: [
     MainPageComponent,
     ProductDetailComponent,
-    UserSettingsComponent,
+    //UserSettingsComponent,
   ],
   imports: [
     CommonModule,
