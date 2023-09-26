@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { FormModule } from '../../../form/form.module';
 import { InfoComponent } from './info.component';
@@ -16,8 +17,8 @@ const InfoRoute: Routes = [
   declarations: [InfoComponent],
   imports: [
     CommonModule,
-    // ReactiveFormsModule,
-    // FormsModule,
+    ReactiveFormsModule,
+    FormsModule,
     RouterModule.forChild(InfoRoute),
     FormModule,
   ],

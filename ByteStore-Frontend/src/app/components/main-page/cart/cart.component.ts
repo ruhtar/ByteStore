@@ -4,7 +4,6 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { TokenService } from 'src/app/services/token/token.service';
 import { Product } from 'src/app/types/Product';
-import { ShoppingCart } from 'src/app/types/ShoppingCart';
 import { ShoppingCartDto } from 'src/app/types/ShoppingCartDto';
 
 @Component({
@@ -31,7 +30,7 @@ export class CartComponent {
     });
 
     if (this.logged) {
-      this.userId = this.tokenService.getUserIdFromToken().nameid;
+      this.userId = this.tokenService.getJwtFromLocalStorage().nameid;
       this.cartService
         .getCartByUserId(this.userId)
         .subscribe((response: ShoppingCartDto) => {

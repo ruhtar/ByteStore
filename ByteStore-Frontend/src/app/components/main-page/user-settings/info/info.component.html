@@ -1,29 +1,32 @@
 <div class="container">
   <div class="registration-form">
-    <form (submit)="editInfos()">
-      <label class="address-label">{{ address }}:</label>
+    <form [formGroup]="infoForm" (submit)="editInfos()" #formDir="ngForm">
+      <label class="address-label">{{ addressLabel }}:</label>
       <input
         type="text"
         id="street"
         name="street"
-        placeholder="{{ street }}"
+        placeholder="{{ streetLabel }}"
         formControlName="street"
+        [(ngModel)]="streetValue"
         required
       />
       <input
         type="number"
         id="streetNumber"
         name="streetNumber"
-        placeholder="{{ streetNumber }}"
+        placeholder="{{ streetNumberLabel }}"
         formControlName="streetNumber"
         min="0"
+        [(ngModel)]="streetNumberValue"
         required
       />
       <input
         type="text"
         id="city"
         name="city"
-        placeholder="{{ city }}"
+        placeholder="{{ cityLabel }}"
+        [(ngModel)]="cityValue"
         required
         formControlName="city"
       />
@@ -31,7 +34,8 @@
         type="text"
         id="state"
         name="state"
-        placeholder="{{ state }}"
+        placeholder="{{ stateLabel }}"
+        [(ngModel)]="stateValue"
         formControlName="state"
         required
       />
@@ -39,7 +43,8 @@
         type="text"
         id="country"
         name="country"
-        placeholder="{{ country }}"
+        placeholder="{{ countryLabel }}"
+        [(ngModel)]="countryValue"
         formControlName="country"
         required
       />

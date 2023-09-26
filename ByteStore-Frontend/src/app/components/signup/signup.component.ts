@@ -42,11 +42,11 @@ export class SignupComponent {
       },
       role: role,
       address: {
-        Street: user.state,
-        StreetNumber: user.streetNumber,
-        City: user.city,
-        State: user.street,
-        Country: user.country,
+        street: user.state,
+        streetNumber: user.streetNumber,
+        city: user.city,
+        state: user.street,
+        country: user.country,
       },
     };
 

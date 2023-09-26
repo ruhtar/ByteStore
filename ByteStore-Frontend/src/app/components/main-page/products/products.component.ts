@@ -34,7 +34,7 @@ export class ProductsComponent {
     });
 
     if (this.logged) {
-      this.userId = this.tokenService.getUserIdFromToken().nameid;
+      this.userId = this.tokenService.getJwtFromLocalStorage().nameid;
     }
   }
 

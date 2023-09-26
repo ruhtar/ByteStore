@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class TokenService {
   constructor() {}
 
-  public getUserIdFromToken() {
+  public getJwtFromLocalStorage() {
     let jwt = localStorage.getItem('acess_token');
 
     if (jwt) {
