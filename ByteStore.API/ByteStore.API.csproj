@@ -37,7 +37,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\ByteStore.Application\ByteStore.Application.csproj" />
 	  <ProjectReference Include="..\ByteStore.Domain\ByteStore.Domain.csproj" />
-	  <ProjectReference Include="..\ByteStore.Infraestructure\ByteStore.Infraestructure.csproj" />
+	  <ProjectReference Include="..\ByteStore.Infrastructure\ByteStore.Infrastructure.csproj" />
 	  <ProjectReference Include="..\ByteStore.Shared\ByteStore.Shared.csproj" />
 	</ItemGroup>
 

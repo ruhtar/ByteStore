@@ -8,7 +8,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\ByteStore.Domain\ByteStore.Domain.csproj" />
-		<ProjectReference Include="..\ByteStore.Infraestructure\ByteStore.Infraestructure.csproj" />
+		<ProjectReference Include="..\ByteStore.Infrastructure\ByteStore.Infrastructure.csproj" />
 		<ProjectReference Include="..\ByteStore.Shared\ByteStore.Shared.csproj" />
 		<PackageReference Include="DotNetEnv" Version="2.5.0" />
 		<PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.2.9" />

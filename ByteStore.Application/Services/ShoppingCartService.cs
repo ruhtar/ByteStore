@@ -4,7 +4,7 @@ using ByteStore.Shared.Enums;
 using ByteStore.Application.Services.Interfaces;
 using ByteStore.Infrastructure.Repository.Interfaces;
 using System.Text.Json;
-using ByteStore.Infraestructure.Cache;
+using ByteStore.Infrastructure.Cache;
 
 namespace ByteStore.Application.Services
 {

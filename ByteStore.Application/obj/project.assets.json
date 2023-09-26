@@ -2267,7 +2267,7 @@
           "bin/placeholder/ByteStore.Domain.dll": {}
         }
       },
-      "ByteStore.Infraestructure/1.0.0": {
+      "ByteStore.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
@@ -2284,10 +2284,10 @@
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "compile": {
-          "bin/placeholder/ByteStore.Infraestructure.dll": {}
+          "bin/placeholder/ByteStore.Infrastructure.dll": {}
         },
         "runtime": {
-          "bin/placeholder/ByteStore.Infraestructure.dll": {}
+          "bin/placeholder/ByteStore.Infrastructure.dll": {}
         }
       },
       "ByteStore.Shared/1.0.0": {
@@ -7161,10 +7161,10 @@
       "path": "../ByteStore.Domain/ByteStore.Domain.csproj",
       "msbuildProject": "../ByteStore.Domain/ByteStore.Domain.csproj"
     },
-    "ByteStore.Infraestructure/1.0.0": {
+    "ByteStore.Infrastructure/1.0.0": {
       "type": "project",
-      "path": "../ByteStore.Infraestructure/ByteStore.Infraestructure.csproj",
-      "msbuildProject": "../ByteStore.Infraestructure/ByteStore.Infraestructure.csproj"
+      "path": "../ByteStore.Infrastructure/ByteStore.Infrastructure.csproj",
+      "msbuildProject": "../ByteStore.Infrastructure/ByteStore.Infrastructure.csproj"
     },
     "ByteStore.Shared/1.0.0": {
       "type": "project",
@@ -7175,7 +7175,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "ByteStore.Domain >= 1.0.0",
-      "ByteStore.Infraestructure >= 1.0.0",
+      "ByteStore.Infrastructure >= 1.0.0",
       "ByteStore.Shared >= 1.0.0",
       "DotNetEnv >= 2.5.0",
       "Microsoft.AspNet.WebApi.Cors >= 5.2.9",
@@ -7220,8 +7220,8 @@
             "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj": {
               "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj"
             },
-            "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Infraestructure\\ByteStore.Infraestructure.csproj": {
-              "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Infraestructure\\ByteStore.Infraestructure.csproj"
+            "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Infrastructure\\ByteStore.Infrastructure.csproj": {
+              "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Infrastructure\\ByteStore.Infrastructure.csproj"
             },
             "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj": {
               "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj"

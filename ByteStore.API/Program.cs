@@ -1,5 +1,5 @@
 using ByteStore.API.Extensions;
-using ByteStore.Infraestructure;
+using ByteStore.Infrastructure;
 using ByteStore.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,7 +37,7 @@ namespace ByteStore.API
             builder.Services.AddJWTConfiguration();
 
             builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(Environment.GetEnvironmentVariable("CONNECTION_STRING"), ServerVersion.AutoDetect(Environment.GetEnvironmentVariable("CONNECTION_STRING")), 
-                x => x.MigrationsAssembly("ByteStore.Infraestructure")));
+                x => x.MigrationsAssembly("ByteStore.Infrastructure")));
 
             builder.Services.AddAuthorization();
 

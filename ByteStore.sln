@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByteStore.Domain", "ByteSto
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByteStore.Application", "ByteStore.Application\ByteStore.Application.csproj", "{C2FA0079-E8D9-43F4-87FB-779E3DEA59B1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByteStore.Infraestructure", "ByteStore.Infraestructure\ByteStore.Infraestructure.csproj", "{4501B195-13F6-45EB-9D45-111F374D2070}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByteStore.Infrastructure", "ByteStore.Infrastructure\ByteStore.Infrastructure.csproj", "{4501B195-13F6-45EB-9D45-111F374D2070}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByteStore.Shared", "ByteStore.Shared\ByteStore.Shared.csproj", "{BDF039BA-5D08-4124-860D-897ACC6A32C7}"
 EndProject

@@ -31,8 +31,8 @@
               "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj": {
                 "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj"
               },
-              "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Infraestructure\\ByteStore.Infraestructure.csproj": {
-                "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Infraestructure\\ByteStore.Infraestructure.csproj"
+              "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Infrastructure\\ByteStore.Infrastructure.csproj": {
+                "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Infrastructure\\ByteStore.Infrastructure.csproj"
               },
               "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj": {
                 "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj"
@@ -224,14 +224,14 @@
         }
       }
     },
-    "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Infraestructure\\ByteStore.Infraestructure.csproj": {
+    "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Infrastructure\\ByteStore.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Infraestructure\\ByteStore.Infraestructure.csproj",
-        "projectName": "ByteStore.Infraestructure",
-        "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Infraestructure\\ByteStore.Infraestructure.csproj",
+        "projectUniqueName": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Infrastructure\\ByteStore.Infrastructure.csproj",
+        "projectName": "ByteStore.Infrastructure",
+        "projectPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Infrastructure\\ByteStore.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Arthur\\.nuget\\packages\\",
-        "outputPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Infraestructure\\obj\\",
+        "outputPath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Arthur\\AppData\\Roaming\\NuGet\\NuGet.Config",

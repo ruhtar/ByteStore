@@ -9,7 +9,7 @@
       "ByteStore.Application/1.0.0": {
         "dependencies": {
           "ByteStore.Domain": "1.0.0",
-          "ByteStore.Infraestructure": "1.0.0",
+          "ByteStore.Infrastructure": "1.0.0",
           "ByteStore.Shared": "1.0.0",
           "DotNetEnv": "2.5.0",
           "Microsoft.AspNet.WebApi.Cors": "5.2.9",
@@ -1241,7 +1241,7 @@
           "ByteStore.Domain.dll": {}
         }
       },
-      "ByteStore.Infraestructure/1.0.0": {
+      "ByteStore.Infrastructure/1.0.0": {
         "dependencies": {
           "ByteStore.Domain": "1.0.0",
           "ByteStore.Shared": "1.0.0",
@@ -1256,7 +1256,7 @@
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "runtime": {
-          "ByteStore.Infraestructure.dll": {}
+          "ByteStore.Infrastructure.dll": {}
         }
       },
       "ByteStore.Shared/1.0.0": {
@@ -2206,7 +2206,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "ByteStore.Infraestructure/1.0.0": {
+    "ByteStore.Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
