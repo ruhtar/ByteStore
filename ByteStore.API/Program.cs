@@ -1,13 +1,8 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
-using ByteStore.Infrastructure;
 using ByteStore.API.Extensions;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using ByteStore.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
-namespace ByteStore
+namespace ByteStore.API
 {
     public class Program
     {
@@ -49,9 +44,9 @@ namespace ByteStore
 
             var app = builder.Build();
 
-            app.UseCors(builder =>
+            app.UseCors(corsPolicyBuilder =>
             {
-                builder
+                corsPolicyBuilder
                 .WithOrigins("http://localhost:4200")
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
