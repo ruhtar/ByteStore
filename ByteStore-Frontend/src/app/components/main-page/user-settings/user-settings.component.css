@@ -32,7 +32,11 @@
 }
 
 .router-container {
+  background-color: var(--purple);
   flex-grow: 1;
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
 }
 
 #page-container {
