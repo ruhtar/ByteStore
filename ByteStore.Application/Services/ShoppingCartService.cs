@@ -3,8 +3,8 @@ using ByteStore.Shared.DTO;
 using ByteStore.Shared.Enums;
 using ByteStore.Application.Services.Interfaces;
 using ByteStore.Infrastructure.Repository.Interfaces;
-using ByteStore.Infrastructure.Cache;
 using System.Text.Json;
+using ByteStore.Infraestructure.Cache;
 
 namespace ByteStore.Application.Services
 {

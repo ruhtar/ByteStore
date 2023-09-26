@@ -1,10 +1,11 @@
-﻿using ByteStore.Domain.Entities;
-using ByteStore.Infrastructure.Cache;
+﻿using System.Text.Json;
+using ByteStore.Domain.Entities;
+using ByteStore.Infraestructure.Cache;
+using ByteStore.Infrastructure;
 using ByteStore.Infrastructure.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System.Text.Json;
 
-namespace ByteStore.Infrastructure.Repository
+namespace ByteStore.Infraestructure.Repository
 {
     public class ProductRepository : IProductRepository
     {

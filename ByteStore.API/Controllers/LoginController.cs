@@ -1,13 +1,13 @@
 using ByteStore.Application.Services.Interfaces;
+using ByteStore.Application.Validator;
 using ByteStore.Domain.Aggregates;
 using ByteStore.Domain.Entities;
 using ByteStore.Shared.DTO;
 using ByteStore.Shared.Enums;
-using ByteStore.Shared.Validator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ByteStore.Host.Controllers
+namespace ByteStore.API.Controllers
 {
     [ApiController]
     [Route("login")]

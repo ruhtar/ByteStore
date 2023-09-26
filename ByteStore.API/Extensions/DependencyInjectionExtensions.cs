@@ -1,10 +1,12 @@
 ﻿using ByteStore.Application.Services;
 using ByteStore.Application.Services.Interfaces;
-using ByteStore.Infrastructure.Cache;
+using ByteStore.Application.Validator;
+using ByteStore.Infraestructure.Cache;
+using ByteStore.Infraestructure.Hasher;
+using ByteStore.Infraestructure.Repository;
 using ByteStore.Infrastructure.Hasher;
 using ByteStore.Infrastructure.Repository;
 using ByteStore.Infrastructure.Repository.Interfaces;
-using ByteStore.Shared.Validator;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ByteStore.API.Extensions

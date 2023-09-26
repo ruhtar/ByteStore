@@ -1,4 +1,5 @@
 using ByteStore.API.Extensions;
+using ByteStore.Infraestructure;
 using ByteStore.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 

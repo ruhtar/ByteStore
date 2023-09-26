@@ -5,7 +5,7 @@ using ByteStore.Infrastructure.Repository.Interfaces;
 using ByteStore.Shared.DTO;
 using ByteStore.Shared.Enums;
 
-namespace ByteStore.Shared.Validator
+namespace ByteStore.Application.Validator
 {
     public class UserValidator : IUserValidator
     {

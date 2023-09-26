@@ -4,7 +4,7 @@ using ByteStore.Shared.DTO;
 using ByteStore.Shared.Enums;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ByteStore.Apresentation.Controllers
+namespace ByteStore.API.Controllers
 {
     [Route("cart")]
     [ApiController]

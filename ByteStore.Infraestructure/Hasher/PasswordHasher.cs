@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography;
+using ByteStore.Infraestructure.Hasher;
 
 namespace ByteStore.Infrastructure.Hasher
 {

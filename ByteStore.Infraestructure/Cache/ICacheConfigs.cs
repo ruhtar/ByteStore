@@ -1,7 +1,4 @@
-﻿using ByteStore.Domain.Entities;
-using Microsoft.Extensions.Caching.Distributed;
-
-namespace ByteStore.Infrastructure.Cache
+﻿namespace ByteStore.Infraestructure.Cache
 {
     public interface ICacheConfigs
     {

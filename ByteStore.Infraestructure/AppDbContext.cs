@@ -3,7 +3,7 @@ using ByteStore.Domain.Entities;
 using ByteStore.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
-namespace ByteStore.Infrastructure
+namespace ByteStore.Infraestructure
 {
     public class AppDbContext : DbContext
     {

@@ -1,4 +1,4 @@
-﻿namespace ByteStore.Infrastructure.Hasher
+﻿namespace ByteStore.Infraestructure.Hasher
 {
     public interface IPasswordHasher
     {

@@ -1,8 +1,9 @@
 ﻿using ByteStore.Domain.Aggregates;
+using ByteStore.Infrastructure;
 using ByteStore.Infrastructure.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace ByteStore.Infrastructure.Repository
+namespace ByteStore.Infraestructure.Repository
 {
     public class UserRepository : IUserRepository
     {

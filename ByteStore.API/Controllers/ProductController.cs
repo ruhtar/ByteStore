@@ -3,7 +3,7 @@ using ByteStore.Domain.Entities;
 using ByteStore.Shared.DTO;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ByteStore.Host.Controllers
+namespace ByteStore.API.Controllers
 {
     [Route("products")]
     [ApiController]

@@ -1,8 +1,7 @@
-﻿using ByteStore.Domain.Entities;
+﻿using System.Text.Json;
 using Microsoft.Extensions.Caching.Distributed;
-using System.Text.Json;
 
-namespace ByteStore.Infrastructure.Cache
+namespace ByteStore.Infraestructure.Cache
 {
     public class CacheConfigs : ICacheConfigs
     {
