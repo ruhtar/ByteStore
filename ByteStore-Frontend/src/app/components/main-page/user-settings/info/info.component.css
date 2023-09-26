@@ -1,14 +1,5 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: var(--purple);
-  background-size: 50px 50px;
-}
-
 .registration-form {
   margin-top: -8rem;
   background-color: #fff;

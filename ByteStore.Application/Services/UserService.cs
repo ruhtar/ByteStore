@@ -1,6 +1,7 @@
 ﻿using ByteStore.Application.Services.Interfaces;
 using ByteStore.Domain.Aggregates;
 using ByteStore.Domain.Entities;
+using ByteStore.Domain.ValueObjects;
 using ByteStore.Infrastructure.Hasher;
 using ByteStore.Infrastructure.Hasher;
 using ByteStore.Infrastructure.Repository.Interfaces;
@@ -41,6 +42,16 @@ namespace ByteStore.Application.Services
             }
 
             return "";
+        }
+
+        public Task EditUserAddress(Address address, int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<Address> GetUserAddress(int userId)
+        {
+            return await _userRepository.GetUserAddress(userId);
         }
 
         //public async Task<User> GetUserByUsername(string username)

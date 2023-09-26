@@ -1,5 +1,5 @@
-﻿using ByteStore.Domain.Aggregates;
-using ByteStore.Domain.Entities;
+﻿using ByteStore.Domain.Entities;
+using ByteStore.Domain.ValueObjects;
 using ByteStore.Shared.DTO;
 
 namespace ByteStore.Application.Services.Interfaces
@@ -10,5 +10,7 @@ namespace ByteStore.Application.Services.Interfaces
         Task RegisterUser(SignupUserDto user);
 
         //Task<CreateUserDto> GetUserByUsername(string username);
+        Task EditUserAddress(Address address, int userId);
+        Task<Address> GetUserAddress(int userId);
     }
 }

@@ -1,6 +1,5 @@
 using ByteStore.Application.Services.Interfaces;
 using ByteStore.Application.Validator;
-using ByteStore.Domain.Aggregates;
 using ByteStore.Domain.Entities;
 using ByteStore.Shared.DTO;
 using ByteStore.Shared.Enums;
@@ -10,13 +9,13 @@ using Microsoft.AspNetCore.Mvc;
 namespace ByteStore.API.Controllers
 {
     [ApiController]
-    [Route("login")]
-    public class LoginController : ControllerBase
+    [Route("user")]
+    public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
         private readonly IUserValidator _userValidator;
 
-        public LoginController(IUserService userService, IUserValidator userValidator)
+        public UserController(IUserService userService, IUserValidator userValidator)
         {
             _userService = userService;
             _userValidator = userValidator;
@@ -62,6 +61,19 @@ namespace ByteStore.API.Controllers
                 return Unauthorized("Username or password incorrect.");
             }
             return Ok(new { token });
+        }
+
+        [HttpPut("edit")]
+        public async Task<ActionResult> EditUserAddress() {
+            return null;
+        }
+
+        [HttpGet("address/{userId}")]
+        public async Task<ActionResult> GetUserAddress([FromRoute] int userId)
+        {
+            var address = await _userService.GetUserAddress(userId);
+            if(address != null) return Ok(address);
+            return NotFound();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ByteStore.Domain.Aggregates;
+using ByteStore.Domain.ValueObjects;
 using ByteStore.Infrastructure;
 using ByteStore.Infrastructure.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +30,18 @@ namespace ByteStore.Infrastructure.Repository
                 .AsNoTracking()
                 .Include(x => x.User).FirstOrDefaultAsync(u => u.User.Username == user.User.Username);
         }
+
+        public Task EditUserAddress(Address address, int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<Address> GetUserAddress(int userId)
+        {
+            var user = await _context.UserAggregates.AsNoTracking().FirstOrDefaultAsync(u => u.UserAggregateId == userId);
+            return user == null ? null : user.Address;
+        }
+
 
         //public async Task<User> GetUserByUsername() {
         //    await _context.UserAggregates.AsNoTracking().FirstOrDefaultAsync(u => u.User.Username);

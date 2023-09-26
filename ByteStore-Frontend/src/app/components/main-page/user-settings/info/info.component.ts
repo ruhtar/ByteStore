@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-info',
@@ -13,11 +14,9 @@ export class InfoComponent {
   state: string = 'State';
   country: string = 'Country';
   submitButtonText: string = 'Edit';
+  infoForm!: FormGroup;
 
   ngOnInit() {}
 
-  editInfos() {
-    alert('a');
-    console.log('a');
-  }
+  editInfos() {}
 }
