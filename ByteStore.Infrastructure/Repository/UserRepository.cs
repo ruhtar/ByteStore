@@ -31,9 +31,15 @@ namespace ByteStore.Infrastructure.Repository
                 .Include(x => x.User).FirstOrDefaultAsync(u => u.User.Username == user.User.Username);
         }
 
-        public Task EditUserAddress(Address address, int userId)
+        public async Task EditUserAddress(Address address, int userId)
         {
-            throw new NotImplementedException();
+            var user = await _context.UserAggregates.FirstOrDefaultAsync(u => u.UserAggregateId == userId);
+            if (user == null)
+            {
+                return;
+            }
+            user.Address = address;
+            await _context.SaveChangesAsync();
         }
 
         public async Task<Address> GetUserAddress(int userId)

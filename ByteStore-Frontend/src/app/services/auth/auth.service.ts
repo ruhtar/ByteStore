@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, tap } from 'rxjs';
 import { IToken } from 'src/app/types/IToken';
 import { User } from 'src/app/types/User';
-import { API_PATH } from 'src/environment/env';
-import { BehaviorSubject, tap } from 'rxjs';
 import { UserAggregate } from 'src/app/types/UserAggregate';
+import { API_PATH } from 'src/environment/env';
 
 @Injectable({
   providedIn: 'root',
@@ -20,11 +20,11 @@ export class AuthService {
   }
 
   signup(user: UserAggregate) {
-    return this.http.post(API_PATH + 'login/signup', user);
+    return this.http.post(API_PATH + 'user/signup', user);
   }
 
   signIn(user: User) {
-    return this.http.post<IToken>(API_PATH + 'login/signin', user).pipe(
+    return this.http.post<IToken>(API_PATH + 'user/signin', user).pipe(
       tap((response: IToken) => {
         localStorage.setItem('acess_token', response.token);
         this._isLoggedIn.next(true);

@@ -17,4 +17,11 @@ export class UserService {
     const jwt = this.tokenService.getJwtFromLocalStorage();
     return this.http.get<Address>(API_PATH + `user/address/${jwt.nameid}`);
   }
+
+  public editUserAddress(address: Address) {
+    const jwt = this.tokenService.getJwtFromLocalStorage();
+    console.log(address);
+
+    return this.http.put(API_PATH + `user/address/${jwt.nameid}`, address);
+  }
 }

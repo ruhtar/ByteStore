@@ -32,7 +32,7 @@
 }
 
 .router-container {
-  background-color: var(--purple);
+  background-color: #777acf;
   flex-grow: 1;
   display: flex;
   justify-content: center; /* Centraliza horizontalmente */

@@ -40,14 +40,9 @@ export class InfoComponent {
       country: [],
     });
 
-    this.userService.getUserAddress().subscribe(async (response) => {
+    this.userService.getUserAddress().subscribe((response) => {
       this.address = response;
-      console.log(this.address);
-
       this.streetValue = this.address.street;
-      console.log(this.address.street);
-      console.log(this.streetValue);
-
       this.streetNumberValue = this.address.streetNumber;
       this.countryValue = this.address.country;
       this.stateValue = this.address.state;
@@ -55,5 +50,12 @@ export class InfoComponent {
     });
   }
 
-  editInfos() {}
+  editInfos() {
+    this.address.street = this.streetValue;
+    this.address.streetNumber = this.streetNumberValue;
+    this.address.country = this.countryValue;
+    this.address.state = this.stateValue;
+    this.address.city = this.cityValue;
+    this.userService.editUserAddress(this.address).subscribe();
+  }
 }

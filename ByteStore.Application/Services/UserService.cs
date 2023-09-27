@@ -3,10 +3,8 @@ using ByteStore.Domain.Aggregates;
 using ByteStore.Domain.Entities;
 using ByteStore.Domain.ValueObjects;
 using ByteStore.Infrastructure.Hasher;
-using ByteStore.Infrastructure.Hasher;
 using ByteStore.Infrastructure.Repository.Interfaces;
 using ByteStore.Shared.DTO;
-using ByteStore.Shared.Enums;
 
 namespace ByteStore.Application.Services
 {
@@ -44,9 +42,9 @@ namespace ByteStore.Application.Services
             return "";
         }
 
-        public Task EditUserAddress(Address address, int userId)
+        public async Task EditUserAddress(Address address, int userId)
         {
-            throw new NotImplementedException();
+            await _userRepository.EditUserAddress(address, userId);
         }
 
         public async Task<Address> GetUserAddress(int userId)

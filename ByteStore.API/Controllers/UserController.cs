@@ -1,6 +1,7 @@
 using ByteStore.Application.Services.Interfaces;
 using ByteStore.Application.Validator;
 using ByteStore.Domain.Entities;
+using ByteStore.Domain.ValueObjects;
 using ByteStore.Shared.DTO;
 using ByteStore.Shared.Enums;
 using Microsoft.AspNetCore.Authorization;
@@ -63,9 +64,10 @@ namespace ByteStore.API.Controllers
             return Ok(new { token });
         }
 
-        [HttpPut("edit")]
-        public async Task<ActionResult> EditUserAddress() {
-            return null;
+        [HttpPut("address/{userId}")]
+        public async Task<ActionResult> EditUserAddress([FromRoute] int userId, [FromBody] Address address) {
+            await _userService.EditUserAddress(address, userId);
+            return Ok();
         }
 
         [HttpGet("address/{userId}")]
