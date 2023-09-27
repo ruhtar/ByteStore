@@ -4,10 +4,7 @@ using ByteStore.Application.Validator;
 using ByteStore.Infrastructure.Cache;
 using ByteStore.Infrastructure.Hasher;
 using ByteStore.Infrastructure.Repository;
-using ByteStore.Infrastructure.Hasher;
-using ByteStore.Infrastructure.Repository;
 using ByteStore.Infrastructure.Repository.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace ByteStore.API.Extensions
 {

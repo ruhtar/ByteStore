@@ -94,3 +94,12 @@ a {
   margin-top: -0.4rem;
   margin-bottom: 0.4rem;
 }
+
+.login-container img {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 100px;
+  height: auto;
+  width: 30rem;
+}
