@@ -6,7 +6,7 @@ This fullstack project is an implementation of an E-commerce called ByteStore. T
 
 The user authentication system includes the following features:
 
-- **Signup**: Users can register in the system by providing a username and password. Passwords are processed using a hash and salt algorithm before being stored in the database. This ensures the security of passwords, protecting users' sensitive information. Usernames must be unique.
+- **Signup**: Users can register in the system by providing a username and password. Usernames are unique. Passwords are processed using a hash and salt algorithm before being stored in the database. This ensures the security of passwords, protecting users' sensitive information. Usernames must be unique.
 
 - **Signin**: Registered users can log in by providing their credentials (username and password). The system validates the credentials and generates a valid JWT token, which is returned to the user. This token can be used later to access protected routes and resources.
 
