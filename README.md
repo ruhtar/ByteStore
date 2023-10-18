@@ -23,3 +23,11 @@ The user authentication system includes the following features:
     - When the `GetAllProductsAsync` method in the `ProductRepository` is called, it first checks if the requested data exists in the Redis cache. If the data is found, it is returned directly from the cache. If not, the data is fetched from the database, serialized, and stored in the Redis cache for future use.
 
     - This distributed cache allows the application to share cached data across multiple instances, reducing the need to query the database frequently and improving overall performance.
+
+## Future features:
+- - [ ]  Tela de detalhes do produto
+    - [ ]  Adicionar descrição
+    - [ ]  2-**Revisões e Classificações de Produtos:**
+    - [ ]  Tela de adicionar produto ao carrinho
+- - [ ]  Tela de registro de usuario
+    - [ ]  validação de dados no formulário. (mensagens pro usuário)
