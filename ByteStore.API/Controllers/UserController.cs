@@ -77,5 +77,25 @@ namespace ByteStore.API.Controllers
             if(address != null) return Ok(address);
             return NotFound();
         }
+
+        
+        [HttpPut("change-password")]
+        public async Task<IActionResult?> ChangePassword(int userId, [FromBody] ChangePasswordRequestDto passwordDto)
+        {
+            if (passwordDto.Password != passwordDto.Repassword) return BadRequest("Please, insert matching passwords");
+            var response = await _userService.ChangePassword(userId, passwordDto.Password, passwordDto.Repassword);
+            switch (response)
+            {
+                case ChangePasswordStatusResponse.Sucess:
+                    return Ok();
+                case ChangePasswordStatusResponse.NotMatching:
+                    return BadRequest("'Passwords do not match.");
+                case ChangePasswordStatusResponse.InvalidPassword:
+                    return BadRequest("Invalid password.");
+                case ChangePasswordStatusResponse.UserNotFound:
+                    return Problem("User not found.");
+                default: return Problem();
+            }
+        }
     }
 }

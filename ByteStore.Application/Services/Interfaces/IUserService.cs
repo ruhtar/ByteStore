@@ -1,6 +1,7 @@
 ﻿using ByteStore.Domain.Entities;
 using ByteStore.Domain.ValueObjects;
 using ByteStore.Shared.DTO;
+using ByteStore.Shared.Enums;
 
 namespace ByteStore.Application.Services.Interfaces
 {
@@ -12,5 +13,6 @@ namespace ByteStore.Application.Services.Interfaces
         //Task<CreateUserDto> GetUserByUsername(string username);
         Task EditUserAddress(Address address, int userId);
         Task<Address> GetUserAddress(int userId);
+        Task<ChangePasswordStatusResponse> ChangePassword(int userId, string password, string repassword);
     }
 }

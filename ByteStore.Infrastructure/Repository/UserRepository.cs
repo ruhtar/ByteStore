@@ -2,6 +2,8 @@
 using ByteStore.Domain.ValueObjects;
 using ByteStore.Infrastructure;
 using ByteStore.Infrastructure.Repository.Interfaces;
+using ByteStore.Shared.DTO;
+using ByteStore.Shared.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace ByteStore.Infrastructure.Repository
@@ -22,6 +24,16 @@ namespace ByteStore.Infrastructure.Repository
             await _context.UserAggregates.AddAsync(userAggregate);
             await _context.SaveChangesAsync();
             await _shoppingCartRepository.CreateShoppingCart(userAggregate.UserAggregateId);
+        }
+
+        public async Task<ChangePasswordStatusResponse> UpdateUserPassword(int userId, string hashedPassword)
+        {
+            var user = await _context.Users
+                .FirstOrDefaultAsync(x => x.UserId == userId);
+            if(user == null) return ChangePasswordStatusResponse.UserNotFound;
+            user.Password = hashedPassword;
+            await _context.SaveChangesAsync();
+            return ChangePasswordStatusResponse.Sucess;
         }
 
         public async Task<UserAggregate> GetUserAggregate(UserAggregate user)
