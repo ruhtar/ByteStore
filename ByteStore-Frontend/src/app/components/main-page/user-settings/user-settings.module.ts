@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FooterModule } from '../../footer/footer.module';
 import { HeaderModule } from '../../header/header.module';
-import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
 import { UserSettingsComponent } from './user-settings.component';
 
@@ -19,7 +18,10 @@ const UserSettingsRoutes: Routes = [
       },
       {
         path: 'change-password',
-        component: ChangePasswordComponent,
+        loadChildren: () =>
+          import('./change-password/change-password.module').then(
+            (u) => u.ChangePasswordModule,
+          ),
       },
       // {
       //   path: 'purchase-history',
@@ -34,11 +36,7 @@ const UserSettingsRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    UserSettingsComponent,
-    ChangePasswordComponent,
-    PurchaseHistoryComponent,
-  ],
+  declarations: [UserSettingsComponent, PurchaseHistoryComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(UserSettingsRoutes),
