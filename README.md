@@ -1,12 +1,12 @@
 # ByteStore Ecommerce project - WIP 🤑
 
-This fullstack project is an implementation of an E-commerce called ByteStore. The project has some entities like Users and their Shopping Carts, Products and Orders. The project also has a user authentication and authorization system using JSON Web Tokens (JWT). The application has some endpoints that are protected behind some authorization roles. The project has been developed using .NET, Entity Framework Core, Angular, MySQL, JWT and Redis cache.
+This fullstack project is an implementation of an E-commerce called ByteStore. The application has some entities like Users and their Shopping Carts, Products and Orders. The project also has a user authentication and authorization system using JSON Web Tokens (JWT). The project has been developed using .NET, Entity Framework Core, Angular, MySQL, JWT and Redis cache.
 
 ## Features
 
 The user authentication system includes the following features:
 
-- **Signup**: Users can register in the system by providing a username and password. Passwords are processed using a hash and salt algorithm before being stored in the database. This ensures the security of passwords, protecting users' sensitive information. Usernames must be unique.
+- **Signup**: Users can register in the system by providing a username and password. Usernames are unique. Passwords are processed using a hash and salt algorithm before being stored in the database. This ensures the security of passwords, protecting users' sensitive information. Usernames must be unique.
 
 - **Signin**: Registered users can log in by providing their credentials (username and password). The system validates the credentials and generates a valid JWT token, which is returned to the user. This token can be used later to access protected routes and resources.
 
@@ -23,3 +23,11 @@ The user authentication system includes the following features:
     - When the `GetAllProductsAsync` method in the `ProductRepository` is called, it first checks if the requested data exists in the Redis cache. If the data is found, it is returned directly from the cache. If not, the data is fetched from the database, serialized, and stored in the Redis cache for future use.
 
     - This distributed cache allows the application to share cached data across multiple instances, reducing the need to query the database frequently and improving overall performance.
+
+## Future features:
+- - [ ]  Tela de detalhes do produto
+    - [ ]  Adicionar descrição
+    - [ ]  2-**Revisões e Classificações de Produtos:**
+    - [ ]  Tela de adicionar produto ao carrinho
+- - [ ]  Tela de registro de usuario
+    - [ ]  validação de dados no formulário. (mensagens pro usuário)
