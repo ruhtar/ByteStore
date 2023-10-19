@@ -13,7 +13,6 @@ import { LoginComponent } from './components/login/login.component';
 import { CartComponent } from './components/main-page/cart/cart.component';
 import { ContactComponent } from './components/main-page/contact/contact.component';
 import { HomeComponent } from './components/main-page/home/home.component';
-import { ProductsComponent } from './components/main-page/products/products.component';
 import { InfoModule } from './components/main-page/user-settings/info/info.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SignupModule } from './components/signup/signup.module';
@@ -24,7 +23,6 @@ import { AuthService } from './services/auth/auth.service';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    ProductsComponent,
     CartComponent,
     ContactComponent,
     PageNotFoundComponent,

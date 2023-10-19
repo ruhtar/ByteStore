@@ -7,8 +7,6 @@ import { CartComponent } from './cart/cart.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { MainPageComponent } from './main-page.component';
-import { ProductDetailComponent } from './products/product-detail/product-detail.component';
-import { ProductsComponent } from './products/products.component';
 
 const MainPageRoutes: Routes = [
   {
@@ -16,7 +14,11 @@ const MainPageRoutes: Routes = [
     children: [
       { path: 'home', component: HomeComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'products', component: ProductsComponent },
+      {
+        path: 'products',
+        loadChildren: () =>
+          import('./products/products.module').then((u) => u.ProductsModule),
+      },
       { path: 'cart', component: CartComponent },
       { path: 'contact', component: ContactComponent },
       {
@@ -33,7 +35,7 @@ const MainPageRoutes: Routes = [
 @NgModule({
   declarations: [
     MainPageComponent,
-    ProductDetailComponent,
+    //ProductDetailComponent,
     //UserSettingsComponent,
   ],
   imports: [

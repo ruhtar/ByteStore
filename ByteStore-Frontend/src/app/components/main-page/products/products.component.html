@@ -8,7 +8,10 @@
         <i class="fa-solid fa-hand-holding-dollar"></i> {{ product.price }} $
       </p>
       <p class="product-quantity">Stock: {{ product.productQuantity }}</p>
-      <button *ngIf="logged" (click)="addToCart(userId, product)">ADD 1</button>
+      <button *ngIf="logged" (click)="addToCart(userId, product)">
+        Add one
+      </button>
+      <button>See more</button>
     </div>
   </section>
   <app-footer></app-footer>
