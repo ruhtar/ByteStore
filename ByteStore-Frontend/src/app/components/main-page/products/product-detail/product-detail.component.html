@@ -3,9 +3,20 @@
 <div class="product-details">
   <h1 class="product-name">{{ product.name }}</h1>
   <p class="product-price">Price: R${{ product.price }}</p>
-  <div *ngIf="logged">
-    <input type="number" [(ngModel)]="quantityToAdd" min="1" step="1" />
-    <button (click)="addToCart(userId, product, quantityToAdd)">
+  <div *ngIf="logged" class="quantity-container">
+    <p>Quantity:</p>
+    <input
+      type="number"
+      [(ngModel)]="quantityToAdd"
+      min="1"
+      step="1"
+      class="quantity-input"
+    />
+    <button
+      (click)="addToCart(userId, product, quantityToAdd)"
+      class="add-button"
+    >
+      <i class="fa-solid fa-cart-shopping"></i>
       Add to the shopping cart
     </button>
   </div>
