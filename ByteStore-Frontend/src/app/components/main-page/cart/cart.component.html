@@ -10,15 +10,12 @@
         <div class="quantity-controls">
           <button
             class="remove-button"
-            (click)="changeItemQuantity(product.productId!, -1)"
+            (click)="changeItemQuantity(product, -1)"
           >
             -
           </button>
           <span class="quantity">{{ product.productQuantity }}</span>
-          <button
-            class="add-button"
-            (click)="changeItemQuantity(product.productId!, 1)"
-          >
+          <button class="add-button" (click)="changeItemQuantity(product, 1)">
             +
           </button>
         </div>

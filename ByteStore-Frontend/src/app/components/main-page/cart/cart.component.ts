@@ -37,10 +37,7 @@ export class CartComponent {
         .subscribe((response: ShoppingCartDto) => {
           this.cart = response;
           this.products = response.products;
-          this.products.forEach((product) => {
-            console.log(product);
-            console.log(product.productId);
-          });
+          this.products.forEach((product) => {});
           if (this.products.length != 0) {
             this.isCartEmpty = false;
             this.calculateTotalPrice();
@@ -68,12 +65,15 @@ export class CartComponent {
     });
   }
 
-  changeItemQuantity(productId: number, quantity: number) {
-    console.log(productId);
+  changeItemQuantity(product: Product, quantity: number) {
     const orderItem: OrderItem = {
-      productId: productId,
+      productId: product.productId,
       Quantity: quantity,
     };
-    this.cartService.addToCart(this.userId, orderItem);
+    this.cartService.addToCart(this.userId, orderItem).subscribe((response) => {
+      if (response.status === 200) {
+        product.productQuantity += quantity;
+      }
+    });
   }
 }

@@ -50,6 +50,6 @@ export class ProductDetailComponent {
     const orderItem = new OrderItem();
     orderItem.productId = product.productId!;
     orderItem.Quantity = quantity;
-    this.cartService.addToCart(userId, orderItem);
+    this.cartService.addToCart(userId, orderItem).subscribe();
   }
 }
