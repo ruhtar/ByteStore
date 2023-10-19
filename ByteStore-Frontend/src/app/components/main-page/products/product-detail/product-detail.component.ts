@@ -13,7 +13,9 @@ import { Product } from 'src/app/types/Product';
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent {
+  quantityToAdd: number = 1;
   product: Product = {
+    productId: 0,
     productQuantity: 0,
     name: '',
     price: 0,
@@ -44,10 +46,10 @@ export class ProductDetailComponent {
     });
   }
 
-  addToCart(userId: number, product: Product): void {
+  addToCart(userId: number, product: Product, quantity: number): void {
     const orderItem = new OrderItem();
-    orderItem.ProductId = product.productId!;
-    orderItem.Quantity = 1;
-    this.cartService.addToCart(this.userId, orderItem);
+    orderItem.productId = product.productId!;
+    orderItem.Quantity = quantity;
+    this.cartService.addToCart(userId, orderItem);
   }
 }

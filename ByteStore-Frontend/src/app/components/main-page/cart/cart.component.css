@@ -35,7 +35,26 @@
   cursor: pointer;
 }
 
-/* Botão de Finalizar Compra */
+.add-button {
+  background-color: #3ce73c;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.quantity {
+  width: 1.3rem;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
 .checkout-button {
   background-color: #ffc16e;
   color: black;

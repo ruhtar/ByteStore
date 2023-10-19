@@ -108,6 +108,7 @@ namespace ByteStore.Application.Services
                 {
                     var productDto = new ProductDto
                     {
+                        ProductId = product.ProductId,
                         Name = product.Name,
                         Price = product.Price,
                         ProductQuantity = item.Quantity,

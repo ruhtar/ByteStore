@@ -3,6 +3,7 @@ import { BuyOrderStatus } from 'src/app/enums/BuyOrderStatus';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { TokenService } from 'src/app/services/token/token.service';
+import { OrderItem } from 'src/app/types/OrderItem';
 import { Product } from 'src/app/types/Product';
 import { ShoppingCartDto } from 'src/app/types/ShoppingCartDto';
 
@@ -21,7 +22,7 @@ export class CartComponent {
   isCartEmpty: boolean = true;
   userId!: number;
   cart!: ShoppingCartDto;
-  products!: Product[];
+  products: Product[] = [];
   totalPrice: number = 0;
 
   ngOnInit() {
@@ -36,6 +37,10 @@ export class CartComponent {
         .subscribe((response: ShoppingCartDto) => {
           this.cart = response;
           this.products = response.products;
+          this.products.forEach((product) => {
+            console.log(product);
+            console.log(product.productId);
+          });
           if (this.products.length != 0) {
             this.isCartEmpty = false;
             this.calculateTotalPrice();
@@ -61,5 +66,14 @@ export class CartComponent {
     this.cart.products.forEach((element) => {
       this.totalPrice += element.price * element.productQuantity;
     });
+  }
+
+  changeItemQuantity(productId: number, quantity: number) {
+    console.log(productId);
+    const orderItem: OrderItem = {
+      productId: productId,
+      Quantity: quantity,
+    };
+    this.cartService.addToCart(this.userId, orderItem);
   }
 }

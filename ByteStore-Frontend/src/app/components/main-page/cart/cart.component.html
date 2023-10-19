@@ -6,12 +6,24 @@
       <div class="item-details">
         <h2>Name: {{ product.name }}</h2>
         <p>Price: {{ product.price }}</p>
-        <p>Quantity: {{ product.productQuantity }}</p>
-        <button class="remove-button">-</button>
-        <button class="remove-button">+</button>
+        <p>Quantity</p>
+        <div class="quantity-controls">
+          <button
+            class="remove-button"
+            (click)="changeItemQuantity(product.productId!, -1)"
+          >
+            -
+          </button>
+          <span class="quantity">{{ product.productQuantity }}</span>
+          <button
+            class="add-button"
+            (click)="changeItemQuantity(product.productId!, 1)"
+          >
+            +
+          </button>
+        </div>
       </div>
     </div>
-
     <div class="summary"></div>
     <h2>Cart summary</h2>
     <p>Total: {{ totalPrice }}</p>
@@ -19,11 +31,9 @@
       Complete purchase
     </button>
   </section>
-
   <section class="cart-message" *ngIf="!logged">
     You are not logged in and cannot access the cart.
   </section>
-
   <section class="empty-cart-message" *ngIf="logged && isCartEmpty">
     Your cart is empty.
   </section>
