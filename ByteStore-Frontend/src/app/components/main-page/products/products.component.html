@@ -11,7 +11,7 @@
       <button *ngIf="logged" (click)="addToCart(userId, product)">
         Add one
       </button>
-      <button>See more</button>
+      <button [routerLink]="['/products', product.productId]">See more</button>
     </div>
   </section>
   <app-footer></app-footer>

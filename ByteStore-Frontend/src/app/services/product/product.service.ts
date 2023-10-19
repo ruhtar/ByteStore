@@ -12,4 +12,8 @@ export class ProductService {
   getAllProducts() {
     return this.http.get<Product[]>(API_PATH + 'products');
   }
+
+  getProductById(productId: number) {
+    return this.http.get<Product>(API_PATH + `products/${productId}`);
+  }
 }

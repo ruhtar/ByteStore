@@ -95,11 +95,18 @@ a {
   margin-bottom: 0.4rem;
 }
 
-.login-container img {
+.group-image {
   position: absolute;
   bottom: 10px;
   left: 10px;
-  width: 100px;
-  height: auto;
+  height: 245px;
+  width: 30rem;
+}
+
+.duo-image {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  height: 245px;
   width: 30rem;
 }
