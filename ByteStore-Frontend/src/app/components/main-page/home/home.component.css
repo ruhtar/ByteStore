@@ -15,11 +15,13 @@ main {
   max-width: 49.5rem;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  animation: slideInImage 1s ease-in-out; /* Anima??o para a imagem */
 }
 
 .text-container {
   flex: 1;
   padding: 1.5rem;
+  animation: slideInText 1s ease-in-out; /* Anima??o para o texto */
 }
 
 p {
@@ -37,17 +39,22 @@ section {
   min-height: 100vh;
 }
 
-/* Adiciona uma animação de fade-in aos textos */
-p {
-  text-align: center;
-  font-size: 1.6rem;
-  line-height: 1.4;
-  animation: slideIn 1s ease-in-out;
-}
-
-@keyframes slideIn {
+/* Anima??o de fade-in para o texto */
+@keyframes slideInText {
   0% {
     transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Anima??o para a imagem */
+@keyframes slideInImage {
+  0% {
+    transform: translateX(100%);
     opacity: 0;
   }
   100% {
