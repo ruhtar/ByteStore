@@ -11,6 +11,8 @@ export class ChangePasswordComponent {
   passwordForm!: FormGroup;
   password!: string;
   repassword!: string;
+  showPassword: boolean = false;
+  showRePassword: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private passwordService: PasswordService,
@@ -30,6 +32,26 @@ export class ChangePasswordComponent {
       this.passwordService
         .changePassword(newPassword, confirmPassword)
         .subscribe();
+    }
+  }
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+    const passwordInput = document.getElementById(
+      'password',
+    ) as HTMLInputElement;
+    if (passwordInput) {
+      passwordInput.type = this.showPassword ? 'text' : 'password';
+    }
+  }
+
+  toggleRePassword() {
+    this.showRePassword = !this.showRePassword;
+    const passwordInput = document.getElementById(
+      'repassword',
+    ) as HTMLInputElement;
+    if (passwordInput) {
+      passwordInput.type = this.showRePassword ? 'text' : 'password';
     }
   }
 }
