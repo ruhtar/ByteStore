@@ -8,8 +8,8 @@ import { ProductsComponent } from './products.component';
 const ProductRoute: Routes = [
   {
     path: '',
-    component: ProductsComponent,
     children: [
+      { path: '', component: ProductsComponent },
       {
         path: ':id',
         loadChildren: () =>

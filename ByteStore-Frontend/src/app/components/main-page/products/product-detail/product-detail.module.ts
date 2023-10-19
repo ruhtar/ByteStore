@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FooterModule } from 'src/app/components/footer/footer.module';
+import { HeaderModule } from 'src/app/components/header/header.module';
 import { ProductDetailComponent } from './product-detail.component';
 
 const routes: Routes = [
@@ -11,8 +13,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [ProductDetailComponent],
   exports: [RouterModule],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    HeaderModule,
+    FooterModule,
+  ],
 })
 export class ProductDetailModule {}
