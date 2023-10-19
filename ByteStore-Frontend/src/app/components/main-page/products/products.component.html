@@ -8,9 +8,7 @@
         <i class="fa-solid fa-hand-holding-dollar"></i> {{ product.price }} $
       </p>
       <p class="product-quantity">Stock: {{ product.productQuantity }}</p>
-      <button *ngIf="logged" (click)="addToCart(userId, product)">
-        Add one
-      </button>
+
       <button [routerLink]="['/products', product.productId]">See more</button>
     </div>
   </section>

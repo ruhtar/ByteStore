@@ -3,6 +3,7 @@
 <div class="product-details">
   <h1 class="product-name">{{ product.name }}</h1>
   <p class="product-price">Price: R${{ product.price }}</p>
+  <button *ngIf="logged" (click)="addToCart(userId, product)">Add one</button>
   <!-- <img class="product-image" src="product.jpg" alt="Imagem do Produto" /> -->
   <p class="product-description">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.

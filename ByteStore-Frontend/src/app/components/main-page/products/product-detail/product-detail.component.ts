@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { CartService } from 'src/app/services/cart/cart.service';
 import { ProductService } from 'src/app/services/product/product.service';
+import { TokenService } from 'src/app/services/token/token.service';
+import { OrderItem } from 'src/app/types/OrderItem';
 import { Product } from 'src/app/types/Product';
 
 @Component({
@@ -14,13 +18,19 @@ export class ProductDetailComponent {
     name: '',
     price: 0,
   };
+  userId!: number;
+  logged!: boolean;
 
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
+    private cartService: CartService,
+    private tokenService: TokenService,
+    private authService: AuthService,
   ) {}
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
+
     if (id !== null) {
       this.productService
         .getProductById(parseInt(id))
@@ -28,5 +38,16 @@ export class ProductDetailComponent {
           this.product = data;
         });
     }
+    this.userId = this.tokenService.getJwtFromLocalStorage().nameid;
+    this.authService.isLoggedIn.subscribe((response) => {
+      this.logged = response;
+    });
+  }
+
+  addToCart(userId: number, product: Product): void {
+    const orderItem = new OrderItem();
+    orderItem.ProductId = product.productId!;
+    orderItem.Quantity = 1;
+    this.cartService.addToCart(this.userId, orderItem);
   }
 }
