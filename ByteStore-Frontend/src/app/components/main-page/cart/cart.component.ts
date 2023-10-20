@@ -70,10 +70,14 @@ export class CartComponent {
       productId: product.productId,
       Quantity: quantity,
     };
+    if (product.productQuantity === 1 && quantity < 0) {
+      return;
+    }
     this.cartService.addToCart(this.userId, orderItem).subscribe((response) => {
       if (response.status === 200) {
         product.productQuantity += quantity;
       }
     });
+    this.calculateTotalPrice();
   }
 }
