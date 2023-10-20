@@ -24,7 +24,7 @@ namespace ByteStore.API.Controllers
         {
             var result = await _shoppingCartService.MakeOrder(item, userId);
             if (result == OrderStatus.Approved) return Ok(result.ToString());
-            if (result == OrderStatus.InvalidQuantity) return Problem(result.ToString());
+            if (result == OrderStatus.InvalidQuantity) return BadRequest(result.ToString());
             return BadRequest(result.ToString());
         }
 
@@ -32,12 +32,13 @@ namespace ByteStore.API.Controllers
         public async Task<ActionResult> BuyOrder(int userId)
         {
             var result = await _shoppingCartService.BuyOrder(userId);
-            if(result == BuyOrderStatus.InvalidQuantity) return BadRequest(result.ToString());
+            if (result == BuyOrderStatus.InvalidQuantity) return BadRequest(result.ToString());
             return Ok(BuyOrderStatus.Completed.ToString());
         }
 
         [HttpGet("/user/{userAggregateId}/cart")]
-        public async Task<ActionResult<ShoppingCartResponseDto>> GetShoppingCartByUserAggregateId([FromRoute] int userAggregateId)
+        public async Task<ActionResult<ShoppingCartResponseDto>> GetShoppingCartByUserAggregateId(
+            [FromRoute] int userAggregateId)
         {
             var cart = await _shoppingCartService.GetShoppingCartByUserAggregateId(userAggregateId);
             if (cart == null) return Problem("The shopping cart of the current user is not available.");
@@ -50,6 +51,5 @@ namespace ByteStore.API.Controllers
         //    var cart = await _shoppingCartService.GetShoppingCartById(shoppingCartId);
         //    if (cart == null) return Problem("The shopping cart is not available.");
         //    return Ok(cart);
-        //}
     }
 }

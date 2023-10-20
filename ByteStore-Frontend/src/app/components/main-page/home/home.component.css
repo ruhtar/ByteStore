@@ -12,16 +12,18 @@ main {
 }
 
 .image {
+  height: 528px;
+  min-width: 30rem;
   max-width: 49.5rem;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  animation: slideInImage 1s ease-in-out; /* Anima??o para a imagem */
+  animation: slideInImage 1s ease-in-out;
 }
 
 .text-container {
   flex: 1;
   padding: 1.5rem;
-  animation: slideInText 1s ease-in-out; /* Anima??o para o texto */
+  animation: slideInText 1s ease-in-out;
 }
 
 p {

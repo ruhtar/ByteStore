@@ -46,10 +46,12 @@ export class ProductDetailComponent {
     });
   }
 
-  addToCart(userId: number, product: Product, quantity: number): void {
+  addToCart(userId: number, product: Product, quantity: number) {
     const orderItem = new OrderItem();
     orderItem.productId = product.productId!;
     orderItem.Quantity = quantity;
-    this.cartService.addToCart(userId, orderItem).subscribe();
+    this.cartService.addToCart(userId, orderItem).subscribe((response) => {
+      //TODO: ADICIONAR MENSAGEM DE ERRO AQUI. RESPONSE.STATUS ETC..
+    });
   }
 }
