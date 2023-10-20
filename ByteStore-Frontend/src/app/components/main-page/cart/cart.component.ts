@@ -60,6 +60,7 @@ export class CartComponent {
   }
 
   calculateTotalPrice() {
+    this.totalPrice = 0;
     this.cart.products.forEach((element) => {
       this.totalPrice += element.price * element.productQuantity;
     });
@@ -76,8 +77,8 @@ export class CartComponent {
     this.cartService.addToCart(this.userId, orderItem).subscribe((response) => {
       if (response.status === 200) {
         product.productQuantity += quantity;
+        this.calculateTotalPrice();
       }
     });
-    this.calculateTotalPrice();
   }
 }
