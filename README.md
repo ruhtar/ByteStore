@@ -1,6 +1,6 @@
 # ByteStore Ecommerce project - WIP 🤑
 
-This fullstack project is an implementation of an E-commerce called ByteStore. The application has some entities like Users and their Shopping Carts, Products and Orders. The project also has a user authentication and authorization system using JSON Web Tokens (JWT). The project has been developed using .NET, Entity Framework Core, Angular, MySQL, JWT and Redis cache.
+This fullstack project is an implementation of an E-commerce called ByteStore. The application has some entities like Users and their Shopping Carts, Products and OrderItems. The project also has a user authentication and authorization system using JSON Web Tokens (JWT). The project has been developed using .NET, Entity Framework Core, Angular, MySQL, JWT and Redis cache.
 
 ## Features
 
