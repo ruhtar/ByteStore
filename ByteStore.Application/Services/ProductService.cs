@@ -37,7 +37,6 @@ namespace ByteStore.Application.Services
 
         public async Task<Product> UpdateProduct(int id, ProductDto productDto)
         {
-
             var product = new Product
             {
                 Name = productDto.Name,

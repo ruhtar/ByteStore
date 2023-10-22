@@ -16,7 +16,8 @@ namespace ByteStore.Application.Services
         private const string CartItemKey = "CartItemKey";
 
 
-        public ShoppingCartService(IShoppingCartRepository shoppingCartRepository, IProductRepository productRepository, ICacheConfigs cache)
+        public ShoppingCartService(IShoppingCartRepository shoppingCartRepository, IProductRepository productRepository,
+            ICacheConfigs cache)
         {
             _shoppingCartRepository = shoppingCartRepository;
             _productRepository = productRepository;
@@ -30,10 +31,17 @@ namespace ByteStore.Application.Services
             foreach (var item in shoppingCartDto!.OrderItems)
             {
                 var product = await _productRepository.GetProductById(item.ProductId);
-                if (product.ProductQuantity >= item.Quantity)
+                if (IsProductQuantityValidToBuy(product.ProductQuantity, item.Quantity))
                 {
                     product.ProductQuantity -= item.Quantity;
-                    await _productRepository.UpdateProduct(product.ProductId, product);
+                    if (product.ProductQuantity == 0)
+                    {
+                        await _productRepository.DeleteProduct(product.ProductId);
+                    }
+                    else
+                    {
+                        await _productRepository.UpdateProduct(product.ProductId, product);
+                    }
                 }
                 else
                 {
@@ -89,12 +97,12 @@ namespace ByteStore.Application.Services
             //var cache = await _cache.GetFromCacheAsync<ShoppingCartResponseDto>(CartItemKey);
             //if (cache != null)
             //{
-                //cartDto.Products = cache.Products.Select(c => new RequestProductDto
-                //{
-                //    Name = c.Name,
-                //    Price = c.Price,
-                //    ProductQuantity = c.ProductQuantity,
-                //}).ToList();
+            //cartDto.Products = cache.Products.Select(c => new RequestProductDto
+            //{
+            //    Name = c.Name,
+            //    Price = c.Price,
+            //    ProductQuantity = c.ProductQuantity,
+            //}).ToList();
             //    return cache;
             //}
 
@@ -117,10 +125,16 @@ namespace ByteStore.Application.Services
                     products.Add(productDto);
                 }
             }
+
             cartDto.Products = products;
             //var cacheData = JsonSerializer.Serialize(cartDto);
             //await _cache.SetAsync(CartItemKey, cacheData);
             return cartDto;
+        }
+
+        private static bool IsProductQuantityValidToBuy(int productQuantity, int itemQuantity)
+        {
+            return productQuantity >= itemQuantity;
         }
 
         private int EnsureProductQuantityIsAvailable(int currentProductQuantity, int availableProductQuantity)
@@ -129,7 +143,12 @@ namespace ByteStore.Application.Services
             {
                 currentProductQuantity = availableProductQuantity;
             }
+
             return currentProductQuantity;
+        }
+
+        private void RemoveProductWithZeroQuantity()
+        {
         }
     }
 }
