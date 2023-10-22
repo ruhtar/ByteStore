@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FooterModule } from '../../footer/footer.module';
 import { HeaderModule } from '../../header/header.module';
-import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
 import { UserSettingsComponent } from './user-settings.component';
 
 const UserSettingsRoutes: Routes = [
@@ -36,7 +35,7 @@ const UserSettingsRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [UserSettingsComponent, PurchaseHistoryComponent],
+  declarations: [UserSettingsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(UserSettingsRoutes),

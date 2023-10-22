@@ -1,4 +1,4 @@
-<div id="page-container" class="container">
+<div class="container">
   <app-header></app-header>
   <div class="content">
     <div class="menu">
@@ -8,10 +8,10 @@
         <!-- <li><a routerLink="purchase-history">Purchase history</a></li> -->
       </ul>
     </div>
-    <div class="router-container">
-      <!-- <ng-container>
-        <img src="../../../../assets/edit.svg" />
-      </ng-container> -->
+    <div *ngIf="isRouterOutletEmpty()" class="router-container">
+      <img src="../../../../assets/avatar.svg" />
+    </div>
+    <div *ngIf="!isRouterOutletEmpty()" class="router-container">
       <router-outlet name="settings"></router-outlet>
     </div>
   </div>

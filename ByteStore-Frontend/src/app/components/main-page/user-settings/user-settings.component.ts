@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-settings',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-settings.component.css'],
 })
 export class UserSettingsComponent {
-  constructor() {}
+  constructor(private router: Router) {}
+
+  isRouterOutletEmpty(): boolean {
+    return this.router.url === '/settings';
+  }
 }

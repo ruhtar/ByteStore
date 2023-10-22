@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FooterModule } from '../footer/footer.module';
 import { HeaderModule } from '../header/header.module';
-import { CartComponent } from './cart/cart.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { MainPageComponent } from './main-page.component';
@@ -19,7 +18,11 @@ const MainPageRoutes: Routes = [
         loadChildren: () =>
           import('./products/products.module').then((u) => u.ProductsModule),
       },
-      { path: 'cart', component: CartComponent },
+      {
+        path: 'cart',
+        loadChildren: () =>
+          import('./cart/cart.module').then((u) => u.CartModule),
+      },
       { path: 'contact', component: ContactComponent },
       {
         path: 'settings',
