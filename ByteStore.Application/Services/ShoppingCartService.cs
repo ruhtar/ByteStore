@@ -88,6 +88,7 @@ namespace ByteStore.Application.Services
         public async Task<ShoppingCartResponseDto> GetShoppingCartByUserAggregateId(int userAggregateId)
         {
             var cart = await _shoppingCartRepository.GetShoppingCartByUserAggregateId(userAggregateId);
+            if (cart == null) return null;
             var cartDto = new ShoppingCartResponseDto
             {
                 UserAggregateId = cart.UserAggregateId,
@@ -130,6 +131,7 @@ namespace ByteStore.Application.Services
             //var cacheData = JsonSerializer.Serialize(cartDto);
             //await _cache.SetAsync(CartItemKey, cacheData);
             return cartDto;
+
         }
 
         private static bool IsProductQuantityValidToBuy(int productQuantity, int itemQuantity)
@@ -145,10 +147,6 @@ namespace ByteStore.Application.Services
             }
 
             return currentProductQuantity;
-        }
-
-        private void RemoveProductWithZeroQuantity()
-        {
         }
     }
 }

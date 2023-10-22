@@ -2,8 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/types/User';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { User } from 'src/app/types/User';
 
 @Component({
   selector: 'app-login',
@@ -37,8 +37,7 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    //this.loginForm.valid
-    if (true) {
+    if (this.loginForm.valid) {
       const username: string = this.loginForm.get('username')?.value;
       const password: string = this.loginForm.get('password')?.value;
       const user: User = {
