@@ -106,6 +106,7 @@ namespace ByteStore.Application.Services
 
                 if (product != null)
                 {
+                    item.Quantity = EnsureProductQuantityIsAvailable(item.Quantity, product.ProductQuantity);
                     var productDto = new ProductDto
                     {
                         ProductId = product.ProductId,
@@ -120,6 +121,15 @@ namespace ByteStore.Application.Services
             //var cacheData = JsonSerializer.Serialize(cartDto);
             //await _cache.SetAsync(CartItemKey, cacheData);
             return cartDto;
+        }
+
+        private int EnsureProductQuantityIsAvailable(int currentProductQuantity, int availableProductQuantity)
+        {
+            if (currentProductQuantity > availableProductQuantity)
+            {
+                currentProductQuantity = availableProductQuantity;
+            }
+            return currentProductQuantity;
         }
     }
 }
