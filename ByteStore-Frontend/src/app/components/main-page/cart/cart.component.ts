@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { BuyOrderStatus } from 'src/app/enums/BuyOrderStatus';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { TokenService } from 'src/app/services/token/token.service';
 import { OrderItem } from 'src/app/types/OrderItem';
 import { Product } from 'src/app/types/Product';
 import { ShoppingCartDto } from 'src/app/types/ShoppingCartDto';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cart',
@@ -48,14 +48,15 @@ export class CartComponent {
 
   buyOrder() {
     if (this.logged) {
-      this.cartService
-        .buyOrder(this.userId)
-        .subscribe((response: BuyOrderStatus) => {
-          if (response === BuyOrderStatus.Completed) {
-            alert('Completed');
-          }
-        });
-      location.reload();
+      this.cartService.buyOrder(this.userId).subscribe((response) => {
+        if (response.status === 200) {
+          Swal.fire('Thanks for your purchase!', '', 'success').then(() => {
+            location.reload();
+          });
+        } else {
+          Swal.fire('Whoops, some error occurred.', '', 'error');
+        }
+      });
     }
   }
 

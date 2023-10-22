@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BuyOrderStatus } from 'src/app/enums/BuyOrderStatus';
 import { OrderItem } from 'src/app/types/OrderItem';
 import { ShoppingCartDto } from 'src/app/types/ShoppingCartDto';
 import { API_PATH } from 'src/environment/env';
@@ -19,9 +18,10 @@ export class CartService {
   }
 
   buyOrder(userId: number) {
-    return this.http.get<BuyOrderStatus>(
-      API_PATH + `cart/buy?userId=${userId}`,
-    );
+    return this.http.get(API_PATH + `cart/buy?userId=${userId}`, {
+      observe: 'response',
+      responseType: 'text',
+    });
   }
 
   getCartByUserId(userId: number) {
