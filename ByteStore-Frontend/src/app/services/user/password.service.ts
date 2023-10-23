@@ -18,6 +18,7 @@ export class PasswordService {
     return this.http.put(
       API_PATH + `user/change-password?userId=${userId}`,
       body,
+      { observe: 'response', responseType: 'text' },
     );
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PasswordService } from 'src/app/services/user/password.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-change-password',
@@ -26,12 +27,27 @@ export class ChangePasswordComponent {
   ngOnInit() {}
 
   public changePassword() {
+    const newPassword = this.passwordForm.get('password')?.value;
+    const confirmPassword = this.passwordForm.get('repassword')?.value;
+    if (newPassword !== confirmPassword) {
+      Swal.fire('Please, write matching passwords.', '', 'error');
+      return;
+    }
+
     if (this.passwordForm.valid) {
-      const newPassword = this.passwordForm.get('password')?.value;
-      const confirmPassword = this.passwordForm.get('repassword')?.value;
       this.passwordService
         .changePassword(newPassword, confirmPassword)
-        .subscribe();
+        .subscribe(
+          (response) => {
+            if (response.status === 200) {
+              Swal.fire('Success in changing password!', '', 'success');
+            }
+          },
+          (error) => {
+            if (error.status === 400)
+              Swal.fire('Please, write matching passwords.', '', 'error');
+          },
+        );
     }
   }
 
