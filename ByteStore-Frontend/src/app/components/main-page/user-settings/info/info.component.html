@@ -1,7 +1,7 @@
 <div class="container">
   <div class="registration-form">
     <form [formGroup]="infoForm" (ngSubmit)="editInfos()" #formDir="ngForm">
-      <label class="address-label">{{ addressLabel }}:</label>
+      <label>Street:</label>
       <input
         type="text"
         id="street"
@@ -11,6 +11,7 @@
         [(ngModel)]="streetValue"
         required
       />
+      <label>Street number:</label>
       <input
         type="number"
         id="streetNumber"
@@ -21,6 +22,7 @@
         [(ngModel)]="streetNumberValue"
         required
       />
+      <label>City:</label>
       <input
         type="text"
         id="city"
@@ -30,6 +32,7 @@
         required
         formControlName="city"
       />
+      <label>State:</label>
       <input
         type="text"
         id="state"
@@ -39,6 +42,7 @@
         formControlName="state"
         required
       />
+      <label>Country:</label>
       <input
         type="text"
         id="country"
