@@ -25,7 +25,7 @@ export class HeaderComponent {
       this.logged = response;
     });
     if (this.logged) {
-      this.username = this.tokenService.getJwtFromLocalStorage().name;
+      this.username = this.tokenService.getDecodedJwt().name;
     }
   }
 }

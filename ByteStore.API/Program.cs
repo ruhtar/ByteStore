@@ -1,6 +1,5 @@
 using ByteStore.API.Extensions;
 using ByteStore.Infrastructure;
-using ByteStore.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 namespace ByteStore.API

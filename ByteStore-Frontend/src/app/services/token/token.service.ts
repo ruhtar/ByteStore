@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,7 +7,19 @@ import { Injectable } from '@angular/core';
 export class TokenService {
   constructor() {}
 
-  public getJwtFromLocalStorage() {
+  public addJwtToHeaders(): HttpHeaders | undefined {
+    const token = this.getDecodedJwt();
+    if (token) {
+      console.log(token, 'token');
+
+      return new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      });
+    }
+    return undefined;
+  }
+
+  public getDecodedJwt() {
     let jwt = localStorage.getItem('acess_token');
 
     if (jwt) {

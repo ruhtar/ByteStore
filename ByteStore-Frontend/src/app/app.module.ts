@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,6 +15,7 @@ import { HomeComponent } from './components/main-page/home/home.component';
 import { InfoModule } from './components/main-page/user-settings/info/info.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SignupModule } from './components/signup/signup.module';
+import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,13 @@ import { SignupModule } from './components/signup/signup.module';
     InfoModule,
     [SweetAlert2Module.forRoot()],
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

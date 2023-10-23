@@ -36,7 +36,7 @@ export class ProductDetailComponent {
           this.product = data;
         });
     }
-    this.userId = this.tokenService.getJwtFromLocalStorage().nameid;
+    this.userId = this.tokenService.getDecodedJwt().nameid;
     this.authService.isLoggedIn.subscribe((response) => {
       this.logged = response;
     });

@@ -31,7 +31,7 @@ export class CartComponent {
     });
 
     if (this.logged) {
-      this.userId = this.tokenService.getJwtFromLocalStorage().nameid;
+      this.userId = this.tokenService.getDecodedJwt().nameid;
       this.cartService
         .getCartByUserId(this.userId)
         .subscribe((response: ShoppingCartDto) => {
