@@ -66,7 +66,7 @@ namespace ByteStore.Infrastructure.Repository
             };
         }
 
-        public async Task<OrderStatus> MakeOrder(OrderItem newItem, int userAggregateId)
+        public async Task<OrderStatus> MakeOrder(OrderItem itemToAdd, int userAggregateId)
         {
             //TODO: refatorar para camada de serviço
             var shoppingCart = await _context.ShoppingCarts.FirstOrDefaultAsync(x => x.UserAggregateId == userAggregateId);
@@ -78,21 +78,21 @@ namespace ByteStore.Infrastructure.Repository
                 orderItems = JsonSerializer.Deserialize<List<OrderItem>>(shoppingCart.OrderItems);
             }
 
-            var existingItem = orderItems!.FirstOrDefault(x => x.ProductId == newItem.ProductId);
+            var existingItem = orderItems!.FirstOrDefault(x => x.ProductId == itemToAdd.ProductId);
 
             //Primeira vez do item no carrinho
             if (existingItem == null)
             {
                 existingItem = new OrderItem
                 {
-                    ProductId = newItem.ProductId,
-                    Quantity = newItem.Quantity,
+                    ProductId = itemToAdd.ProductId,
+                    Quantity = itemToAdd.Quantity,
                 };
                 orderItems!.Add(existingItem);
             }
             else
             {
-                existingItem.Quantity += newItem.Quantity;
+                existingItem.Quantity += itemToAdd.Quantity;
             }
 
             if (existingItem.Quantity < 0) existingItem.Quantity = 0; 
@@ -109,6 +109,20 @@ namespace ByteStore.Infrastructure.Repository
             shoppingCart!.OrderItems = Utils.Serializer(new List<OrderItem>());
             await _context.SaveChangesAsync();
             return BuyOrderStatus.Completed;
+        }
+
+        public async Task RemoveProductFromCart(int userAggregateId, int productId)
+        {
+            var shoppingCart = await _context.ShoppingCarts.FirstOrDefaultAsync(x => x.UserAggregateId == userAggregateId);
+            if (shoppingCart == null) return;
+            var orderItems = JsonSerializer.Deserialize<List<OrderItem>>(shoppingCart.OrderItems);
+            if (orderItems != null)
+            {
+                var itemToRemove = orderItems.FirstOrDefault(x => x.ProductId == productId);
+                if (itemToRemove != null) orderItems.Remove(itemToRemove);
+                shoppingCart.OrderItems = Utils.Serializer(orderItems);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

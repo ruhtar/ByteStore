@@ -52,11 +52,11 @@ namespace ByteStore.Application.Services
             return await _shoppingCartRepository.BuyOrder(userAggregateId);
         }
 
-        public async Task<OrderStatus> MakeOrder(OrderItem item, int userAggregateId)
+        public async Task<OrderStatus> MakeOrder(OrderItem itemToAdd, int userAggregateId)
         {
-            var product = await _productRepository.GetProductById(item.ProductId);
+            var availableProduct = await _productRepository.GetProductById(itemToAdd.ProductId);
 
-            if (product == null)
+            if (availableProduct == null)
                 return OrderStatus.ProductNotFound;
 
             var shoppingCart = await _shoppingCartRepository.GetShoppingCartByUserAggregateId(userAggregateId);
@@ -64,20 +64,20 @@ namespace ByteStore.Application.Services
             if (shoppingCart == null)
                 return OrderStatus.ProductNotFound;
 
-            var orderItem = shoppingCart.OrderItems.FirstOrDefault(x => x.ProductId == item.ProductId);
-            if (orderItem == null)
+            var cartOrderItem = shoppingCart.OrderItems.FirstOrDefault(x => x.ProductId == itemToAdd.ProductId);
+            if (cartOrderItem == null)
             {
-                orderItem = new OrderItem
+                cartOrderItem = new OrderItem
                 {
-                    ProductId = item.ProductId,
+                    ProductId = itemToAdd.ProductId,
                     Quantity = 0,
                 };
             }
 
-            if (product.ProductQuantity < orderItem.Quantity + item.Quantity)
+            if (availableProduct.ProductQuantity < cartOrderItem.Quantity + itemToAdd.Quantity)
                 return OrderStatus.InvalidQuantity;
 
-            return await _shoppingCartRepository.MakeOrder(item, userAggregateId);
+            return await _shoppingCartRepository.MakeOrder(itemToAdd, userAggregateId);
         }
 
         //public async Task<ShoppingCartDto?> GetShoppingCartById(int shoppingCartId)
@@ -132,6 +132,11 @@ namespace ByteStore.Application.Services
             //await _cache.SetAsync(CartItemKey, cacheData);
             return cartDto;
 
+        }
+
+        public async Task RemoveProductFromCart(int userAggregateId, int productId)
+        {
+            await _shoppingCartRepository.RemoveProductFromCart(userAggregateId, productId);
         }
 
         private static bool IsProductQuantityValidToBuy(int productQuantity, int itemQuantity)

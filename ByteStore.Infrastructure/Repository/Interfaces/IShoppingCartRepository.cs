@@ -11,6 +11,7 @@ namespace ByteStore.Infrastructure.Repository.Interfaces
         Task CreateShoppingCart(int userAggregateId);
         //Task<ShoppingCartDto?> GetShoppingCartById(int shoppingCartId);
         Task<ShoppingCartDto?> GetShoppingCartByUserAggregateId(int userAggregateId);
-        Task<OrderStatus> MakeOrder(OrderItem newItem, int shoppingCartId);
+        Task<OrderStatus> MakeOrder(OrderItem itemToAdd, int shoppingCartId);
+        Task RemoveProductFromCart(int userAggregateId, int productId);
     }
 }

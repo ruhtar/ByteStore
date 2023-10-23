@@ -50,6 +50,15 @@ public class ShoppingCartController : ControllerBase
         return Ok(cart);
     }
 
+    [Authorize]
+    [HttpDelete("/user/{userAggregateId}/cart/remove")]
+    public async Task<IActionResult> RemoveProductFromShoppingCart(int userAggregateId, int productId)
+    {
+        if(!IsTokenValid()) return Unauthorized();
+        await _shoppingCartService.RemoveProductFromCart(userAggregateId, productId);
+        return Ok();
+    }
+
     //[HttpGet("/cart/{shoppingCartId}")]
     //public async Task<ActionResult<ShoppingCartDto?>> GetShoppingCartById([FromRoute] int shoppingCartId)
     //{
