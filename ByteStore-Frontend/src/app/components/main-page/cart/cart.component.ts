@@ -51,8 +51,10 @@ export class CartComponent {
       Swal.fire({
         title:
           'Are you sure to complete the purchase and buy all the products in your shopping cart?',
-        confirmButtonText: 'Yes',
+        confirmButtonText: 'Yes, complete the purchase.',
+        icon: 'warning',
         showDenyButton: true,
+        confirmButtonColor: '#28a028',
       }).then((result) => {
         if (result.isConfirmed) {
           this.cartService.buyOrder(this.userId).subscribe((response) => {
@@ -62,6 +64,7 @@ export class CartComponent {
               });
             } else {
               Swal.fire('Whoops, some error occurred.', '', 'error');
+              return;
             }
           });
         }
