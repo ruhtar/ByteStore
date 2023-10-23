@@ -22,6 +22,18 @@ export class CartService {
     });
   }
 
+  removeProductFromCart(productId: number) {
+    var userId = this.tokenService.getDecodedJwt().nameid;
+    return this.http.delete(
+      API_PATH + `user/${userId}/cart/remove?productId=${productId}`,
+      {
+        headers: this.tokenService.addJwtToHeaders(),
+        observe: 'response',
+        responseType: 'text',
+      },
+    );
+  }
+
   buyOrder(userId: number) {
     return this.http.get(API_PATH + `cart/buy?userId=${userId}`, {
       headers: this.tokenService.addJwtToHeaders(),

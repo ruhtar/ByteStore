@@ -10,8 +10,6 @@ export class TokenService {
   public addJwtToHeaders(): HttpHeaders | undefined {
     const token = this.getDecodedJwt();
     if (token) {
-      console.log(token, 'token');
-
       return new HttpHeaders({
         Authorization: `Bearer ${token}`,
       });

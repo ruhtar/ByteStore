@@ -73,6 +73,37 @@ export class CartComponent {
     }
   }
 
+  removeProductFromTheCart(productId: number) {
+    Swal.fire({
+      title: 'Are you sure to remove this product from your shopping cart?',
+      confirmButtonText: 'Yes, remove.',
+      icon: 'warning',
+      showDenyButton: true,
+      confirmButtonColor: '#28a028',
+    }).then(() => {
+      this.cartService.removeProductFromCart(productId).subscribe(
+        (response) => {
+          if (response.status === 200) {
+            Swal.fire('Success on removing the product.', '', 'success').then(
+              () => {
+                this.products = this.products.filter(
+                  (product) => product.productId !== productId,
+                );
+              },
+            );
+          }
+        },
+        (error) => {
+          Swal.fire(
+            'Whoops, something went wrong. Please, try again later.',
+            '',
+            'error',
+          );
+        },
+      );
+    });
+  }
+
   calculateTotalPrice() {
     this.totalPrice = 0;
     this.cart.products.forEach((element) => {

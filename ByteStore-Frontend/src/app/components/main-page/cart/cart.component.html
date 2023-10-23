@@ -20,7 +20,10 @@
           </button>
         </div>
       </div>
-      <button class="remove-btn">
+      <button
+        class="remove-btn"
+        (click)="removeProductFromTheCart(product.productId)"
+      >
         <i class="fa-solid fa-trash fa-beat"></i>
       </button>
     </div>

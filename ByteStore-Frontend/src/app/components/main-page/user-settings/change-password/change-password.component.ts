@@ -44,12 +44,12 @@ export class ChangePasswordComponent {
             }
           },
           (error) => {
-            if (error.status === 400) console.log(error);
-            Swal.fire(
-              'Password must have capital letter, numbers and special characters.',
-              '',
-              'error',
-            );
+            if (error.status === 400)
+              Swal.fire(
+                'Password must have capital letter, numbers and special characters.',
+                '',
+                'error',
+              );
           },
         );
     }
