@@ -13,7 +13,7 @@ export class SignupComponent {
   formTitle: string = 'Sign up';
   username: string = 'Username';
   password: string = 'Password';
-  rePassword: string = 'Confirm your password';
+  repassword: string = 'Confirm your password';
   address: string = 'Address';
   street: string = 'Street';
   streetNumber: string = 'Street Number';
@@ -23,18 +23,12 @@ export class SignupComponent {
   submitButtonText: string = 'Sign up';
   usernamePlaceholder: string = 'Your username';
   passwordPlaceholder: string = 'Your password';
+  repasswordPlaceholder: string = 'Confirm your password';
 
   constructor(private authService: AuthService) {}
 
   handler(user: any) {
-    let role;
-
-    var checkbox = <HTMLInputElement>document.getElementById('isSeller');
-    if (checkbox.checked) {
-      role = Roles.Seller;
-    } else {
-      role = Roles.User;
-    }
+    let role = Roles.User; //For now, the system will not have Sellers.
 
     const userAggregate: UserAggregate = {
       user: {

@@ -60,7 +60,41 @@
         </p>
       </div>
 
-      <label>
+      <label for="repassword">{{ repassword }}:</label>
+      <span class="password-input-container">
+        <input
+          type="password"
+          id="repassword"
+          name="repassword"
+          required
+          formControlName="repassword"
+          placeholder="{{ repasswordPlaceholder }}"
+          class="password-input"
+        />
+        <i
+          class="fa-solid fa-eye input-icon"
+          (click)="toggleRepassword()"
+          *ngIf="showRepassword"
+        ></i>
+        <i
+          class="fa-solid fa-eye-slash input-icon"
+          (click)="toggleRepassword()"
+          *ngIf="!showRepassword"
+        ></i>
+      </span>
+      <div class="validation-error">
+        <p
+          *ngIf="
+            userForm.get('repassword')!.errors?.['required'] &&
+            userForm.get('repassword')!.invalid &&
+            formDir.submitted
+          "
+        >
+          Password is required
+        </p>
+      </div>
+
+      <!-- <label>
         <input
           type="checkbox"
           id="isSeller"
@@ -68,7 +102,7 @@
           formControlName="isSeller"
         />
         I am a seller.
-      </label>
+      </label> -->
 
       <label class="address-label">{{ address }}:</label>
       <input
