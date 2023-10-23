@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Roles } from 'src/app/enums/Roles';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserAggregate } from 'src/app/types/UserAggregate';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -51,8 +52,27 @@ export class SignupComponent {
     };
 
     //TODO: Validar o signup, logar e redirecionar.
-    this.authService.signup(userAggregate).subscribe();
-    this.authService.signIn(user).subscribe();
-    //window.location.replace('/home');
+    this.authService.signup(userAggregate).subscribe(
+      (response) => {
+        if (response.status === 200) {
+          Swal.fire(
+            `Welcome, ${user.username}! Thanks for joining.`,
+            '',
+            'success',
+          ).then(() => {
+            this.authService.signIn(user).subscribe(() => {
+              window.location.replace('/home');
+            });
+          });
+        }
+      },
+      () => {
+        Swal.fire(
+          `Something went wrong. Please, try again later.`,
+          '',
+          'error',
+        );
+      },
+    );
   }
 }

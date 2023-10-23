@@ -14,19 +14,22 @@ export class AuthService {
   isLoggedIn = this._isLoggedIn.asObservable();
 
   constructor(private http: HttpClient) {
-    const token = localStorage.getItem('acess_token');
+    const token = localStorage.getItem('access_token');
     //without this, if we reload the page, it counts as if we are not logged in
     this._isLoggedIn.next(!!token); //transforms the token value in a boolean
   }
 
   signup(user: UserAggregate) {
-    return this.http.post(API_PATH + 'user/signup', user);
+    return this.http.post(API_PATH + 'user/signup', user, {
+      observe: 'response',
+      responseType: 'text',
+    });
   }
 
   signIn(user: User) {
     return this.http.post<IToken>(API_PATH + 'user/signin', user).pipe(
       tap((response: IToken) => {
-        localStorage.setItem('acess_token', response.token);
+        localStorage.setItem('access_token', response.token);
         this._isLoggedIn.next(true);
       }),
     );

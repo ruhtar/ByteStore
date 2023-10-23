@@ -16,7 +16,7 @@ export class HeaderComponent {
   username!: string;
 
   signOut() {
-    localStorage.removeItem('acess_token');
+    localStorage.removeItem('access_token');
     location.reload();
   }
 

@@ -18,7 +18,7 @@ export class TokenService {
   }
 
   public getDecodedJwt() {
-    let jwt = localStorage.getItem('acess_token');
+    let jwt = localStorage.getItem('access_token');
 
     if (jwt) {
       const decodedToken = this.decodeJwt(jwt);

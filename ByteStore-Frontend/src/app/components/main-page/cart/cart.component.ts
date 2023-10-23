@@ -90,6 +90,7 @@ export class CartComponent {
                   this.products = this.products.filter(
                     (product) => product.productId !== productId,
                   );
+                  this.calculateTotalPrice();
                 },
               );
             }
@@ -108,7 +109,7 @@ export class CartComponent {
 
   calculateTotalPrice() {
     this.totalPrice = 0;
-    this.cart.products.forEach((element) => {
+    this.products.forEach((element) => {
       this.totalPrice += element.price * element.productQuantity;
     });
   }
