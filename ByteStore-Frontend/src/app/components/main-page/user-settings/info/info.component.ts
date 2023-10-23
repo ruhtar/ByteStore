@@ -60,7 +60,7 @@ export class InfoComponent {
     this.userService.editUserAddress(this.address).subscribe(
       (response) => {
         if (response.status === 200) {
-          Swal.fire('Address updated successfully! Thank you.', '', 'success');
+          Swal.fire('Address updated successfully!', '', 'success');
         }
       },
       (error) => {

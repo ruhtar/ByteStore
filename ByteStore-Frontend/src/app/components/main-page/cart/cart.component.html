@@ -9,17 +9,20 @@
         <p>Quantity</p>
         <div class="quantity-controls">
           <button
-            class="remove-button"
+            class="takeaway-button"
             (click)="changeItemQuantity(product, -1)"
           >
-            -
+            <i class="fa-solid fa-minus"></i>
           </button>
           <span class="quantity">{{ product.productQuantity }}</span>
           <button class="add-button" (click)="changeItemQuantity(product, 1)">
-            +
+            <i class="fa-solid fa-plus"></i>
           </button>
         </div>
       </div>
+      <button class="remove-btn">
+        <i class="fa-solid fa-trash fa-beat"></i>
+      </button>
     </div>
     <div class="summary"></div>
     <h2>Cart summary</h2>

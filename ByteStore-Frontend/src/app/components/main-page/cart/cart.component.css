@@ -1,3 +1,5 @@
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
 .cart-items {
   padding: 2rem;
   padding-bottom: 5rem;
@@ -26,8 +28,8 @@
   flex: 1;
 }
 
-.remove-button {
-  background-color: #e74c3c;
+.takeaway-button {
+  background-color: #e59553;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -92,4 +94,18 @@
   padding: 10px;
   text-align: center;
   margin: 20px;
+}
+
+.remove-btn {
+  background-color: #ff5733;
+  color: #000000;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.remove-btn:hover {
+  background-color: #ff2d00;
 }

@@ -22,7 +22,7 @@ namespace ByteStore.Application.Services
                     new Claim(ClaimTypes.Name, username),
                     new Claim(ClaimTypes.Role, role.ToString()),
                 }),
-                Expires = DateTime.UtcNow.AddHours(1),
+                Expires = DateTime.UtcNow.AddHours(5),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
