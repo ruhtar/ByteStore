@@ -17,30 +17,23 @@ namespace ByteStore.API
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            //Adding In-Memory cache.
-            builder.Services.AddMemoryCache();
-            //docker run -d -p 6379:6379 --name redis redis.
-            builder.Services.AddStackExchangeRedisCache(o =>
-            {
-                o.InstanceName = "instance";
-                o.Configuration = Environment.GetEnvironmentVariable("REDIS_LOCALHOST");
-            });
 
-            //SWAGGER GENERATOR
-            builder.Services.AddSwaggerGen();
-
-            //DEPENDENCY INJECTION CONFIGURATION
-            builder.Services.AddDependencies();
-
-            //JWT CONFIGURATION
-            builder.Services.AddJWTConfiguration();
-
-            builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(Environment.GetEnvironmentVariable("CONNECTION_STRING"), ServerVersion.AutoDetect(Environment.GetEnvironmentVariable("CONNECTION_STRING")), 
-                x => x.MigrationsAssembly("ByteStore.Infrastructure")));
-
-            builder.Services.AddAuthorization();
-
-            builder.Services.AddCors();
+            builder.Services
+                .AddMemoryCache() //Adding In-Memory cache.
+                .AddStackExchangeRedisCache(o => //docker run -d -p 6379:6379 --name redis redis.
+                {
+                    o.InstanceName = "instance";
+                    o.Configuration = Environment.GetEnvironmentVariable("REDIS_LOCALHOST");
+                })
+                .AddSwaggerGen() //SWAGGER GENERATOR
+                .AddDependencies() //DEPENDENCY INJECTION CONFIGURATION
+                .AddJWTConfiguration() //JWT CONFIGURATION
+                .AddDbContext<AppDbContext>(options => options.UseMySql(
+                    Environment.GetEnvironmentVariable("CONNECTION_STRING"),
+                    ServerVersion.AutoDetect(Environment.GetEnvironmentVariable("CONNECTION_STRING")),
+                    x => x.MigrationsAssembly("ByteStore.Infrastructure")))
+                .AddAuthorization()
+                .AddCors();
 
             var app = builder.Build();
 
