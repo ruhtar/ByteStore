@@ -15,11 +15,13 @@ public class UserController : ControllerBase
 {
     private readonly IUserService _userService;
     private readonly IUserValidator _userValidator;
+    private readonly ITokenService _tokenService;
 
-    public UserController(IUserService userService, IUserValidator userValidator)
+    public UserController(IUserService userService, IUserValidator userValidator, ITokenService tokenService)
     {
         _userService = userService;
         _userValidator = userValidator;
+        _tokenService = tokenService;
     }
 
     [HttpPost("signup")]
@@ -64,15 +66,19 @@ public class UserController : ControllerBase
         return Ok(new { token });
     }
 
+    [Authorize]
     [HttpPut("address/{userId}")]
     public async Task<ActionResult> EditUserAddress([FromRoute] int userId, [FromBody] Address address) {
+        if(!IsTokenValid()) return Unauthorized();
         await _userService.EditUserAddress(address, userId);
         return Ok();
     }
 
     [HttpGet("address/{userId}")]
+    [Authorize]
     public async Task<ActionResult> GetUserAddress([FromRoute] int userId)
     {
+        if(!IsTokenValid()) return Unauthorized();
         var address = await _userService.GetUserAddress(userId);
         if (address != null) return Ok(address);
         return NotFound();
@@ -80,8 +86,10 @@ public class UserController : ControllerBase
 
         
     [HttpPut("change-password")]
+    [Authorize]
     public async Task<IActionResult?> ChangePassword(int userId, [FromBody] ChangePasswordRequestDto passwordDto)
     {
+        if(!IsTokenValid()) return Unauthorized();
         if (passwordDto.Password != passwordDto.Repassword) return BadRequest("Please, insert matching passwords");
         var response = await _userService.ChangePassword(userId, passwordDto.Password, passwordDto.Repassword);
         switch (response)
@@ -96,5 +104,20 @@ public class UserController : ControllerBase
                 return Problem("User not found.");
             default: return Problem();
         }
+    }
+    
+    private bool IsTokenValid()
+    {
+        string token = HttpContext.Request.Headers["Authorization"];
+
+        if (string.IsNullOrEmpty(token))
+        {
+            return false;
+        }
+
+        // Remove o prefixo "Bearer " do token, se presente
+        token = token.Replace("Bearer ", "");
+
+        return _tokenService.ValidateToken(token);
     }
 }

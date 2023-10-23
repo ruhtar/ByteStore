@@ -28,6 +28,5 @@ namespace ByteStore.API.Extensions
             });
             return services;
         }
-
     }
 }
