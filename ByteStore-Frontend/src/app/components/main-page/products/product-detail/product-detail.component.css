@@ -74,6 +74,12 @@
   transition: background-color 0.4s ease-in-out;
 }
 
+a {
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: (--purple);
+}
+
 .add-button:hover {
   background-color: #ad8b4a;
 }
