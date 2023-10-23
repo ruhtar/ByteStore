@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from 'src/app/services/user/user.service';
 import { Address } from 'src/app/types/Address';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-info',
@@ -56,6 +57,15 @@ export class InfoComponent {
     this.address.country = this.countryValue;
     this.address.state = this.stateValue;
     this.address.city = this.cityValue;
-    this.userService.editUserAddress(this.address).subscribe();
+    this.userService.editUserAddress(this.address).subscribe(
+      (response) => {
+        if (response.status === 200) {
+          Swal.fire('Address updated successfully! Thank you.', '', 'success');
+        }
+      },
+      (error) => {
+        Swal.fire('Some error occur, please try again later.', '', 'error');
+      },
+    );
   }
 }

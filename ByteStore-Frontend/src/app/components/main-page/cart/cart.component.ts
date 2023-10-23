@@ -48,14 +48,24 @@ export class CartComponent {
 
   buyOrder() {
     if (this.logged) {
-      this.cartService.buyOrder(this.userId).subscribe((response) => {
-        if (response.status === 200) {
-          Swal.fire('Thanks for your purchase!', '', 'success').then(() => {
-            location.reload();
+      Swal.fire({
+        title:
+          'Are you sure to complete the purchase and buy all the products in your shopping cart?',
+        confirmButtonText: 'Yes',
+        showDenyButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.cartService.buyOrder(this.userId).subscribe((response) => {
+            if (response.status === 200) {
+              Swal.fire('Thanks for your purchase!', '', 'success').then(() => {
+                location.reload();
+              });
+            } else {
+              Swal.fire('Whoops, some error occurred.', '', 'error');
+            }
           });
-        } else {
-          Swal.fire('Whoops, some error occurred.', '', 'error');
         }
+        return;
       });
     }
   }
