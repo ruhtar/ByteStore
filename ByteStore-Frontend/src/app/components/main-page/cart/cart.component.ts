@@ -80,27 +80,29 @@ export class CartComponent {
       icon: 'warning',
       showDenyButton: true,
       confirmButtonColor: '#28a028',
-    }).then(() => {
-      this.cartService.removeProductFromCart(productId).subscribe(
-        (response) => {
-          if (response.status === 200) {
-            Swal.fire('Success on removing the product.', '', 'success').then(
-              () => {
-                this.products = this.products.filter(
-                  (product) => product.productId !== productId,
-                );
-              },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.cartService.removeProductFromCart(productId).subscribe(
+          (response) => {
+            if (response.status === 200) {
+              Swal.fire('Success on removing the product.', '', 'success').then(
+                () => {
+                  this.products = this.products.filter(
+                    (product) => product.productId !== productId,
+                  );
+                },
+              );
+            }
+          },
+          (error) => {
+            Swal.fire(
+              'Whoops, something went wrong. Please, try again later.',
+              '',
+              'error',
             );
-          }
-        },
-        (error) => {
-          Swal.fire(
-            'Whoops, something went wrong. Please, try again later.',
-            '',
-            'error',
-          );
-        },
-      );
+          },
+        );
+      }
     });
   }
 
@@ -112,7 +114,9 @@ export class CartComponent {
   }
 
   changeItemQuantity(product: Product, quantity: number) {
+    //less than zero means that the operation is removing products from the cart
     if (product.productQuantity === 1 && quantity < 0) {
+      this.removeProductFromTheCart(product.productId);
       return;
     }
     const orderItem: OrderItem = {

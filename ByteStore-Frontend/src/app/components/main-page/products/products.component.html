@@ -8,7 +8,7 @@
         <i class="fa-solid fa-hand-holding-dollar"></i>
         $ {{ product.price | number: "1.2-2" }}
       </p>
-      <p class="product-quantity">Stock: {{ product.productQuantity }}</p>
+      <!-- <p class="product-quantity">Stock: {{ product.productQuantity }}</p> -->
 
       <button [routerLink]="['/products', product.productId]" class="see-more">
         See more

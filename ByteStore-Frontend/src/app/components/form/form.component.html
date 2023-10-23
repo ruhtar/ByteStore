@@ -14,6 +14,17 @@
         formControlName="username"
         placeholder="{{ usernamePlaceholder }}"
       />
+      <div class="validation-error">
+        <p
+          *ngIf="
+            userForm.get('username')!.errors?.['required'] &&
+            userForm.get('username')!.invalid &&
+            formDir.submitted
+          "
+        >
+          Name is required
+        </p>
+      </div>
 
       <label for="password">{{ password }}:</label>
       <span class="password-input-container">
@@ -37,6 +48,17 @@
           *ngIf="!showPassword"
         ></i>
       </span>
+      <div class="validation-error">
+        <p
+          *ngIf="
+            userForm.get('password')!.errors?.['required'] &&
+            userForm.get('password')!.invalid &&
+            formDir.submitted
+          "
+        >
+          Password is required
+        </p>
+      </div>
 
       <label>
         <input
@@ -57,6 +79,17 @@
         formControlName="street"
         required
       />
+      <div class="validation-error">
+        <p
+          *ngIf="
+            userForm.get('street')!.errors?.['required'] &&
+            userForm.get('street')!.invalid &&
+            formDir.submitted
+          "
+        >
+          Street is required
+        </p>
+      </div>
       <input
         type="number"
         id="streetNumber"
@@ -66,6 +99,17 @@
         min="0"
         required
       />
+      <div class="validation-error">
+        <p
+          *ngIf="
+            userForm.get('streetNumber')!.errors?.['required'] &&
+            userForm.get('streetNumber')!.invalid &&
+            formDir.submitted
+          "
+        >
+          Street number is required
+        </p>
+      </div>
       <input
         type="text"
         id="city"
@@ -74,6 +118,17 @@
         required
         formControlName="city"
       />
+      <div class="validation-error">
+        <p
+          *ngIf="
+            userForm.get('city')!.errors?.['required'] &&
+            userForm.get('city')!.invalid &&
+            formDir.submitted
+          "
+        >
+          City is required
+        </p>
+      </div>
       <input
         type="text"
         id="state"
@@ -82,6 +137,17 @@
         formControlName="state"
         required
       />
+      <div class="validation-error">
+        <p
+          *ngIf="
+            userForm.get('state')!.errors?.['required'] &&
+            userForm.get('state')!.invalid &&
+            formDir.submitted
+          "
+        >
+          State is required
+        </p>
+      </div>
       <input
         type="text"
         id="country"
@@ -90,14 +156,27 @@
         formControlName="country"
         required
       />
-
-      <button type="submit">{{ submitButtonText }}</button>
-      <div *ngIf="formSucess" class="form-sucess">
-        <p>All done!</p>
+      <div class="validation-error">
+        <p
+          *ngIf="
+            userForm.get('country')!.errors?.['required'] &&
+            userForm.get('country')!.invalid &&
+            formDir.submitted
+          "
+        >
+          Country is required
+        </p>
       </div>
-      <label class="login-warning"
-        >Already have an account? <a href="/login">Login now</a></label
-      >
+
+      <div class="bottom-container">
+        <button type="submit">{{ submitButtonText }}</button>
+        <!-- <div *ngIf="formSucess" class="form-sucess">
+          <p>All done!</p>
+        </div> -->
+        <label class="login-warning"
+          >Already have an account? <a href="/login">Login now</a></label
+        >
+      </div>
     </form>
   </div>
 </div>

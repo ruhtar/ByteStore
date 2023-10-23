@@ -53,6 +53,6 @@ export class SignupComponent {
     //TODO: Validar o signup, logar e redirecionar.
     this.authService.signup(userAggregate).subscribe();
     this.authService.signIn(user).subscribe();
-    window.location.replace('/home');
+    //window.location.replace('/home');
   }
 }

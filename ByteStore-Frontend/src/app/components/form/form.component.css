@@ -12,10 +12,11 @@
 .registration-form {
   background-color: #fff;
   border-radius: 10px;
-
+  height: 770px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 300px;
+  position: relative;
 }
 
 .registration-form label {
@@ -93,4 +94,22 @@ a {
 
 .address-label {
   margin-top: 1.5rem;
+}
+
+.validation-error {
+  height: 1.5625rem;
+  margin-top: -1rem;
+  margin-left: 0.2rem;
+  margin-bottom: 0.2rem;
+  font-size: 0.95rem;
+  color: red;
+}
+
+form {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+h2 {
+  margin-bottom: -2rem;
 }
