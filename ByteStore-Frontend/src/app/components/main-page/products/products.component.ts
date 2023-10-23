@@ -9,8 +9,6 @@ import { Product } from 'src/app/types/Product';
 })
 export class ProductsComponent {
   products!: Product[];
-  selectedQuantity: number = 0;
-  userId!: number;
 
   constructor(private productService: ProductService) {}
 

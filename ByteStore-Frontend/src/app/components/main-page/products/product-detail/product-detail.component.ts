@@ -6,6 +6,7 @@ import { ProductService } from 'src/app/services/product/product.service';
 import { TokenService } from 'src/app/services/token/token.service';
 import { OrderItem } from 'src/app/types/OrderItem';
 import { Product } from 'src/app/types/Product';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-detail',
@@ -14,12 +15,7 @@ import { Product } from 'src/app/types/Product';
 })
 export class ProductDetailComponent {
   quantityToAdd: number = 1;
-  product: Product = {
-    productId: 0,
-    productQuantity: 0,
-    name: '',
-    price: 0,
-  };
+  product = new Product();
   userId!: number;
   logged!: boolean;
 
@@ -50,8 +46,21 @@ export class ProductDetailComponent {
     const orderItem = new OrderItem();
     orderItem.productId = product.productId!;
     orderItem.Quantity = quantity;
-    this.cartService.addToCart(userId, orderItem).subscribe((response) => {
-      //TODO: ADICIONAR MENSAGEM DE ERRO AQUI. RESPONSE.STATUS ETC..
-    });
+    this.cartService.addToCart(userId, orderItem).subscribe(
+      (response) => {
+        if (response.status === 200)
+          Swal.fire('Product added to shopping cart!', '', 'success');
+      },
+      (error) => {
+        if (error.status === 400) {
+          Swal.fire(
+            `Invalid product quantity. Please, check how many products are available in stock.`,
+            '',
+            'error',
+          );
+        }
+      },
+      () => {},
+    );
   }
 }

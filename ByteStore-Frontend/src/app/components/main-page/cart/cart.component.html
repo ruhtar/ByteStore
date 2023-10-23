@@ -5,7 +5,7 @@
       <!-- <img src="product1.jpg" alt="Produto 1" /> -->
       <div class="item-details">
         <h2>Name: {{ product.name }}</h2>
-        <p>Price: {{ product.price }}</p>
+        <p>Price: $ {{ product.price | number: "1.2-2" }}</p>
         <p>Quantity</p>
         <div class="quantity-controls">
           <button
@@ -23,7 +23,7 @@
     </div>
     <div class="summary"></div>
     <h2>Cart summary</h2>
-    <p>Total: {{ totalPrice }}</p>
+    <p>Total: $ {{ totalPrice | number: "1.2-2" }}</p>
     <button class="checkout-button" (click)="buyOrder()">
       Complete purchase
     </button>

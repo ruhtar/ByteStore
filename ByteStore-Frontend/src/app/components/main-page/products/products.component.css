@@ -42,7 +42,7 @@
 }
 .product-price {
   font-size: 1.5rem;
-  color: #757d7b;
+  color: #000000;
   margin-top: 5px;
 }
 .product-quantity {
@@ -54,4 +54,20 @@
 #page-container {
   position: relative;
   min-height: 100vh;
+}
+
+.see-more {
+  font-size: 16px;
+  padding: 10px;
+  background-color: var(--yellow);
+  color: #000000;
+  border: none;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.4s ease-in-out;
+}
+
+.see-more:hover {
+  background-color: #ad8b4a;
 }
