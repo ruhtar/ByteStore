@@ -54,6 +54,14 @@
               "target": "Package",
               "version": "[2.5.0, )"
             },
+            "Firebase.Auth": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "FirebaseStorage.net": {
+              "target": "Package",
+              "version": "[1.0.3, )"
+            },
             "Microsoft.AspNet.WebApi.Cors": {
               "target": "Package",
               "version": "[5.2.9, )"
@@ -158,6 +166,14 @@
             "DotNetEnv": {
               "target": "Package",
               "version": "[2.5.0, )"
+            },
+            "Firebase.Auth": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "FirebaseStorage.net": {
+              "target": "Package",
+              "version": "[1.0.3, )"
             },
             "Microsoft.AspNet.WebApi.Cors": {
               "target": "Package",
@@ -271,6 +287,14 @@
               "target": "Package",
               "version": "[2.5.0, )"
             },
+            "Firebase.Auth": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "FirebaseStorage.net": {
+              "target": "Package",
+              "version": "[1.0.3, )"
+            },
             "Microsoft.AspNet.WebApi.Cors": {
               "target": "Package",
               "version": "[5.2.9, )"
@@ -379,6 +403,14 @@
             "DotNetEnv": {
               "target": "Package",
               "version": "[2.5.0, )"
+            },
+            "Firebase.Auth": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "FirebaseStorage.net": {
+              "target": "Package",
+              "version": "[1.0.3, )"
             },
             "Microsoft.AspNet.WebApi.Cors": {
               "target": "Package",

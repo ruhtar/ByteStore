@@ -83,6 +83,9 @@ namespace ByteStore.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasColumnName("Id");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -92,6 +95,9 @@ namespace ByteStore.Infrastructure.Migrations
 
                     b.Property<int>("ProductQuantity")
                         .HasColumnType("int");
+
+                    b.Property<double?>("Rate")
+                        .HasColumnType("double");
 
                     b.HasKey("ProductId");
 

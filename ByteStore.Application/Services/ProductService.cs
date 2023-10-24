@@ -31,6 +31,8 @@ namespace ByteStore.Application.Services
                 Name = productDto.Name,
                 ProductQuantity = productDto.ProductQuantity,
                 Price = productDto.Price,
+                Description = productDto.Description,
+                Rate = productDto.Rate
             };
             return await _productRepository.AddProduct(product);
         }
@@ -42,6 +44,8 @@ namespace ByteStore.Application.Services
                 Name = productDto.Name,
                 ProductQuantity = productDto.ProductQuantity,
                 Price = productDto.Price,
+                Description = productDto.Description,
+                Rate = productDto.Rate
             };
             return await _productRepository.UpdateProduct(id, product);
         }

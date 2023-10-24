@@ -67,6 +67,8 @@ namespace ByteStore.Infrastructure.Repository
             oldProduct.ProductQuantity = product.ProductQuantity;
             oldProduct.Price = product.Price;
             oldProduct.Name = product.Name;
+            oldProduct.Description = product.Description;
+            oldProduct.Rate = product.Rate;
 
             await _context.SaveChangesAsync();
             return product;
