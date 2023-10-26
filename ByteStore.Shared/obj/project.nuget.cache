@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8WYSFUTDCufuilon0ELjBHjC1ug31VW/JOZXcrJm0zfNo+IYhJ+OpX+2Y4rIix55eCWE2AidD89Ch4SrpxxDFg==",
+  "dgSpecHash": "iNfEL1CWgwJZuEATdprc6fLG78xw2WI+VSuuGMwk26L/qqPOLE+irgMM/JCbkIEB5QR4AfgUB1UQ6PKL9JDnoA==",
   "success": true,
-  "projectFilePath": "D:\\PROGRAMAÇÃO\\Projetos\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj",
+  "projectFilePath": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Arthur\\.nuget\\packages\\dotnetenv\\2.5.0\\dotnetenv.2.5.0.nupkg.sha512",
     "C:\\Users\\Arthur\\.nuget\\packages\\firebase.auth\\1.0.0\\firebase.auth.1.0.0.nupkg.sha512",
@@ -140,7 +140,10 @@
     "C:\\Users\\Arthur\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\Arthur\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Arthur\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Arthur\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\Arthur\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\Arthur\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.20\\microsoft.netcore.app.ref.6.0.20.nupkg.sha512",
+    "C:\\Users\\Arthur\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.20\\microsoft.windowsdesktop.app.ref.6.0.20.nupkg.sha512",
+    "C:\\Users\\Arthur\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.20\\microsoft.aspnetcore.app.ref.6.0.20.nupkg.sha512"
   ],
   "logs": [
     {
