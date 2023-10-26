@@ -15,5 +15,6 @@ namespace ByteStore.Domain.Entities
         public decimal Price { get; set; }
         [JsonIgnore]
         public ICollection<ShoppingCartProduct>? ShoppingCartProducts { get; set; }
+        
     }
 }
