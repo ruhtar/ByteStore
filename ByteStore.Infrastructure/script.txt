@@ -10,7 +10,7 @@ dotnet ef migrations add InitialCreate
 //Navegar até o projeto de Infra
 //dotnet ef migrations add Initial --startup-project "..\ByteStore.API\ByteStore.API.csproj"
 
-//dotnet ef database update --startup-project "..\ByteStore.API\ByteStore.API.csproj"
+//dotnet ef migrations database update --startup-project "..\ByteStore.API\ByteStore.API.csproj"
 
 Rodar:
 

@@ -13,9 +13,6 @@ namespace ByteStore.Domain.Entities
         public int ProductQuantity { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public string? Description { get; set; }
-        public double? Rate { get; set; }
-
         [JsonIgnore]
         public ICollection<ShoppingCartProduct>? ShoppingCartProducts { get; set; }
     }

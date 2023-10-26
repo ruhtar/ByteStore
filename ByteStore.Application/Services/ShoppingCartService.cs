@@ -122,8 +122,6 @@ namespace ByteStore.Application.Services
                         Name = product.Name,
                         Price = product.Price,
                         ProductQuantity = item.Quantity,
-                        Description = product.Description,
-                        Rate = product.Rate
                     };
                     products.Add(productDto);
                 }
