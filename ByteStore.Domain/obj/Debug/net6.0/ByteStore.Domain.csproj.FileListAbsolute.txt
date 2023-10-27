@@ -26,3 +26,17 @@ D:\PROGRAMAÇÃO\Projetos\ByteStore\ByteStore.Domain\obj\Debug\net6.0\refint\Byt
 D:\PROGRAMAÇÃO\Projetos\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.pdb
 D:\PROGRAMAÇÃO\Projetos\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.genruntimeconfig.cache
 D:\PROGRAMAÇÃO\Projetos\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ref\ByteStore.Domain.dll
+D:\PROGRAMAÇÃO\ByteStore\ByteStore.Domain\bin\Debug\net6.0\ByteStore.Domain.deps.json
+D:\PROGRAMAÇÃO\ByteStore\ByteStore.Domain\bin\Debug\net6.0\ByteStore.Domain.runtimeconfig.json
+D:\PROGRAMAÇÃO\ByteStore\ByteStore.Domain\bin\Debug\net6.0\ByteStore.Domain.dll
+D:\PROGRAMAÇÃO\ByteStore\ByteStore.Domain\bin\Debug\net6.0\ByteStore.Domain.pdb
+D:\PROGRAMAÇÃO\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.csproj.AssemblyReference.cache
+D:\PROGRAMAÇÃO\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\PROGRAMAÇÃO\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.AssemblyInfoInputs.cache
+D:\PROGRAMAÇÃO\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.AssemblyInfo.cs
+D:\PROGRAMAÇÃO\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.csproj.CoreCompileInputs.cache
+D:\PROGRAMAÇÃO\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.dll
+D:\PROGRAMAÇÃO\ByteStore\ByteStore.Domain\obj\Debug\net6.0\refint\ByteStore.Domain.dll
+D:\PROGRAMAÇÃO\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.pdb
+D:\PROGRAMAÇÃO\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.genruntimeconfig.cache
+D:\PROGRAMAÇÃO\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ref\ByteStore.Domain.dll

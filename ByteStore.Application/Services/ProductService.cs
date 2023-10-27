@@ -31,6 +31,7 @@ namespace ByteStore.Application.Services
                 Name = productDto.Name,
                 ProductQuantity = productDto.ProductQuantity,
                 Price = productDto.Price,
+                ImageStorageUrl = productDto.ImageStorageUrl
             };
             return await _productRepository.AddProduct(product);
         }
