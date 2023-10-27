@@ -64,3 +64,43 @@
 .see-more:hover {
   transform: scale(1.05);
 }
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin: 20px auto;
+  max-width: 100%;
+}
+
+#filter-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 50%;
+}
+
+#filter-button {
+  padding: 10px 20px;
+  background-color: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#filter-button:hover {
+  background-color: #0056b3;
+}
+
+#filter-input::placeholder {
+  color: black;
+}

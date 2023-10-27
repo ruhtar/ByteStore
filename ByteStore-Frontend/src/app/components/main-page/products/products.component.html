@@ -1,5 +1,14 @@
 <div id="page-container">
   <app-header></app-header>
+  <div class="filter-container">
+    <input
+      type="text"
+      id="filter-input"
+      placeholder="Filter products"
+      [(ngModel)]="filterValue"
+    />
+    <button id="filter-button" (click)="filterProducts()">Filter</button>
+  </div>
   <section class="products">
     <div *ngFor="let product of products" class="product-card">
       <img [src]="product.imageStorageUrl" alt="Product Image" />

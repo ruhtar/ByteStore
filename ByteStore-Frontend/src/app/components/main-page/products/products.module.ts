@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { FooterModule } from '../../footer/footer.module';
 import { HeaderModule } from '../../header/header.module';
@@ -24,6 +25,7 @@ const ProductRoute: Routes = [
 @NgModule({
   declarations: [ProductsComponent],
   imports: [
+    FormsModule,
     CommonModule,
     RouterModule.forChild(ProductRoute),
     HeaderModule,

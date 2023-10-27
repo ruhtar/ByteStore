@@ -9,12 +9,27 @@ import { Product } from 'src/app/types/Product';
 })
 export class ProductsComponent {
   products!: Product[];
-
+  filteredProducts!: Product[];
+  originalProducts!: Product[];
+  filterValue: string = '';
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
     this.productService.getAllProducts().subscribe((productList: Product[]) => {
       this.products = productList;
+      this.originalProducts = productList;
+    });
+  }
+
+  filterProducts() {
+    if (this.filterValue === '') {
+      this.products = this.originalProducts;
+      return;
+    }
+
+    const filterLowerCase = this.filterValue.toLowerCase();
+    this.products = this.originalProducts.filter((product) => {
+      return product.name.toLowerCase().includes(filterLowerCase);
     });
   }
 }
