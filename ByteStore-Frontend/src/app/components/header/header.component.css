@@ -60,3 +60,17 @@ p {
   text-decoration: none;
   margin-left: auto;
 }
+
+i {
+  font-size: 1.5rem; /* Tamanho desejado */
+  transition: 0.2s ease-in-out; /* Adicione uma transição suave, se desejar */
+}
+
+/* Adicione a animação ao passar o mouse */
+li:hover i {
+  transform: scale(1.2); /* Aumente o tamanho em 20% ao passar o mouse */
+}
+
+.user-container a:hover i {
+  transform: scale(1.2); /* Aumente o tamanho em 20% ao passar o mouse */
+}

@@ -1,11 +1,12 @@
 import {
+  HttpErrorResponse,
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -17,14 +18,27 @@ export class HttpInterceptorService implements HttpInterceptor {
     next: HttpHandler,
   ): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('access_token');
-    if (!token) {
-      return next.handle(req);
+    if (token) {
+      req = req.clone({
+        headers: req.headers.set('Authorization', `Bearer ${token}`),
+      });
     }
 
-    const req1 = req.clone({
-      headers: req.headers.set('Authorization', `Bearer ${token}`),
-    });
+    return next.handle(req).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.log(error);
 
-    return next.handle(req1);
+        let errorMsg = '';
+        if (error.error instanceof ErrorEvent) {
+          console.log('this is client side error');
+          errorMsg = `Error: ${error.error.message}`;
+        } else {
+          console.log('this is server side error');
+          errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
+        }
+        console.log(errorMsg);
+        return throwError(errorMsg);
+      }),
+    );
   }
 }
