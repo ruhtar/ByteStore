@@ -83,6 +83,10 @@ namespace ByteStore.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasColumnName("Id");
 
+                    b.Property<string>("ImageStorageUrl")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
