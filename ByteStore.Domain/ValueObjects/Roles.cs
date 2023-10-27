@@ -1,8 +1,7 @@
-﻿namespace ByteStore.Domain.ValueObjects
+﻿namespace ByteStore.Domain.ValueObjects;
+
+public enum Roles
 {
-    public enum Roles
-    {
-        User,
-        Seller
-    }
+    User,
+    Seller
 }

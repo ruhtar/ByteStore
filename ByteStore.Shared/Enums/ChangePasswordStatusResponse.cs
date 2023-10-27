@@ -5,5 +5,5 @@ public enum ChangePasswordStatusResponse
     Sucess,
     NotMatching,
     InvalidPassword,
-    UserNotFound, //Is this needed?
+    UserNotFound //Is this needed?
 }

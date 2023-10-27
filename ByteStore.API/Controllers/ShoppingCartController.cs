@@ -24,7 +24,7 @@ public class ShoppingCartController : ControllerBase
     [HttpPost("order")]
     public async Task<ActionResult<OrderStatus>> MakeOrder(OrderItem item, int userId)
     {
-        if(!IsTokenValid()) return Unauthorized();
+        if (!IsTokenValid()) return Unauthorized();
         var result = await _shoppingCartService.MakeOrder(item, userId);
         if (result == OrderStatus.Approved) return Ok(result.ToString());
         if (result == OrderStatus.InvalidQuantity) return BadRequest(result.ToString());
@@ -34,7 +34,7 @@ public class ShoppingCartController : ControllerBase
     [HttpGet("buy")]
     public async Task<ActionResult> BuyOrder(int userId)
     {
-        if(!IsTokenValid()) return Unauthorized();
+        if (!IsTokenValid()) return Unauthorized();
         var result = await _shoppingCartService.BuyOrder(userId);
         if (result == BuyOrderStatus.InvalidQuantity) return BadRequest(result.ToString());
         return Ok(BuyOrderStatus.Completed.ToString());
@@ -44,7 +44,7 @@ public class ShoppingCartController : ControllerBase
     public async Task<ActionResult<ShoppingCartResponseDto>> GetShoppingCartByUserAggregateId(
         [FromRoute] int userAggregateId)
     {
-        if(!IsTokenValid()) return Unauthorized();
+        if (!IsTokenValid()) return Unauthorized();
         var cart = await _shoppingCartService.GetShoppingCartByUserAggregateId(userAggregateId);
         if (cart == null) return Problem("The shopping cart of the current user is not available.");
         return Ok(cart);
@@ -53,7 +53,7 @@ public class ShoppingCartController : ControllerBase
     [HttpDelete("/user/{userAggregateId}/cart/remove")]
     public async Task<IActionResult> RemoveProductFromShoppingCart(int userAggregateId, int productId)
     {
-        if(!IsTokenValid()) return Unauthorized();
+        if (!IsTokenValid()) return Unauthorized();
         await _shoppingCartService.RemoveProductFromCart(userAggregateId, productId);
         return Ok();
     }
@@ -69,10 +69,7 @@ public class ShoppingCartController : ControllerBase
     {
         string token = HttpContext.Request.Headers["Authorization"];
 
-        if (string.IsNullOrEmpty(token))
-        {
-            return false;
-        }
+        if (string.IsNullOrEmpty(token)) return false;
 
         // Remove o prefixo "Bearer " do token, se presente
         token = token.Replace("Bearer ", "");

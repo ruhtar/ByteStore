@@ -1,86 +1,81 @@
 ﻿using System.Text.Json;
 using ByteStore.Domain.Entities;
 using ByteStore.Infrastructure.Cache;
-using ByteStore.Infrastructure;
 using ByteStore.Infrastructure.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace ByteStore.Infrastructure.Repository
+namespace ByteStore.Infrastructure.Repository;
+
+public class ProductRepository : IProductRepository
 {
-    public class ProductRepository : IProductRepository
+    private readonly AppDbContext _context;
+    private readonly ICacheConfigs _cache;
+    private const string AllProductsKey = "AllProductsKeys";
+
+    public ProductRepository(AppDbContext context, ICacheConfigs cache)
     {
-        private readonly AppDbContext _context;
-        private readonly ICacheConfigs _cache;
-        private const string AllProductsKey = "AllProductsKeys";
+        _context = context;
+        _cache = cache;
+    }
 
-        public ProductRepository(AppDbContext context, ICacheConfigs cache)
-        {
-            _context = context;
-            _cache = cache;
-        }
+    public async Task<IEnumerable<Product>> GetAllProducts()
+    {
+        //var stopwatch = new Stopwatch();
+        //stopwatch.Start();
 
-        public async Task<IEnumerable<Product>> GetAllProducts()
-        {
-            //var stopwatch = new Stopwatch();
-            //stopwatch.Start();
-
-            var cache = await _cache.GetFromCacheAsync<IEnumerable<Product>>(AllProductsKey);
-            if (cache != null)
-            {
-                //stopwatch.Stop();
-
-                //Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
-                return cache;
-            }
-            var products = await _context.Products.AsNoTracking().ToListAsync();
-
-            //This is just for testing if cache is avaible.
-            //Thread.Sleep(5000);
-
-            var cacheData = JsonSerializer.Serialize(products);
-            await _cache.SetAsync(AllProductsKey, cacheData);
-
+        var cache = await _cache.GetFromCacheAsync<IEnumerable<Product>>(AllProductsKey);
+        if (cache != null)
             //stopwatch.Stop();
-
             //Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
-            return products;
-        }
+            return cache;
+        var products = await _context.Products.AsNoTracking().ToListAsync();
 
-        public async Task<Product> GetProductById(int id)
-        {
-            return await _context.Products.AsNoTracking().FirstOrDefaultAsync(x => x.ProductId == id);
-        }
+        //This is just for testing if cache is avaible.
+        //Thread.Sleep(5000);
 
-        public async Task<Product> AddProduct(Product product)
-        {
-            await _context.Products.AddAsync(product);
-            await _context.SaveChangesAsync();
-            return product;
-        }
+        var cacheData = JsonSerializer.Serialize(products);
+        await _cache.SetAsync(AllProductsKey, cacheData);
 
-        public async Task<Product> UpdateProduct(int id, Product product)
-        {
-            var oldProduct = await _context.Products.FindAsync(id);
+        //stopwatch.Stop();
 
-            if (oldProduct == null) return null;
+        //Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
+        return products;
+    }
 
-            oldProduct.ProductQuantity = product.ProductQuantity;
-            oldProduct.Price = product.Price;
-            oldProduct.Name = product.Name;
+    public async Task<Product> GetProductById(int id)
+    {
+        return await _context.Products.AsNoTracking().FirstOrDefaultAsync(x => x.ProductId == id);
+    }
 
-            await _context.SaveChangesAsync();
-            return product;
-        }
+    public async Task<Product> AddProduct(Product product)
+    {
+        await _context.Products.AddAsync(product);
+        await _context.SaveChangesAsync();
+        return product;
+    }
 
-        public async Task<bool> DeleteProduct(int id)
-        {
-            var product = await _context.Products.FindAsync(id);
-            if (product == null) return false;
+    public async Task<Product> UpdateProduct(int id, Product product)
+    {
+        var oldProduct = await _context.Products.FindAsync(id);
 
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
+        if (oldProduct == null) return null;
 
-            return true;
-        }
+        oldProduct.ProductQuantity = product.ProductQuantity;
+        oldProduct.Price = product.Price;
+        oldProduct.Name = product.Name;
+
+        await _context.SaveChangesAsync();
+        return product;
+    }
+
+    public async Task<bool> DeleteProduct(int id)
+    {
+        var product = await _context.Products.FindAsync(id);
+        if (product == null) return false;
+
+        _context.Products.Remove(product);
+        await _context.SaveChangesAsync();
+
+        return true;
     }
 }

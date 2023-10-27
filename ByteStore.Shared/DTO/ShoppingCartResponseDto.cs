@@ -1,9 +1,8 @@
-﻿namespace ByteStore.Shared.DTO
+﻿namespace ByteStore.Shared.DTO;
+
+public class ShoppingCartResponseDto
 {
-    public class ShoppingCartResponseDto
-    {
-        public int UserAggregateId { get; set; }
-        public int ShoppingCartId { get; set; }
-        public List<ProductDto> Products { get; set; }
-    }
+    public int UserAggregateId { get; set; }
+    public int ShoppingCartId { get; set; }
+    public List<ProductDto> Products { get; set; }
 }

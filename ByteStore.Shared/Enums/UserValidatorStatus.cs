@@ -1,10 +1,9 @@
-﻿namespace ByteStore.Shared.Enums
+﻿namespace ByteStore.Shared.Enums;
+
+public enum UserValidatorStatus
 {
-    public enum UserValidatorStatus
-    {
-        Success,
-        UsernameAlreadyExists,
-        InvalidPassword,
-        InvalidRole
-    }
+    Success,
+    UsernameAlreadyExists,
+    InvalidPassword,
+    InvalidRole
 }

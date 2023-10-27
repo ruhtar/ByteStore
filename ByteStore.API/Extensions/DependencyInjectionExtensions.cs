@@ -6,26 +6,25 @@ using ByteStore.Infrastructure.Hasher;
 using ByteStore.Infrastructure.Repository;
 using ByteStore.Infrastructure.Repository.Interfaces;
 
-namespace ByteStore.API.Extensions
-{
-    public static class DependencyInjectionExtensions
-    {
-        public static IServiceCollection AddDependencies(this IServiceCollection services)
-        {
-            services.AddScoped<ITokenService, TokenService>();
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<ICacheConfigs, CacheConfigs>();
-            services.AddScoped<IProductService, ProductService>();
-            services.AddScoped<IProductService, ProductService>();
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IPasswordHasher, PasswordHasher>();
-            services.AddScoped<IUserValidator, UserValidator>();
-            services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
-            services.AddScoped<IShoppingCartService, ShoppingCartService>();
+namespace ByteStore.API.Extensions;
 
-            return services;
-        }
+public static class DependencyInjectionExtensions
+{
+    public static IServiceCollection AddDependencies(this IServiceCollection services)
+    {
+        services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<ICacheConfigs, CacheConfigs>();
+        services.AddScoped<IProductService, ProductService>();
+        services.AddScoped<IProductService, ProductService>();
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IPasswordHasher, PasswordHasher>();
+        services.AddScoped<IUserValidator, UserValidator>();
+        services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
+        services.AddScoped<IShoppingCartService, ShoppingCartService>();
+
+        return services;
     }
 }

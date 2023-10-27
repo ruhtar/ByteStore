@@ -1,9 +1,8 @@
-﻿namespace ByteStore.Shared.DTO
-{
-    public class LoginDto
-    {
-        public string Username { get; set; }
+﻿namespace ByteStore.Shared.DTO;
 
-        public string Password { get; set; }
-    }
+public class LoginDto
+{
+    public string Username { get; set; }
+
+    public string Password { get; set; }
 }

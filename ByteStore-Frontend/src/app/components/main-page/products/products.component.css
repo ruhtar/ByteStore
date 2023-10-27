@@ -75,7 +75,7 @@
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin: 20px auto;
-  max-width: 100%;
+  max-width: 30%;
 }
 
 #filter-input {
@@ -84,7 +84,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 10px;
-  width: 50%;
+  width: 70%;
 }
 
 #filter-button {
@@ -103,4 +103,30 @@
 
 #filter-input::placeholder {
   color: black;
+}
+
+/* Adicione este CSS para estilizar o elemento de seleção */
+#sort-select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 20%;
+}
+
+/* Ajuste o estilo do botão de filtro */
+#filter-button {
+  padding: 10px 20px;
+  background-color: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+#filter-button:hover {
+  background-color: #0056b3;
 }

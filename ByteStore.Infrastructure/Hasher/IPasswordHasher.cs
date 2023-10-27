@@ -1,8 +1,7 @@
-﻿namespace ByteStore.Infrastructure.Hasher
+﻿namespace ByteStore.Infrastructure.Hasher;
+
+public interface IPasswordHasher
 {
-    public interface IPasswordHasher
-    {
-        string Hash(string password);
-        bool Validate(string passwordHash, string password);
-    }
+    string Hash(string password);
+    bool Validate(string passwordHash, string password);
 }

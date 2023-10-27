@@ -1,8 +1,13 @@
 <div id="page-container">
   <app-header></app-header>
   <div class="filter-container">
+    <label for="sort-select">Sort by:</label>
+    <select id="sort-select">
+      <option value="name">Name</option>
+      <option value="price">Price</option>
+    </select>
     <input
-      type="text"
+      type="search"
       id="filter-input"
       placeholder="Filter products"
       [(ngModel)]="filterValue"

@@ -1,9 +1,8 @@
-﻿namespace ByteStore.Shared.Enums
+﻿namespace ByteStore.Shared.Enums;
+
+public enum BuyOrderStatus
 {
-    public enum BuyOrderStatus
-    {
-        Completed,
-        InvalidQuantity, 
-        UnableToPay,
-    }
+    Completed,
+    InvalidQuantity,
+    UnableToPay
 }

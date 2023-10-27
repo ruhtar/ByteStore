@@ -1,9 +1,8 @@
-﻿namespace ByteStore.Shared.Enums
+﻿namespace ByteStore.Shared.Enums;
+
+public enum OrderStatus
 {
-    public enum OrderStatus
-    {
-        Approved,
-        InvalidQuantity,
-        ProductNotFound
-    }
+    Approved,
+    InvalidQuantity,
+    ProductNotFound
 }

@@ -1,8 +1,6 @@
 ﻿using ByteStore.Application.Services.Interfaces;
 using ByteStore.Domain.Entities;
 using ByteStore.Shared.DTO;
-using Firebase.Auth;
-using Firebase.Auth.Providers;
 using Firebase.Storage;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,7 +36,7 @@ public class ProductController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Product>> CreateProduct([FromForm] ProductDto productDto)
     {
-        if (productDto.Price <= 0 ) return BadRequest("Invalid price");
+        if (productDto.Price <= 0) return BadRequest("Invalid price");
         if (productDto.ProductQuantity <= 0) return BadRequest("Invalid quantity");
         productDto.ImageStorageUrl = await GetImageUrl(productDto);
         var newProduct = await _productService.AddProduct(productDto);

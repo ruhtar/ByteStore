@@ -1,12 +1,8 @@
-﻿ using ByteStore.Domain.Entities;
+﻿namespace ByteStore.Domain.ValueObjects; 
 
-namespace ByteStore.Domain.ValueObjects
+public class OrderItem
 {
-    public class OrderItem
-    {
-        public int ProductId { get; set; }
+    public int ProductId { get; set; }
 
-        public int Quantity { get; set; }
-
-    }
+    public int Quantity { get; set; }
 }
