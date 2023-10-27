@@ -32,10 +32,6 @@ nav a {
   transition: 0.2s ease-in-out;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
 .container {
   display: flex;
   align-items: center; /* Centraliza verticalmente */
@@ -62,15 +58,18 @@ p {
 }
 
 i {
-  font-size: 1.5rem; /* Tamanho desejado */
-  transition: 0.2s ease-in-out; /* Adicione uma transição suave, se desejar */
+  font-size: 1.5rem;
+  transition: 0.2s ease-in-out;
 }
 
-/* Adicione a animação ao passar o mouse */
 li:hover i {
-  transform: scale(1.2); /* Aumente o tamanho em 20% ao passar o mouse */
+  transform: scale(1.2);
 }
 
 .user-container a:hover i {
-  transform: scale(1.2); /* Aumente o tamanho em 20% ao passar o mouse */
+  transform: scale(1.2);
+}
+
+nav li:hover a {
+  text-shadow: 2px 2px 4px rgba(215, 168, 27, 0.5);
 }

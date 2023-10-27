@@ -1,4 +1,15 @@
+/* Estilos gerais */
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+/* Estilos para centralizar o conte?do */
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
 
 h1 {
   font-size: 2rem;
@@ -20,12 +31,12 @@ a {
 
 .contact-info p a:hover {
   color: var(--yellow); /* Cor de hover desejada */
-  transition: color 0.3s ease; /* Transição suave da cor */
+  transition: color 0.3s ease; /* Transi??o suave da cor */
 }
 
 .contact-container {
-  text-align: center;
   padding: 1.25rem;
+  text-align: center;
 }
 
 .contact-info {
@@ -35,6 +46,7 @@ a {
   box-shadow: 0 0 0.625rem #709ab6;
   transition: box-shadow 0.3s ease;
 }
+
 .contact-info:hover {
   box-shadow: 0 0 3rem var(--purple);
 }
@@ -46,7 +58,11 @@ a {
   transition: transform 0.3s ease;
 }
 
-.contact-icon:hover {
+.contact-p a {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.contact-p:hover .contact-icon {
   transform: scale(1.2);
 }
 
