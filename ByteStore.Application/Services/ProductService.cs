@@ -31,7 +31,8 @@ public class ProductService : IProductService
             Name = productDto.Name,
             ProductQuantity = productDto.ProductQuantity,
             Price = productDto.Price,
-            ImageStorageUrl = productDto.ImageStorageUrl
+            ImageStorageUrl = productDto.ImageStorageUrl,
+            Description = productDto.Description
         };
         return await _productRepository.AddProduct(product);
     }
@@ -42,7 +43,8 @@ public class ProductService : IProductService
         {
             Name = productDto.Name,
             ProductQuantity = productDto.ProductQuantity,
-            Price = productDto.Price
+            Price = productDto.Price,
+            Description = productDto.Description
         };
         return await _productRepository.UpdateProduct(id, product);
     }

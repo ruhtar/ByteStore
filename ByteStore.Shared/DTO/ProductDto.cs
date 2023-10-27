@@ -10,4 +10,6 @@ public class ProductDto
     public int ProductQuantity { get; set; }
     public IFormFile Image { get; set; }
     public string? ImageStorageUrl { get; set; }
+    public string? Description { get; set; } //must be not-nulable but for sake of implementation i will leave nulabel for now
+
 }

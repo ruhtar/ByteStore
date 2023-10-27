@@ -63,6 +63,7 @@ public class ProductRepository : IProductRepository
         oldProduct.ProductQuantity = product.ProductQuantity;
         oldProduct.Price = product.Price;
         oldProduct.Name = product.Name;
+        oldProduct.Description = product.Description;
 
         await _context.SaveChangesAsync();
         return product;

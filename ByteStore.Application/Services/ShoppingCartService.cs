@@ -114,7 +114,8 @@ public class ShoppingCartService : IShoppingCartService
                     ProductId = product.ProductId,
                     Name = product.Name,
                     Price = product.Price,
-                    ProductQuantity = item.Quantity
+                    ProductQuantity = item.Quantity,
+                    Description = product.Description
                 };
                 products.Add(productDto);
             }

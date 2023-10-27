@@ -17,6 +17,7 @@ export class ProductsComponent {
   ngOnInit() {
     this.productService.getAllProducts().subscribe((productList: Product[]) => {
       this.products = productList;
+      this.orderByName(this.products);
       this.originalProducts = productList;
     });
   }
@@ -30,6 +31,23 @@ export class ProductsComponent {
     const filterLowerCase = this.filterValue.toLowerCase();
     this.products = this.originalProducts.filter((product) => {
       return product.name.toLowerCase().includes(filterLowerCase);
+    });
+  }
+
+  orderByName(list: Product[]) {
+    list.sort((a, b) => {
+      const nomeA = a.name.toLowerCase();
+      const nomeB = b.name.toLowerCase();
+
+      if (nomeA < nomeB) return -1;
+      if (nomeA > nomeB) return 1;
+      return 0;
+    });
+  }
+
+  orderByPrice(list: Product[]) {
+    list.sort((a, b) => {
+      return a.price - b.price;
     });
   }
 }

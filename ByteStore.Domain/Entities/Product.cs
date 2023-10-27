@@ -12,6 +12,7 @@ public class Product
     public string Name { get; set; }
     public decimal Price { get; set; }
     public string ImageStorageUrl { get; set; }
+    public string? Description { get; set; } //must be not-nulable but for sake of implementation i will leave nulabel for now
 
     [JsonIgnore] public ICollection<ShoppingCartProduct>? ShoppingCartProducts { get; set; }
 }
