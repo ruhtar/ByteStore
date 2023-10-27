@@ -8,6 +8,7 @@
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
+  padding: 1.1rem 5rem 5rem 5rem;
 }
 
 .product-name {
@@ -20,8 +21,9 @@
 }
 
 .product-image {
-  max-width: 100%;
   margin-top: 20px;
+  height: 200px;
+  width: 200px;
 }
 
 .product-description {

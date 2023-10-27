@@ -46,7 +46,6 @@ export class SignupComponent {
       },
     };
 
-    //TODO: Validar o signup, logar e redirecionar.
     this.authService.signup(userAggregate).subscribe(
       (response) => {
         if (response.status === 200) {

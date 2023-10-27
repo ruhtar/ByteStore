@@ -1,34 +1,34 @@
-<app-header></app-header>
-
-<div class="product-details">
-  <a href="/products"> <i class="fas fa-arrow-left"></i> Back </a>
-  <h1 class="product-name">{{ product.name }}</h1>
-  <p class="product-price">Price: R${{ product.price | number: "1.2-2" }}</p>
-  <img
-    class="product-image"
-    [src]="product.imageStorageUrl"
-    alt="Imagem do Produto"
-  />
-  <p>Stock: {{ product.productQuantity }}</p>
-  <div *ngIf="logged" class="quantity-container">
-    <p>Quantity:</p>
-    <input
-      type="number"
-      [(ngModel)]="quantityToAdd"
-      min="1"
-      step="1"
-      class="quantity-input"
+<div id="page-container">
+  <app-header></app-header>
+  <div class="product-details">
+    <a href="/products"> <i class="fas fa-arrow-left"></i> Back </a>
+    <h1 class="product-name">{{ product.name }}</h1>
+    <p class="product-price">Price: R${{ product.price | number: "1.2-2" }}</p>
+    <img
+      class="product-image"
+      [src]="product.imageStorageUrl"
+      alt="Imagem do Produto"
     />
-    <button
-      (click)="addToCart(userId, product, quantityToAdd)"
-      class="add-button"
-    >
-      <i class="fa-solid fa-cart-shopping"></i>
-      Add to the shopping cart
-    </button>
-  </div>
+    <p>Stock: {{ product.productQuantity }}</p>
+    <div *ngIf="logged" class="quantity-container">
+      <p>Quantity:</p>
+      <input
+        type="number"
+        [(ngModel)]="quantityToAdd"
+        min="1"
+        step="1"
+        class="quantity-input"
+      />
+      <button
+        (click)="addToCart(userId, product, quantityToAdd)"
+        class="add-button"
+      >
+        <i class="fa-solid fa-cart-shopping"></i>
+        Add to the shopping cart
+      </button>
+    </div>
 
-  <!-- <p class="product-description">
+    <!-- <p class="product-description">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   </p>
   <p class="product-rating">Rated: 4.5/5</p>
@@ -43,6 +43,6 @@
       <p class="comment-text">ACHEI BEM PAIA</p>
     </div>
   </div> -->
+  </div>
+  <app-footer></app-footer>
 </div>
-
-<app-footer></app-footer>
