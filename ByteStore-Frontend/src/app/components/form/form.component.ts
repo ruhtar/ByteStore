@@ -53,10 +53,13 @@ export class FormComponent {
   submitForm() {
     if (
       this.userForm.get('repassword')!.value !==
-      this.userForm.get('password')!.value
+        this.userForm.get('password')!.value &&
+      this.userForm.valid
     ) {
       Swal.fire('Please, use matching passwords.', '', 'error');
+      return;
     }
+    //TODO: ADICIONAR VALIDAÇÃO DE SENHA NO FRONT
     if (this.userForm.invalid) return;
     this.onSubmit.emit(this.userForm.value);
     this.formSucess = true;

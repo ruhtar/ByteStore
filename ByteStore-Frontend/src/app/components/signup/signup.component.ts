@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Roles } from 'src/app/enums/Roles';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -60,7 +61,19 @@ export class SignupComponent {
           });
         }
       },
-      () => {
+      (error: HttpErrorResponse) => {
+        if (
+          error.error === 'User already exists. Please, try other username.'
+        ) {
+          Swal.fire(error.error, '', 'error');
+          return;
+        } else if (
+          error.error ===
+          'Your password must have capital letters, numbers and special characters.'
+        ) {
+          Swal.fire(error.error, '', 'error');
+          return;
+        }
         Swal.fire(
           `Something went wrong. Please, try again later.`,
           '',
