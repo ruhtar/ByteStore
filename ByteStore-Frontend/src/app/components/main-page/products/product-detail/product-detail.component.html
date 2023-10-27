@@ -4,6 +4,11 @@
   <a href="/products"> <i class="fas fa-arrow-left"></i> Back </a>
   <h1 class="product-name">{{ product.name }}</h1>
   <p class="product-price">Price: R${{ product.price | number: "1.2-2" }}</p>
+  <img
+    class="product-image"
+    [src]="product.imageStorageUrl"
+    alt="Imagem do Produto"
+  />
   <p>Stock: {{ product.productQuantity }}</p>
   <div *ngIf="logged" class="quantity-container">
     <p>Quantity:</p>
@@ -22,8 +27,8 @@
       Add to the shopping cart
     </button>
   </div>
-  <!-- <img class="product-image" src="product.jpg" alt="Imagem do Produto" /> -->
-  <p class="product-description">
+
+  <!-- <p class="product-description">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   </p>
   <p class="product-rating">Rated: 4.5/5</p>
@@ -37,7 +42,7 @@
       <p class="comment-user">Comprador 2</p>
       <p class="comment-text">ACHEI BEM PAIA</p>
     </div>
-  </div>
+  </div> -->
 </div>
 
 <app-footer></app-footer>

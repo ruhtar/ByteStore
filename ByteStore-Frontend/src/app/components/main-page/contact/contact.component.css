@@ -18,6 +18,11 @@ a {
   color: #445e6f;
 }
 
+.contact-info p a:hover {
+  color: var(--yellow); /* Cor de hover desejada */
+  transition: color 0.3s ease; /* Transição suave da cor */
+}
+
 .contact-container {
   text-align: center;
   padding: 1.25rem;
@@ -28,12 +33,21 @@ a {
   border-radius: 0.625rem;
   padding: 1.25rem;
   box-shadow: 0 0 0.625rem #709ab6;
+  transition: box-shadow 0.3s ease;
+}
+.contact-info:hover {
+  box-shadow: 0 0 3rem var(--purple);
 }
 
 .contact-icon {
   font-size: 2rem;
   margin-right: 0.625rem;
   vertical-align: middle;
+  transition: transform 0.3s ease;
+}
+
+.contact-icon:hover {
+  transform: scale(1.2);
 }
 
 .contact-link {

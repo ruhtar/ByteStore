@@ -41,7 +41,6 @@ section {
   min-height: 100vh;
 }
 
-/* Anima??o de fade-in para o texto */
 @keyframes slideInText {
   0% {
     transform: translateX(-100%);
@@ -53,7 +52,6 @@ section {
   }
 }
 
-/* Anima??o para a imagem */
 @keyframes slideInImage {
   0% {
     transform: translateX(100%);

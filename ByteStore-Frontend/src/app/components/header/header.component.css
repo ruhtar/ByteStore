@@ -1,7 +1,8 @@
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
 header {
   height: 11rem;
   background: linear-gradient(to bottom, #226694, #521ff8);
-  /* #3B3FC9 */
   color: #fff;
   padding: 10px 0;
   display: flex;
@@ -10,14 +11,14 @@ header {
   padding-left: 20px;
   padding-right: 30px;
   text-align: justify;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: color 0.3s ease;
 }
 
 nav ul {
   list-style: none;
   margin-right: auto; /* Empurra o menu para a esquerda */
 }
-
-@import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 nav ul li {
   display: inline;
@@ -27,10 +28,7 @@ nav ul li {
 nav a {
   font-size: 1.5rem;
   text-decoration: none;
-  /* color: rgba(255, 193, 110, 255); */
   color: #fff;
-  /* -webkit-text-stroke-width: 0.4px;
-  -webkit-text-stroke-color: #ffc16e; */
   transition: 0.2s ease-in-out;
 }
 
@@ -47,11 +45,6 @@ a:hover {
 
 img {
   width: 80px;
-}
-
-i {
-  /* -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #000000; */
 }
 
 .user-container {
