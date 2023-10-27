@@ -9,5 +9,5 @@ public interface IProductService
     Task<bool> DeleteProduct(int id);
     Task<IEnumerable<Product>> GetAllProducts();
     Task<Product> GetProductById(int id);
-    Task<Product> UpdateProduct(int id, ProductDto product);
+    Task<bool> UpdateProduct(int id, UpdateProductDto productDto);
 }

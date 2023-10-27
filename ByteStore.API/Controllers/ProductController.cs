@@ -44,13 +44,13 @@ public class ProductController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<Product>> UpdateProduct(int id, [FromBody] ProductDto productDto)
+    public async Task<ActionResult<Product>> UpdateProduct(int id, [FromForm] UpdateProductDto productDto)
     {
         if (productDto.Price <= 0) return BadRequest("Invalid price");
         if (productDto.ProductQuantity <= 0) return BadRequest("Invalid quantity");
         var updatedProduct = await _productService.UpdateProduct(id, productDto);
-        if (updatedProduct == null) return NotFound();
-        return Ok(updatedProduct);
+        if (updatedProduct == false) return NotFound();
+        return Ok();
     }
 
     [HttpDelete("{id}")]

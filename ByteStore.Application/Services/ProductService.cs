@@ -37,16 +37,17 @@ public class ProductService : IProductService
         return await _productRepository.AddProduct(product);
     }
 
-    public async Task<Product> UpdateProduct(int id, ProductDto productDto)
+    public async Task<bool> UpdateProduct(int id, UpdateProductDto productDto)
     {
-        var product = new Product
-        {
-            Name = productDto.Name,
-            ProductQuantity = productDto.ProductQuantity,
-            Price = productDto.Price,
-            Description = productDto.Description
-        };
-        return await _productRepository.UpdateProduct(id, product);
+        
+        // var product = new Product
+        // {
+        //     Name = productDto.Name,
+        //     ProductQuantity = productDto.ProductQuantity,
+        //     Price = productDto.Price,
+        //     Description = productDto.Description
+        // };
+        return await _productRepository.UpdateProduct(id, productDto);
     }
 
     public async Task<bool> DeleteProduct(int id)

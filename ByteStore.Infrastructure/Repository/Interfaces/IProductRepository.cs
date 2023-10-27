@@ -1,4 +1,5 @@
 ﻿using ByteStore.Domain.Entities;
+using ByteStore.Shared.DTO;
 
 namespace ByteStore.Infrastructure.Repository.Interfaces;
 
@@ -8,5 +9,5 @@ public interface IProductRepository
     Task<bool> DeleteProduct(int id);
     Task<IEnumerable<Product>> GetAllProducts();
     Task<Product> GetProductById(int id);
-    Task<Product> UpdateProduct(int id, Product product);
+    Task<bool> UpdateProduct(int id, UpdateProductDto product);
 }

@@ -2,6 +2,7 @@
 using ByteStore.Domain.Entities;
 using ByteStore.Infrastructure.Cache;
 using ByteStore.Infrastructure.Repository.Interfaces;
+using ByteStore.Shared.DTO;
 using Microsoft.EntityFrameworkCore;
 
 namespace ByteStore.Infrastructure.Repository;
@@ -54,19 +55,20 @@ public class ProductRepository : IProductRepository
         return product;
     }
 
-    public async Task<Product> UpdateProduct(int id, Product product)
+    public async Task<bool> UpdateProduct(int id, UpdateProductDto product)
     {
         var oldProduct = await _context.Products.FindAsync(id);
 
-        if (oldProduct == null) return null;
+        if (oldProduct == null) return false;
 
-        oldProduct.ProductQuantity = product.ProductQuantity;
-        oldProduct.Price = product.Price;
-        oldProduct.Name = product.Name;
-        oldProduct.Description = product.Description;
+        oldProduct.ImageStorageUrl = product.ImageStorageUrl ?? oldProduct.ImageStorageUrl;
+        oldProduct.ProductQuantity = product.ProductQuantity ?? oldProduct.ProductQuantity;
+        oldProduct.Price = product.Price ?? oldProduct.Price;
+        oldProduct.Name = product.Name ?? oldProduct.Name;
+        oldProduct.Description = product.Description ?? oldProduct.Description;
 
         await _context.SaveChangesAsync();
-        return product;
+        return true;
     }
 
     public async Task<bool> DeleteProduct(int id)

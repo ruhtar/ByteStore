@@ -36,7 +36,20 @@ public class ShoppingCartService : IShoppingCartService
                 if (product.ProductQuantity == 0)
                     await _productRepository.DeleteProduct(product.ProductId);
                 else
-                    await _productRepository.UpdateProduct(product.ProductId, product);
+                {
+                    var updateProductDto = new UpdateProductDto
+                    {
+                        ProductId = product.ProductId,
+                        Name = product.Name,
+                        Price = product.Price,
+                        ProductQuantity = product.ProductQuantity,
+                        Image = null,
+                        ImageStorageUrl = product.ImageStorageUrl,
+                        Description = product.Description
+                    };
+                    await _productRepository.UpdateProduct(product.ProductId, updateProductDto);
+                }
+               
             }
             else
             {
