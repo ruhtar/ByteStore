@@ -21,4 +21,24 @@ export class PasswordService {
       { observe: 'response', responseType: 'text' },
     );
   }
+
+  public isPasswordValid(password: string): boolean {
+    if (!/[A-Z]/.test(password)) {
+      return false;
+    }
+
+    if (!/[^\w]/.test(password)) {
+      return false;
+    }
+
+    if (!/\d/.test(password)) {
+      return false;
+    }
+
+    if (password.length < 5) {
+      return false;
+    }
+
+    return true;
+  }
 }

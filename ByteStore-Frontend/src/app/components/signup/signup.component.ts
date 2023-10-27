@@ -67,12 +67,6 @@ export class SignupComponent {
         ) {
           Swal.fire(error.error, '', 'error');
           return;
-        } else if (
-          error.error ===
-          'Your password must have capital letters, numbers and special characters'
-        ) {
-          Swal.fire(error.error, '', 'error');
-          return;
         }
         Swal.fire(
           `Something went wrong. Please, try again later.`,

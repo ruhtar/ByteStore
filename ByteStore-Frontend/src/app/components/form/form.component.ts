@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PasswordService } from 'src/app/services/user/password.service';
 import { UserAggregate } from 'src/app/types/UserAggregate';
 import Swal from 'sweetalert2';
 
@@ -31,7 +32,10 @@ export class FormComponent {
   formSucess: boolean = false;
   @Output() onSubmit = new EventEmitter<UserAggregate>(); //Saída. Enviar dados para o componente pai
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private passwordService: PasswordService,
+  ) {}
 
   ngOnInit() {
     this.createForm();
@@ -51,6 +55,7 @@ export class FormComponent {
   }
 
   submitForm() {
+    if (this.userForm.invalid) return;
     if (
       this.userForm.get('repassword')!.value !==
         this.userForm.get('password')!.value &&
@@ -60,7 +65,19 @@ export class FormComponent {
       return;
     }
     //TODO: ADICIONAR VALIDAÇÃO DE SENHA NO FRONT
-    if (this.userForm.invalid) return;
+    if (
+      !this.passwordService.isPasswordValid(
+        this.userForm.get('password')!.value,
+      ) &&
+      this.userForm.valid
+    ) {
+      Swal.fire(
+        'Your password must have capital letters, numbers and special characters',
+        '',
+        'error',
+      );
+      return;
+    }
     this.onSubmit.emit(this.userForm.value);
     this.formSucess = true;
   }
