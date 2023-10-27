@@ -2,7 +2,7 @@
   <app-header></app-header>
   <section class="products">
     <div *ngFor="let product of products" class="product-card">
-      <!-- <img src="product-image.jpg" alt="Product Image" /> -->
+      <img [src]="product.imageStorageUrl" alt="Product Image" />
       <h2 class="product-name">{{ product.name }}</h2>
       <p class="product-price">
         <i class="fa-solid fa-hand-holding-dollar"></i>

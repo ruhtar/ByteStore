@@ -3,4 +3,5 @@ export class Product {
   productQuantity!: number;
   name!: string;
   price!: number;
+  imageStorageUrl!: string;
 }
