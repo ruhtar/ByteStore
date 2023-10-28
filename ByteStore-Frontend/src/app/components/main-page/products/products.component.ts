@@ -36,7 +36,9 @@ export class ProductsComponent {
 
   onSelectChange() {
     if (this.selectedOption === 'name') this.orderByName(this.products);
-    if (this.selectedOption === 'price') this.orderByPrice(this.products);
+    if (this.selectedOption === 'priceAsc') this.orderByPriceAsc(this.products);
+    if (this.selectedOption === 'priceDesc')
+      this.orderByPriceDesc(this.products);
   }
 
   orderByName(list: Product[]) {
@@ -50,9 +52,15 @@ export class ProductsComponent {
     });
   }
 
-  orderByPrice(list: Product[]) {
+  orderByPriceAsc(list: Product[]) {
     list.sort((a, b) => {
       return a.price - b.price;
+    });
+  }
+
+  orderByPriceDesc(list: Product[]) {
+    list.sort((a, b) => {
+      return b.price - a.price;
     });
   }
 }
