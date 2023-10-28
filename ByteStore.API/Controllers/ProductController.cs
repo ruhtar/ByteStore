@@ -68,6 +68,7 @@ public class ProductController : ControllerBase
     public async Task<IActionResult> CreateReview(ReviewDto reviewDto)
     {
         if (!IsTokenValid()) return Unauthorized();
+        await _productService.CreateReview(reviewDto);
         return Ok();
     }
 
