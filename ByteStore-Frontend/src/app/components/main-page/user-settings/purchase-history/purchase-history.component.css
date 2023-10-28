@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   align-items: center; /* Centraliza itens verticalmente */
+  text-align: center;
 }
 
 .product-image {
@@ -29,6 +30,8 @@
 }
 
 .product-details {
+  display: flex; /* Adiciona um display flex para alinhar os itens lado a lado */
+  justify-content: space-between; /* Espa?o igual entre os itens */
   padding: 10px;
   text-align: center;
 }
@@ -44,5 +47,6 @@ h3 {
 }
 
 p {
-  margin: 5px 0; /* Adiciona margem na parte superior e inferior do parágrafo */
+  font-size: 14px; /* Defina um tamanho de fonte menor para as informa??es de quantidade, pre?o e data */
+  margin: 5px 0; /* Adiciona margem na parte superior e inferior do par?grafo */
 }

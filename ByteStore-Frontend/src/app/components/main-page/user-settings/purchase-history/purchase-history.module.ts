@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatListModule } from '@angular/material/list';
 import { RouterModule, Routes } from '@angular/router';
 import { PurchaseHistoryComponent } from './purchase-history.component';
 
@@ -13,6 +14,6 @@ const route: Routes = [
 
 @NgModule({
   declarations: [PurchaseHistoryComponent],
-  imports: [RouterModule.forChild(route), CommonModule],
+  imports: [MatListModule, RouterModule.forChild(route), CommonModule],
 })
 export class PurchaseHistoryModule {}

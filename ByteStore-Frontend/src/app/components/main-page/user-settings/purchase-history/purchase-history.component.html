@@ -1,11 +1,11 @@
 <div class="purchase-history">
   <h2>Purchase History</h2>
-  <div class="purchase-item" *ngFor="let purchase of products">
+  <mat-list-item class="purchase-item" *ngFor="let purchase of products">
+    <h3 matListItemTitle>{{ purchase.Product.Name }}</h3>
     <div class="product-details">
-      <h3>Name: {{ purchase.Product.Name }}</h3>
-      <h4>Quantity: {{ purchase.Product.ProductQuantity }}</h4>
-      <p>Price: {{ purchase.Product.Price | number: "1.2-2" }}</p>
-      <p>Purchase Date: {{ purchase.PurchaseDate | date: "short" }}</p>
+      <p>Quantity: {{ purchase.Product.ProductQuantity }} |</p>
+      <p>Price: {{ purchase.Product.Price | number: "1.2-2" }} |</p>
+      <p matListItemLine>{{ purchase.PurchaseDate | date }}</p>
     </div>
-  </div>
+  </mat-list-item>
 </div>
