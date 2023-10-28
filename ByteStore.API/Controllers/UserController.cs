@@ -101,6 +101,15 @@ public class UserController : ControllerBase
         }
     }
 
+    [HttpGet("purchase-history")]
+    public async Task<IActionResult> GetUserPurchaseHistory(int userId)
+    {
+        if (!IsTokenValid()) return Unauthorized();
+        var userPurchaseHistory = await _userService.GetUserPurchaseHistory(userId);
+        if (userPurchaseHistory == null) return NotFound();
+        return Ok(userPurchaseHistory);
+    }
+
     private bool IsTokenValid()
     {
         string token = HttpContext.Request.Headers["Authorization"];

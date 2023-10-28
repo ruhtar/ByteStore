@@ -65,23 +65,10 @@ public class UserService : IUserService
         return await _userRepository.UpdateUserPassword(userId, hashedPassword);
     }
 
-    //public async Task<User> GetUserByUsername(string username)
-    //{
-    //    var userRegistered = await _userRepository.GetUser(new User
-    //    {
-    //        Username = username
-    //    });
-    //    if (userRegistered != null)
-    //    {
-    //        return new User
-    //        {
-    //            UserId = userRegistered.UserId,
-    //            Username = userRegistered.Username,
-    //            Password = userRegistered.Password,
-    //        };
-    //    }
-    //    return null;
-    //}
+    public async Task<string?> GetUserPurchaseHistory(int userId)
+    {
+        return await _userRepository.GetUserPurchaseHistory(userId);
+    }
 
     public async Task RegisterUser(SignupUserDto user)
     {

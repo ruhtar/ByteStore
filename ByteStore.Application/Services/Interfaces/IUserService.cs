@@ -14,4 +14,5 @@ public interface IUserService
     Task EditUserAddress(Address address, int userId);
     Task<Address> GetUserAddress(int userId);
     Task<ChangePasswordStatusResponse> ChangePassword(int userId, string password, string repassword);
+    Task<string?> GetUserPurchaseHistory(int userId);
 }

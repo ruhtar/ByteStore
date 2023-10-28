@@ -58,6 +58,12 @@ public class UserRepository : IUserRepository
         return user == null ? null : user.Address;
     }
 
+    public async Task<string?> GetUserPurchaseHistory(int userId)
+    {
+        var user = await _context.UserAggregates.AsNoTracking().FirstOrDefaultAsync(u => u.UserAggregateId == userId);
+        return user?.PurchaseHistory;
+    }
+
     public async Task UpdatePurchaseHistory(int userId, IEnumerable<Product> purchasedProducts)
     {
         var user = await _context.UserAggregates.FirstOrDefaultAsync(u => u.UserAggregateId == userId);
