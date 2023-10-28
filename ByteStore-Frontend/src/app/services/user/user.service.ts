@@ -25,4 +25,11 @@ export class UserService {
       responseType: 'text',
     });
   }
+
+  public getUserPurchaseHistory() {
+    const jwt = this.tokenService.getDecodedJwt();
+    return this.http.get<string>(
+      API_PATH + `user/purchase-history?userId=${jwt.nameid}`,
+    );
+  }
 }

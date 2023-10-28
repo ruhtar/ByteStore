@@ -12,7 +12,7 @@ const route: Routes = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [PurchaseHistoryComponent],
   imports: [RouterModule.forChild(route), CommonModule],
 })
 export class PurchaseHistoryModule {}

@@ -1,1 +1,11 @@
-<p>purchase-history works!</p>
+<div class="purchase-history">
+  <h2>Purchase History</h2>
+  <div class="purchase-item" *ngFor="let purchase of products">
+    <div class="product-details">
+      <h3>Name: {{ purchase.Product.Name }}</h3>
+      <h4>Quantity: {{ purchase.Product.ProductQuantity }}</h4>
+      <p>Price: {{ purchase.Product.Price | number: "1.2-2" }}</p>
+      <p>Purchase Date: {{ purchase.PurchaseDate | date: "short" }}</p>
+    </div>
+  </div>
+</div>
