@@ -16,11 +16,11 @@
       id="search-input"
       placeholder="Filter products"
       [(ngModel)]="filterValue"
+      (ngModelChange)="searchProducts()"
     />
-    <button id="search-button" (click)="searchProducts()">Sort</button>
   </div>
   <section class="products">
-    <div *ngFor="let product of products" class="product-card">
+    <div *ngFor="let product of exibidProducts" class="product-card">
       <img [src]="product.imageStorageUrl" alt="Product Image" />
       <h2 class="product-name">{{ product.name }}</h2>
       <p class="product-price">

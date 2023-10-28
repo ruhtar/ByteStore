@@ -8,8 +8,7 @@ import { Product } from 'src/app/types/Product';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent {
-  products!: Product[];
-  filteredProducts!: Product[];
+  exibidProducts!: Product[];
   originalProducts!: Product[];
   filterValue: string = '';
   selectedOption: string = '';
@@ -17,28 +16,24 @@ export class ProductsComponent {
 
   ngOnInit() {
     this.productService.getAllProducts().subscribe((productList: Product[]) => {
-      this.products = productList;
+      this.exibidProducts = productList;
       this.originalProducts = productList;
     });
   }
 
   searchProducts() {
-    if (this.filterValue === '') {
-      this.products = this.originalProducts;
-      return;
-    }
-
     const filterLowerCase = this.filterValue.toLowerCase();
-    this.products = this.originalProducts.filter((product) => {
+    this.exibidProducts = this.originalProducts.filter((product) => {
       return product.name.toLowerCase().includes(filterLowerCase);
     });
   }
 
   onSelectChange() {
-    if (this.selectedOption === 'name') this.orderByName(this.products);
-    if (this.selectedOption === 'priceAsc') this.orderByPriceAsc(this.products);
+    if (this.selectedOption === 'name') this.orderByName(this.exibidProducts);
+    if (this.selectedOption === 'priceAsc')
+      this.orderByPriceAsc(this.exibidProducts);
     if (this.selectedOption === 'priceDesc')
-      this.orderByPriceDesc(this.products);
+      this.orderByPriceDesc(this.exibidProducts);
   }
 
   orderByName(list: Product[]) {

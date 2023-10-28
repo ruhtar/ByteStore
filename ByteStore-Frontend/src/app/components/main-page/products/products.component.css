@@ -34,8 +34,8 @@
   margin-top: 10px;
   min-height: 72px;
   display: flex;
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center;
+  justify-content: center;
 }
 
 .product-price {
@@ -110,7 +110,6 @@
   color: black;
 }
 
-/* Adicione este CSS para estilizar o elemento de seleção */
 #sort-select {
   padding: 10px;
   font-size: 16px;
@@ -120,7 +119,6 @@
   width: 30%;
 }
 
-/* Ajuste o estilo do botão de filtro */
 #search-button {
   padding: 10px 20px;
   background-color: var(--purple);
