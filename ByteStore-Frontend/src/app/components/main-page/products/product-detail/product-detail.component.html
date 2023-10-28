@@ -1,37 +1,40 @@
-<div id="page-container">
-  <app-header></app-header>
-  <div class="product-details">
-    <a href="/products"> <i class="fas fa-arrow-left"></i> Back </a>
-    <h1 class="product-name">{{ product.name }}</h1>
-    <p class="product-price">Price: R${{ product.price | number: "1.2-2" }}</p>
-    <img
-      class="product-image"
-      [src]="product.imageStorageUrl"
-      alt="Imagem do Produto"
+<app-header></app-header>
+<div class="product-details">
+  <a href="/products"> <i class="fas fa-arrow-left"></i> Back </a>
+  <h1 class="product-name">{{ product.name }}</h1>
+  <p class="product-price">Price: R${{ product.price | number: "1.2-2" }}</p>
+  <img
+    class="product-image"
+    [src]="product.imageStorageUrl"
+    alt="Imagem do Produto"
+  />
+  <p>Stock: {{ product.productQuantity }}</p>
+  <div *ngIf="logged" class="quantity-container">
+    <p>Quantity:</p>
+    <input
+      type="number"
+      [(ngModel)]="quantityToAdd"
+      min="1"
+      step="1"
+      class="quantity-input"
     />
-    <p>Stock: {{ product.productQuantity }}</p>
-    <div *ngIf="logged" class="quantity-container">
-      <p>Quantity:</p>
-      <input
-        type="number"
-        [(ngModel)]="quantityToAdd"
-        min="1"
-        step="1"
-        class="quantity-input"
-      />
-      <button
-        (click)="addToCart(userId, product, quantityToAdd)"
-        class="add-button"
-      >
-        <i class="fa-solid fa-cart-shopping"></i>
-        Add to the shopping cart
-      </button>
-    </div>
+    <button
+      (click)="addToCart(userId, product, quantityToAdd)"
+      class="add-button"
+    >
+      <i class="fa-solid fa-cart-shopping"></i>
+      Add to the shopping cart
+    </button>
+  </div>
 
-    <p class="product-description">
+  <div class="product-description" *ngIf="product.description">
+    <p class="description-title">DESCRIPTION</p>
+    <p>
       {{ product.description }}
     </p>
-    <!-- <p class="product-rating">Rated: 4.5/5</p>
+  </div>
+
+  <!-- <p class="product-rating">Rated: 4.5/5</p>
     <h2>Reviews</h2>
     <div class="buyer-comments">
       <div class="comment">
@@ -43,6 +46,5 @@
         <p class="comment-text">ACHEI BEM PAIA</p>
       </div>
     </div> -->
-  </div>
-  <app-footer></app-footer>
 </div>
+<app-footer></app-footer>
