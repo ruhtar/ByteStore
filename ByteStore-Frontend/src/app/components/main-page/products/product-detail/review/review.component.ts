@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ProductService } from 'src/app/services/product/product.service';
+import { TokenService } from 'src/app/services/token/token.service';
+import { Review } from 'src/app/types/Review';
 
 @Component({
   selector: 'app-review',
@@ -6,34 +10,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./review.component.css'],
 })
 export class ReviewComponent {
-  newCommentUser: string = '';
-  newCommentText: string = '';
+  newCommentText!: string;
+  id!: number;
+  constructor(
+    private productService: ProductService,
+    private tokenService: TokenService,
+    @Inject(MAT_DIALOG_DATA) private productId: number,
+  ) {}
 
-  // Lista de coment?rios existentes (voc? pode preench?-la com dados reais)
-  comments: Comment[] = [
-    { user: 'Comprador 1', text: 'COMENTARIO EXEMPLO1' },
-    { user: 'Comprador 2', text: 'COMENTARIO EXEMPLO2' },
-  ];
+  postComment(comment: string) {
+    var username = this.tokenService.getDecodedJwt().name;
+    const review = new Review();
+    review.productId = this.productId;
+    review.reviewText = comment;
+    review.username = username;
 
-  // Fun??o para postar um novo coment?rio
-  postComment() {
-    // Verifique se o usu?rio preencheu ambos os campos
-    if (this.newCommentUser && this.newCommentText) {
-      // Adicione o novo coment?rio ? lista de coment?rios
-      this.comments.push({
-        user: this.newCommentUser,
-        text: this.newCommentText,
-      });
-
-      // Limpe os campos do formul?rio ap?s a postagem
-      this.newCommentUser = '';
-      this.newCommentText = '';
-    }
+    this.productService.createReview(review).subscribe();
   }
-}
-
-// Interface para representar um coment?rio
-interface Comment {
-  user: string;
-  text: string;
 }

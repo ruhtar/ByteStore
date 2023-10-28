@@ -22,6 +22,7 @@ export class ProductDetailComponent {
   reviews: Review[] = [];
   userId!: number;
   logged!: boolean;
+  productId!: number;
 
   constructor(
     private productService: ProductService,
@@ -32,25 +33,25 @@ export class ProductDetailComponent {
     private dialogRef: MatDialog,
   ) {}
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id');
-
-    if (id !== null) {
-      this.productService
-        .getProductById(parseInt(id))
-        .subscribe((data: Product) => {
-          this.product = data;
-        });
+    let paramMap = this.route.snapshot.paramMap.get('id');
+    if (paramMap !== null) {
+      this.productId = parseInt(paramMap);
     }
+
+    this.productService
+      .getProductById(this.productId)
+      .subscribe((data: Product) => {
+        this.product = data;
+      });
+
     this.userId = this.tokenService.getDecodedJwt().nameid;
     this.authService.isLoggedIn.subscribe((response) => {
       this.logged = response;
     });
 
-    if (id !== null) {
-      this.productService.getProductReviews(parseInt(id)).subscribe((data) => {
-        this.reviews = data;
-      });
-    }
+    this.productService.getProductReviews(this.productId).subscribe((data) => {
+      this.reviews = data;
+    });
   }
 
   addToCart(userId: number, product: Product, quantity: number) {
@@ -76,6 +77,6 @@ export class ProductDetailComponent {
   }
 
   openModal() {
-    this.dialogRef.open(ReviewComponent);
+    this.dialogRef.open(ReviewComponent, { data: this.productId });
   }
 }

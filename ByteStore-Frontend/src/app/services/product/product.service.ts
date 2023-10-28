@@ -20,6 +20,10 @@ export class ProductService {
     );
   }
 
+  createReview(review: Review) {
+    return this.http.post(API_PATH + `products/review`, review);
+  }
+
   getProductById(productId: number) {
     return this.http.get<Product>(API_PATH + `products/${productId}`);
   }
