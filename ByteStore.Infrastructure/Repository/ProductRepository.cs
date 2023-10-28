@@ -83,6 +83,31 @@ public class ProductRepository : IProductRepository
         return true;
     }
 
+    public async Task<List<ReviewDto>> GetReviews(int productId)
+    {
+        var reviewsDto = new List<ReviewDto>();
+        
+        var products = await _context.Products
+            .Include(x => x.Reviews)
+            .Where(x => x.ProductId == productId)
+            .ToListAsync();
+
+        foreach (var product in products)
+        {
+            var reviews = product.Reviews.Select(review=> new ReviewDto
+            {
+                ProductId = productId,
+                UserId = review.UserId,
+                Username = review.Username,
+                ReviewText = review.ReviewText,
+            }).ToList();
+            
+            reviewsDto.AddRange(reviews);
+        }
+
+        return reviewsDto;
+    }
+
     public async Task CreateReview(ReviewDto reviewDto)
     {
 

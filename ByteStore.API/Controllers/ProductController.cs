@@ -65,11 +65,20 @@ public class ProductController : ControllerBase
     }
 
     [Authorize]
+    [Microsoft.AspNetCore.Mvc.HttpPost("review")]
     public async Task<IActionResult> CreateReview(ReviewDto reviewDto)
     {
         if (!IsTokenValid()) return Unauthorized();
         await _productService.CreateReview(reviewDto);
         return Ok();
+    }
+    
+    [Authorize]
+    [Microsoft.AspNetCore.Mvc.HttpGet("review")]
+    public async Task<IActionResult> GetReviews(int productId)
+    {
+        if (!IsTokenValid()) return Unauthorized();
+        return Ok(await _productService.GetReviews(productId));
     }
 
     private static async Task<string?> GetImageUrl(ProductDto productDto)

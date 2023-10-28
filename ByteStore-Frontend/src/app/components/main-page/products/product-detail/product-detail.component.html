@@ -37,17 +37,12 @@
   <p class="product-rating">Rated: 4.5/5</p>
   <h2>Reviews</h2>
   <div class="buyer-comments">
-    <div class="comment">
-      <p class="comment-user">Comprador 1</p>
-      <p class="comment-text">COMENTARIO EXEMPLO1</p>
+    <div class="comment" *ngFor="let review of reviews">
+      <p class="comment-text">{{ review.reviewText }}</p>
+      <p class="comment-user">{{ review.username }}</p>
     </div>
 
-    <button
-      (click)="openModal()"
-      *ngIf="logged"
-      mat-raised-button
-      color="accent"
-    >
+    <button (click)="openModal()" *ngIf="logged" class="add-button">
       Did you like the product? Rate it!
     </button>
   </div>

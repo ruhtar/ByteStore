@@ -55,6 +55,11 @@ public class ProductService : IProductService
         await _productRepository.CreateReview(reviewDto);
     }
 
+    public async Task<List<ReviewDto>> GetReviews(int productId)
+    {
+        return await _productRepository.GetReviews(productId);
+    }
+
     public async Task<bool> DeleteProduct(int id)
     {
         return await _productRepository.DeleteProduct(id);

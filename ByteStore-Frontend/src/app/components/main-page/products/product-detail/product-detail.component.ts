@@ -7,6 +7,7 @@ import { ProductService } from 'src/app/services/product/product.service';
 import { TokenService } from 'src/app/services/token/token.service';
 import { OrderItem } from 'src/app/types/OrderItem';
 import { Product } from 'src/app/types/Product';
+import { Review } from 'src/app/types/Review';
 import Swal from 'sweetalert2';
 import { ReviewComponent } from './review/review.component';
 
@@ -18,6 +19,7 @@ import { ReviewComponent } from './review/review.component';
 export class ProductDetailComponent {
   quantityToAdd: number = 1;
   product = new Product();
+  reviews: Review[] = [];
   userId!: number;
   logged!: boolean;
 
@@ -43,6 +45,12 @@ export class ProductDetailComponent {
     this.authService.isLoggedIn.subscribe((response) => {
       this.logged = response;
     });
+
+    if (id !== null) {
+      this.productService.getProductReviews(parseInt(id)).subscribe((data) => {
+        this.reviews = data;
+      });
+    }
   }
 
   addToCart(userId: number, product: Product, quantity: number) {

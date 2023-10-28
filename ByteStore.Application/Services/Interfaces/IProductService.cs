@@ -11,4 +11,5 @@ public interface IProductService
     Task<Product> GetProductById(int id);
     Task<bool> UpdateProduct(int id, UpdateProductDto productDto);
     Task CreateReview(ReviewDto reviewDto);
+    Task<List<ReviewDto>> GetReviews(int productId);
 }

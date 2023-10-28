@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/types/Product';
+import { Review } from 'src/app/types/Review';
 import { API_PATH } from 'src/environment/env';
 
 @Injectable({
@@ -11,6 +12,12 @@ export class ProductService {
 
   getAllProducts() {
     return this.http.get<Product[]>(API_PATH + 'products');
+  }
+
+  getProductReviews(productId: number) {
+    return this.http.get<Review[]>(
+      API_PATH + `products/review?productId=${productId}`,
+    );
   }
 
   getProductById(productId: number) {
