@@ -2,6 +2,7 @@
 using ByteStore.Shared.DTO;
 using ByteStore.Shared.Enums;
 using ByteStore.Application.Services.Interfaces;
+using ByteStore.Domain.Entities;
 using ByteStore.Infrastructure.Repository.Interfaces;
 using ByteStore.Infrastructure.Cache;
 
@@ -10,53 +11,64 @@ namespace ByteStore.Application.Services;
 public class ShoppingCartService : IShoppingCartService
 {
     private readonly IShoppingCartRepository _shoppingCartRepository;
+    private readonly IUserRepository _userRepository;
     private readonly IProductRepository _productRepository;
     private readonly ICacheConfigs _cache;
     private const string CartItemKey = "CartItemKey";
 
 
     public ShoppingCartService(IShoppingCartRepository shoppingCartRepository, IProductRepository productRepository,
-        ICacheConfigs cache)
+        ICacheConfigs cache, IUserRepository userRepository)
     {
         _shoppingCartRepository = shoppingCartRepository;
         _productRepository = productRepository;
         _cache = cache;
+        _userRepository = userRepository;
     }
 
     public async Task<BuyOrderStatus> BuyOrder(int userAggregateId)
     {
-        var shoppingCartDto = await _shoppingCartRepository.GetShoppingCartByUserAggregateId(userAggregateId);
-
-        foreach (var item in shoppingCartDto!.OrderItems)
+        var shoppingCart = await _shoppingCartRepository.GetShoppingCartByUserAggregateId(userAggregateId);
+        var itemsBought = new List<Product>();
+        foreach (var itemToBeBought in shoppingCart!.OrderItems)
         {
-            var product = await _productRepository.GetProductById(item.ProductId);
-            if (product == null)
+            var stockedProduct = await _productRepository.GetProductById(itemToBeBought.ProductId);
+            if (stockedProduct == null)
             {
                 //this means that the product have been brought while it was in the user`s cart.
                 //So it must be removed from the cart
-                await _shoppingCartRepository.RemoveProductFromCart(userAggregateId, item.ProductId); 
+                await _shoppingCartRepository.RemoveProductFromCart(userAggregateId, itemToBeBought.ProductId); 
                 //TODO: notify the frontend of this operation
                 continue;
             }
 
-            if (IsProductQuantityValidToBuy(product.ProductQuantity, item.Quantity))
+            if (IsProductQuantityValidToBuy(stockedProduct.ProductQuantity, itemToBeBought.Quantity))
             {
-                product.ProductQuantity -= item.Quantity;
-                if (product.ProductQuantity == 0)
-                    await _productRepository.DeleteProduct(product.ProductId);
+                stockedProduct.ProductQuantity -= itemToBeBought.Quantity;
+                if (stockedProduct.ProductQuantity == 0)
+                    await _productRepository.DeleteProduct(stockedProduct.ProductId);
                 else
                 {
                     var updateProductDto = new UpdateProductDto
                     {
-                        ProductId = product.ProductId,
-                        Name = product.Name,
-                        Price = product.Price,
-                        ProductQuantity = product.ProductQuantity,
+                        ProductId = stockedProduct.ProductId,
+                        Name = stockedProduct.Name,
+                        Price = stockedProduct.Price,
+                        ProductQuantity = stockedProduct.ProductQuantity,
                         Image = null,
-                        ImageStorageUrl = product.ImageStorageUrl,
-                        Description = product.Description
+                        ImageStorageUrl = stockedProduct.ImageStorageUrl,
+                        Description = stockedProduct.Description
                     };
-                    await _productRepository.UpdateProduct(product.ProductId, updateProductDto);
+                    itemsBought.Add(new Product
+                    {
+                        ProductId = itemToBeBought.ProductId,
+                        ProductQuantity = itemToBeBought.Quantity,
+                        Name = stockedProduct.Name,
+                        Price = stockedProduct.Price,
+                        ImageStorageUrl = stockedProduct.ImageStorageUrl,
+                        Description = stockedProduct.Description,
+                    });
+                    await _productRepository.UpdateProduct(stockedProduct.ProductId, updateProductDto);
                 }
                
             }
@@ -66,6 +78,7 @@ public class ShoppingCartService : IShoppingCartService
             }
         }
 
+        await _userRepository.UpdatePurchaseHistory(userAggregateId, itemsBought);
         return await _shoppingCartRepository.BuyOrder(userAggregateId);
     }
 

@@ -1,7 +1,10 @@
-﻿using ByteStore.Domain.Aggregates;
+﻿using System.Text.Json;
+using ByteStore.Domain.Aggregates;
+using ByteStore.Domain.Entities;
 using ByteStore.Domain.ValueObjects;
 using ByteStore.Infrastructure.Repository.Interfaces;
 using ByteStore.Shared.Enums;
+using ByteStore.Shared.Utils;
 using Microsoft.EntityFrameworkCore;
 
 namespace ByteStore.Infrastructure.Repository;
@@ -55,6 +58,18 @@ public class UserRepository : IUserRepository
         return user == null ? null : user.Address;
     }
 
+    public async Task UpdatePurchaseHistory(int userId, IEnumerable<Product> purchasedProducts)
+    {
+        var user = await _context.UserAggregates.FirstOrDefaultAsync(u => u.UserAggregateId == userId);
+        if (user == null) return;
+        var purchasedProductDetails = purchasedProducts.Select(x => new PurchasedProductDetail()
+        {
+            Product = x,
+            PurchaseDate = DateTime.Now
+        }).ToList();
+        user.AddToPurchaseHistory(purchasedProductDetails);
+        await _context.SaveChangesAsync();
+    }
 
     //public async Task<User> GetUserByUsername() {
     //    await _context.UserAggregates.AsNoTracking().FirstOrDefaultAsync(u => u.User.Username);

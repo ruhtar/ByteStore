@@ -1,4 +1,5 @@
-﻿using ByteStore.Application.Services.Interfaces;
+﻿using System.Text.Json;
+using ByteStore.Application.Services.Interfaces;
 using ByteStore.Application.Validator;
 using ByteStore.Domain.Aggregates;
 using ByteStore.Domain.Entities;
@@ -93,7 +94,8 @@ public class UserService : IUserService
                 Password = hashedPassword
             },
             Address = user.Address,
-            Role = user.Role
+            Role = user.Role,
+            PurchaseHistory = JsonSerializer.Serialize(new List<PurchasedProductDetail>())
         });
     }
 }
