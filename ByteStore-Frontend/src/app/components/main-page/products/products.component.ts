@@ -12,17 +12,17 @@ export class ProductsComponent {
   filteredProducts!: Product[];
   originalProducts!: Product[];
   filterValue: string = '';
+  selectedOption: string = '';
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
     this.productService.getAllProducts().subscribe((productList: Product[]) => {
       this.products = productList;
-      this.orderByName(this.products);
       this.originalProducts = productList;
     });
   }
 
-  filterProducts() {
+  searchProducts() {
     if (this.filterValue === '') {
       this.products = this.originalProducts;
       return;
@@ -32,6 +32,11 @@ export class ProductsComponent {
     this.products = this.originalProducts.filter((product) => {
       return product.name.toLowerCase().includes(filterLowerCase);
     });
+  }
+
+  onSelectChange() {
+    if (this.selectedOption === 'name') this.orderByName(this.products);
+    if (this.selectedOption === 'price') this.orderByPrice(this.products);
   }
 
   orderByName(list: Product[]) {

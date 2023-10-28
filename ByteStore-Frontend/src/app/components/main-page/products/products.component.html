@@ -2,17 +2,21 @@
   <app-header></app-header>
   <div class="filter-container">
     <label for="sort-select">Sort by:</label>
-    <select id="sort-select">
+    <select
+      id="sort-select"
+      [(ngModel)]="selectedOption"
+      (change)="onSelectChange()"
+    >
       <option value="name">Name</option>
       <option value="price">Price</option>
     </select>
     <input
       type="search"
-      id="filter-input"
+      id="search-input"
       placeholder="Filter products"
       [(ngModel)]="filterValue"
     />
-    <button id="filter-button" (click)="filterProducts()">Filter</button>
+    <button id="search-button" (click)="searchProducts()">Sort</button>
   </div>
   <section class="products">
     <div *ngFor="let product of products" class="product-card">

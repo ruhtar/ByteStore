@@ -78,7 +78,7 @@
   max-width: 30%;
 }
 
-#filter-input {
+#search-input {
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -87,7 +87,7 @@
   width: 70%;
 }
 
-#filter-button {
+#search-button {
   padding: 10px 20px;
   background-color: var(--purple);
   color: #fff;
@@ -97,11 +97,11 @@
   font-size: 16px;
 }
 
-#filter-button:hover {
+#search-button:hover {
   background-color: #0056b3;
 }
 
-#filter-input::placeholder {
+#search-input::placeholder {
   color: black;
 }
 
@@ -116,7 +116,7 @@
 }
 
 /* Ajuste o estilo do botão de filtro */
-#filter-button {
+#search-button {
   padding: 10px 20px;
   background-color: var(--purple);
   color: #fff;
@@ -127,6 +127,6 @@
   margin-top: 10px;
 }
 
-#filter-button:hover {
+#search-button:hover {
   background-color: #0056b3;
 }

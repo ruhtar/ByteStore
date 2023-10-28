@@ -8,9 +8,9 @@
     [src]="product.imageStorageUrl"
     alt="Imagem do Produto"
   />
-  <p>Stock: {{ product.productQuantity }}</p>
+  <p class="info">Stock: {{ product.productQuantity }} unit(s)</p>
   <div *ngIf="logged" class="quantity-container">
-    <p>Quantity:</p>
+    <p class="info">Quantity:</p>
     <input
       type="number"
       [(ngModel)]="quantityToAdd"
