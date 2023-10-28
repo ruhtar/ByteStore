@@ -39,12 +39,12 @@
   <div class="buyer-comments">
     <div class="comment">
       <p class="comment-user">Comprador 1</p>
-      <p class="comment-text">TOP DAS GALAXIAS</p>
+      <p class="comment-text">COMENTARIO EXEMPLO1</p>
     </div>
-    <div class="comment">
-      <p class="comment-user">Comprador 2</p>
-      <p class="comment-text">ACHEI BEM PAIA</p>
-    </div>
+
+    <button (click)="openModal()" *ngIf="logged" mat-raised-button>
+      Add a review
+    </button>
   </div>
 </div>
-<!-- <app-footer></app-footer> -->
+<app-footer></app-footer>

@@ -35,15 +35,15 @@
     </ul>
   </nav>
   <div *ngIf="logged" class="user-container">
-    <p>
+    <a class="user-actions" style="cursor: default">
       <i class="fa-solid fa-user" style="color: var(--yellow)"></i> Hello,
       {{ username }}
-    </p>
-    <a href="/settings"
+    </a>
+    <a href="/settings" class="user-actions"
       ><i class="fa-solid fa-gears" style="color: var(--yellow)"></i> My
       account</a
     >
-    <a href="#" (click)="signOut()"
+    <a href="#" (click)="signOut()" class="user-actions"
       ><i
         class="fa-solid fa-right-from-bracket"
         style="color: var(--yellow)"

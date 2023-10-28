@@ -13,6 +13,8 @@ public class Product
     public decimal Price { get; set; }
     public string ImageStorageUrl { get; set; }
     public string? Description { get; set; } //must be not-nulable but for sake of implementation i will leave nulabel for now
+    public IEnumerable<Review> Reviews { get; set; }
+    public double Rate { get; set; }
 
     [JsonIgnore] public ICollection<ShoppingCartProduct>? ShoppingCartProducts { get; set; }
 }

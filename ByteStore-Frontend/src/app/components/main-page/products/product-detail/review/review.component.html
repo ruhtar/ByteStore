@@ -1,0 +1,9 @@
+<div class="comment-form">
+  <h3>Post a Comment</h3>
+  <textarea
+    style="resize: none"
+    placeholder="Your Comment"
+    [(ngModel)]="newCommentText"
+  ></textarea>
+  <button (click)="postComment()">Post Comment</button>
+</div>

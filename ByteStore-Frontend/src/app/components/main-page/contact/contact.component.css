@@ -31,6 +31,7 @@ a {
 }
 
 .contact-container {
+  height: 80vh;
   padding: 1.25rem;
   text-align: center;
 }

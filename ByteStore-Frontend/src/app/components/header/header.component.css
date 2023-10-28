@@ -45,6 +45,7 @@ img {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 0.8rem;
 }
 
 .user-container a,
@@ -52,6 +53,10 @@ p {
   font-size: 1.2rem;
   color: #fff;
   text-decoration: none;
+  margin-left: auto;
+}
+
+.user-actions {
   margin-left: auto;
 }
 
@@ -70,4 +75,41 @@ li:hover i {
 
 nav li:hover a {
   text-shadow: 2px 2px 4px rgba(215, 168, 27, 0.5);
+}
+
+.user-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.user-actions {
+  font-size: 1.2rem;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.user-actions i {
+  font-size: 1.5rem;
+  transition: transform 0.2s ease-in-out;
+  margin-right: 10px;
+}
+
+.user-actions a {
+  text-decoration: none;
+}
+
+.user-actions:hover i {
+  transform: scale(1.2);
+}
+
+.user-actions:hover {
+  text-shadow: 2px 2px 4px rgba(215, 168, 27, 0.5);
+}
+
+.user-actions:first-child {
+  margin-top: 10px;
 }

@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { FormModule } from '../../../form/form.module';
 import { InfoComponent } from './info.component';
 
 const InfoRoute: Routes = [
@@ -22,7 +21,6 @@ const InfoRoute: Routes = [
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forChild(InfoRoute),
-    FormModule,
   ],
 })
 export class InfoModule {}

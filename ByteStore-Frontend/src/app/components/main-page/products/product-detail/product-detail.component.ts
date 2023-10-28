@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CartService } from 'src/app/services/cart/cart.service';
@@ -7,6 +8,7 @@ import { TokenService } from 'src/app/services/token/token.service';
 import { OrderItem } from 'src/app/types/OrderItem';
 import { Product } from 'src/app/types/Product';
 import Swal from 'sweetalert2';
+import { ReviewComponent } from './review/review.component';
 
 @Component({
   selector: 'app-product-detail',
@@ -25,6 +27,7 @@ export class ProductDetailComponent {
     private cartService: CartService,
     private tokenService: TokenService,
     private authService: AuthService,
+    private dialogRef: MatDialog,
   ) {}
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
@@ -62,5 +65,9 @@ export class ProductDetailComponent {
       },
       () => {},
     );
+  }
+
+  openModal() {
+    this.dialogRef.open(ReviewComponent);
   }
 }

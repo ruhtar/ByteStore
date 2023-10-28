@@ -1,6 +1,7 @@
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
@@ -37,6 +38,7 @@ import { HttpInterceptorService } from './services/http-interceptor/http-interce
     FormModule,
     SignupModule,
     InfoModule,
+    MatDialogModule,
     [SweetAlert2Module.forRoot()],
   ],
   providers: [
