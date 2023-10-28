@@ -22,10 +22,13 @@ const UserSettingsRoutes: Routes = [
             (u) => u.ChangePasswordModule,
           ),
       },
-      // {
-      //   path: 'purchase-history',
-      //   component: PurchaseHistoryComponent,
-      // },
+      {
+        path: 'purchase-history',
+        loadChildren: () =>
+          import('./purchase-history/purchase-history.module').then(
+            (u) => u.PurchaseHistoryModule,
+          ),
+      },
       // {
       //   path: '',
       //   component: UserSettingsComponent,
