@@ -10,6 +10,9 @@
         <div class="quantity-controls">
           <button
             class="takeaway-button"
+            [ngClass]="{
+              'takeaway-button-remove ': product.productQuantity === 1
+            }"
             (click)="changeItemQuantity(product, -1)"
           >
             <i class="fa-solid fa-minus"></i>

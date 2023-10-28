@@ -37,6 +37,15 @@
   cursor: pointer;
 }
 
+.takeaway-button-remove {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .add-button {
   background-color: #28a028;
   color: white;
