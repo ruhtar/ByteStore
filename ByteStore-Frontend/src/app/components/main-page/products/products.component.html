@@ -2,15 +2,15 @@
   <app-header></app-header>
   <div class="filter-container">
     <label for="sort-select">Sort by:</label>
-    <select
+    <mat-select
       id="sort-select"
       [(ngModel)]="selectedOption"
-      (change)="onSelectChange()"
+      (selectionChange)="onSelectChange()"
     >
-      <option value="name">Name</option>
-      <option value="priceAsc">Price - Asc</option>
-      <option value="priceDesc">Price - Desc</option>
-    </select>
+      <mat-option value="name">Name</mat-option>
+      <mat-option value="priceAsc">Price - Asc</mat-option>
+      <mat-option value="priceDesc">Price - Desc</mat-option>
+    </mat-select>
     <input
       type="search"
       id="search-input"

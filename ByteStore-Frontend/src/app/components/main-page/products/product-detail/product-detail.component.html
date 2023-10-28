@@ -42,7 +42,12 @@
       <p class="comment-text">COMENTARIO EXEMPLO1</p>
     </div>
 
-    <button (click)="openModal()" *ngIf="logged" mat-raised-button>
+    <button
+      (click)="openModal()"
+      *ngIf="logged"
+      mat-raised-button
+      color="accent"
+    >
       Add a review
     </button>
   </div>

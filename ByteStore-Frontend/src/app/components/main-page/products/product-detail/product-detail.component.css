@@ -57,11 +57,11 @@
 }
 
 .quantity-container {
-  display: flex; /* Tornando os elementos de Stock e Quantity flexíveis */
-  align-items: center; /* Alinhando verticalmente ao centro */
-  justify-content: center; /* Alinhando horizontalmente ao centro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 3rem;
-  margin-top: 20px; /* Adicionando margem superior */
+  margin-top: 20px;
 }
 
 .description-title {
@@ -70,6 +70,7 @@
 }
 
 .info {
+  margin-top: 8px;
   font-size: 18px;
 }
 
@@ -84,7 +85,6 @@
 }
 
 .add-button {
-  font-size: 18px; /* Ajustando o tamanho da fonte */
   padding: 10px;
   background-color: var(--yellow); /* Cor de destaque personalizada */
   color: #000000; /* Texto em branco para melhor contraste */
@@ -93,6 +93,7 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.4s ease-in-out;
+  font-weight: 400;
 }
 
 a {

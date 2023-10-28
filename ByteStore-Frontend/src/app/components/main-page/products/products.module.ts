@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 import { RouterModule, Routes } from '@angular/router';
 import { FooterModule } from '../../footer/footer.module';
 import { HeaderModule } from '../../header/header.module';
@@ -27,6 +28,7 @@ const ProductRoute: Routes = [
   imports: [
     FormsModule,
     CommonModule,
+    MatSelectModule,
     RouterModule.forChild(ProductRoute),
     HeaderModule,
     FooterModule,

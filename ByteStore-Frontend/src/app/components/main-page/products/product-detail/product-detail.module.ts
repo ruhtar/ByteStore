@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { FooterModule } from 'src/app/components/footer/footer.module';
@@ -21,6 +24,9 @@ const routes: Routes = [
   exports: [RouterModule],
   imports: [
     MatDialogModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatIconModule,
     CommonModule,
     RouterModule.forChild(routes),
     HeaderModule,
