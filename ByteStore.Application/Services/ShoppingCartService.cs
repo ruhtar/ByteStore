@@ -30,6 +30,15 @@ public class ShoppingCartService : IShoppingCartService
         foreach (var item in shoppingCartDto!.OrderItems)
         {
             var product = await _productRepository.GetProductById(item.ProductId);
+            if (product == null)
+            {
+                //this means that the product have been brought while it was in the user`s cart.
+                //So it must be removed from the cart
+                await _shoppingCartRepository.RemoveProductFromCart(userAggregateId, item.ProductId); 
+                //TODO: notify the frontend of this operation
+                continue;
+            }
+
             if (IsProductQuantityValidToBuy(product.ProductQuantity, item.Quantity))
             {
                 product.ProductQuantity -= item.Quantity;
