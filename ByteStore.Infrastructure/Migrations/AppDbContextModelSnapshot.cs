@@ -40,21 +40,6 @@ namespace ByteStore.Infrastructure.Migrations
                     b.ToTable("ShoppingCarts");
                 });
 
-            modelBuilder.Entity("ByteStore.Domain.Aggregates.ShoppingCartProduct", b =>
-                {
-                    b.Property<int>("ShoppingCartId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ShoppingCartId", "ProductId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ShoppingCartProduct");
-                });
-
             modelBuilder.Entity("ByteStore.Domain.Aggregates.UserAggregate", b =>
                 {
                     b.Property<int>("UserAggregateId")
@@ -104,6 +89,12 @@ namespace ByteStore.Infrastructure.Migrations
                     b.Property<int>("ProductQuantity")
                         .HasColumnType("int");
 
+                    b.Property<double>("Rate")
+                        .HasColumnType("double");
+
+                    b.Property<int>("TimesRated")
+                        .HasColumnType("int");
+
                     b.HasKey("ProductId");
 
                     b.ToTable("Products");
@@ -129,6 +120,33 @@ namespace ByteStore.Infrastructure.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("ByteStore.Domain.ValueObjects.Review", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReviewText")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Reviews");
+                });
+
             modelBuilder.Entity("ByteStore.Domain.Aggregates.ShoppingCart", b =>
                 {
                     b.HasOne("ByteStore.Domain.Aggregates.UserAggregate", "UserAggregate")
@@ -138,21 +156,6 @@ namespace ByteStore.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("UserAggregate");
-                });
-
-            modelBuilder.Entity("ByteStore.Domain.Aggregates.ShoppingCartProduct", b =>
-                {
-                    b.HasOne("ByteStore.Domain.Entities.Product", "Product")
-                        .WithMany("ShoppingCartProducts")
-                        .HasForeignKey("ProductId");
-
-                    b.HasOne("ByteStore.Domain.Aggregates.ShoppingCart", "ShoppingCart")
-                        .WithMany("ShoppingCartProducts")
-                        .HasForeignKey("ShoppingCartId");
-
-                    b.Navigation("Product");
-
-                    b.Navigation("ShoppingCart");
                 });
 
             modelBuilder.Entity("ByteStore.Domain.Aggregates.UserAggregate", b =>
@@ -206,9 +209,15 @@ namespace ByteStore.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("ByteStore.Domain.Aggregates.ShoppingCart", b =>
+            modelBuilder.Entity("ByteStore.Domain.ValueObjects.Review", b =>
                 {
-                    b.Navigation("ShoppingCartProducts");
+                    b.HasOne("ByteStore.Domain.Entities.Product", "Product")
+                        .WithMany("Reviews")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("ByteStore.Domain.Aggregates.UserAggregate", b =>
@@ -219,7 +228,7 @@ namespace ByteStore.Infrastructure.Migrations
 
             modelBuilder.Entity("ByteStore.Domain.Entities.Product", b =>
                 {
-                    b.Navigation("ShoppingCartProducts");
+                    b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618
         }

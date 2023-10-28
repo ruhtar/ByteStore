@@ -15,6 +15,7 @@ public class AppDbContext : DbContext
     public DbSet<UserAggregate> UserAggregates { get; set; }
     public DbSet<ShoppingCart> ShoppingCarts { get; set; }
     public DbSet<Product> Products { get; set; }
+    public DbSet<Review> Reviews { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -42,19 +43,24 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<UserAggregate>().Property(e => e.Role)
             .HasConversion<string>();
 
-        modelBuilder.Entity<ShoppingCartProduct>()
-            .HasKey(scp => new { scp.ShoppingCartId, scp.ProductId });
+        // modelBuilder.Entity<ShoppingCartProduct>()
+        //     .HasKey(scp => new { scp.ShoppingCartId, scp.ProductId });
+        //
+        // modelBuilder.Entity<ShoppingCartProduct>()
+        //     .HasOne(scp => scp.ShoppingCart)
+        //     .WithMany(sc => sc.ShoppingCartProducts)
+        //     .IsRequired(false)
+        //     .HasForeignKey(scp => scp.ShoppingCartId);
+        //
+        // modelBuilder.Entity<ShoppingCartProduct>()
+        //     .HasOne(scp => scp.Product)
+        //     .WithMany(p => p.ShoppingCartProducts)
+        //     .IsRequired(false)
+        //     .HasForeignKey(scp => scp.ProductId);
 
-        modelBuilder.Entity<ShoppingCartProduct>()
-            .HasOne(scp => scp.ShoppingCart)
-            .WithMany(sc => sc.ShoppingCartProducts)
-            .IsRequired(false)
-            .HasForeignKey(scp => scp.ShoppingCartId);
-
-        modelBuilder.Entity<ShoppingCartProduct>()
-            .HasOne(scp => scp.Product)
-            .WithMany(p => p.ShoppingCartProducts)
-            .IsRequired(false)
-            .HasForeignKey(scp => scp.ProductId);
+        modelBuilder.Entity<Product>()
+            .HasMany(e => e.Reviews)
+            .WithOne(e => e.Product)
+            .HasForeignKey(e => e.ProductId);
     }
 }

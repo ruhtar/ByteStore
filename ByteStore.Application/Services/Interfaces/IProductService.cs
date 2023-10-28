@@ -10,4 +10,5 @@ public interface IProductService
     Task<IEnumerable<Product>> GetAllProducts();
     Task<Product> GetProductById(int id);
     Task<bool> UpdateProduct(int id, UpdateProductDto productDto);
+    Task CreateReview(ReviewDto reviewDto);
 }

@@ -50,6 +50,11 @@ public class ProductService : IProductService
         return await _productRepository.UpdateProduct(id, productDto);
     }
 
+    public async Task CreateReview(ReviewDto reviewDto)
+    {
+        await _productRepository.CreateReview(reviewDto);
+    }
+
     public async Task<bool> DeleteProduct(int id)
     {
         return await _productRepository.DeleteProduct(id);

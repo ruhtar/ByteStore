@@ -1,4 +1,5 @@
-﻿using ByteStore.Application.Services.Interfaces;
+﻿using System.Web.Http;
+using ByteStore.Application.Services.Interfaces;
 using ByteStore.Domain.Entities;
 using ByteStore.Shared.DTO;
 using Firebase.Storage;
@@ -6,18 +7,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ByteStore.API.Controllers;
 
-[Route("products")]
+[Microsoft.AspNetCore.Mvc.Route("products")]
 [ApiController]
 public class ProductController : ControllerBase
 {
     private readonly IProductService _productService;
+    private readonly ITokenService _tokenService;
 
-    public ProductController(IProductService productService)
+    public ProductController(IProductService productService, ITokenService tokenService)
     {
         _productService = productService;
+        _tokenService = tokenService;
     }
 
-    [HttpGet]
+    [Microsoft.AspNetCore.Mvc.HttpGet]
     public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
     {
         var products = await _productService.GetAllProducts();
@@ -25,7 +28,7 @@ public class ProductController : ControllerBase
         return Ok(products);
     }
 
-    [HttpGet("{id}")]
+    [Microsoft.AspNetCore.Mvc.HttpGet("{id}")]
     public async Task<ActionResult<Product>> GetProduct(int id)
     {
         var product = await _productService.GetProductById(id);
@@ -33,7 +36,7 @@ public class ProductController : ControllerBase
         return Ok(product);
     }
 
-    [HttpPost]
+    [Microsoft.AspNetCore.Mvc.HttpPost]
     public async Task<ActionResult<Product>> CreateProduct([FromForm] ProductDto productDto)
     {
         if (productDto.Price <= 0) return BadRequest("Invalid price");
@@ -43,7 +46,7 @@ public class ProductController : ControllerBase
         return CreatedAtAction(nameof(GetProduct), new { id = newProduct.ProductId }, newProduct);
     }
 
-    [HttpPut("{id}")]
+    [Microsoft.AspNetCore.Mvc.HttpPut("{id}")]
     public async Task<ActionResult<Product>> UpdateProduct(int id, [FromForm] UpdateProductDto productDto)
     {
         if (productDto.Price <= 0) return BadRequest("Invalid price");
@@ -53,12 +56,19 @@ public class ProductController : ControllerBase
         return Ok();
     }
 
-    [HttpDelete("{id}")]
+    [Microsoft.AspNetCore.Mvc.HttpDelete("{id}")]
     public async Task<ActionResult> DeleteProduct(int id)
     {
         var sucess = await _productService.DeleteProduct(id);
         if (!sucess) return NotFound();
         return NoContent();
+    }
+
+    [Authorize]
+    public async Task<IActionResult> CreateReview(ReviewDto reviewDto)
+    {
+        if (!IsTokenValid()) return Unauthorized();
+        return Ok();
     }
 
     private static async Task<string?> GetImageUrl(ProductDto productDto)
@@ -67,5 +77,17 @@ public class ProductController : ControllerBase
             .Child("ByteStore")
             .Child(productDto.Name)
             .PutAsync(productDto.Image.OpenReadStream());
+    }
+    
+    private bool IsTokenValid()
+    {
+        string token = HttpContext.Request.Headers["Authorization"];
+
+        if (string.IsNullOrEmpty(token)) return false;
+
+        // Remove o prefixo "Bearer " do token, se presente
+        token = token.Replace("Bearer ", "");
+
+        return _tokenService.ValidateToken(token);
     }
 }

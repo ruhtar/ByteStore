@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using ByteStore.Domain.Entities;
+using ByteStore.Domain.ValueObjects;
 using ByteStore.Infrastructure.Cache;
 using ByteStore.Infrastructure.Repository.Interfaces;
 using ByteStore.Shared.DTO;
@@ -80,5 +81,34 @@ public class ProductRepository : IProductRepository
         await _context.SaveChangesAsync();
 
         return true;
+    }
+
+    public async Task CreateReview(ReviewDto reviewDto)
+    {
+
+        var product = await _context.Products.FirstOrDefaultAsync(x => x.ProductId == reviewDto.ProductId);
+        if (product == null) return;
+
+        if (product.TimesRated == 0)
+        {
+            product.TimesRated++;
+            product.Rate = reviewDto.Rate;
+        }
+        else
+        {
+            product.TimesRated++;
+            product.Rate = (product.Rate + reviewDto.Rate) / product.TimesRated;
+        }
+
+        var review = new Review
+        {
+            ProductId = reviewDto.ProductId,
+            UserId = reviewDto.UserId,
+            Username = reviewDto.Username,
+            ReviewText = reviewDto.ReviewText
+        };
+        
+        await _context.Reviews.AddAsync(review);
+        await _context.SaveChangesAsync();
     }
 }

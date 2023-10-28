@@ -28,7 +28,7 @@
 }
 
 .product-name {
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-top: 10px;
   min-height: 72px;
   display: flex;
@@ -37,7 +37,7 @@
 }
 
 .product-price {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #000000;
   margin-top: 5px;
 }
