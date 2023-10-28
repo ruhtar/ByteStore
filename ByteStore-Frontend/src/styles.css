@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
 /* Reset CSS */
 /* Adapted from the Eric Meyer's Reset CSS v2.0 */
 
@@ -95,5 +96,11 @@ img {
   --yellow: #ffc26e;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
