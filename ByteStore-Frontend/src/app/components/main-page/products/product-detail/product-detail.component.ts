@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { ProductService } from 'src/app/services/product/product.service';
 import { TokenService } from 'src/app/services/token/token.service';
+import { UserService } from 'src/app/services/user/user.service';
 import { OrderItem } from 'src/app/types/OrderItem';
 import { Product } from 'src/app/types/Product';
 import { Review } from 'src/app/types/Review';
@@ -30,6 +31,7 @@ export class ProductDetailComponent {
     private cartService: CartService,
     private tokenService: TokenService,
     private authService: AuthService,
+    private userService: UserService,
     private dialogRef: MatDialog,
   ) {}
   ngOnInit() {
@@ -77,6 +79,24 @@ export class ProductDetailComponent {
   }
 
   openModal() {
-    this.dialogRef.open(ReviewComponent, { data: this.productId });
+    this.userService
+      .checkIfUserHasBoughtAProduct(this.product.productId)
+      .subscribe(
+        (response) => {
+          console.log(response.status);
+          if (response.status === 200)
+            this.dialogRef.open(ReviewComponent, { data: this.productId });
+        },
+        (error) => {
+          if (error.status === 401) {
+            Swal.fire(
+              'You must have bought the product to review it.',
+              '',
+              'error',
+            );
+          }
+        },
+        () => {},
+      );
   }
 }

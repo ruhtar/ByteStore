@@ -8,28 +8,43 @@ import { TokenService } from '../token/token.service';
   providedIn: 'root',
 })
 export class UserService {
+  jwt!: any; //TODO: create type
   constructor(
     private http: HttpClient,
     private tokenService: TokenService,
-  ) {}
+  ) {
+    this.jwt = this.tokenService.getDecodedJwt();
+  }
+
+  public checkIfUserHasBoughtAProduct(productId: number) {
+    return this.http.get(
+      API_PATH +
+        `user/purchase-history/check?userId=${this.jwt.nameid}&productId=${productId}`,
+      {
+        observe: 'response',
+        responseType: 'text',
+      },
+    );
+  }
 
   public getUserAddress() {
-    const jwt = this.tokenService.getDecodedJwt();
-    return this.http.get<Address>(API_PATH + `user/address/${jwt.nameid}`);
+    return this.http.get<Address>(API_PATH + `user/address/${this.jwt.nameid}`);
   }
 
   public editUserAddress(address: Address) {
-    const jwt = this.tokenService.getDecodedJwt();
-    return this.http.put(API_PATH + `user/address/${jwt.nameid}`, address, {
-      observe: 'response',
-      responseType: 'text',
-    });
+    return this.http.put(
+      API_PATH + `user/address/${this.jwt.nameid}`,
+      address,
+      {
+        observe: 'response',
+        responseType: 'text',
+      },
+    );
   }
 
   public getUserPurchaseHistory() {
-    const jwt = this.tokenService.getDecodedJwt();
     return this.http.get<string>(
-      API_PATH + `user/purchase-history?userId=${jwt.nameid}`,
+      API_PATH + `user/purchase-history?userId=${this.jwt.nameid}`,
     );
   }
 }

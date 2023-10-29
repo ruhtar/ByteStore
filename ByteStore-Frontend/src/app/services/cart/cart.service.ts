@@ -16,7 +16,6 @@ export class CartService {
 
   addToCart(userId: number, orderItem: OrderItem) {
     return this.http.post(API_PATH + `cart/order?userId=${userId}`, orderItem, {
-      headers: this.tokenService.addJwtToHeaders(),
       observe: 'response',
       responseType: 'text',
     });
@@ -27,7 +26,6 @@ export class CartService {
     return this.http.delete(
       API_PATH + `user/${userId}/cart/remove?productId=${productId}`,
       {
-        headers: this.tokenService.addJwtToHeaders(),
         observe: 'response',
         responseType: 'text',
       },
@@ -36,7 +34,6 @@ export class CartService {
 
   buyOrder(userId: number) {
     return this.http.get(API_PATH + `cart/buy?userId=${userId}`, {
-      headers: this.tokenService.addJwtToHeaders(),
       observe: 'response',
       responseType: 'text',
     });
