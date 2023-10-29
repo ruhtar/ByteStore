@@ -1,41 +1,44 @@
 <div id="page-container">
   <app-header></app-header>
   <section class="cart-items" *ngIf="logged && !isCartEmpty">
-    <div class="cart-item" *ngFor="let product of products">
-      <!-- <img src="product1.jpg" alt="Produto 1" /> -->
-      <div class="item-details">
-        <h2>Name: {{ product.name }}</h2>
-        <p>Price: $ {{ product.price | number: "1.2-2" }}</p>
-        <p>Quantity</p>
-        <div class="quantity-controls">
-          <button
-            class="takeaway-button"
-            [ngClass]="{
-              'takeaway-button-remove ': product.productQuantity === 1
-            }"
-            (click)="changeItemQuantity(product, -1)"
-          >
-            <i class="fa-solid fa-minus"></i>
-          </button>
-          <span class="quantity">{{ product.productQuantity }}</span>
-          <button class="add-button" (click)="changeItemQuantity(product, 1)">
-            <i class="fa-solid fa-plus"></i>
-          </button>
+    <div class="products-container">
+      <div class="cart-item" *ngFor="let product of products">
+        <!-- <img src="product1.jpg" alt="Produto 1" /> -->
+        <div class="item-details">
+          <h2>Name: {{ product.name }}</h2>
+          <p>Price: $ {{ product.price | number: "1.2-2" }}</p>
+          <p>Quantity</p>
+          <div class="quantity-controls">
+            <button
+              class="takeaway-button"
+              [ngClass]="{
+                'takeaway-button-remove ': product.productQuantity === 1
+              }"
+              (click)="changeItemQuantity(product, -1)"
+            >
+              <i class="fa-solid fa-minus"></i>
+            </button>
+            <span class="quantity">{{ product.productQuantity }}</span>
+            <button class="add-button" (click)="changeItemQuantity(product, 1)">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
         </div>
+        <button
+          class="remove-btn"
+          (click)="removeProductFromTheCart(product.productId)"
+        >
+          <i class="fa-solid fa-trash fa-beat"></i>
+        </button>
       </div>
-      <button
-        class="remove-btn"
-        (click)="removeProductFromTheCart(product.productId)"
-      >
-        <i class="fa-solid fa-trash fa-beat"></i>
+    </div>
+    <div class="summary">
+      <h2>Cart summary</h2>
+      <p>Total: $ {{ totalPrice | number: "1.2-2" }}</p>
+      <button class="checkout-button" (click)="buyOrder()">
+        Complete purchase
       </button>
     </div>
-    <div class="summary"></div>
-    <h2>Cart summary</h2>
-    <p>Total: $ {{ totalPrice | number: "1.2-2" }}</p>
-    <button class="checkout-button" (click)="buyOrder()">
-      Complete purchase
-    </button>
   </section>
   <section class="cart-message" *ngIf="!logged">
     You are not logged in and cannot access the cart.
