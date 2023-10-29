@@ -14,4 +14,5 @@ public interface IUserRepository
     Task<Address> GetUserAddress(int userId);
     Task UpdatePurchaseHistory(int userId, IEnumerable<Product> purchasedProducts);
     Task<string?> GetUserPurchaseHistory(int userId);
+    Task<bool> CheckIfUserHasBoughtAProduct(int userId, int productId);
 }

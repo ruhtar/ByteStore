@@ -15,4 +15,5 @@ public interface IUserService
     Task<Address> GetUserAddress(int userId);
     Task<ChangePasswordStatusResponse> ChangePassword(int userId, string password, string repassword);
     Task<string?> GetUserPurchaseHistory(int userId);
+    Task<bool> CheckIfUserHasBoughtAProduct(int userId, int productId);
 }

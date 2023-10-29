@@ -64,6 +64,15 @@ public class UserRepository : IUserRepository
         return user?.PurchaseHistory;
     }
 
+    public async Task<bool> CheckIfUserHasBoughtAProduct(int userId, int productId)
+    {
+        var user = await _context.UserAggregates.AsNoTracking().FirstOrDefaultAsync(u => u.UserAggregateId == userId);
+        if (user == null) return false;
+
+        var purchasedProducts = user.GetPurchaseHistory();
+        return purchasedProducts.Any(x => x.Product.ProductId == productId);
+    }
+
     public async Task UpdatePurchaseHistory(int userId, IEnumerable<Product> purchasedProducts)
     {
         var user = await _context.UserAggregates.FirstOrDefaultAsync(u => u.UserAggregateId == userId);

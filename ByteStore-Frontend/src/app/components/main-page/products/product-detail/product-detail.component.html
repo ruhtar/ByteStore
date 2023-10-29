@@ -1,6 +1,8 @@
 <app-header></app-header>
 <div class="product-details">
-  <a href="/products"> <i class="fas fa-arrow-left"></i> Back </a>
+  <a href="/products">
+    <i class="fas fa-arrow-left" style="margin-bottom: 1rem"></i> Back
+  </a>
   <h1 class="product-name">{{ product.name }}</h1>
   <p class="product-price">Price: R${{ product.price | number: "1.2-2" }}</p>
   <img

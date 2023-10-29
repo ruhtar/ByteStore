@@ -101,6 +101,7 @@ public class UserController : ControllerBase
         }
     }
 
+    [Authorize]
     [HttpGet("purchase-history")]
     public async Task<IActionResult> GetUserPurchaseHistory(int userId)
     {
@@ -108,6 +109,16 @@ public class UserController : ControllerBase
         var userPurchaseHistory = await _userService.GetUserPurchaseHistory(userId);
         if (userPurchaseHistory == null) return NotFound();
         return Ok(userPurchaseHistory);
+    }
+    
+    [Authorize]
+    [HttpGet("purchase-history/check")]
+    public async Task<IActionResult> CheckIfUserHasBoughtAProduct(int userId, int productId)
+    {
+        if (!IsTokenValid()) return Unauthorized();
+        var hasBought = await _userService.CheckIfUserHasBoughtAProduct(userId, productId);
+        if (hasBought) return Ok();
+        return Unauthorized();
     }
 
     private bool IsTokenValid()

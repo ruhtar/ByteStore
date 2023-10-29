@@ -70,6 +70,11 @@ public class UserService : IUserService
         return await _userRepository.GetUserPurchaseHistory(userId);
     }
 
+    public async Task<bool> CheckIfUserHasBoughtAProduct(int userId, int productId)
+    {
+        return await _userRepository.CheckIfUserHasBoughtAProduct(userId, productId);
+    }
+    
     public async Task RegisterUser(SignupUserDto user)
     {
         var hashedPassword = _passwordHasher.Hash(user.User.Password);
