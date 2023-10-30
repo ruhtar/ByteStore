@@ -46,13 +46,12 @@ export class ProductDetailComponent {
         this.product = data;
       });
 
+    this.productService.getProductReviews(this.productId).subscribe((data) => {
+      this.reviews = data;
+    });
     this.userId = this.tokenService.getDecodedJwt().nameid;
     this.authService.isLoggedIn.subscribe((response) => {
       this.logged = response;
-    });
-
-    this.productService.getProductReviews(this.productId).subscribe((data) => {
-      this.reviews = data;
     });
   }
 

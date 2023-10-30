@@ -73,11 +73,9 @@ public class ProductController : ControllerBase
         return Ok();
     }
     
-    [Authorize]
     [Microsoft.AspNetCore.Mvc.HttpGet("review")]
     public async Task<IActionResult> GetReviews(int productId)
     {
-        if (!IsTokenValid()) return Unauthorized();
         return Ok(await _productService.GetReviews(productId));
     }
 
