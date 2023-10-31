@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Application\\ByteStore.Application.csproj": {}
+    "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Application\\ByteStore.Application.csproj": {}
   },
   "projects": {
-    "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Application\\ByteStore.Application.csproj": {
+    "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Application\\ByteStore.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Application\\ByteStore.Application.csproj",
+        "projectUniqueName": "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Application\\ByteStore.Application.csproj",
         "projectName": "ByteStore.Application",
-        "projectPath": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Application\\ByteStore.Application.csproj",
-        "packagesPath": "C:\\Users\\Arthur\\.nuget\\packages\\",
-        "outputPath": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Application\\obj\\",
+        "projectPath": "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Application\\ByteStore.Application.csproj",
+        "packagesPath": "C:\\Users\\arthu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Arthur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\arthu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,14 +28,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj": {
-                "projectPath": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj"
+              "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj": {
+                "projectPath": "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj"
               },
-              "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Infrastructure\\ByteStore.Infrastructure.csproj": {
-                "projectPath": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Infrastructure\\ByteStore.Infrastructure.csproj"
+              "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Infrastructure\\ByteStore.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Infrastructure\\ByteStore.Infrastructure.csproj"
               },
-              "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj": {
-                "projectPath": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj"
+              "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj": {
+                "projectPath": "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj"
               }
             }
           }
@@ -118,40 +118,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.20, 6.0.20]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.20, 6.0.20]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.20, 6.0.20]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj": {
+    "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj",
         "projectName": "ByteStore.Domain",
-        "projectPath": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj",
-        "packagesPath": "C:\\Users\\Arthur\\.nuget\\packages\\",
-        "outputPath": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Domain\\obj\\",
+        "projectPath": "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj",
+        "packagesPath": "C:\\Users\\arthu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Arthur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\arthu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -245,40 +231,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.20, 6.0.20]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.20, 6.0.20]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.20, 6.0.20]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Infrastructure\\ByteStore.Infrastructure.csproj": {
+    "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Infrastructure\\ByteStore.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Infrastructure\\ByteStore.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Infrastructure\\ByteStore.Infrastructure.csproj",
         "projectName": "ByteStore.Infrastructure",
-        "projectPath": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Infrastructure\\ByteStore.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Arthur\\.nuget\\packages\\",
-        "outputPath": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Infrastructure\\ByteStore.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\arthu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Arthur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\arthu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -292,11 +264,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj": {
-                "projectPath": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj"
+              "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj": {
+                "projectPath": "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj"
               },
-              "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj": {
-                "projectPath": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj"
+              "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj": {
+                "projectPath": "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj"
               }
             }
           }
@@ -379,40 +351,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.20, 6.0.20]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.20, 6.0.20]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.20, 6.0.20]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj": {
+    "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj",
         "projectName": "ByteStore.Shared",
-        "projectPath": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj",
-        "packagesPath": "C:\\Users\\Arthur\\.nuget\\packages\\",
-        "outputPath": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Shared\\obj\\",
+        "projectPath": "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Shared\\ByteStore.Shared.csproj",
+        "packagesPath": "C:\\Users\\arthu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Arthur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\arthu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -426,8 +384,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj": {
-                "projectPath": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj"
+              "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj": {
+                "projectPath": "C:\\Users\\arthu\\Desktop\\ByteStore\\ByteStore.Domain\\ByteStore.Domain.csproj"
               }
             }
           }
@@ -510,26 +468,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.20, 6.0.20]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.20, 6.0.20]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.20, 6.0.20]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
