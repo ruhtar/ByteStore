@@ -25,6 +25,7 @@ public class Program
                 o.InstanceName = "instance";
                 o.Configuration = Environment.GetEnvironmentVariable("REDIS_LOCALHOST");
             })
+            .AddHostedService<Migrator>() //Migrates database
             .AddSwaggerGen() //SWAGGER GENERATOR
             .AddDependencies() //DEPENDENCY INJECTION CONFIGURATION
             .AddJWTConfiguration() //JWT CONFIGURATION
@@ -40,7 +41,7 @@ public class Program
         app.UseCors(corsPolicyBuilder =>
         {
             corsPolicyBuilder
-                .WithOrigins("http://localhost:4200")
+                .WithOrigins()
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader();
