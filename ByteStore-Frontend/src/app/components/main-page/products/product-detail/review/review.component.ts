@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductService } from 'src/app/services/product/product.service';
 import { TokenService } from 'src/app/services/token/token.service';
 import { Review } from 'src/app/types/Review';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-review',
@@ -25,6 +26,21 @@ export class ReviewComponent {
     review.reviewText = comment;
     review.username = username;
 
-    this.productService.createReview(review).subscribe();
+    this.productService.createReview(review).subscribe(
+      (response) => {
+        if (response.status === 200) {
+          Swal.fire('Review posted.', '', 'success').then(() =>
+            location.reload(),
+          );
+        }
+      },
+      (error) => {
+        Swal.fire(
+          'Whoops, something went wrong. Please, try again later.',
+          '',
+          'error',
+        );
+      },
+    );
   }
 }

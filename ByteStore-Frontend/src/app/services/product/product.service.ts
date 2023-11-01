@@ -21,7 +21,9 @@ export class ProductService {
   }
 
   createReview(review: Review) {
-    return this.http.post(API_PATH + `products/review`, review);
+    return this.http.post(API_PATH + `products/review`, review, {
+      observe: 'response',
+    });
   }
 
   getProductById(productId: number) {
