@@ -40,3 +40,17 @@ D:\PROGRAMAÇÃO\ByteStore\ByteStore.Domain\obj\Debug\net6.0\refint\ByteStore.Do
 D:\PROGRAMAÇÃO\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.pdb
 D:\PROGRAMAÇÃO\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.genruntimeconfig.cache
 D:\PROGRAMAÇÃO\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ref\ByteStore.Domain.dll
+C:\Users\arthu\Desktop\ByteStore\ByteStore.Domain\bin\Debug\net6.0\ByteStore.Domain.deps.json
+C:\Users\arthu\Desktop\ByteStore\ByteStore.Domain\bin\Debug\net6.0\ByteStore.Domain.runtimeconfig.json
+C:\Users\arthu\Desktop\ByteStore\ByteStore.Domain\bin\Debug\net6.0\ByteStore.Domain.dll
+C:\Users\arthu\Desktop\ByteStore\ByteStore.Domain\bin\Debug\net6.0\ByteStore.Domain.pdb
+C:\Users\arthu\Desktop\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.csproj.AssemblyReference.cache
+C:\Users\arthu\Desktop\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\arthu\Desktop\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.AssemblyInfoInputs.cache
+C:\Users\arthu\Desktop\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.AssemblyInfo.cs
+C:\Users\arthu\Desktop\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.csproj.CoreCompileInputs.cache
+C:\Users\arthu\Desktop\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.dll
+C:\Users\arthu\Desktop\ByteStore\ByteStore.Domain\obj\Debug\net6.0\refint\ByteStore.Domain.dll
+C:\Users\arthu\Desktop\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.pdb
+C:\Users\arthu\Desktop\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ByteStore.Domain.genruntimeconfig.cache
+C:\Users\arthu\Desktop\ByteStore\ByteStore.Domain\obj\Debug\net6.0\ref\ByteStore.Domain.dll
