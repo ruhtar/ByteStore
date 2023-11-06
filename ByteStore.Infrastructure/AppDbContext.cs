@@ -1,4 +1,5 @@
-﻿using ByteStore.Domain.Aggregates;
+﻿using ByteStore.Application;
+using ByteStore.Domain.Aggregates;
 using ByteStore.Domain.Entities;
 using ByteStore.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
