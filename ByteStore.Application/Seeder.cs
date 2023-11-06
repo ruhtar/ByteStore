@@ -20,6 +20,7 @@ public class Seeder : IHostedService
     public async Task StartAsync(CancellationToken cancellationToken)
     {
         await SeedUserAsync();
+        await SeedProducts();
     }
 
     public Task StopAsync(CancellationToken cancellationToken)
