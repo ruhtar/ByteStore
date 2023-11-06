@@ -11,6 +11,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./review.component.css'],
 })
 export class ReviewComponent {
+  rateOption!: string;
+  zero!: string;
   newCommentText!: string;
   id!: number;
   constructor(

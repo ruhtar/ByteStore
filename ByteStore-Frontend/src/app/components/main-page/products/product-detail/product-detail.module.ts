@@ -4,7 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 import { RouterModule, Routes } from '@angular/router';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { FooterModule } from 'src/app/components/footer/footer.module';
@@ -24,6 +26,8 @@ const routes: Routes = [
   exports: [RouterModule],
   imports: [
     MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
     MatButtonModule,
     MatDividerModule,
     MatIconModule,

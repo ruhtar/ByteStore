@@ -30,9 +30,9 @@ const ProductRoute: Routes = [
   imports: [
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     FormsModule,
     CommonModule,
-    MatSelectModule,
     RouterModule.forChild(ProductRoute),
     HeaderModule,
     FooterModule,

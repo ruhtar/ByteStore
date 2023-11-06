@@ -1,4 +1,11 @@
 <div class="comment-form">
+  <mat-form-field>
+    <mat-select id="rate" [(ngModel)]="rateOption">
+      <mat-option value="zero">0</mat-option>
+      <mat-option value="one">Price - Asc</mat-option>
+      <mat-option value="two">Price - Desc</mat-option>
+    </mat-select>
+  </mat-form-field>
   <h3>Post a Comment</h3>
   <textarea
     style="resize: none"
