@@ -1,4 +1,4 @@
-﻿using ByteStore.Application;
+﻿using ByteStore.Domain;
 using ByteStore.Domain.Aggregates;
 using ByteStore.Domain.Entities;
 using ByteStore.Domain.ValueObjects;
@@ -17,6 +17,7 @@ public class AppDbContext : DbContext
     public DbSet<ShoppingCart> ShoppingCarts { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Review> Reviews { get; set; }
+    public DbSet<SeederFlag> SeederFlag { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -1,24 +1,30 @@
 ﻿using ByteStore.Application.Services.Interfaces;
 using ByteStore.Domain.Entities;
 using ByteStore.Domain.ValueObjects;
+using ByteStore.Infrastructure;
 using ByteStore.Shared.DTO;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace ByteStore.Application;
 
 public class Seeder : IHostedService
 {
-    private readonly IUserService _userService;
-    private readonly IProductService _productService;
+    private readonly IServiceProvider _serviceProvider;
 
-    public Seeder(IUserService userService, IProductService productService)
+    public Seeder(IServiceProvider serviceProvider)
     {
-        _userService = userService;
-        _productService = productService;
+        _serviceProvider = serviceProvider;
     }
 
     public async Task StartAsync(CancellationToken cancellationToken)
     {
+        var context = _serviceProvider.GetRequiredService<AppDbContext>();
+        var result = await context.SeederFlag.FirstOrDefaultAsync(x => x.IsSeeded, cancellationToken: cancellationToken);
+        if (result == null || result.IsSeeded) return;
+        result.IsSeeded = true;
+        await context.SaveChangesAsync(cancellationToken);
         await SeedUserAsync();
         await SeedProducts();
     }
@@ -49,7 +55,8 @@ public class Seeder : IHostedService
             Role = Roles.Seller,
             Address = address
         };
-        await _userService.RegisterUser(userDto);
+        var userService = _serviceProvider.GetRequiredService<IUserService>();
+        await userService.RegisterUser(userDto);
     }
 
     private async Task SeedProducts()
@@ -131,7 +138,9 @@ public class Seeder : IHostedService
         };
         foreach (var product in products)
         {
-            await _productService.AddProduct(new ProductDto
+            var productService = _serviceProvider.GetRequiredService<IProductService>();
+
+            await productService.AddProduct(new ProductDto
             {
                 Name = product.Name,
                 Price = product.Price,
