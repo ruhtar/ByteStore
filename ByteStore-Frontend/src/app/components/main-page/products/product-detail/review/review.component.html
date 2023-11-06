@@ -1,9 +1,10 @@
 <div class="comment-form">
   <mat-form-field>
-    <mat-select id="rate" [(ngModel)]="rateOption">
-      <mat-option value="zero">0</mat-option>
-      <mat-option value="one">Price - Asc</mat-option>
-      <mat-option value="two">Price - Desc</mat-option>
+    <mat-label for="rate">Rate the product:</mat-label>
+    <mat-select id="rate" [(ngModel)]="selectedRating">
+      <mat-option *ngFor="let rating of rates" [value]="rating">
+        {{ rating }}
+      </mat-option>
     </mat-select>
   </mat-form-field>
   <h3>Post a Comment</h3>
@@ -12,5 +13,11 @@
     placeholder="Your Comment"
     [(ngModel)]="newCommentText"
   ></textarea>
-  <button (click)="postComment(newCommentText)">Post Comment</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="createReview(newCommentText)"
+  >
+    Review
+  </button>
 </div>

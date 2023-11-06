@@ -3,5 +3,5 @@ export class Review {
   userId!: number;
   username!: string;
   reviewText!: string;
-  rate?: number;
+  rate!: number;
 }
