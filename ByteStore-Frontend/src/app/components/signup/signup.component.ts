@@ -38,10 +38,10 @@ export class SignupComponent {
       },
       role: role,
       address: {
-        street: user.state,
+        street: user.street,
         streetNumber: user.streetNumber,
         city: user.city,
-        state: user.street,
+        state: user.state,
         country: user.country,
       },
     };
