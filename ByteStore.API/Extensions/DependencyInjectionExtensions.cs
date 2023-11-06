@@ -12,18 +12,18 @@ public static class DependencyInjectionExtensions
 {
     public static IServiceCollection AddDependencies(this IServiceCollection services)
     {
-        services.AddScoped<ITokenService, TokenService>();
-        services.AddScoped<IProductRepository, ProductRepository>();
-        services.AddScoped<IProductRepository, ProductRepository>();
-        services.AddScoped<ICacheConfigs, CacheConfigs>();
-        services.AddScoped<IProductService, ProductService>();
-        services.AddScoped<IProductService, ProductService>();
-        services.AddScoped<IUserRepository, UserRepository>();
-        services.AddScoped<IUserService, UserService>();
-        services.AddScoped<IPasswordHasher, PasswordHasher>();
-        services.AddScoped<IUserValidator, UserValidator>();
-        services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
-        services.AddScoped<IShoppingCartService, ShoppingCartService>();
+        services.AddTransient<ITokenService, TokenService>();
+        services.AddTransient<IProductRepository, ProductRepository>();
+        services.AddTransient<IProductRepository, ProductRepository>();
+        services.AddTransient<ICacheConfigs, CacheConfigs>();
+        services.AddTransient<IProductService, ProductService>();
+        services.AddTransient<IProductService, ProductService>();
+        services.AddTransient<IUserRepository, UserRepository>();
+        services.AddTransient<IUserService, UserService>();
+        services.AddTransient<IPasswordHasher, PasswordHasher>();
+        services.AddTransient<IUserValidator, UserValidator>();
+        services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
+        services.AddTransient<IShoppingCartService, ShoppingCartService>();
 
         return services;
     }

@@ -60,6 +60,8 @@ public class AppDbContext : DbContext
         //     .IsRequired(false)
         //     .HasForeignKey(scp => scp.ProductId);
 
+        modelBuilder.Entity<SeederFlag>().Property(x=>x.IsSeeded).HasDefaultValue(false);
+
         modelBuilder.Entity<Product>()
             .HasMany(e => e.Reviews)
             .WithOne(e => e.Product)
