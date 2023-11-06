@@ -1,0 +1,47 @@
+version: '3.7'
+services:
+  mysql-db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: ByteStore
+    ports:
+      - "3307:3306" 
+    volumes:
+      - my-datavolume:/var/lib/mysql
+
+  redis:
+    image: redis:latest
+    ports:
+    - "6379:6379"  
+
+  bytestore.api:
+    image: ${DOCKER_REGISTRY-}bytestoreapi
+    restart: always
+    build:
+      context: .
+      dockerfile: ByteStore.API/Dockerfile
+    environment:
+#       TODO: - NAO COMMITAR AS CHAVES
+
+    depends_on:
+      - mysql-db
+      - redis
+    ports:
+      - "8080:80"
+      - "8081:443"
+    
+  bytestore.frontend:
+    image: bytestorefrontend
+    restart: always
+    build:
+      context: ByteStore-Frontend
+      dockerfile: ByteStore-Frontend/Dockerfile
+    ports:
+      - "4200:80" 
+    depends_on:
+      - bytestore.api 
+
+volumes:
+  my-datavolume:

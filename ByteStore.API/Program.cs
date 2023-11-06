@@ -10,12 +10,17 @@ public class Program
     {
         DotNetEnv.Env.Load();
 
+        var host = Environment.GetEnvironmentVariable("HOST");
+        var port = Environment.GetEnvironmentVariable("PORT");
+        var database = Environment.GetEnvironmentVariable("DATABASE");
+        var user = Environment.GetEnvironmentVariable("USER");
+        var password = Environment.GetEnvironmentVariable("PASSWORD");
+
+        var connectionString = $"Server={host};Port={port};Database={database};User={user};Password={password}";
+
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
-
         builder.Services.AddControllers();
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
 
         builder.Services
@@ -30,8 +35,8 @@ public class Program
             .AddDependencies() //DEPENDENCY INJECTION CONFIGURATION
             .AddJWTConfiguration() //JWT CONFIGURATION
             .AddDbContext<AppDbContext>(options => options.UseMySql(
-                Environment.GetEnvironmentVariable("CONNECTION_STRING"),
-                ServerVersion.AutoDetect(Environment.GetEnvironmentVariable("CONNECTION_STRING")),
+                connectionString,
+                ServerVersion.AutoDetect(connectionString),
                 x => x.MigrationsAssembly("ByteStore.Infrastructure")))
             .AddAuthorization()
             .AddCors();

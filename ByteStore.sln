@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByteStore.Infrastructure", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByteStore.Shared", "ByteStore.Shared\ByteStore.Shared.csproj", "{BDF039BA-5D08-4124-860D-897ACC6A32C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ByteStore.API", "ByteStore.API\ByteStore.API.csproj", "{E671C464-581D-49E9-A68C-4B77F463403B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByteStore.API", "ByteStore.API\ByteStore.API.csproj", "{E671C464-581D-49E9-A68C-4B77F463403B}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{DCD5659C-6B0A-4C49-8328-39747C897980}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{E671C464-581D-49E9-A68C-4B77F463403B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E671C464-581D-49E9-A68C-4B77F463403B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E671C464-581D-49E9-A68C-4B77F463403B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCD5659C-6B0A-4C49-8328-39747C897980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCD5659C-6B0A-4C49-8328-39747C897980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCD5659C-6B0A-4C49-8328-39747C897980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCD5659C-6B0A-4C49-8328-39747C897980}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
