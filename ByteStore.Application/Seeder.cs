@@ -53,14 +53,46 @@ public class Seeder : IHostedService
 
     private async Task SeedProducts()
     {
-        await _productService.AddProduct(new ProductDto
+        var products = new List<ProductDto>
         {
-            Name = null,
-            Price = 0,
-            ProductQuantity = 0,
-            Image = null,
-            ImageStorageUrl = null,
-            Description = null
-        });
+            new ProductDto
+            {
+                Name = "Amazfit Huami 2022 model",
+                Price = 100,
+                ProductQuantity = 10,
+                ImageStorageUrl = "gs://bytestore-dd3c8.appspot.com/ByteStore/Amazfit Huami 2022 model.webp",
+                Description =
+                    "Smartwatch Amazfit Bip 3 Bluetooth 5.0 1.69-Inch Screen Sports Water Resistance\n\nAmazfit's smartwatches make a difference: modern design and performance combined for a great experience. The screen stands out from other watches for its quality and excellent display, even in full daylight. Furthermore, they offer very useful sports modes for all types of exercises."
+            },
+            new ProductDto
+            {
+                Name = "Apple iPhone 12 (128GB)",
+                Price = 600,
+                ProductQuantity = 17,
+                ImageStorageUrl = "gs://bytestore-dd3c8.appspot.com/ByteStore/Iphone",
+                Description =
+                    "This Apple iPhone 12 has been professionally restored to working order by an approved vendor. Manufacturer Refurbished Grade B Fully Functional in Excellent Working Condition. 8/10 Cosmetic Rating. Fully Unlocked compatible with all carriers. Internally, the iPhone 12 is powered by a 64-bit 3.0 GHz \"Apple A14 Bionic\" processor with six cores -- two performance cores and four high-efficiency cores -- and a 16-core Neural Engine. It has 4 GB of RAM, 128GB of flash storage."
+            },
+            new ProductDto
+            {
+                Name = "MacBook Pro M3",
+                Price = 1599.00M,
+                ProductQuantity = 5,
+                ImageStorageUrl = "gs://bytestore-dd3c8.appspot.com/ByteStore/Macbook",
+                Description =
+                    "14-inch Liquid Retina XDR display\u00b2\nTwo Thunderbolt / USB 4 ports, HDMI port, SDXC card slot, headphone jack, MagSafe 3 port\nMagic Keyboard with Touch ID\nForce Touch trackpad\n70W USB-C Power Adapter"
+            },
+        };
+        foreach (var product in products)
+        {
+            await _productService.AddProduct(new ProductDto
+            {
+                Name = product.Name,
+                Price = product.Price,
+                ProductQuantity = product.ProductQuantity,
+                ImageStorageUrl = product.ImageStorageUrl,
+                Description = product.Description
+            });
+        }
     }
 }
