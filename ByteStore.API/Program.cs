@@ -1,4 +1,5 @@
 using ByteStore.API.Extensions;
+using ByteStore.Application;
 using ByteStore.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
@@ -31,6 +32,7 @@ public class Program
                 o.Configuration = Environment.GetEnvironmentVariable("REDIS_LOCALHOST");
             })
             .AddHostedService<Migrator>() //Migrates database
+            .AddHostedService<Seeder>() //Seeds database. Make sure that Seeder is below Migrator.
             .AddSwaggerGen() //SWAGGER GENERATOR
             .AddDependencies() //DEPENDENCY INJECTION CONFIGURATION
             .AddJWTConfiguration() //JWT CONFIGURATION

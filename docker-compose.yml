@@ -17,7 +17,7 @@ services:
     - "6379:6379"  
 
   bytestore.api:
-    image: ${DOCKER_REGISTRY-}bytestoreapi
+    image: ${DOCKER_REGISTRY-}bytestore-api
     restart: always
     build:
       context: .
@@ -33,11 +33,11 @@ services:
       - "8081:443"
     
   bytestore.frontend:
-    image: bytestorefrontend
+    image: bytestore-frontend-image
     restart: always
     build:
-      context: ByteStore-Frontend
-      dockerfile: ByteStore-Frontend/Dockerfile
+      context: ./ByteStore-Frontend
+      dockerfile: ./Dockerfile
     ports:
       - "4200:80" 
     depends_on:
