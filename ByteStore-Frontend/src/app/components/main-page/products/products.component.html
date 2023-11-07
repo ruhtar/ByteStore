@@ -29,35 +29,35 @@
     </div>
 
     <div class="filter-section">
-      <mat-form-field>
-        <mat-label for="price-filter">Filter by Price:</mat-label>
-        <div class="price-filter-inputs">
-          <mat-form-field>
-            <span class="dollar-sign">$</span>
-            <input
-              matInput
-              type="number"
-              id="min-price"
-              placeholder="Min Price"
-              [(ngModel)]="minPrice"
-              [value]="minPrice"
-            />
-          </mat-form-field>
-          <mat-form-field>
-            <span class="dollar-sign">$</span>
-            <input
-              matInput
-              type="number"
-              id="max-price"
-              placeholder="Max Price"
-              [(ngModel)]="maxPrice"
-              [value]="maxPrice"
-            />
-          </mat-form-field>
-        </div>
-      </mat-form-field>
-      <button (click)="filterByPrice()">Apply</button>
+      <mat-label for="price-filter">Filter by Price:</mat-label>
+      <div class="price-filter-inputs">
+        <mat-form-field>
+          <span class="dollar-sign">$</span>
+          <input
+            matInput
+            type="number"
+            id="min-price"
+            min="0"
+            placeholder="Min Price"
+            [(ngModel)]="minPrice"
+            [value]="minPrice"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <span class="dollar-sign">$</span>
+          <input
+            matInput
+            type="number"
+            min="0"
+            id="max-price"
+            placeholder="Max Price"
+            [(ngModel)]="maxPrice"
+            [value]="maxPrice"
+          />
+        </mat-form-field>
+      </div>
     </div>
+    <button (click)="filterByPrice()" class="filter-price-button">Apply</button>
   </div>
 
   <section class="products">

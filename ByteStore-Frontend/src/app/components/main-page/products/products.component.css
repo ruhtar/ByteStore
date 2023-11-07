@@ -80,7 +80,7 @@
   background-color: var(--yellow);
   color: #000000;
   border: none;
-  font-weight: 600;
+  font-weight: 400;
   border-radius: 5px;
   cursor: pointer;
   transition: transform 0.2s;
@@ -140,7 +140,7 @@
   background-color: #0056b3;
 }
 
-button {
+.filter-price-button {
   background-color: var(--purple);
   color: #fff;
   border: none;
@@ -151,6 +151,10 @@ button {
   padding: 10px 20px;
 }
 
-button:hover {
+.filter-price-button:hover {
   background-color: #0056b3;
+}
+
+mat-form-field {
+  min-height: 80px;
 }
