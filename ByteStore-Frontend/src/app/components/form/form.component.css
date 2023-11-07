@@ -4,22 +4,29 @@
   align-items: center;
   min-height: 100vh;
   background-color: var(--purple);
-  background-size: 50px 50px;
 }
 
 .registration-form {
   background-color: #fff;
   border-radius: 10px;
-  height: 820px;
+  max-width: 400px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.registration-form h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .registration-form label {
   display: block;
+  font-weight: bold;
   margin-bottom: 8px;
+  text-align: left;
 }
 
 .registration-form input[type="text"],
@@ -30,7 +37,7 @@
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .registration-form input[type="checkbox"] {
@@ -43,28 +50,28 @@
   color: #fff;
   border: none;
   padding: 10px 15px;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
-  width: 100%;
 }
 
 .registration-form button:hover {
-  background-color: #1f2271;
+  background-color: #0056b3;
 }
 
 .login-warning {
   margin-top: 12px;
   font-size: 14px;
+  text-align: center;
 }
 
 .login-warning a {
   text-decoration: none;
   font-size: 14px;
-  color: (--purple);
+  color: #007bff;
 }
 
-.form-sucess p {
+.form-success p {
   margin-top: 8px;
   color: green;
 }
@@ -75,7 +82,7 @@ i {
 
 a {
   text-decoration: none;
-  color: var(--purple);
+  color: #007bff;
 }
 
 .password-input-container {
@@ -85,12 +92,9 @@ a {
 .input-icon {
   position: absolute;
   top: 50%;
-  right: 10px; /* Ajuste a distância da borda direita conforme necessário */
+  right: 10px;
   transform: translateY(-50%);
   cursor: pointer;
-}
-
-.address-label {
 }
 
 .validation-error {
@@ -100,13 +104,21 @@ a {
   margin-bottom: 0.2rem;
   font-size: 0.95rem;
   color: red;
+  text-align: left;
 }
 
-form {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+.group-image {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  height: 245px;
+  width: 30rem;
 }
 
-h2 {
-  margin-bottom: -2rem;
+.duo-image {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  height: 245px;
+  width: 30rem;
 }
