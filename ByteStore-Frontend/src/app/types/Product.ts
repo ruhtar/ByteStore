@@ -5,4 +5,6 @@ export class Product {
   price!: number;
   imageStorageUrl!: string;
   description?: string;
+  rate!: number;
+  timesRated!: number;
 }

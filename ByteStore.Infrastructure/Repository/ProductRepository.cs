@@ -99,6 +99,7 @@ public class ProductRepository : IProductRepository
                 ProductId = productId,
                 UserId = review.UserId,
                 Username = review.Username,
+                Rate = review.Rate,
                 ReviewText = review.ReviewText,
             }).ToList();
             
@@ -110,7 +111,6 @@ public class ProductRepository : IProductRepository
 
     public async Task CreateReview(ReviewDto reviewDto)
     {
-
         var product = await _context.Products.FirstOrDefaultAsync(x => x.ProductId == reviewDto.ProductId);
         if (product == null) return;
 
@@ -122,7 +122,7 @@ public class ProductRepository : IProductRepository
         else
         {
             product.TimesRated++;
-            product.Rate = (product.Rate + reviewDto.Rate) / product.TimesRated;
+            product.Rate = ((product.Rate * (product.TimesRated - 1)) + reviewDto.Rate) / product.TimesRated;
         }
 
         var review = new Review
@@ -130,6 +130,7 @@ public class ProductRepository : IProductRepository
             ProductId = reviewDto.ProductId,
             UserId = reviewDto.UserId,
             Username = reviewDto.Username,
+            Rate = reviewDto.Rate,
             ReviewText = reviewDto.ReviewText
         };
         

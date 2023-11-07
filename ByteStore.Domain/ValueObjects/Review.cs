@@ -9,5 +9,6 @@ public class Review
     public Product Product { get; set; }
     public int UserId { get; set; }
     public string Username { get; set; }
+    public double Rate { get; set; }
     public string ReviewText { get; set; }
 }
