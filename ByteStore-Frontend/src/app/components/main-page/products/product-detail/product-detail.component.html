@@ -38,7 +38,6 @@
     </p>
   </div>
 
-  <!-- <p class="product-rating">Rated: 4.5/5</p> -->
   <h2>Reviews</h2>
   <button (click)="openModal()" class="add-button" *ngIf="logged">
     Did you like the product? Rate it!
@@ -46,7 +45,7 @@
   <div class="buyer-comments">
     <div class="comment" *ngFor="let review of reviews">
       <p class="comment-text">{{ review.reviewText }}</p>
-      <p class="comment-user">{{ review.username }}</p>
+      <p class="comment-user">{{ review.username }} | {{ review.rate }}/5</p>
     </div>
   </div>
 </div>
