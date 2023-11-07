@@ -1,28 +1,65 @@
 <div id="page-container">
   <app-header></app-header>
   <div class="filter-container">
-    <mat-form-field>
-      <mat-label for="sort-select">Sort by:</mat-label>
-      <mat-select
-        id="sort-select"
-        [(ngModel)]="selectedOption"
-        (selectionChange)="onSelectChange()"
-      >
-        <mat-option value="name">Name</mat-option>
-        <mat-option value="priceAsc">Price - Asc</mat-option>
-        <mat-option value="priceDesc">Price - Desc</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Search products</mat-label>
-      <input
-        matInput
-        type="search"
-        [(ngModel)]="filterValue"
-        (ngModelChange)="searchProducts()"
-      />
-    </mat-form-field>
+    <div class="filter-section">
+      <mat-form-field>
+        <mat-label for="sort-select">Sort by:</mat-label>
+        <mat-select
+          id="sort-select"
+          [(ngModel)]="selectedOption"
+          (selectionChange)="onSelectChange()"
+        >
+          <mat-option value="name">Name</mat-option>
+          <mat-option value="priceAsc">Price - Asc</mat-option>
+          <mat-option value="priceDesc">Price - Desc</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="filter-section">
+      <mat-form-field>
+        <mat-label>Search products</mat-label>
+        <input
+          matInput
+          type="search"
+          [(ngModel)]="filterValue"
+          (ngModelChange)="searchProducts()"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="filter-section">
+      <mat-form-field>
+        <mat-label for="price-filter">Filter by Price:</mat-label>
+        <div class="price-filter-inputs">
+          <mat-form-field>
+            <span class="dollar-sign">$</span>
+            <input
+              matInput
+              type="number"
+              id="min-price"
+              placeholder="Min Price"
+              [(ngModel)]="minPrice"
+              [value]="minPrice"
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <span class="dollar-sign">$</span>
+            <input
+              matInput
+              type="number"
+              id="max-price"
+              placeholder="Max Price"
+              [(ngModel)]="maxPrice"
+              [value]="maxPrice"
+            />
+          </mat-form-field>
+        </div>
+      </mat-form-field>
+      <button (click)="filterByPrice()">Apply</button>
+    </div>
   </div>
+
   <section class="products">
     <div *ngFor="let product of exibidProducts" class="product-card">
       <img [src]="product.imageStorageUrl" alt="Product Image" />

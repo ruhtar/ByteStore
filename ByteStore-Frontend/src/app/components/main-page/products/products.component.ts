@@ -9,6 +9,8 @@ import { Product } from 'src/app/types/Product';
 })
 export class ProductsComponent {
   exibidProducts!: Product[];
+  minPrice: number = 0;
+  maxPrice: number = 0;
   originalProducts!: Product[];
   filterValue: string = '';
   selectedOption: string = '';
@@ -26,6 +28,26 @@ export class ProductsComponent {
     this.exibidProducts = this.originalProducts.filter((product) => {
       return product.name.toLowerCase().includes(filterLowerCase);
     });
+
+    // Após filtrar por nome, também aplique o filtro de preço
+    this.filterByPrice();
+  }
+
+  filterByPrice() {
+    if (this.minPrice > 0 || this.maxPrice > 0) {
+      this.exibidProducts = this.exibidProducts.filter((product) => {
+        if (this.minPrice > 0 && this.maxPrice > 0) {
+          return (
+            product.price >= this.minPrice && product.price <= this.maxPrice
+          );
+        } else if (this.minPrice > 0) {
+          return product.price >= this.minPrice;
+        } else if (this.maxPrice > 0) {
+          return product.price <= this.maxPrice;
+        }
+        return true;
+      });
+    }
   }
 
   onSelectChange() {

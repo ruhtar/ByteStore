@@ -6,8 +6,33 @@
   transition: transform 0.2s;
 }
 
+/* Estilização dos campos de entrada de preço */
+.price-filter-inputs {
+  display: flex;
+  gap: 10px; /* Define o espaçamento entre os campos de entrada */
+}
+
+.price-filter-inputs input {
+  flex: 1; /* Distribui igualmente o espaço disponível entre os campos */
+}
+
+/* Outras estilizações do filtro permanecem as mesmas conforme mencionadas anteriormente. */
+
 .product-card img:hover {
   transform: scale(1.02);
+}
+
+.mat-form-field {
+  margin: 10px;
+  width: 200px; /* Ajuste o tamanho conforme necessário */
+}
+
+.mat-input-element {
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
 }
 
 .products {
@@ -68,17 +93,23 @@
   transform: scale(1.05);
 }
 
+/* Estilização dos filtros lado a lado */
 .filter-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row; /* Alterado para exibir os filtros lado a lado */
   padding: 20px;
   background-color: #f2f2f2;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin: 20px auto;
-  max-width: 30%;
+  max-width: 80%; /* Ajustado o tamanho conforme necessário */
+}
+
+/* Estilização das seções de filtro */
+.filter-section {
+  margin: 10px; /* Espaçamento entre as seções de filtro */
 }
 
 /* #search-input {
@@ -129,5 +160,20 @@
 }
 
 #search-button:hover {
+  background-color: #0056b3;
+}
+
+button {
+  background-color: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px;
+  padding: 10px 20px;
+}
+
+button:hover {
   background-color: #0056b3;
 }
