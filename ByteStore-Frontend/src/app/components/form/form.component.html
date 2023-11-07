@@ -5,7 +5,9 @@
       <i class="fa-regular fa-user" style="color: #000000"></i> {{ formTitle }}
     </h2>
     <form [formGroup]="userForm" #formDir="ngForm" (ngSubmit)="submitForm()">
-      <label for="username">{{ username }}:</label>
+      <label for="username">
+        <i class="fa-solid fa-user"></i> {{ username }}:</label
+      >
       <input
         type="text"
         id="username"
@@ -26,7 +28,9 @@
         </p>
       </div>
 
-      <label for="password">{{ password }}:</label>
+      <label for="password"
+        ><i class="fa-solid fa-key"></i> {{ password }}:</label
+      >
       <span class="password-input-container">
         <input
           type="password"
@@ -60,7 +64,9 @@
         </p>
       </div>
 
-      <label for="repassword">{{ repassword }}:</label>
+      <label for="repassword"
+        ><i class="fa-solid fa-key"></i> {{ repassword }}:</label
+      >
       <span class="password-input-container">
         <input
           type="password"
@@ -104,7 +110,9 @@
         I am a seller.
       </label> -->
 
-      <label class="address-label">{{ address }}:</label>
+      <label class="address-label"
+        ><i class="fa-solid fa-street-view"></i> {{ street }}:</label
+      >
       <input
         type="text"
         id="street"
@@ -124,6 +132,9 @@
           Street is required
         </p>
       </div>
+      <label class="address-label"
+        ><i class="fa-solid fa-hashtag"></i> {{ streetNumber }}:</label
+      >
       <input
         type="number"
         id="streetNumber"
@@ -144,6 +155,9 @@
           Street number is required
         </p>
       </div>
+      <label class="address-label"
+        ><i class="fa-solid fa-city"></i> {{ city }}:</label
+      >
       <input
         type="text"
         id="city"
@@ -163,6 +177,9 @@
           City is required
         </p>
       </div>
+      <label class="address-label"
+        ><i class="fa-solid fa-flag"></i> {{ state }}:</label
+      >
       <input
         type="text"
         id="state"
@@ -182,6 +199,9 @@
           State is required
         </p>
       </div>
+      <label class="address-label"
+        ><i class="fa-solid fa-globe"></i> {{ country }}:</label
+      >
       <input
         type="text"
         id="country"
