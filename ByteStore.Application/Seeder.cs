@@ -210,7 +210,7 @@ public class Seeder : IHostedService
                 ProductQuantity = 20,
                 Description =
                     "Capture stunning photos and videos with the Canon EOS 90D DSLR camera. With a 32.5-megapixel sensor, 4K video recording, and fast autofocus, it's a versatile choice for both photographers and videographers. Perfect for capturing your creative vision.",
-                ImageStorageUrl = ""
+                ImageStorageUrl = "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2Fcanon.webp?alt=media&token=7ae08205-77e4-4f4b-bba4-84edd1f4aa9d"
             },
             new ProductDto
             {
@@ -219,7 +219,7 @@ public class Seeder : IHostedService
                 ProductQuantity = 15,
                 Description =
                     "Transform your home entertainment experience with the LG OLED 4K Smart TV. This 65-inch TV features OLED technology for vibrant colors and deep blacks. With built-in smart features and voice control, it offers a cinematic viewing experience in the comfort of your home.",
-                ImageStorageUrl = ""
+                ImageStorageUrl = "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2FLG%20OLED%204K%20Smart%20TV%20(65-inch).jpg?alt=media&token=159d4c5b-2af6-40db-8d82-7ec1ae54ef1e"
             },
             new ProductDto
             {
@@ -228,7 +228,7 @@ public class Seeder : IHostedService
                 ProductQuantity = 10,
                 Description =
                     "Elevate your gaming experience with the Razer Blade 17 gaming laptop. Featuring a high-refresh-rate display, powerful GPU, and customizable RGB keyboard, it's designed for serious gamers. Dominate the competition and enjoy immersive gameplay.",
-                ImageStorageUrl = ""
+                ImageStorageUrl = "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2FRazer%20Blade%2017%20Gaming%20Laptop.jpg?alt=media&token=b3f9eeb0-b88d-4a97-92e2-6ebacdeee6e9"
             },
             new ProductDto
             {
@@ -237,7 +237,7 @@ public class Seeder : IHostedService
                 ProductQuantity = 30,
                 Description =
                     "Enhance your home security with the Nest Hello Video Doorbell. It provides 24/7 streaming and alerts, two-way communication, and facial recognition. Know who's at your door and keep your home safe with this smart doorbell.",
-                ImageStorageUrl = ""
+                ImageStorageUrl = "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2FNest%20Hello%20Video%20Doorbell.webp?alt=media&token=9c107aff-5512-4ee4-aa5d-1db25a54be92"
             },
             new ProductDto
             {
@@ -246,7 +246,7 @@ public class Seeder : IHostedService
                 ProductQuantity = 25,
                 Description =
                     "Take your music anywhere with the Bose SoundLink Revolve+ portable Bluetooth speaker. With 360-degree sound, long battery life, and water-resistant design, it's perfect for outdoor adventures and gatherings. Enjoy high-quality audio on the go.",
-                ImageStorageUrl = ""
+                ImageStorageUrl = "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2FBose%20SoundLink%20Revolve%2B%20Portable%20Bluetooth%20Speaker.webp?alt=media&token=6d32a82e-a2ae-4291-a313-1d1ca2a7ceeb"
             }
         };
         foreach (var product in products)
