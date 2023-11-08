@@ -160,6 +160,7 @@ public class Seeder : IHostedService
                 Name = "Samsung Galaxy S23 Smartphone",
                 Price = 799.00M,
                 ProductQuantity = 50,
+                ImageStorageUrl = "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2Fs23.webp?alt=media&token=f4385ad9-84de-41d3-aae2-9b2cd5836981",
                 Description =
                     "Experience the latest in smartphone technology with the Samsung Galaxy S23. This powerful device features a high-resolution display, a fast processor, and a versatile camera system. With 5G connectivity and a sleek design, it's the perfect choice for tech enthusiasts."
             },
@@ -169,7 +170,7 @@ public class Seeder : IHostedService
                 Price = 1899.00M,
                 ProductQuantity = 40,
                 ImageStorageUrl =
-                    "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2Fs23.webp?alt=media&token=f4385ad9-84de-41d3-aae2-9b2cd5836981",
+                    "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2Fmac%20m2.webp?alt=media&token=3ab8b525-fcbc-48bd-96ca-30fc52d47d8b",
                 Description =
                     "Elevate your productivity with the new Apple MacBook Pro 14-inch. Featuring Apple's M2 Pro chip, this laptop delivers incredible performance and efficiency. The Retina XDR display provides stunning visuals, while the redesigned keyboard ensures a comfortable typing experience. Get ready to take your work and creativity to the next level."
             },
