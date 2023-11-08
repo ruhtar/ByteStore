@@ -1,33 +1,41 @@
-# ByteStore Ecommerce project - WIP 🤑
+# ByteStore Ecommerce Project - Work in Progress 🤑
 
-This fullstack project is an implementation of an E-commerce called ByteStore. The application has some entities like Users and their Shopping Carts, Products and OrderItems. The project also has a user authentication and authorization system using JSON Web Tokens (JWT). The project has been developed using .NET, Entity Framework Core, Angular, MySQL, JWT and Redis cache.
+Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers a comprehensive range of features that cater to both customers and the security-conscious, all built on a robust tech stack that includes .NET, Entity Framework Core, Angular, MySQL, JWT, Docker, Firebase, and Redis cache.
 
-## Features
+## Project Overview
 
-The user authentication system includes the following features:
+### Core Entities:
 
-- **Signup**: Users can register in the system by providing a username and password. Usernames are unique. Passwords are processed using a hash and salt algorithm before being stored in the database. This ensures the security of passwords, protecting users' sensitive information. Usernames must be unique.
+- **Users and Shopping Carts**: ByteStore allows users to create accounts and manage their shopping carts.
 
-- **Signin**: Registered users can log in by providing their credentials (username and password). The system validates the credentials and generates a valid JWT token, which is returned to the user. This token can be used later to access protected routes and resources.
+- **Products and OrderItems**: The platform offers a catalog of products and users can add items to their shopping carts.
 
-- **Add to cart and make a buy order**: Users can add products to their shopping carts. After that, they can make a buy order.
+### User Authentication and Security:
 
-- **Edit a User**: Also, the user can edit some informations that where given in the registration screen. 
+- **Signup**: Users can sign up by providing a unique username, a secure password, and their address information. Passwords undergo hashing and salting for maximum security, ensuring the safety of sensitive user data. Passwords must have capital letters, number and special characters.
 
-- **In-Memory Cache**: An in-memory cache has been implemented using the MemoryCache class provided by ASP.NET Core within the Product CRUD. The cache is used to temporarily store the data of products retrieved from the database. This cache reduces response time by serving data directly from memory instead of querying the database on every request.
+- **Signin**: Registered users can log in with their credentials, and the system generates a JWT token that is stored in Local Storage. This token gives the system important information and grants access to protected routes and resources.
 
-- **Distributed Caching with Redis**: In the newer version of the project, I have created an in-memory cache with a distributed cache using Redis. To do so, I created a controller, service and repository only to use this feature. The Redis distributed cache improves the performance and scalability of the application by storing cached data in a distributed memory store accessible by all instances of the application. 
+### Shopping Features:
 
-    - To use the Redis distributed cache, I have added the `StackExchange.Redis` package and configured it in the `Program.cs` file. Besides that, I'm running a local instance of Redis on docker: ```docker run -d -p 6379:6379 --name redis redis```
+- **View Products**: Users can explore the product listings in the store, complete with filters for names and prices. Sorting options by alphabetical and price order, in ascending and descending order, make navigation easier.
 
-    - When the `GetAllProductsAsync` method in the `ProductRepository` is called, it first checks if the requested data exists in the Redis cache. If the data is found, it is returned directly from the cache. If not, the data is fetched from the database, serialized, and stored in the Redis cache for future use.
+- **Add to Shopping Cart**: Logged-in users can add products to their shopping carts and proceed to make purchases. If a user isn't logged in, they'll be prompted to do so before accessing their cart.
 
-    - This distributed cache allows the application to share cached data across multiple instances, reducing the need to query the database frequently and improving overall performance.
+- **Edit Shopping Cart Items**: Users have the flexibility to adjust item quantities or remove items from their shopping carts.
 
-## Future features:
-- - [ ]  Tela de detalhes do produto
-    - [ ]  Adicionar descrição
-    - [ ]  2-**Revisões e Classificações de Produtos:**
-    - [ ]  Tela de adicionar produto ao carrinho
-- - [ ]  Tela de registro de usuario
-    - [ ]  validação de dados no formulário. (mensagens pro usuário)
+### User Interactions:
+
+- **Product Reviews**: Authenticated users can leave reviews for products they've purchased. Only items in their purchase history are available for review. Users can rate products from 0 to 5 and leave comments to share their experiences.
+
+- **Edit User Information**: Users can update their registration information, including addresses and passwords, at their convenience.
+
+### Caching for Performance:
+
+- **Distributed Caching with Redis**: The system takes performance a step further with distributed caching using Redis. This distributed cache enhances application performance and scalability by storing cached data in a distributed memory store accessible by all instances of the application.
+
+    - When the `GetAllProductsAsync` method in the `ProductRepository` is invoked, it first checks if the requested data exists in the Redis cache. If found, it's served directly from the cache. If not, the data is fetched from the database, serialized, and stored in Redis for future use.
+
+    - This distributed cache enables the application to share cached data across multiple instances, reducing the need for frequent database queries and delivering improved overall performance.
+
+ByteStore is an evolving e-commerce platform that's continually being improved and expanded. We're excited to offer a seamless shopping experience while prioritizing security and performance. Thank you for being a part of ByteStore! 🛒🚀
