@@ -4,8 +4,6 @@ Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers
 
 ## Project Overview
 
-ByteStore is an e-commerce project, combining robust features with a secure authentication system using JSON Web Tokens (JWT). Here's a brief look at the core entities and features that make ByteStore stand out:
-
 ### Core Entities:
 
 - **Users and Shopping Carts**: ByteStore allows users to create accounts and manage their shopping carts.
