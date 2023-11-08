@@ -40,7 +40,7 @@ public class ShoppingCartController : ControllerBase
         return Ok(BuyOrderStatus.Completed.ToString());
     }
 
-    [HttpGet("/user/{userAggregateId}/cart")]
+    [HttpGet("user/{userAggregateId}")]
     public async Task<ActionResult<ShoppingCartResponseDto>> GetShoppingCartByUserAggregateId(
         [FromRoute] int userAggregateId)
     {
@@ -50,7 +50,7 @@ public class ShoppingCartController : ControllerBase
         return Ok(cart);
     }
 
-    [HttpDelete("/user/{userAggregateId}/cart/remove")]
+    [HttpDelete("user/{userAggregateId}/remove")]
     public async Task<IActionResult> RemoveProductFromShoppingCart(int userAggregateId, int productId)
     {
         if (!IsTokenValid()) return Unauthorized();

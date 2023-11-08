@@ -90,6 +90,7 @@ export class CartComponent {
                   this.products = this.products.filter(
                     (product) => product.productId !== productId,
                   );
+                  if (this.products.length === 0) return location.reload();
                   this.calculateTotalPrice();
                 },
               );

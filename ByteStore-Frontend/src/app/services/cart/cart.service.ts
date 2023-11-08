@@ -24,7 +24,7 @@ export class CartService {
   removeProductFromCart(productId: number) {
     var userId = this.tokenService.getDecodedJwt().nameid;
     return this.http.delete(
-      API_PATH + `user/${userId}/cart/remove?productId=${productId}`,
+      API_PATH + `cart/user/${userId}/remove?productId=${productId}`,
       {
         observe: 'response',
         responseType: 'text',
@@ -40,6 +40,6 @@ export class CartService {
   }
 
   getCartByUserId(userId: number) {
-    return this.http.get<ShoppingCartDto>(API_PATH + `user/${userId}/cart`);
+    return this.http.get<ShoppingCartDto>(API_PATH + `cart/user/${userId}`);
   }
 }

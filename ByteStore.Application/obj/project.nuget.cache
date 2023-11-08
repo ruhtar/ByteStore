@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HBVPPG0PIni2S5OdVSQ8dx44LfXS4uqyxID8+HeccRNzFmVA86S16Kg+hsEZ5GdzogqQnYHobFGf1RJASpVXkg==",
+  "dgSpecHash": "xJtn8jjfm+hNtGmbTG7eLtFCWDlQ0Y1kMZco9/pTdTmjQQL+Cez93/RK8DJrwVEKoQKBWjRUnqn77lAstwusJg==",
   "success": true,
   "projectFilePath": "D:\\PROGRAMAÇÃO\\ByteStore\\ByteStore.Application\\ByteStore.Application.csproj",
   "expectedPackageFiles": [
@@ -128,6 +128,13 @@
     "C:\\Users\\Arthur\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\Arthur\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Arthur\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\Arthur\\.nuget\\packages\\xunit\\2.6.1\\xunit.2.6.1.nupkg.sha512",
+    "C:\\Users\\Arthur\\.nuget\\packages\\xunit.abstractions\\2.0.3\\xunit.abstractions.2.0.3.nupkg.sha512",
+    "C:\\Users\\Arthur\\.nuget\\packages\\xunit.analyzers\\1.4.0\\xunit.analyzers.1.4.0.nupkg.sha512",
+    "C:\\Users\\Arthur\\.nuget\\packages\\xunit.assert\\2.6.1\\xunit.assert.2.6.1.nupkg.sha512",
+    "C:\\Users\\Arthur\\.nuget\\packages\\xunit.core\\2.6.1\\xunit.core.2.6.1.nupkg.sha512",
+    "C:\\Users\\Arthur\\.nuget\\packages\\xunit.extensibility.core\\2.6.1\\xunit.extensibility.core.2.6.1.nupkg.sha512",
+    "C:\\Users\\Arthur\\.nuget\\packages\\xunit.extensibility.execution\\2.6.1\\xunit.extensibility.execution.2.6.1.nupkg.sha512",
     "C:\\Users\\Arthur\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.20\\microsoft.netcore.app.ref.6.0.20.nupkg.sha512",
     "C:\\Users\\Arthur\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.20\\microsoft.windowsdesktop.app.ref.6.0.20.nupkg.sha512",
     "C:\\Users\\Arthur\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.20\\microsoft.aspnetcore.app.ref.6.0.20.nupkg.sha512"
