@@ -48,7 +48,6 @@ public class Seeder : IHostedService
 
     private async Task SeedUserAsync(IServiceScope scope)
     {
-        
         var user = new User()
         {
             Username = "Arthur",
@@ -82,7 +81,7 @@ public class Seeder : IHostedService
                 Price = 100M,
                 ProductQuantity = 10,
                 ImageStorageUrl =
-                    "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2FAmazfit%20Huami%202022%20model.webp?alt=media&token=67924ccf-432d-4959-ba20-c23edcd4b633&_gl=1*vclouz*_ga*MTM2NjQyMDEyNS4xNjk3NzIzMDg2*_ga_CW55HF8NVT*MTY5OTIzMTE5MC4xMi4xLjE2OTkyMzI1MzMuMTAuMC4w",
+                    "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2Frelogio.jpg?alt=media&token=2a56a1d2-4650-4e94-86b6-34a3c2e0c392",
                 Description =
                     "Smartwatch Amazfit Bip 3 Bluetooth 5.0 1.69-Inch Screen Sports Water Resistance\n\nAmazfit's smartwatches make a difference: modern design and performance combined for a great experience. The screen stands out from other watches for its quality and excellent display, even in full daylight. Furthermore, they offer very useful sports modes for all types of exercises."
             },
@@ -122,7 +121,7 @@ public class Seeder : IHostedService
                 Price = 400.00M,
                 ProductQuantity = 15,
                 ImageStorageUrl =
-                    "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2Fplaystation.jfif?alt=media&token=a5dc0db6-c65f-4a56-a38c-2f0facb83992&_gl=1*ki3vxp*_ga*MTM2NjQyMDEyNS4xNjk3NzIzMDg2*_ga_CW55HF8NVT*MTY5OTI2Nzc3OC4xMy4xLjE2OTkyNjc5NTguNTEuMC4w",
+                    "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2Fplay5.webp?alt=media&token=a515ea7b-4141-40c0-bd48-ae9bc3ac6228",
                 Description =
                     "The PS5 console unleashes new gaming possibilities that you never anticipated. Experience lightning fast loading with an ultra-high speed SSD, deeper immersion with support for haptic feedback, adaptive triggers, and 3D Audio, and an all-new generation of incredible PlayStation games."
             },
@@ -156,6 +155,99 @@ public class Seeder : IHostedService
                 Description =
                     "A screen that everyone will love: whether your family is streaming or video chatting with friends, the Galaxy Tab A8 tablet brings out the best in every moment on a 10.5\" LCD screen. Card Description: Dedicated\nPower and storage for all: get the power, storage, and speed your family needs with an updated chipset and plenty of space to store files—up to 128GB of storage; a long-lasting battery allows you to disconnect for hours to keep the family fun going.\nFast charge, hours of power: go for hours on a single charge and return to 100% with the fast-charging USB-C port; battery life may vary depending on the network environment, usage patterns, and other factors."
             },
+            new ProductDto
+            {
+                Name = "Samsung Galaxy S23 Smartphone",
+                Price = 799.00M,
+                ProductQuantity = 50,
+                Description =
+                    "Experience the latest in smartphone technology with the Samsung Galaxy S23. This powerful device features a high-resolution display, a fast processor, and a versatile camera system. With 5G connectivity and a sleek design, it's the perfect choice for tech enthusiasts."
+            },
+            new ProductDto
+            {
+                Name = "Apple MacBook Pro M2 14-inch (2023)",
+                Price = 1899.00M,
+                ProductQuantity = 40,
+                ImageStorageUrl =
+                    "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2Fs23.webp?alt=media&token=f4385ad9-84de-41d3-aae2-9b2cd5836981",
+                Description =
+                    "Elevate your productivity with the new Apple MacBook Pro 14-inch. Featuring Apple's M2 Pro chip, this laptop delivers incredible performance and efficiency. The Retina XDR display provides stunning visuals, while the redesigned keyboard ensures a comfortable typing experience. Get ready to take your work and creativity to the next level."
+            },
+            new ProductDto
+            {
+                Name = "Xbox Series X Gaming Console",
+                Price = 499.99M,
+                ProductQuantity = 25,
+                ImageStorageUrl =
+                    "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2Fxbox.webp?alt=media&token=cde102b0-80ae-40d8-bfd1-d16b10920e0a",
+                Description =
+                    "Get ready for a gaming revolution with the Xbox Series X. This next-gen gaming console offers 4K gaming, lightning-fast load times, and a vast library of games. With improved graphics and performance, it's a must-have for any gaming enthusiast."
+            },
+            new ProductDto
+            {
+                Name = "DJI Air 2S Drone",
+                Price = 999.00M,
+                ProductQuantity = 15,
+                ImageStorageUrl =
+                    "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2Fdrone.webp?alt=media&token=2ffc746b-e88e-4789-9771-ec5adab4e29e",
+                Description =
+                    "Explore the skies and capture stunning aerial footage with the DJI Air 2S Drone. Equipped with a powerful camera, intelligent flight modes, and obstacle avoidance technology, this drone is perfect for photographers and videographers. It's easy to fly and delivers professional-grade results."
+            },
+            new ProductDto
+            {
+                Name = "Bose QuietComfort 45 Wireless Noise-Canceling Headphones",
+                Price = 299.99M,
+                ProductQuantity = 30,
+                ImageStorageUrl =
+                    "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2Fbose%20headphone.webp?alt=media&token=7f9d41f3-0352-4a8b-9d6c-c38368e870c3",
+                Description =
+                    "Enjoy peace and quiet with the Bose QuietComfort 45 headphones. These wireless over-ear headphones offer industry-leading noise cancellation, crystal-clear sound quality, and all-day comfort. Whether you're traveling or working from home, these headphones will enhance your audio experience."
+            },
+            new ProductDto
+            {
+                Name = "Canon EOS 90D DSLR Camera",
+                Price = 1199.00M,
+                ProductQuantity = 20,
+                Description =
+                    "Capture stunning photos and videos with the Canon EOS 90D DSLR camera. With a 32.5-megapixel sensor, 4K video recording, and fast autofocus, it's a versatile choice for both photographers and videographers. Perfect for capturing your creative vision.",
+                ImageStorageUrl = ""
+            },
+            new ProductDto
+            {
+                Name = "LG OLED 4K Smart TV (65-inch)",
+                Price = 1499.99M,
+                ProductQuantity = 15,
+                Description =
+                    "Transform your home entertainment experience with the LG OLED 4K Smart TV. This 65-inch TV features OLED technology for vibrant colors and deep blacks. With built-in smart features and voice control, it offers a cinematic viewing experience in the comfort of your home.",
+                ImageStorageUrl = ""
+            },
+            new ProductDto
+            {
+                Name = "Razer Blade 17 Gaming Laptop",
+                Price = 2499.00M,
+                ProductQuantity = 10,
+                Description =
+                    "Elevate your gaming experience with the Razer Blade 17 gaming laptop. Featuring a high-refresh-rate display, powerful GPU, and customizable RGB keyboard, it's designed for serious gamers. Dominate the competition and enjoy immersive gameplay.",
+                ImageStorageUrl = ""
+            },
+            new ProductDto
+            {
+                Name = "Nest Hello Video Doorbell",
+                Price = 199.99M,
+                ProductQuantity = 30,
+                Description =
+                    "Enhance your home security with the Nest Hello Video Doorbell. It provides 24/7 streaming and alerts, two-way communication, and facial recognition. Know who's at your door and keep your home safe with this smart doorbell.",
+                ImageStorageUrl = ""
+            },
+            new ProductDto
+            {
+                Name = "Bose SoundLink Revolve+ Portable Bluetooth Speaker",
+                Price = 249.00M,
+                ProductQuantity = 25,
+                Description =
+                    "Take your music anywhere with the Bose SoundLink Revolve+ portable Bluetooth speaker. With 360-degree sound, long battery life, and water-resistant design, it's perfect for outdoor adventures and gatherings. Enjoy high-quality audio on the go.",
+                ImageStorageUrl = ""
+            }
         };
         foreach (var product in products)
         {
