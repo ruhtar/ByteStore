@@ -63,7 +63,10 @@
   <section class="products">
     <div *ngFor="let product of exibidProducts" class="product-card">
       <img [src]="product.imageStorageUrl" alt="Product Image" />
-      <h2 class="product-name">{{ product.name }}</h2>
+      <div class="product-img-name-detail">
+        <h2 class="product-name">{{ product.name }}</h2>
+      </div>
+
       <p class="product-price">
         <i class="fa-solid fa-hand-holding-dollar"></i>
         $ {{ product.price | number: "1.2-2" }}

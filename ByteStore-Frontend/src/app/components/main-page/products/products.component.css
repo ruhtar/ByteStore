@@ -73,6 +73,9 @@
   position: relative;
   min-height: 100vh;
 }
+.product-img-name-detail {
+  height: 6.25rem;
+}
 
 .see-more {
   font-size: 16px;

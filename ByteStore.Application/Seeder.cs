@@ -50,7 +50,7 @@ public class Seeder : IHostedService
     {
         var user = new User()
         {
-            Username = "Arthur",
+            Username = "Admin",
             Password = "!123Qwe",
         };
         var address = new Address
@@ -248,6 +248,24 @@ public class Seeder : IHostedService
                 Description =
                     "Take your music anywhere with the Bose SoundLink Revolve+ portable Bluetooth speaker. With 360-degree sound, long battery life, and water-resistant design, it's perfect for outdoor adventures and gatherings. Enjoy high-quality audio on the go.",
                 ImageStorageUrl = "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2FBose%20SoundLink%20Revolve%2B%20Portable%20Bluetooth%20Speaker.webp?alt=media&token=6d32a82e-a2ae-4291-a313-1d1ca2a7ceeb"
+            },
+            new ProductDto
+            {
+                Name = "Sony WH-1000XM5 Wireless Noise-Canceling Headphones",
+                Price = 349.99M,
+                ProductQuantity = 40,
+                Description =
+                    "Experience world-class audio with the Sony WH-1000XM5 headphones. These wireless headphones offer industry-leading noise cancellation, high-resolution audio, and all-day comfort. With touch controls and voice assistant support, they are perfect for music lovers on the go.",
+                ImageStorageUrl = "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2FSony%20WH-1000XM5%20Wireless%20Noise-Canceling%20Headphones.jpg?alt=media&token=faa46f90-35b1-41cd-9969-bb165e78bdd6"
+            },
+            new ProductDto
+            {
+                Name = "Samsung QLED 8K Smart TV (75-inch)",
+                Price = 2999.99M,
+                ProductQuantity = 12,
+                Description =
+                    "Upgrade your home entertainment with the Samsung QLED 8K Smart TV. This 75-inch TV features stunning 8K resolution, Quantum Dot technology, and a range of smart features. Immerse yourself in breathtaking visuals and enjoy the latest in TV technology.",
+                ImageStorageUrl = "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2FSamsung%20QLED%208K%20Smart%20TV%20(75-inch).webp?alt=media&token=39908899-9968-49af-b35f-21304cb6cc63"
             }
         };
         foreach (var product in products)
