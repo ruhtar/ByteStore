@@ -21,13 +21,13 @@ public class ProductRepository : IProductRepository
         _cache = cache;
     }
 
-    public async Task<PagedDto<Product>> GetAllProducts(GetProductsInputPagination input)
+    public async Task<List<Product>> GetAllProducts(GetProductsInputPagination input)
     {
         //This is just for testing if cache is avaible.
         //var stopwatch = new Stopwatch();
         //stopwatch.Start();
 
-        var cache = await _cache.GetFromCacheAsync<PagedDto<Product>>(AllProductsKey);
+        var cache = await _cache.GetFromCacheAsync<List<Product>>(AllProductsKey);
         if (cache != null)
             //This is just for testing if cache is avaible.
             //stopwatch.Stop();
@@ -45,16 +45,14 @@ public class ProductRepository : IProductRepository
         //This is just for testing if cache is avaible.
         //Thread.Sleep(5000);
 
-        var pagedDto = PagedDto<Product>.Create(products, input.PageSize, input.PageIndex);
 
-
-        var cacheData = JsonSerializer.Serialize(pagedDto);
+        var cacheData = JsonSerializer.Serialize(products);
         await _cache.SetAsync(AllProductsKey, cacheData);
 
         //stopwatch.Stop();
 
         //Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
-        return pagedDto;
+        return products;
     }
 
     public async Task<Product> GetProductById(int id)

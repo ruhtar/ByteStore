@@ -24,7 +24,7 @@ namespace ByteStore.API.Controllers
         public async Task<ActionResult<PagedDto<Product>>> GetProducts([FromQuery] GetProductsInputPagination input)
         {
             var products = await _productService.GetAllProducts(input);
-            if (products.Items.Count == 0) return NoContent();
+            if (products.Count == 0) return NoContent();
             return Ok(products);
         }
 
