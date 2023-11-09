@@ -5,6 +5,7 @@ using ByteStore.Infrastructure.Cache;
 using ByteStore.Infrastructure.Repository.Interfaces;
 using ByteStore.Shared.DTO;
 using Microsoft.EntityFrameworkCore;
+using Sprache;
 
 namespace ByteStore.Infrastructure.Repository;
 
@@ -20,28 +21,40 @@ public class ProductRepository : IProductRepository
         _cache = cache;
     }
 
-    public async Task<IEnumerable<Product>> GetAllProducts()
+    public async Task<PagedDto<Product>> GetAllProducts(GetProductsInputPagination input)
     {
+        //This is just for testing if cache is avaible.
         //var stopwatch = new Stopwatch();
         //stopwatch.Start();
 
-        var cache = await _cache.GetFromCacheAsync<IEnumerable<Product>>(AllProductsKey);
+        var cache = await _cache.GetFromCacheAsync<PagedDto<Product>>(AllProductsKey);
         if (cache != null)
+            //This is just for testing if cache is avaible.
             //stopwatch.Stop();
             //Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
             return cache;
-        var products = await _context.Products.AsNoTracking().ToListAsync();
+        var query = _context.Products.AsNoTracking();
+        
+        if (input.PageSize > 0 && input.PageIndex >= 0)
+        {
+            query = query.Skip(input.PageIndex * input.PageSize).Take(input.PageSize);
+        }
+
+        var products = await query.ToListAsync();
 
         //This is just for testing if cache is avaible.
         //Thread.Sleep(5000);
 
-        var cacheData = JsonSerializer.Serialize(products);
+        var pagedDto = PagedDto<Product>.Create(products, input.PageSize, input.PageIndex);
+
+
+        var cacheData = JsonSerializer.Serialize(pagedDto);
         await _cache.SetAsync(AllProductsKey, cacheData);
 
         //stopwatch.Stop();
 
         //Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
-        return products;
+        return pagedDto;
     }
 
     public async Task<Product> GetProductById(int id)
@@ -86,7 +99,7 @@ public class ProductRepository : IProductRepository
     public async Task<List<ReviewDto>> GetReviews(int productId)
     {
         var reviewsDto = new List<ReviewDto>();
-        
+
         var products = await _context.Products
             .Include(x => x.Reviews)
             .Where(x => x.ProductId == productId)
@@ -94,7 +107,7 @@ public class ProductRepository : IProductRepository
 
         foreach (var product in products)
         {
-            var reviews = product.Reviews.Select(review=> new ReviewDto
+            var reviews = product.Reviews.Select(review => new ReviewDto
             {
                 ProductId = productId,
                 UserId = review.UserId,
@@ -102,7 +115,7 @@ public class ProductRepository : IProductRepository
                 Rate = review.Rate,
                 ReviewText = review.ReviewText,
             }).ToList();
-            
+
             reviewsDto.AddRange(reviews);
         }
 
@@ -133,7 +146,7 @@ public class ProductRepository : IProductRepository
             Rate = reviewDto.Rate,
             ReviewText = reviewDto.ReviewText
         };
-        
+
         await _context.Reviews.AddAsync(review);
         await _context.SaveChangesAsync();
     }

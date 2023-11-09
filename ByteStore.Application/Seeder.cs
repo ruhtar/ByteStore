@@ -36,7 +36,7 @@ public class Seeder : IHostedService
                 }, cancellationToken);
                 await context.SaveChangesAsync(cancellationToken);
                 await SeedUserAsync(scope);
-                await SeedProducts(scope);
+                await SeedProductsAsync(scope);
             }
         }
     }
@@ -46,7 +46,7 @@ public class Seeder : IHostedService
         return Task.CompletedTask;
     }
 
-    private async Task SeedUserAsync(IServiceScope scope)
+    private static async Task SeedUserAsync(IServiceScope scope)
     {
         var user = new User()
         {
@@ -71,7 +71,7 @@ public class Seeder : IHostedService
         await userService.RegisterUser(userDto);
     }
 
-    private async Task SeedProducts(IServiceScope scope)
+    private async Task SeedProductsAsync(IServiceScope scope)
     {
         var products = new List<ProductDto>
         {

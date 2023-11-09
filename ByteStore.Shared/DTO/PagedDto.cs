@@ -7,15 +7,13 @@ public class PagedDto<T>
     public List<T> Items { get; }
     public int PageIndex { get; }
     public int PageSize { get; }
-    public int TotalCount { get; }
 
     
-    public PagedDto(List<T> items, int count, int pageIndex, int pageSize)
+    public PagedDto(List<T> items,  int pageIndex, int pageSize)
     {
         Items = items;
         PageIndex = pageIndex;
         PageSize = pageSize;
-        TotalCount = count;
     }
     
     public static PagedDto<T> Create(ICollection<T> source, int pageSize, int pageIndex = 1)
@@ -24,7 +22,7 @@ public class PagedDto<T>
     {
         var count = source.Count;
         var items = source.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
-        return new PagedDto<T>(items, count, pageIndex, pageSize);
+        return new PagedDto<T>(items,  pageIndex, pageSize);
     }
 
     public void teste()

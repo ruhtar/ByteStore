@@ -14,9 +14,9 @@ public class ProductService : IProductService
         _productRepository = productRepository;
     }
 
-    public async Task<IEnumerable<Product>> GetAllProducts()
+    public async Task<PagedDto<Product>> GetAllProducts(GetProductsInputPagination input)
     {
-        return await _productRepository.GetAllProducts();
+        return await _productRepository.GetAllProducts(input);
     }
 
     public async Task<Product> GetProductById(int id)

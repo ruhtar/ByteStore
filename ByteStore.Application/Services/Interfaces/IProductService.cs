@@ -7,7 +7,7 @@ public interface IProductService
 {
     Task<Product> AddProduct(ProductDto product);
     Task<bool> DeleteProduct(int id);
-    Task<IEnumerable<Product>> GetAllProducts();
+    Task<PagedDto<Product>> GetAllProducts(GetProductsInputPagination getProductsInputPagination);
     Task<Product> GetProductById(int id);
     Task<bool> UpdateProduct(int id, UpdateProductDto productDto);
     Task CreateReview(ReviewDto reviewDto);
