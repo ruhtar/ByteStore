@@ -1,5 +1,6 @@
 ﻿using ByteStore.Domain.Entities;
 using ByteStore.Infrastructure;
+using ByteStore.Infrastructure.Repositories;
 using ByteStore.Infrastructure.Repository;
 using ByteStore.Shared.DTO;
 using Microsoft.EntityFrameworkCore;

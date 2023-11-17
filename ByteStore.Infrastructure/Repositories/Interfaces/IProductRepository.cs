@@ -1,7 +1,8 @@
 ﻿using ByteStore.Domain.Entities;
+using ByteStore.Domain.ValueObjects;
 using ByteStore.Shared.DTO;
 
-namespace ByteStore.Infrastructure.Repository.Interfaces;
+namespace ByteStore.Infrastructure.Repositories.Interfaces;
 
 public interface IProductRepository
 {
@@ -10,6 +11,6 @@ public interface IProductRepository
     Task<List<Product>> GetAllProducts(GetProductsInputPagination getProductsInputPagination);
     Task<Product> GetProductById(int id);
     Task<bool> UpdateProduct(int id, UpdateProductDto product);
-    Task CreateReview(ReviewDto reviewDto);
+    Task CreateReview(Review reviewDto);
     Task<List<ReviewDto>> GetReviews(int productId);
 }

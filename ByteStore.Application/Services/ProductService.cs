@@ -1,5 +1,7 @@
 ﻿using ByteStore.Application.Services.Interfaces;
 using ByteStore.Domain.Entities;
+using ByteStore.Domain.ValueObjects;
+using ByteStore.Infrastructure.Repositories.Interfaces;
 using ByteStore.Infrastructure.Repository.Interfaces;
 using ByteStore.Shared.DTO;
 
@@ -44,7 +46,30 @@ public class ProductService : IProductService
 
     public async Task CreateReview(ReviewDto reviewDto)
     {
-        await _productRepository.CreateReview(reviewDto);
+        var product = await GetProductById(reviewDto.ProductId);
+        if (product == null) return; //handle this error
+
+        if (product.TimesRated == 0)
+        {
+            product.TimesRated++;
+            product.Rate = reviewDto.Rate;
+        }
+        else
+        {
+            product.TimesRated++;
+            product.Rate = ((product.Rate * (product.TimesRated - 1)) + reviewDto.Rate) / product.TimesRated;
+        }
+
+        var review = new Review
+        {
+            ProductId = reviewDto.ProductId,
+            UserId = reviewDto.UserId,
+            Username = reviewDto.Username,
+            Rate = reviewDto.Rate,
+            ReviewText = reviewDto.ReviewText
+        };
+        
+        await _productRepository.CreateReview(review);
     }
 
     public async Task<List<ReviewDto>> GetReviews(int productId)

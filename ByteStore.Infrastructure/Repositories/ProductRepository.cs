@@ -1,13 +1,10 @@
-﻿using System.Text.Json;
-using ByteStore.Domain.Entities;
+﻿using ByteStore.Domain.Entities;
 using ByteStore.Domain.ValueObjects;
-using ByteStore.Infrastructure.Cache;
-using ByteStore.Infrastructure.Repository.Interfaces;
+using ByteStore.Infrastructure.Repositories.Interfaces;
 using ByteStore.Shared.DTO;
 using Microsoft.EntityFrameworkCore;
-using Sprache;
 
-namespace ByteStore.Infrastructure.Repository;
+namespace ByteStore.Infrastructure.Repositories;
 
 public class ProductRepository : IProductRepository
 {
@@ -120,31 +117,8 @@ public class ProductRepository : IProductRepository
         return reviewsDto;
     }
 
-    public async Task CreateReview(ReviewDto reviewDto)
+    public async Task CreateReview(Review review)
     {
-        var product = await _context.Products.FirstOrDefaultAsync(x => x.ProductId == reviewDto.ProductId);
-        if (product == null) return;
-
-        if (product.TimesRated == 0)
-        {
-            product.TimesRated++;
-            product.Rate = reviewDto.Rate;
-        }
-        else
-        {
-            product.TimesRated++;
-            product.Rate = ((product.Rate * (product.TimesRated - 1)) + reviewDto.Rate) / product.TimesRated;
-        }
-
-        var review = new Review
-        {
-            ProductId = reviewDto.ProductId,
-            UserId = reviewDto.UserId,
-            Username = reviewDto.Username,
-            Rate = reviewDto.Rate,
-            ReviewText = reviewDto.ReviewText
-        };
-
         await _context.Reviews.AddAsync(review);
         await _context.SaveChangesAsync();
     }

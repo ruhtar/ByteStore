@@ -3,6 +3,8 @@ using ByteStore.Application.Services.Interfaces;
 using ByteStore.Application.Validator;
 using ByteStore.Infrastructure.Cache;
 using ByteStore.Infrastructure.Hasher;
+using ByteStore.Infrastructure.Repositories;
+using ByteStore.Infrastructure.Repositories.Interfaces;
 using ByteStore.Infrastructure.Repository;
 using ByteStore.Infrastructure.Repository.Interfaces;
 

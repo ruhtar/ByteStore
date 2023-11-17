@@ -5,6 +5,7 @@ using ByteStore.Application.Services.Interfaces;
 using ByteStore.Domain.Entities;
 using ByteStore.Infrastructure.Repository.Interfaces;
 using ByteStore.Infrastructure.Cache;
+using ByteStore.Infrastructure.Repositories.Interfaces;
 
 namespace ByteStore.Application.Services;
 
