@@ -15,6 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.25" />
       <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
       <PackageReference Include="Moq" Version="4.20.69" />
       <PackageReference Include="xunit" Version="2.6.1" />
@@ -24,7 +25,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Infraestructure\Repositories\" />
+      <ProjectReference Include="..\ByteStore.Infrastructure\ByteStore.Infrastructure.csproj" />
+      <ProjectReference Include="..\ByteStore.Shared\ByteStore.Shared.csproj" />
     </ItemGroup>
 
 </Project>

@@ -108,11 +108,6 @@ public class ShoppingCartService : IShoppingCartService
         return await _shoppingCartRepository.MakeOrder(itemToAdd, userAggregateId);
     }
 
-    //public async Task<ShoppingCartDto?> GetShoppingCartById(int shoppingCartId)
-    //{
-    //    return await _shoppingCartRepository.GetShoppingCartById(shoppingCartId);
-    //}
-
     public async Task<ShoppingCartResponseDto> GetShoppingCartByUserAggregateId(int userAggregateId)
     {
         var cart = await _shoppingCartRepository.GetShoppingCartByUserAggregateId(userAggregateId);
@@ -123,17 +118,6 @@ public class ShoppingCartService : IShoppingCartService
             ShoppingCartId = cart.ShoppingCartId,
             Products = null
         };
-        //var cache = await _cache.GetFromCacheAsync<ShoppingCartResponseDto>(CartItemKey);
-        //if (cache != null)
-        //{
-        //cartDto.Products = cache.Products.Select(c => new RequestProductDto
-        //{
-        //    Name = c.Name,
-        //    Price = c.Price,
-        //    ProductQuantity = c.ProductQuantity,
-        //}).ToList();
-        //    return cache;
-        //}
 
         var products = new List<ProductDto>();
 
@@ -141,24 +125,21 @@ public class ShoppingCartService : IShoppingCartService
         {
             var product = await _productRepository.GetProductById(item.ProductId);
 
-            if (product != null)
+            if (product == null) continue;
+            
+            item.Quantity = EnsureProductQuantityIsAvailable(item.Quantity, product.ProductQuantity);
+            var productDto = new ProductDto
             {
-                item.Quantity = EnsureProductQuantityIsAvailable(item.Quantity, product.ProductQuantity);
-                var productDto = new ProductDto
-                {
-                    ProductId = product.ProductId,
-                    Name = product.Name,
-                    Price = product.Price,
-                    ProductQuantity = item.Quantity,
-                    Description = product.Description
-                };
-                products.Add(productDto);
-            }
+                ProductId = product.ProductId,
+                Name = product.Name,
+                Price = product.Price,
+                ProductQuantity = item.Quantity,
+                Description = product.Description
+            };
+            products.Add(productDto);
         }
 
         cartDto.Products = products;
-        //var cacheData = JsonSerializer.Serialize(cartDto);
-        //await _cache.SetAsync(CartItemKey, cacheData);
         return cartDto;
     }
 
@@ -172,9 +153,10 @@ public class ShoppingCartService : IShoppingCartService
         return productQuantity >= itemQuantity;
     }
 
-    private int EnsureProductQuantityIsAvailable(int currentProductQuantity, int availableProductQuantity)
+    private static int EnsureProductQuantityIsAvailable(int currentProductQuantity, int availableProductQuantity)
     {
-        if (currentProductQuantity > availableProductQuantity) currentProductQuantity = availableProductQuantity;
+        if (currentProductQuantity > availableProductQuantity) 
+            currentProductQuantity = availableProductQuantity;
 
         return currentProductQuantity;
     }

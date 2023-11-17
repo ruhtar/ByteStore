@@ -12,13 +12,13 @@ namespace ByteStore.Infrastructure.Repository;
 public class ProductRepository : IProductRepository
 {
     private readonly AppDbContext _context;
-    private readonly ICacheConfigs _cache;
-    private const string AllProductsKey = "AllProductsKeys";
+    // private readonly ICacheConfigs _cache;
+    // private const string AllProductsKey = "AllProductsKeys";
 
-    public ProductRepository(AppDbContext context, ICacheConfigs cache)
+    public ProductRepository(AppDbContext context) //, ICacheConfigs cache
     {
         _context = context;
-        _cache = cache;
+        // _cache = cache;
     }
 
     public async Task<List<Product>> GetAllProducts(GetProductsInputPagination input)
@@ -46,8 +46,8 @@ public class ProductRepository : IProductRepository
         //Thread.Sleep(5000);
 
 
-        var cacheData = JsonSerializer.Serialize(products);
-        await _cache.SetAsync(AllProductsKey, cacheData);
+        // var cacheData = JsonSerializer.Serialize(products);
+        // await _cache.SetAsync(AllProductsKey, cacheData);
 
         //stopwatch.Stop();
 

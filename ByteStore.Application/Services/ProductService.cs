@@ -39,14 +39,6 @@ public class ProductService : IProductService
 
     public async Task<bool> UpdateProduct(int id, UpdateProductDto productDto)
     {
-        
-        // var product = new Product
-        // {
-        //     Name = productDto.Name,
-        //     ProductQuantity = productDto.ProductQuantity,
-        //     Price = productDto.Price,
-        //     Description = productDto.Description
-        // };
         return await _productRepository.UpdateProduct(id, productDto);
     }
 
