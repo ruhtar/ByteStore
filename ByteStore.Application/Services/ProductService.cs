@@ -44,10 +44,10 @@ public class ProductService : IProductService
         return await _productRepository.UpdateProduct(id, productDto);
     }
 
-    public async Task CreateReview(ReviewDto reviewDto)
+    public async Task<Review> CreateReview(ReviewDto reviewDto)
     {
         var product = await GetProductById(reviewDto.ProductId);
-        if (product == null) return; //handle this error
+        if (product == null) return null; //handle this error
 
         if (product.TimesRated == 0)
         {
@@ -69,7 +69,7 @@ public class ProductService : IProductService
             ReviewText = reviewDto.ReviewText
         };
         
-        await _productRepository.CreateReview(review);
+        return await _productRepository.CreateReview(review);
     }
 
     public async Task<List<ReviewDto>> GetReviews(int productId)

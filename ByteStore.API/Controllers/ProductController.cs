@@ -70,8 +70,9 @@ namespace ByteStore.API.Controllers
         public async Task<IActionResult> CreateReview(ReviewDto reviewDto)
         {
             if (!IsTokenValid()) return Unauthorized();
-            await _productService.CreateReview(reviewDto);
-            return NoContent(); // Use NoContent for successful creation
+            var review = await _productService.CreateReview(reviewDto);
+            if (review == null) Problem("Something went wrong by creating the review.");
+            return Ok(review); // Use NoContent for successful creation
         }
 
         [HttpGet("review")]

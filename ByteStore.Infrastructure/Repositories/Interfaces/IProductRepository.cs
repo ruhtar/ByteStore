@@ -11,6 +11,6 @@ public interface IProductRepository
     Task<List<Product>> GetAllProducts(GetProductsInputPagination getProductsInputPagination);
     Task<Product> GetProductById(int id);
     Task<bool> UpdateProduct(int id, UpdateProductDto product);
-    Task CreateReview(Review reviewDto);
+    Task<Review> CreateReview(Review reviewDto);
     Task<List<ReviewDto>> GetReviews(int productId);
 }

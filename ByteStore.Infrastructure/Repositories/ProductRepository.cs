@@ -31,7 +31,7 @@ public class ProductRepository : IProductRepository
         //     //Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
         //     return cache;
         var query = _context.Products.AsNoTracking();
-        
+
         if (input.PageSize > 0 && input.PageIndex >= 0)
         {
             query = query.Skip(input.PageIndex * input.PageSize).Take(input.PageSize);
@@ -54,7 +54,9 @@ public class ProductRepository : IProductRepository
 
     public async Task<Product> GetProductById(int id)
     {
-        return await _context.Products.AsNoTracking().FirstOrDefaultAsync(x => x.ProductId == id);
+        return await _context.Products
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.ProductId == id);
     }
 
     public async Task<Product> AddProduct(Product product)
@@ -70,11 +72,11 @@ public class ProductRepository : IProductRepository
 
         if (oldProduct == null) return false;
 
-        oldProduct.ImageStorageUrl = product.ImageStorageUrl ?? oldProduct.ImageStorageUrl;
+        oldProduct.ImageStorageUrl = string.IsNullOrEmpty(product.ImageStorageUrl) ? oldProduct.ImageStorageUrl : product.ImageStorageUrl;
         oldProduct.ProductQuantity = product.ProductQuantity ?? oldProduct.ProductQuantity;
         oldProduct.Price = product.Price ?? oldProduct.Price;
-        oldProduct.Name = product.Name ?? oldProduct.Name;
-        oldProduct.Description = product.Description ?? oldProduct.Description;
+        oldProduct.Name = string.IsNullOrEmpty(product.Name) ? oldProduct.Name : product.Name;
+        oldProduct.Description = string.IsNullOrEmpty(product.Description) ? oldProduct.Description : product.Description;
 
         await _context.SaveChangesAsync();
         return true;
@@ -95,31 +97,31 @@ public class ProductRepository : IProductRepository
     {
         var reviewsDto = new List<ReviewDto>();
 
-        var products = await _context.Products
+        var product = await _context.Products
             .Include(x => x.Reviews)
-            .Where(x => x.ProductId == productId)
-            .ToListAsync();
+            .FirstOrDefaultAsync(x => x.ProductId == productId);
 
-        foreach (var product in products)
+        if (product == null) return null;
+        
+        var reviews = product.Reviews.Select(review => new ReviewDto
         {
-            var reviews = product.Reviews.Select(review => new ReviewDto
-            {
-                ProductId = productId,
-                UserId = review.UserId,
-                Username = review.Username,
-                Rate = review.Rate,
-                ReviewText = review.ReviewText,
-            }).ToList();
+            ProductId = productId,
+            UserId = review.UserId,
+            Username = review.Username,
+            Rate = review.Rate,
+            ReviewText = review.ReviewText,
+        }).ToList();
 
-            reviewsDto.AddRange(reviews);
-        }
+        reviewsDto.AddRange(reviews);
+
 
         return reviewsDto;
     }
 
-    public async Task CreateReview(Review review)
+    public async Task<Review> CreateReview(Review review)
     {
         await _context.Reviews.AddAsync(review);
         await _context.SaveChangesAsync();
+        return review;
     }
 }
