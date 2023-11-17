@@ -33,9 +33,9 @@ public class Program
             })
             .AddHostedService<Migrator>() //Migrates database
             .AddHostedService<Seeder>() //Seeds database. Make sure that Seeder is below Migrator.
-            .AddSwaggerGen() //SWAGGER GENERATOR
-            .AddDependencies() //DEPENDENCY INJECTION CONFIGURATION
-            .AddJWTConfiguration() //JWT CONFIGURATION
+            .AddSwaggerGen()
+            .AddDependencyInjection() 
+            .AddJWTConfiguration() 
             .AddDbContext<AppDbContext>(options => options.UseMySql(
                 connectionString,
                 ServerVersion.AutoDetect(connectionString),

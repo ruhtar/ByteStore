@@ -24,16 +24,21 @@ export class ProductsComponent {
   }
 
   searchProducts() {
+    this.filterByPrice();
     const filterLowerCase = this.filterValue.toLowerCase();
-    this.exibidProducts = this.originalProducts.filter((product) => {
+    console.log(filterLowerCase);
+
+    this.exibidProducts = this.exibidProducts.filter((product) => {
       return product.name.toLowerCase().includes(filterLowerCase);
     });
 
     // Após filtrar por nome, também aplique o filtro de preço
-    this.filterByPrice();
+    // this.filterByPrice();
   }
 
   filterByPrice() {
+    this.exibidProducts = this.originalProducts; //To avoid filtering the same list over and over again
+    this.sortProducts();
     if (this.minPrice > 0 || this.maxPrice > 0) {
       this.exibidProducts = this.exibidProducts.filter((product) => {
         if (this.minPrice > 0 && this.maxPrice > 0) {
@@ -50,12 +55,12 @@ export class ProductsComponent {
     }
   }
 
-  onSelectChange() {
+  sortProducts() {
     if (this.selectedOption === 'name') this.orderByName(this.exibidProducts);
     if (this.selectedOption === 'priceAsc')
-      this.orderByPriceAsc(this.exibidProducts);
+      this.sortByPriceAsc(this.exibidProducts);
     if (this.selectedOption === 'priceDesc')
-      this.orderByPriceDesc(this.exibidProducts);
+      this.sortByPriceDesc(this.exibidProducts);
   }
 
   orderByName(list: Product[]) {
@@ -69,13 +74,13 @@ export class ProductsComponent {
     });
   }
 
-  orderByPriceAsc(list: Product[]) {
+  sortByPriceAsc(list: Product[]) {
     list.sort((a, b) => {
       return a.price - b.price;
     });
   }
 
-  orderByPriceDesc(list: Product[]) {
+  sortByPriceDesc(list: Product[]) {
     list.sort((a, b) => {
       return b.price - a.price;
     });

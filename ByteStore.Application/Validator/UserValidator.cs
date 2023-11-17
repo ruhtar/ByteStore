@@ -27,6 +27,7 @@ public class UserValidator : IUserValidator
         return UserValidatorStatus.Success;
     }
 
+    //TODO: REFATORAR O APPDBCONTEXT PARA QUE USERNAME SEJA UNIQUE INDEX
     public async Task<bool> IsUsernameValid(string username)
     {
         var user = await _userRepository.GetUserAggregate(new UserAggregate

@@ -10,7 +10,7 @@ namespace ByteStore.API.Extensions;
 
 public static class DependencyInjectionExtensions
 {
-    public static IServiceCollection AddDependencies(this IServiceCollection services)
+    public static IServiceCollection AddDependencyInjection(this IServiceCollection services)
     {
         services.AddTransient<ITokenService, TokenService>();
         services.AddTransient<IProductRepository, ProductRepository>();
