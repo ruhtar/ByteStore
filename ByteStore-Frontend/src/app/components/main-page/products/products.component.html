@@ -78,13 +78,13 @@
         <i class="fa-solid fa-plus"></i>
       </button>
     </div>
-    <mat-paginator
-      [length]="50"
-      [pageSize]="pageSize"
-      [pageIndex]="pageIndex"
-      [pageSizeOptions]="pageSizeOptions"
-      (page)="pageChanged($event)"
-    ></mat-paginator>
   </section>
+  <mat-paginator
+    [length]="50"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="pageChanged($event)"
+  ></mat-paginator>
 </div>
 <app-footer></app-footer>

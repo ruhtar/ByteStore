@@ -17,7 +17,7 @@ export class ProductsComponent {
   selectedOption: string = '';
   pageIndex = 0;
   pageSize = 5;
-  pageSizeOptions: number[] = [5, 10, 25, 50];
+  pageSizeOptions: number[] = [5, 10, 15, 20];
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
