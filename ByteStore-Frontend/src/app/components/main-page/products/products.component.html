@@ -79,12 +79,11 @@
       </button>
     </div>
     <mat-paginator
-      [length]="10"
+      [length]="50"
       [pageSize]="pageSize"
       [pageIndex]="pageIndex"
       [pageSizeOptions]="pageSizeOptions"
       (page)="pageChanged($event)"
-      showFirstLastButtons
     ></mat-paginator>
   </section>
 </div>

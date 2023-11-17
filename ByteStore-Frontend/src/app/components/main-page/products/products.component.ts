@@ -42,7 +42,7 @@ export class ProductsComponent {
       return product.name.toLowerCase().includes(filterLowerCase);
     });
 
-    // Após filtrar por nome, também aplique o filtro de preço
+    // Apï¿½s filtrar por nome, tambï¿½m aplique o filtro de preï¿½o
     // this.filterByPrice();
   }
 
@@ -99,7 +99,7 @@ export class ProductsComponent {
   pageChanged(event: any): void {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
-    // Chame aqui a função que carrega os produtos com base na nova página
+    // Chame aqui a funï¿½ï¿½o que carrega os produtos com base na nova pï¿½gina
     // Por exemplo: this.loadProducts();
     this.getPaginatedProducst(this.pageIndex, this.pageSize);
   }
