@@ -71,14 +71,14 @@ namespace ByteStore.API.Controllers
         {
             if (!IsTokenValid()) return Unauthorized();
             var review = await _productService.CreateReview(reviewDto);
-            if (review == null) Problem("Something went wrong by creating the review.");
-            return Ok(review); // Use NoContent for successful creation
+            return review == null ? Problem("Something went wrong by creating the review.") : Ok(review);
         }
 
         [HttpGet("review")]
         public async Task<IActionResult> GetReviews([FromQuery] int productId)
         {
-            return Ok(await _productService.GetReviews(productId));
+            var reviews = await _productService.GetReviewsByProductId(productId);
+            return reviews == null ? Problem("Something went wrong by retrieving the reviews.") : Ok(reviews);
         }
 
         private static async Task<string?> GetImageUrl(ProductDto productDto)

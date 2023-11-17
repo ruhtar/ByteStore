@@ -9,8 +9,8 @@ public interface IProductService
     Task<Product> AddProduct(ProductDto product);
     Task<bool> DeleteProduct(int id);
     Task<List<Product>> GetAllProducts(GetProductsInputPagination getProductsInputPagination);
-    Task<Product> GetProductById(int id);
+    Task<Product?> GetProductById(int id);
     Task<bool> UpdateProduct(int id, UpdateProductDto productDto);
-    Task<Review> CreateReview(ReviewDto reviewDto);
-    Task<List<ReviewDto>> GetReviews(int productId);
+    Task<Review?> CreateReview(ReviewDto reviewDto);
+    Task<List<ReviewDto>?> GetReviewsByProductId(int productId);
 }

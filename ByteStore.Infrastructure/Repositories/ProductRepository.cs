@@ -52,7 +52,7 @@ public class ProductRepository : IProductRepository
         return products;
     }
 
-    public async Task<Product> GetProductById(int id)
+    public async Task<Product?> GetProductById(int id)
     {
         return await _context.Products
             .AsNoTracking()
@@ -93,29 +93,13 @@ public class ProductRepository : IProductRepository
         return true;
     }
 
-    public async Task<List<ReviewDto>> GetReviews(int productId)
+    public async Task<List<Review>?> GetReviews(int productId)
     {
-        var reviewsDto = new List<ReviewDto>();
-
         var product = await _context.Products
             .Include(x => x.Reviews)
             .FirstOrDefaultAsync(x => x.ProductId == productId);
 
-        if (product == null) return null;
-        
-        var reviews = product.Reviews.Select(review => new ReviewDto
-        {
-            ProductId = productId,
-            UserId = review.UserId,
-            Username = review.Username,
-            Rate = review.Rate,
-            ReviewText = review.ReviewText,
-        }).ToList();
-
-        reviewsDto.AddRange(reviews);
-
-
-        return reviewsDto;
+        return product?.Reviews.ToList();
     }
 
     public async Task<Review> CreateReview(Review review)

@@ -21,7 +21,7 @@ public class ProductService : IProductService
         return await _productRepository.GetAllProducts(input);
     }
 
-    public async Task<Product> GetProductById(int id)
+    public async Task<Product?> GetProductById(int id)
     {
         return await _productRepository.GetProductById(id);
     }
@@ -44,7 +44,7 @@ public class ProductService : IProductService
         return await _productRepository.UpdateProduct(id, productDto);
     }
 
-    public async Task<Review> CreateReview(ReviewDto reviewDto)
+    public async Task<Review?> CreateReview(ReviewDto reviewDto)
     {
         var product = await GetProductById(reviewDto.ProductId);
         if (product == null) return null; //handle this error
@@ -72,10 +72,24 @@ public class ProductService : IProductService
         return await _productRepository.CreateReview(review);
     }
 
-    public async Task<List<ReviewDto>> GetReviews(int productId)
+    public async Task<List<ReviewDto>?> GetReviewsByProductId(int productId)
     {
-        return await _productRepository.GetReviews(productId);
+        var reviews = await _productRepository.GetReviews(productId);
+
+        if (reviews == null) return null;
+        
+        var reviewsDto = reviews.Select(review => new ReviewDto
+        {
+            ProductId = productId,
+            UserId = review.UserId,
+            Username = review.Username,
+            Rate = review.Rate,
+            ReviewText = review.ReviewText,
+        }).ToList();
+
+        return reviewsDto;
     }
+
 
     public async Task<bool> DeleteProduct(int id)
     {
