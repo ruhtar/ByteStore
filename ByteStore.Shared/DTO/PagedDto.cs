@@ -3,11 +3,13 @@
 public class PagedDto<T>
 {
     public List<T> Items { get; }
+    public int TotalCount { get; set; }
 
-    
+
     public PagedDto(List<T> items)
     {
         Items = items;
+        TotalCount = items.Count;
     }
     
     public static PagedDto<T> Create(ICollection<T> source, int pageSize, int pageIndex)

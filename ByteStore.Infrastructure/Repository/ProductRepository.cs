@@ -27,12 +27,12 @@ public class ProductRepository : IProductRepository
         //var stopwatch = new Stopwatch();
         //stopwatch.Start();
 
-        var cache = await _cache.GetFromCacheAsync<List<Product>>(AllProductsKey);
-        if (cache != null)
-            //This is just for testing if cache is avaible.
-            //stopwatch.Stop();
-            //Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
-            return cache;
+        // var cache = await _cache.GetFromCacheAsync<List<Product>>(AllProductsKey);
+        // if (cache != null)
+        //     //This is just for testing if cache is avaible.
+        //     //stopwatch.Stop();
+        //     //Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
+        //     return cache;
         var query = _context.Products.AsNoTracking();
         
         if (input.PageSize > 0 && input.PageIndex >= 0)

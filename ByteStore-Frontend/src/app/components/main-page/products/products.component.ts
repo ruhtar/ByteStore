@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductService } from 'src/app/services/product/product.service';
+import { PagedDto } from 'src/app/types/PagedDto';
 import { Product } from 'src/app/types/Product';
 
 @Component({
@@ -9,18 +10,27 @@ import { Product } from 'src/app/types/Product';
 })
 export class ProductsComponent {
   exibidProducts!: Product[];
+  originalProducts!: Product[];
   minPrice: number = 0;
   maxPrice: number = 0;
-  originalProducts!: Product[];
   filterValue: string = '';
   selectedOption: string = '';
+  pageIndex = 0;
+  pageSize = 5;
+  pageSizeOptions: number[] = [5, 10, 25, 50];
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.productService.getAllProducts().subscribe((productList: Product[]) => {
-      this.exibidProducts = productList;
-      this.originalProducts = productList;
-    });
+    this.getPaginatedProducst(this.pageIndex, this.pageSize);
+  }
+
+  getPaginatedProducst(pageIndex: number, pageSize: number) {
+    this.productService
+      .getAllProducts(pageIndex, pageSize)
+      .subscribe((pagedDto: PagedDto<Product>) => {
+        this.exibidProducts = pagedDto.items;
+        this.originalProducts = pagedDto.items;
+      });
   }
 
   searchProducts() {
@@ -84,5 +94,13 @@ export class ProductsComponent {
     list.sort((a, b) => {
       return b.price - a.price;
     });
+  }
+
+  pageChanged(event: any): void {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    // Chame aqui a função que carrega os produtos com base na nova página
+    // Por exemplo: this.loadProducts();
+    this.getPaginatedProducst(this.pageIndex, this.pageSize);
   }
 }

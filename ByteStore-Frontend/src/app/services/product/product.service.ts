@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { PagedDto } from 'src/app/types/PagedDto';
 import { Product } from 'src/app/types/Product';
 import { Review } from 'src/app/types/Review';
 import { API_PATH } from 'src/environment/env';
@@ -10,8 +11,10 @@ import { API_PATH } from 'src/environment/env';
 export class ProductService {
   constructor(private http: HttpClient) {}
 
-  getAllProducts() {
-    return this.http.get<Product[]>(API_PATH + 'products');
+  getAllProducts(pageIndex: number, pageSize: number) {
+    return this.http.get<PagedDto<Product>>(
+      API_PATH + `products?pageIndex=${pageIndex}&pageSize=${pageSize}`,
+    );
   }
 
   getProductReviews(productId: number) {
