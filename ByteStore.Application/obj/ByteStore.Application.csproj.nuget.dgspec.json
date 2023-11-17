@@ -105,10 +105,6 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
-            },
-            "xunit": {
-              "target": "Package",
-              "version": "[2.6.1, )"
             }
           },
           "imports": [
@@ -236,10 +232,6 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
-            },
-            "xunit": {
-              "target": "Package",
-              "version": "[2.6.1, )"
             }
           },
           "imports": [
@@ -374,10 +366,6 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
-            },
-            "xunit": {
-              "target": "Package",
-              "version": "[2.6.1, )"
             }
           },
           "imports": [
@@ -509,10 +497,6 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
-            },
-            "xunit": {
-              "target": "Package",
-              "version": "[2.6.1, )"
             }
           },
           "imports": [

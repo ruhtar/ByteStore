@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="xunit" Version="2.6.1" />
         <ProjectReference Include="..\ByteStore.Domain\ByteStore.Domain.csproj"/>
         <ProjectReference Include="..\ByteStore.Infrastructure\ByteStore.Infrastructure.csproj"/>
         <ProjectReference Include="..\ByteStore.Shared\ByteStore.Shared.csproj"/>

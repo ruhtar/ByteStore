@@ -2069,92 +2069,6 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "xunit/2.6.1": {
-        "type": "package",
-        "dependencies": {
-          "xunit.analyzers": "1.4.0",
-          "xunit.assert": "2.6.1",
-          "xunit.core": "[2.6.1]"
-        }
-      },
-      "xunit.abstractions/2.0.3": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/xunit.abstractions.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/xunit.abstractions.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "xunit.analyzers/1.4.0": {
-        "type": "package"
-      },
-      "xunit.assert/2.6.1": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/xunit.assert.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/xunit.assert.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "xunit.core/2.6.1": {
-        "type": "package",
-        "dependencies": {
-          "xunit.extensibility.core": "[2.6.1]",
-          "xunit.extensibility.execution": "[2.6.1]"
-        },
-        "build": {
-          "build/xunit.core.props": {},
-          "build/xunit.core.targets": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/xunit.core.props": {},
-          "buildMultiTargeting/xunit.core.targets": {}
-        }
-      },
-      "xunit.extensibility.core/2.6.1": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1",
-          "xunit.abstractions": "2.0.3"
-        },
-        "compile": {
-          "lib/netstandard1.1/xunit.core.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard1.1/xunit.core.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "xunit.extensibility.execution/2.6.1": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1",
-          "xunit.extensibility.core": "[2.6.1]"
-        },
-        "compile": {
-          "lib/netstandard1.1/xunit.execution.dotnet.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard1.1/xunit.execution.dotnet.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "ByteStore.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2169,8 +2083,7 @@
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.17.0",
           "Pomelo.EntityFrameworkCore.MySql": "6.0.2",
           "StackExchange.Redis": "2.6.122",
-          "Swashbuckle.AspNetCore": "6.2.3",
-          "xunit": "2.6.1"
+          "Swashbuckle.AspNetCore": "6.2.3"
         },
         "compile": {
           "bin/placeholder/ByteStore.Domain.dll": {}
@@ -6613,125 +6526,6 @@
         "system.xml.xdocument.nuspec"
       ]
     },
-    "xunit/2.6.1": {
-      "sha512": "SnTEV7LFf2s3GJua5AJKB/m115jDcWJSG5n02YZS05iezU2QJKjShCsOxlxL8FUO+J7h2/yXGEr+evgpIHc3sA==",
-      "type": "package",
-      "path": "xunit/2.6.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "_content/README.md",
-        "_content/logo-128-transparent.png",
-        "xunit.2.6.1.nupkg.sha512",
-        "xunit.nuspec"
-      ]
-    },
-    "xunit.abstractions/2.0.3": {
-      "sha512": "pot1I4YOxlWjIb5jmwvvQNbTrZ3lJQ+jUGkGjWE3hEFM0l5gOnBWS+H3qsex68s5cO52g+44vpGzhAt+42vwKg==",
-      "type": "package",
-      "path": "xunit.abstractions/2.0.3",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net35/xunit.abstractions.dll",
-        "lib/net35/xunit.abstractions.xml",
-        "lib/netstandard1.0/xunit.abstractions.dll",
-        "lib/netstandard1.0/xunit.abstractions.xml",
-        "lib/netstandard2.0/xunit.abstractions.dll",
-        "lib/netstandard2.0/xunit.abstractions.xml",
-        "xunit.abstractions.2.0.3.nupkg.sha512",
-        "xunit.abstractions.nuspec"
-      ]
-    },
-    "xunit.analyzers/1.4.0": {
-      "sha512": "7ljnTJfFjz5zK+Jf0h2dd2QOSO6UmFizXsojv/x4QX7TU5vEgtKZPk9RvpkiuUqg2bddtNZufBoKQalsi7djfA==",
-      "type": "package",
-      "path": "xunit.analyzers/1.4.0",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "_content/README.md",
-        "_content/logo-128-transparent.png",
-        "analyzers/dotnet/cs/xunit.analyzers.dll",
-        "analyzers/dotnet/cs/xunit.analyzers.fixes.dll",
-        "tools/install.ps1",
-        "tools/uninstall.ps1",
-        "xunit.analyzers.1.4.0.nupkg.sha512",
-        "xunit.analyzers.nuspec"
-      ]
-    },
-    "xunit.assert/2.6.1": {
-      "sha512": "+4bI81RS88tiYvfsBfC0YsdDd8v7kkLkRtDXmux3YBT8u1afhjdwxwBvkHGgrQ6NPRzE8xZpVGX2iaLkbXvYvg==",
-      "type": "package",
-      "path": "xunit.assert/2.6.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "_content/README.md",
-        "_content/logo-128-transparent.png",
-        "lib/net6.0/xunit.assert.dll",
-        "lib/net6.0/xunit.assert.xml",
-        "lib/netstandard1.1/xunit.assert.dll",
-        "lib/netstandard1.1/xunit.assert.xml",
-        "xunit.assert.2.6.1.nupkg.sha512",
-        "xunit.assert.nuspec"
-      ]
-    },
-    "xunit.core/2.6.1": {
-      "sha512": "Ru0POZXVYwa/G3/tS3TO3Yug/P+08RPeDkuepTmywNjfICYwHHY9zJBoxdeziZ0OintLtLKUMOBcC6VJzjqhwg==",
-      "type": "package",
-      "path": "xunit.core/2.6.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "_content/README.md",
-        "_content/logo-128-transparent.png",
-        "build/xunit.core.props",
-        "build/xunit.core.targets",
-        "buildMultiTargeting/xunit.core.props",
-        "buildMultiTargeting/xunit.core.targets",
-        "xunit.core.2.6.1.nupkg.sha512",
-        "xunit.core.nuspec"
-      ]
-    },
-    "xunit.extensibility.core/2.6.1": {
-      "sha512": "DA4NqcFGLlRxX2zP3QptlQuRoOSdmBkr17ntK29jfRXqScj2fysIhvQvF5DHtDzAEkoRPqZcfR/IRGSItxmRqw==",
-      "type": "package",
-      "path": "xunit.extensibility.core/2.6.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "_content/README.md",
-        "_content/logo-128-transparent.png",
-        "lib/net452/xunit.core.dll",
-        "lib/net452/xunit.core.dll.tdnet",
-        "lib/net452/xunit.core.xml",
-        "lib/net452/xunit.runner.tdnet.dll",
-        "lib/net452/xunit.runner.utility.net452.dll",
-        "lib/netstandard1.1/xunit.core.dll",
-        "lib/netstandard1.1/xunit.core.xml",
-        "xunit.extensibility.core.2.6.1.nupkg.sha512",
-        "xunit.extensibility.core.nuspec"
-      ]
-    },
-    "xunit.extensibility.execution/2.6.1": {
-      "sha512": "sLKPQKuEQhRuhVuLiYEkRdUcwCfp+BIKds3r0JL8AYvOWRmVYYKWYouuYzPjmeUF6iEGC9CHCVz/NF1+wv+Mag==",
-      "type": "package",
-      "path": "xunit.extensibility.execution/2.6.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "_content/README.md",
-        "_content/logo-128-transparent.png",
-        "lib/net452/xunit.execution.desktop.dll",
-        "lib/net452/xunit.execution.desktop.xml",
-        "lib/netstandard1.1/xunit.execution.dotnet.dll",
-        "lib/netstandard1.1/xunit.execution.dotnet.xml",
-        "xunit.extensibility.execution.2.6.1.nupkg.sha512",
-        "xunit.extensibility.execution.nuspec"
-      ]
-    },
     "ByteStore.Domain/1.0.0": {
       "type": "project",
       "path": "../ByteStore.Domain/ByteStore.Domain.csproj",
@@ -6753,8 +6547,7 @@
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.17.0",
       "Pomelo.EntityFrameworkCore.MySql >= 6.0.2",
       "StackExchange.Redis >= 2.6.122",
-      "Swashbuckle.AspNetCore >= 6.2.3",
-      "xunit >= 2.6.1"
+      "Swashbuckle.AspNetCore >= 6.2.3"
     ]
   },
   "packageFolders": {
@@ -6855,10 +6648,6 @@
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.2.3, )"
-          },
-          "xunit": {
-            "target": "Package",
-            "version": "[2.6.1, )"
           }
         },
         "imports": [
