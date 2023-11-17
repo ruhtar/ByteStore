@@ -37,6 +37,7 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  margin-bottom: 0.75rem;
 }
 
 .registration-form input[type="checkbox"] {
@@ -120,4 +121,16 @@ a {
   right: 10px;
   height: 245px;
   width: 30rem;
+}
+
+.invalid-input {
+  border: 2px solid #ff1900;
+  background-color: #f9d6d6;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.invalid-input:focus {
+  border-color: #ff1900;
 }
