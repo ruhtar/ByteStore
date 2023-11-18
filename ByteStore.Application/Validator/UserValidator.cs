@@ -1,7 +1,7 @@
 ﻿using ByteStore.Domain.Aggregates;
 using ByteStore.Domain.Entities;
 using ByteStore.Domain.ValueObjects;
-using ByteStore.Infrastructure.Repository.Interfaces;
+using ByteStore.Infrastructure.Repositories.Interfaces;
 using ByteStore.Shared.DTO;
 using ByteStore.Shared.Enums;
 

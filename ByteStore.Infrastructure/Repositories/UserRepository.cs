@@ -1,13 +1,11 @@
-﻿using System.Text.Json;
-using ByteStore.Domain.Aggregates;
+﻿using ByteStore.Domain.Aggregates;
 using ByteStore.Domain.Entities;
 using ByteStore.Domain.ValueObjects;
-using ByteStore.Infrastructure.Repository.Interfaces;
+using ByteStore.Infrastructure.Repositories.Interfaces;
 using ByteStore.Shared.Enums;
-using ByteStore.Shared.Utils;
 using Microsoft.EntityFrameworkCore;
 
-namespace ByteStore.Infrastructure.Repository;
+namespace ByteStore.Infrastructure.Repositories;
 
 public class UserRepository : IUserRepository
 {
@@ -37,7 +35,7 @@ public class UserRepository : IUserRepository
         return ChangePasswordStatusResponse.Sucess;
     }
 
-    public async Task<UserAggregate> GetUserAggregate(UserAggregate user)
+    public async Task<UserAggregate?> GetUserAggregate(UserAggregate user)
     {
         return await _context.UserAggregates
             .AsNoTracking()
@@ -52,10 +50,10 @@ public class UserRepository : IUserRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<Address> GetUserAddress(int userId)
+    public async Task<Address?> GetUserAddress(int userId)
     {
         var user = await _context.UserAggregates.AsNoTracking().FirstOrDefaultAsync(u => u.UserAggregateId == userId);
-        return user == null ? null : user.Address;
+        return user?.Address;
     }
 
     public async Task<string?> GetUserPurchaseHistory(int userId)

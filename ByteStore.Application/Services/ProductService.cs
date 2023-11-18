@@ -2,7 +2,6 @@
 using ByteStore.Domain.Entities;
 using ByteStore.Domain.ValueObjects;
 using ByteStore.Infrastructure.Repositories.Interfaces;
-using ByteStore.Infrastructure.Repository.Interfaces;
 using ByteStore.Shared.DTO;
 
 namespace ByteStore.Application.Services;

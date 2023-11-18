@@ -4,7 +4,6 @@ using ByteStore.Shared.DTO;
 using ByteStore.Shared.Enums;
 using ByteStore.Application.Services.Interfaces;
 using ByteStore.Domain.Entities;
-using ByteStore.Infrastructure.Repository.Interfaces;
 using ByteStore.Infrastructure.Cache;
 using ByteStore.Infrastructure.Repositories.Interfaces;
 using ByteStore.Shared.Utils;
@@ -88,37 +87,28 @@ public class ShoppingCartService : IShoppingCartService
     public async Task<OrderStatus?> MakeOrder(OrderItem itemToAdd, int userAggregateId)
     {
         var availableProduct = await _productRepository.GetProductById(itemToAdd.ProductId);
-
-        if (availableProduct == null)
-            return OrderStatus.ProductNotFound;
-
+        
         var shoppingCart = await _shoppingCartRepository.GetShoppingCartByUserAggregateId(userAggregateId);
 
-        if (shoppingCart == null)
+        if (availableProduct == null || shoppingCart == null)
             return OrderStatus.ProductNotFound;
 
-        var orderItems = new List<OrderItem>();
         var cartOrderItem = shoppingCart.OrderItems.FirstOrDefault(x => x.ProductId == itemToAdd.ProductId);
-        //Primeira vez do item no carrinho
-        if (cartOrderItem == null)
+        
+        if (cartOrderItem == null) //this means that is the first time the item is in the user`s cart
             cartOrderItem = new OrderItem
             {
                 ProductId = itemToAdd.ProductId,
-                Quantity = 0 //itemToAdd.Quantity não??????
+                Quantity = 0 
             };
 
         if (availableProduct.ProductQuantity < cartOrderItem.Quantity + itemToAdd.Quantity)
             return OrderStatus.InvalidQuantity;
-        
   
         cartOrderItem.Quantity += itemToAdd.Quantity;
-        
-
         if (cartOrderItem.Quantity < 0) cartOrderItem.Quantity = 0;
 
-        orderItems.Add(cartOrderItem);
-
-        var data = Utils.Serializer(orderItems);
+        var data = Utils.Serializer(new List<OrderItem> { cartOrderItem });
         
         return await _shoppingCartRepository.MakeOrder(userAggregateId, data);
     }

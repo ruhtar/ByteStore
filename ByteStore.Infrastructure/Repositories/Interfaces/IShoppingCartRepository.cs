@@ -1,8 +1,7 @@
-﻿using ByteStore.Domain.ValueObjects;
-using ByteStore.Shared.DTO;
+﻿using ByteStore.Shared.DTO;
 using ByteStore.Shared.Enums;
 
-namespace ByteStore.Infrastructure.Repository.Interfaces;
+namespace ByteStore.Infrastructure.Repositories.Interfaces;
 
 public interface IShoppingCartRepository
 {

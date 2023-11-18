@@ -1,13 +1,13 @@
 ﻿using System.Text.Json;
 using ByteStore.Domain.Aggregates;
 using ByteStore.Domain.ValueObjects;
-using ByteStore.Infrastructure.Repository.Interfaces;
+using ByteStore.Infrastructure.Repositories.Interfaces;
 using ByteStore.Shared.DTO;
 using ByteStore.Shared.Enums;
 using ByteStore.Shared.Utils;
 using Microsoft.EntityFrameworkCore;
 
-namespace ByteStore.Infrastructure.Repository;
+namespace ByteStore.Infrastructure.Repositories;
 
 public class ShoppingCartRepository : IShoppingCartRepository
 {
