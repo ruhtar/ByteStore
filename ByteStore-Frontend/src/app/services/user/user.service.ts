@@ -19,7 +19,7 @@ export class UserService {
   public checkIfUserHasBoughtAProduct(productId: number) {
     return this.http.get(
       API_PATH +
-        `user/purchase-history/check?userId=${this.jwt.nameid}&productId=${productId}`,
+        `users/purchase-history/check?userId=${this.jwt.nameid}&productId=${productId}`,
       {
         observe: 'response',
         responseType: 'text',
@@ -28,12 +28,14 @@ export class UserService {
   }
 
   public getUserAddress() {
-    return this.http.get<Address>(API_PATH + `user/address/${this.jwt.nameid}`);
+    return this.http.get<Address>(
+      API_PATH + `address/users/${this.jwt.nameid}`,
+    );
   }
 
   public editUserAddress(address: Address) {
     return this.http.put(
-      API_PATH + `user/address/${this.jwt.nameid}`,
+      API_PATH + `address/users/${this.jwt.nameid}`,
       address,
       {
         observe: 'response',
@@ -44,7 +46,7 @@ export class UserService {
 
   public getUserPurchaseHistory() {
     return this.http.get<string>(
-      API_PATH + `user/purchase-history?userId=${this.jwt.nameid}`,
+      API_PATH + `users/purchase-history?userId=${this.jwt.nameid}`,
     );
   }
 }

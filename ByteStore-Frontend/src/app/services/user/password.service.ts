@@ -16,7 +16,7 @@ export class PasswordService {
     const userId = this.tokenService.getDecodedJwt().nameid;
     const body = { Password: password, Repassword: repassword };
     return this.http.put(
-      API_PATH + `user/change-password?userId=${userId}`,
+      API_PATH + `users/change-password?userId=${userId}`,
       body,
       { observe: 'response', responseType: 'text' },
     );

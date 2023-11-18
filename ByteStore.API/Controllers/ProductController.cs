@@ -72,14 +72,14 @@ namespace ByteStore.API.Controllers
 
         [Authorize]
         [TokenValidation]
-        [HttpPost("review")]
+        [HttpPost("reviews")]
         public async Task<IActionResult> CreateReview(ReviewDto reviewDto)
         {
             var review = await _productService.CreateReview(reviewDto);
             return review == null ? Problem("Something went wrong by creating the review.") : Ok(review);
         }
 
-        [HttpGet("review")]
+        [HttpGet("reviews")]
         public async Task<IActionResult> GetReviews([FromQuery] int productId)
         {
             var reviews = await _productService.GetReviewsByProductId(productId);

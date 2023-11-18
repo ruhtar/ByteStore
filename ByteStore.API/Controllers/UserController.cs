@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ByteStore.API.Controllers;
 
 [ApiController]
-[Route("user")]
+[Route("users")]
 public class UserController : ControllerBase
 {
     private readonly IUserService _userService;
@@ -60,14 +60,14 @@ public class UserController : ControllerBase
 
     [Authorize]
     [TokenValidation]
-    [HttpPut("address/{userId}")]
+    [HttpPut("{userId}/address")]
     public async Task<ActionResult> EditUserAddress([FromRoute] int userId, [FromBody] Address address)
     {
         await _userService.EditUserAddress(address, userId);
         return Ok();
     }
 
-    [HttpGet("address/{userId}")]
+    [HttpGet("{userId}/address")]
     [Authorize]
     [TokenValidation]
     public async Task<ActionResult> GetUserAddress([FromRoute] int userId)
@@ -109,6 +109,7 @@ public class UserController : ControllerBase
         return Ok(userPurchaseHistory);
     }
     
+    //TODO: PORQUE VC FEZ ESSE ENDPOINT?????????????
     [Authorize]
     [TokenValidation]
     [HttpGet("purchase-history/check")]

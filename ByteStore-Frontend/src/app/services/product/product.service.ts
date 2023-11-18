@@ -19,12 +19,12 @@ export class ProductService {
 
   getProductReviews(productId: number) {
     return this.http.get<Review[]>(
-      API_PATH + `products/review?productId=${productId}`,
+      API_PATH + `products/reviews?productId=${productId}`,
     );
   }
 
   createReview(review: Review) {
-    return this.http.post(API_PATH + `products/review`, review, {
+    return this.http.post(API_PATH + `products/reviews`, review, {
       observe: 'response',
     });
   }

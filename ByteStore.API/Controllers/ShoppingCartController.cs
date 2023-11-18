@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 namespace ByteStore.API.Controllers;
 
 [Authorize]
-[Route("cart")]
+[Route("carts")]
 [ApiController]
 [TokenValidation]
 public class ShoppingCartController : ControllerBase
@@ -22,7 +22,7 @@ public class ShoppingCartController : ControllerBase
         _shoppingCartService = shoppingCartService;
     }
 
-    [HttpPost("order")]
+    [HttpPost]
     public async Task<ActionResult<OrderStatus>> MakeOrder(OrderItem item, int userId)
     {
         // if (!IsTokenValid()) return Unauthorized();
@@ -32,7 +32,7 @@ public class ShoppingCartController : ControllerBase
         return BadRequest(result.ToString());
     }
 
-    [HttpGet("buy")]
+    [HttpGet]
     public async Task<ActionResult> BuyOrder(int userId)
     {
         // if (!IsTokenValid()) return Unauthorized();
@@ -41,7 +41,7 @@ public class ShoppingCartController : ControllerBase
         return Ok(BuyOrderStatus.Completed.ToString());
     }
     
-    [HttpGet("user/{userAggregateId}")]
+    [HttpGet("users/{userAggregateId}")]
     public async Task<ActionResult<ShoppingCartResponseDto>> GetShoppingCartByUserAggregateId(
         [FromRoute] int userAggregateId)
     {
@@ -51,7 +51,7 @@ public class ShoppingCartController : ControllerBase
         return Ok(cart);
     }
 
-    [HttpDelete("user/{userAggregateId}/remove")]
+    [HttpDelete("users/{userAggregateId}")]
     public async Task<IActionResult> RemoveProductFromShoppingCart(int userAggregateId, int productId)
     {
         // if (!IsTokenValid()) return Unauthorized();
