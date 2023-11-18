@@ -35,7 +35,7 @@ public class Program
             .AddHostedService<Seeder>() //Seeds database. Make sure that Seeder is below Migrator.
             .AddSwaggerGen()
             .AddDependencyInjection() 
-            .AddJWTConfiguration() 
+            .AddJwtConfiguration() 
             .AddDbContext<AppDbContext>(options => options.UseMySql(
                 connectionString,
                 ServerVersion.AutoDetect(connectionString),

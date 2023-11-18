@@ -113,7 +113,7 @@ public class ShoppingCartService : IShoppingCartService
         return await _shoppingCartRepository.MakeOrder(userAggregateId, data);
     }
 
-    public async Task<ShoppingCartResponseDto> GetShoppingCartByUserAggregateId(int userAggregateId)
+    public async Task<ShoppingCartResponseDto?> GetShoppingCartByUserAggregateId(int userAggregateId)
     {
         var cart = await _shoppingCartRepository.GetShoppingCartByUserAggregateId(userAggregateId);
         if (cart == null) return null;

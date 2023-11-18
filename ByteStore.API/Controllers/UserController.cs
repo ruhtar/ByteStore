@@ -1,3 +1,4 @@
+using ByteStore.API.Attributes;
 using ByteStore.Application.Services.Interfaces;
 using ByteStore.Application.Validator;
 using ByteStore.Domain.Entities;
@@ -28,7 +29,6 @@ public class UserController : ControllerBase
     [AllowAnonymous]
     public async Task<IActionResult> Signup([FromBody] SignupUserDto user)
     {
-        if (user == null) return BadRequest("User is required.");
         var userValidatorStatus = await _userValidator.ValidateUser(user);
         switch (userValidatorStatus)
         {
@@ -61,6 +61,7 @@ public class UserController : ControllerBase
     }
 
     [Authorize]
+    [TokenValidation]
     [HttpPut("address/{userId}")]
     public async Task<ActionResult> EditUserAddress([FromRoute] int userId, [FromBody] Address address)
     {
@@ -71,6 +72,7 @@ public class UserController : ControllerBase
 
     [HttpGet("address/{userId}")]
     [Authorize]
+    [TokenValidation]
     public async Task<ActionResult> GetUserAddress([FromRoute] int userId)
     {
         if (!IsTokenValid()) return Unauthorized();
@@ -82,6 +84,7 @@ public class UserController : ControllerBase
 
     [HttpPut("change-password")]
     [Authorize]
+    [TokenValidation]
     public async Task<IActionResult?> ChangePassword(int userId, [FromBody] ChangePasswordRequestDto passwordDto)
     {
         if (!IsTokenValid()) return Unauthorized();
@@ -102,6 +105,7 @@ public class UserController : ControllerBase
     }
 
     [Authorize]
+    [TokenValidation]
     [HttpGet("purchase-history")]
     public async Task<IActionResult> GetUserPurchaseHistory(int userId)
     {
@@ -112,6 +116,7 @@ public class UserController : ControllerBase
     }
     
     [Authorize]
+    [TokenValidation]
     [HttpGet("purchase-history/check")]
     public async Task<IActionResult> CheckIfUserHasBoughtAProduct(int userId, int productId)
     {

@@ -51,7 +51,7 @@ public class UserService : IUserService
         await _userRepository.EditUserAddress(address, userId);
     }
 
-    public async Task<Address> GetUserAddress(int userId)
+    public async Task<Address?> GetUserAddress(int userId)
     {
         return await _userRepository.GetUserAddress(userId);
     }

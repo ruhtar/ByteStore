@@ -6,9 +6,9 @@ namespace ByteStore.API.Extensions;
 
 public static class AuthenticationExtensions
 {
-    public static IServiceCollection AddJWTConfiguration(this IServiceCollection services)
+    public static IServiceCollection AddJwtConfiguration(this IServiceCollection services)
     {
-        var key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET"));
+        var key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET") ?? string.Empty);
         services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

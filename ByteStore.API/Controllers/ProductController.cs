@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ByteStore.API.Attributes;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using ByteStore.Application.Services.Interfaces;
 using ByteStore.Domain.Entities;
@@ -37,6 +38,8 @@ namespace ByteStore.API.Controllers
             return Ok(product);
         }
 
+        [Authorize]
+        [TokenValidation]
         [HttpPost]
         public async Task<ActionResult<Product>> CreateProduct([FromForm] ProductDto productDto)
         {
@@ -46,7 +49,9 @@ namespace ByteStore.API.Controllers
             var newProduct = await _productService.AddProduct(productDto);
             return CreatedAtAction(nameof(GetProduct), new { id = newProduct.ProductId }, newProduct);
         }
-
+        
+        [Authorize]
+        [TokenValidation]
         [HttpPut("{id:int}")]
         public async Task<ActionResult<Product>> UpdateProduct(int id, [FromForm] UpdateProductDto productDto)
         {
@@ -57,6 +62,8 @@ namespace ByteStore.API.Controllers
             return NoContent(); // Use NoContent for successful updates
         }
 
+        [Authorize]
+        [TokenValidation]
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> DeleteProduct(int id)
         {
@@ -66,6 +73,7 @@ namespace ByteStore.API.Controllers
         }
 
         [Authorize]
+        [TokenValidation]
         [HttpPost("review")]
         public async Task<IActionResult> CreateReview(ReviewDto reviewDto)
         {
