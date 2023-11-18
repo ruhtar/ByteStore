@@ -16,12 +16,10 @@ namespace ByteStore.API.Controllers;
 public class ShoppingCartController : ControllerBase
 {
     private readonly IShoppingCartService _shoppingCartService;
-    private readonly ITokenService _tokenService;
 
-    public ShoppingCartController(IShoppingCartService shoppingCartService, ITokenService tokenService)
+    public ShoppingCartController(IShoppingCartService shoppingCartService)
     {
         _shoppingCartService = shoppingCartService;
-        _tokenService = tokenService;
     }
 
     [HttpPost("order")]

@@ -13,12 +13,10 @@ namespace ByteStore.API.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
-        private readonly ITokenService _tokenService;
 
-        public ProductController(IProductService productService, ITokenService tokenService)
+        public ProductController(IProductService productService)
         {
             _productService = productService;
-            _tokenService = tokenService;
         }
 
         [HttpGet]
@@ -77,7 +75,6 @@ namespace ByteStore.API.Controllers
         [HttpPost("review")]
         public async Task<IActionResult> CreateReview(ReviewDto reviewDto)
         {
-            if (!IsTokenValid()) return Unauthorized();
             var review = await _productService.CreateReview(reviewDto);
             return review == null ? Problem("Something went wrong by creating the review.") : Ok(review);
         }
@@ -95,18 +92,6 @@ namespace ByteStore.API.Controllers
                 .Child("ByteStore")
                 .Child(productDto.Name)
                 .PutAsync(productDto.Image.OpenReadStream());
-        }
-
-        private bool IsTokenValid()
-        {
-            string token = HttpContext.Request.Headers["Authorization"];
-
-            if (string.IsNullOrEmpty(token)) return false;
-
-            // Remove o prefixo "Bearer " do token, se presente
-            token = token.Replace("Bearer ", "");
-
-            return _tokenService.ValidateToken(token);
         }
     }
 }
