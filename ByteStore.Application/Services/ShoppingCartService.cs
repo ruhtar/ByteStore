@@ -1,4 +1,5 @@
-﻿using ByteStore.Domain.ValueObjects;
+﻿using System.Text.Json;
+using ByteStore.Domain.ValueObjects;
 using ByteStore.Shared.DTO;
 using ByteStore.Shared.Enums;
 using ByteStore.Application.Services.Interfaces;
@@ -6,6 +7,7 @@ using ByteStore.Domain.Entities;
 using ByteStore.Infrastructure.Repository.Interfaces;
 using ByteStore.Infrastructure.Cache;
 using ByteStore.Infrastructure.Repositories.Interfaces;
+using ByteStore.Shared.Utils;
 
 namespace ByteStore.Application.Services;
 
@@ -83,7 +85,7 @@ public class ShoppingCartService : IShoppingCartService
         return await _shoppingCartRepository.BuyOrder(userAggregateId);
     }
 
-    public async Task<OrderStatus> MakeOrder(OrderItem itemToAdd, int userAggregateId)
+    public async Task<OrderStatus?> MakeOrder(OrderItem itemToAdd, int userAggregateId)
     {
         var availableProduct = await _productRepository.GetProductById(itemToAdd.ProductId);
 
@@ -95,18 +97,30 @@ public class ShoppingCartService : IShoppingCartService
         if (shoppingCart == null)
             return OrderStatus.ProductNotFound;
 
+        var orderItems = new List<OrderItem>();
         var cartOrderItem = shoppingCart.OrderItems.FirstOrDefault(x => x.ProductId == itemToAdd.ProductId);
+        //Primeira vez do item no carrinho
         if (cartOrderItem == null)
             cartOrderItem = new OrderItem
             {
                 ProductId = itemToAdd.ProductId,
-                Quantity = 0
+                Quantity = 0 //itemToAdd.Quantity não??????
             };
 
         if (availableProduct.ProductQuantity < cartOrderItem.Quantity + itemToAdd.Quantity)
             return OrderStatus.InvalidQuantity;
+        
+  
+        cartOrderItem.Quantity += itemToAdd.Quantity;
+        
 
-        return await _shoppingCartRepository.MakeOrder(itemToAdd, userAggregateId);
+        if (cartOrderItem.Quantity < 0) cartOrderItem.Quantity = 0;
+
+        orderItems.Add(cartOrderItem);
+
+        var data = Utils.Serializer(orderItems);
+        
+        return await _shoppingCartRepository.MakeOrder(userAggregateId, data);
     }
 
     public async Task<ShoppingCartResponseDto> GetShoppingCartByUserAggregateId(int userAggregateId)

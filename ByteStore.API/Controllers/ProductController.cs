@@ -47,7 +47,7 @@ namespace ByteStore.API.Controllers
             return CreatedAtAction(nameof(GetProduct), new { id = newProduct.ProductId }, newProduct);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public async Task<ActionResult<Product>> UpdateProduct(int id, [FromForm] UpdateProductDto productDto)
         {
             if (productDto.Price <= 0) return BadRequest("Invalid price");
@@ -57,7 +57,7 @@ namespace ByteStore.API.Controllers
             return NoContent(); // Use NoContent for successful updates
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public async Task<ActionResult> DeleteProduct(int id)
         {
             var success = await _productService.DeleteProduct(id);

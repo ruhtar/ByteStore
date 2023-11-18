@@ -12,6 +12,6 @@ public interface IShoppingCartRepository
 
     //Task<ShoppingCartDto?> GetShoppingCartById(int shoppingCartId);
     Task<ShoppingCartDto?> GetShoppingCartByUserAggregateId(int userAggregateId);
-    Task<OrderStatus> MakeOrder(OrderItem itemToAdd, int shoppingCartId);
+    Task<OrderStatus?> MakeOrder(int shoppingCartId, byte[] data);
     Task RemoveProductFromCart(int userAggregateId, int productId);
 }

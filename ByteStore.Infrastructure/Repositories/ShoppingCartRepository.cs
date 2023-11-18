@@ -28,22 +28,7 @@ public class ShoppingCartRepository : IShoppingCartRepository
         await _context.ShoppingCarts.AddAsync(shoppingCart);
         await _context.SaveChangesAsync();
     }
-
-    //public async Task<ShoppingCartDto?> GetShoppingCartById(int shoppingCartId)
-    //{
-    //    var cart = await _context.ShoppingCarts
-    //        .AsNoTracking()
-    //        .FirstOrDefaultAsync(x => x.ShoppingCartId == shoppingCartId);
-
-    //    if (cart == null) { return null; }
-    //    var orderItem = JsonSerializer.Deserialize<List<OrderItem>>(cart.OrderItems);
-    //    return new ShoppingCartDto
-    //    {
-    //        ShoppingCartId = shoppingCartId,
-    //        UserAggregateId = cart.UserAggregateId,
-    //        OrderItems = orderItem
-    //    };
-    //}
+    
     public async Task<ShoppingCartDto?> GetShoppingCartByUserAggregateId(int userAggregateId)
     {
         var shoppingCart = await _context.ShoppingCarts
@@ -63,36 +48,12 @@ public class ShoppingCartRepository : IShoppingCartRepository
         };
     }
 
-    public async Task<OrderStatus> MakeOrder(OrderItem itemToAdd, int userAggregateId)
+    public async Task<OrderStatus?> MakeOrder(int userAggregateId, byte[] data)
     {
-        //TODO: refatorar para camada de serviço
-        var shoppingCart = await _context.ShoppingCarts.FirstOrDefaultAsync(x => x.UserAggregateId == userAggregateId);
-
-        var orderItems = new List<OrderItem>();
-
-        if (shoppingCart!.OrderItems != null && shoppingCart.OrderItems.Length != 0)
-            orderItems = JsonSerializer.Deserialize<List<OrderItem>>(shoppingCart.OrderItems);
-
-        var existingItem = orderItems!.FirstOrDefault(x => x.ProductId == itemToAdd.ProductId);
-
-        //Primeira vez do item no carrinho
-        if (existingItem == null)
-        {
-            existingItem = new OrderItem
-            {
-                ProductId = itemToAdd.ProductId,
-                Quantity = itemToAdd.Quantity
-            };
-            orderItems!.Add(existingItem);
-        }
-        else
-        {
-            existingItem.Quantity += itemToAdd.Quantity;
-        }
-
-        if (existingItem.Quantity < 0) existingItem.Quantity = 0;
-
-        shoppingCart.OrderItems = Utils.Serializer(orderItems);
+        var cart = await _context.ShoppingCarts
+            .FirstOrDefaultAsync(x => x.UserAggregateId == userAggregateId);
+        if (cart == null) return null;
+        cart.OrderItems = data;
         await _context.SaveChangesAsync();
         return OrderStatus.Approved;
     }
