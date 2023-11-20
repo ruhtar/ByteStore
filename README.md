@@ -40,10 +40,6 @@ Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers
 
 # API Endpoint Description
 
-# API Endpoint Description
-
-# API Endpoint Description
-
 | Resource                                           | Method | Endpoint                                    |
 | -------------------------------------------------- | ------ | ------------------------------------------- |
 | Retrieve a list of available products.             | GET    | /products                                  |
@@ -63,8 +59,6 @@ Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers
 | Change the password of a user.                | PUT    | /users/change-password                    |
 | Retrieve the purchase history of a user.     | GET    | /users/purchase-history                   |
 | Check if a product has been purchased by a user. | GET    | /users/purchase-history/check             |
-
-
 
 
 ByteStore is an evolving e-commerce platform that's continually being improved and expanded. We're excited to offer a seamless shopping experience while prioritizing security and performance. Thank you for being a part of ByteStore! 🛒🚀
