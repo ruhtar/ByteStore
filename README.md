@@ -42,25 +42,28 @@ Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers
 
 # API Endpoint Description
 
-| Resource                                  | Method | Endpoint                                    |
-| ----------------------------------------- | ------ | ------------------------------------------- |
-| Retrieve a list of available products.    | GET    | /products                                  |
-| Create a new product.                      | POST   | /products                                  |
-| Retrieve details of a specific product.   | GET    | /products/{id}                             |
-| Update details of a specific product.     | PUT    | /products/{id}                             |
-| Delete a specific product.                 | DELETE | /products/{id}                             |
-| Add a review for a product.                | POST   | /products/reviews                          |
-| Retrieve a list of product reviews.        | GET    | /products/reviews                          |
-| Make an order of a product to the users cart.                | POST   | /carts                                     |
-| Complete the purchase of a users cart.     | GET    | /carts                                     |
-| Retrieve the shopping cart for a user.     | GET    | /carts/users/{userAggregateId}            |
-| Register a new user.                       | POST   | /users/signup                              |
-| Authenticate a user.                       | POST   | /users/signin                              |
-| Update the address of a user.              | PUT    | /users/{userId}/address                   |
-| Retrieve the address of a user.            | GET    | /users/{userId}/address                   |
-| Change the password of a user.             | PUT    | /users/change-password                    |
-| Retrieve the purchase history of a user.  | GET    | /users/purchase-history                   |
-| Check the purchase history of a user.      | GET    | /users/purchase-history/check             |
+# API Endpoint Description
+
+| Resource                                           | Method | Endpoint                                    |
+| -------------------------------------------------- | ------ | ------------------------------------------- |
+| Retrieve a list of available products.             | GET    | /products                                  |
+| Create a new product.                               | POST   | /products                                  |
+| Retrieve details of a specific product.          | GET    | /products/{id}                             |
+| Update details of a specific product.           | PUT    | /products/{id}                             |
+| Delete a specific product.                           | DELETE | /products/{id}                             |
+| Add a review for a product.                          | POST   | /products/reviews                          |
+| Retrieve a list of product reviews.                | GET    | /products/reviews                          |
+| Make an order of a product to the user's cart.   | POST   | /carts                                     |
+| Complete the purchase of the user's cart.     | GET    | /carts                                     |
+| Retrieve the shopping cart for a user.           | GET    | /carts/users/{id}            |
+| Register a new user.                                    | POST   | /users/signup                              |
+| Authenticate a user.                                    | POST   | /users/signin                              |
+| Update the address of a user.                   | PUT    | /users/{id}/address                   |
+| Retrieve the address of a user.                  | GET    | /users/{id}/address                   |
+| Change the password of a user.                | PUT    | /users/change-password                    |
+| Retrieve the purchase history of a user.     | GET    | /users/purchase-history                   |
+| Check if a product has been purchased by a user. | GET    | /users/purchase-history/check             |
+
 
 
 
