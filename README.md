@@ -38,4 +38,85 @@ Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers
 
     - This distributed cache enables the application to share cached data across multiple instances, reducing the need for frequent database queries and delivering improved overall performance.
 
+# API Endpoint Description
+
+## Products
+
+### 1. List Products
+- **Method:** GET
+- **Endpoint:** /products
+
+### 2. Create New Product
+- **Method:** POST
+- **Endpoint:** /products
+
+### 3. Get Product Details
+- **Method:** GET
+- **Endpoint:** /products/{id}
+
+### 4. Update Product
+- **Method:** PUT
+- **Endpoint:** /products/{id}
+
+### 5. Delete Product
+- **Method:** DELETE
+- **Endpoint:** /products/{id}
+
+### 6. Add Product Review
+- **Method:** POST
+- **Endpoint:** /products/reviews
+
+### 7. List Product Reviews
+- **Method:** GET
+- **Endpoint:** /products/reviews
+
+## Shopping Cart
+
+### 8. Create Cart
+- **Method:** POST
+- **Endpoint:** /carts
+
+### 9. List Carts
+- **Method:** GET
+- **Endpoint:** /carts
+
+### 10. Get User's Cart
+- **Method:** GET
+- **Endpoint:** /carts/users/{userAggregateId}
+
+### 11. Delete User's Cart
+- **Method:** DELETE
+- **Endpoint:** /carts/users/{userAggregateId}
+
+## User
+
+### 12. Sign Up
+- **Method:** POST
+- **Endpoint:** /users/signup
+
+### 13. Sign In
+- **Method:** POST
+- **Endpoint:** /users/signin
+
+### 14. Update User Address
+- **Method:** PUT
+- **Endpoint:** /users/{userId}/address
+
+### 15. Get User Address
+- **Method:** GET
+- **Endpoint:** /users/{userId}/address
+
+### 16. Change User Password
+- **Method:** PUT
+- **Endpoint:** /users/change-password
+
+### 17. User Purchase History
+- **Method:** GET
+- **Endpoint:** /users/purchase-history
+
+### 18. Check User Purchase History
+- **Method:** GET
+- **Endpoint:** /users/purchase-history/check
+
+
 ByteStore is an evolving e-commerce platform that's continually being improved and expanded. We're excited to offer a seamless shopping experience while prioritizing security and performance. Thank you for being a part of ByteStore! 🛒🚀
