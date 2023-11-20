@@ -40,26 +40,28 @@ Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers
 
 # API Endpoint Description
 
-| Resource               | Method | Endpoint                                    |
-| ---------------------- | ------ | ------------------------------------------- |
-| List Products          | GET    | /products                                  |
-| Create New Product     | POST   | /products                                  |
-| Get Product Details    | GET    | /products/{id}                             |
-| Update Product         | PUT    | /products/{id}                             |
-| Delete Product         | DELETE | /products/{id}                             |
-| Add Product Review     | POST   | /products/reviews                          |
-| List Product Reviews   | GET    | /products/reviews                          |
-| Create Cart            | POST   | /carts                                     |
-| List Carts             | GET    | /carts                                     |
-| Get User's Cart        | GET    | /carts/users/{userAggregateId}            |
-| Delete User's Cart     | DELETE | /carts/users/{userAggregateId}            |
-| Sign Up                | POST   | /users/signup                              |
-| Sign In                | POST   | /users/signin                              |
-| Update User Address    | PUT    | /users/{userId}/address                   |
-| Get User Address       | GET    | /users/{userId}/address                   |
-| Change User Password   | PUT    | /users/change-password                    |
-| User Purchase History  | GET    | /users/purchase-history                   |
-| Check User Purchase History | GET | /users/purchase-history/check             |
+# API Endpoint Description
+
+| Resource                                  | Method | Endpoint                                    |
+| ----------------------------------------- | ------ | ------------------------------------------- |
+| Retrieve a list of available products.    | GET    | /products                                  |
+| Create a new product.                      | POST   | /products                                  |
+| Retrieve details of a specific product.   | GET    | /products/{id}                             |
+| Update details of a specific product.     | PUT    | /products/{id}                             |
+| Delete a specific product.                 | DELETE | /products/{id}                             |
+| Add a review for a product.                | POST   | /products/reviews                          |
+| Retrieve a list of product reviews.        | GET    | /products/reviews                          |
+| Make an order of a product to the users cart.                | POST   | /carts                                     |
+| Complete the purchase of a users cart.     | GET    | /carts                                     |
+| Retrieve the shopping cart for a user.     | GET    | /carts/users/{userAggregateId}            |
+| Register a new user.                       | POST   | /users/signup                              |
+| Authenticate a user.                       | POST   | /users/signin                              |
+| Update the address of a user.              | PUT    | /users/{userId}/address                   |
+| Retrieve the address of a user.            | GET    | /users/{userId}/address                   |
+| Change the password of a user.             | PUT    | /users/change-password                    |
+| Retrieve the purchase history of a user.  | GET    | /users/purchase-history                   |
+| Check the purchase history of a user.      | GET    | /users/purchase-history/check             |
+
 
 
 ByteStore is an evolving e-commerce platform that's continually being improved and expanded. We're excited to offer a seamless shopping experience while prioritizing security and performance. Thank you for being a part of ByteStore! 🛒🚀
