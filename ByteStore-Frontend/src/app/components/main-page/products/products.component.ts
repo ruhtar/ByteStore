@@ -36,7 +36,6 @@ export class ProductsComponent {
   searchProducts() {
     this.filterByPrice();
     const filterLowerCase = this.filterValue.toLowerCase();
-    console.log(filterLowerCase);
 
     this.exibidProducts = this.exibidProducts.filter((product) => {
       return product.name.toLowerCase().includes(filterLowerCase);

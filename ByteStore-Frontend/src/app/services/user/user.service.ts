@@ -29,13 +29,13 @@ export class UserService {
 
   public getUserAddress() {
     return this.http.get<Address>(
-      API_PATH + `address/users/${this.jwt.nameid}`,
+      API_PATH + `users/${this.jwt.nameid}/address`,
     );
   }
 
   public editUserAddress(address: Address) {
     return this.http.put(
-      API_PATH + `address/users/${this.jwt.nameid}`,
+      API_PATH + `users/${this.jwt.nameid}/address`,
       address,
       {
         observe: 'response',

@@ -20,14 +20,14 @@ export class AuthService {
   }
 
   signup(user: UserAggregate) {
-    return this.http.post(API_PATH + 'user/signup', user, {
+    return this.http.post(API_PATH + 'users/signup', user, {
       observe: 'response',
       responseType: 'text',
     });
   }
 
   signIn(user: User) {
-    return this.http.post<IToken>(API_PATH + 'user/signin', user).pipe(
+    return this.http.post<IToken>(API_PATH + 'users/signin', user).pipe(
       tap((response: IToken) => {
         localStorage.setItem('access_token', response.token);
         this._isLoggedIn.next(true);

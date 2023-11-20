@@ -108,7 +108,9 @@ public class ShoppingCartService : IShoppingCartService
         cartOrderItem.Quantity += itemToAdd.Quantity;
         if (cartOrderItem.Quantity < 0) cartOrderItem.Quantity = 0;
 
-        var data = Utils.Serializer(new List<OrderItem> { cartOrderItem });
+        shoppingCart.OrderItems.Add(cartOrderItem);
+
+        var data = Utils.Serializer(shoppingCart.OrderItems);
         
         return await _shoppingCartRepository.MakeOrder(userAggregateId, data);
     }
