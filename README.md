@@ -1,4 +1,4 @@
-# ByteStore Ecommerce Project - Work in Progress 🤑
+# ByteStore Ecommerce Project - Work in Progress 🛒🤑
 
 Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers a comprehensive range of features that cater to both customers and the security-conscious, all built on a robust tech stack that includes .NET, Entity Framework Core, Angular, MySQL, JWT, Docker, Firebase, and Redis cache.
 
