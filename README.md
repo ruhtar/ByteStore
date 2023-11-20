@@ -18,9 +18,9 @@ Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers
 
 ### Shopping Features:
 
-- **View Products**: Users can explore the product listings in the store, complete with filters for names and prices. Sorting options by alphabetical and price order, in ascending and descending order, make navigation easier.
+- **View Products**: Users can explore the product listings in the store and check products photos, prices, number of items in stock, descriptions and check other user's reviews about a specific product. All of this is complete with filters for names and prices. Sorting options by alphabetical and price order, in ascending and descending order, make navigation easier. Also, there is a pagination system in frontend and backend for more usability.
 
-- **Add to Shopping Cart**: Logged-in users can add products to their shopping carts and proceed to make purchases. If a user isn't logged in, they'll be prompted to do so before accessing their cart.
+- **Shopping Cart**: Logged-in users can add and remove products to their shopping carts and proceed to make purchases. If a user isn't logged in, they'll be prompted to do so before accessing their cart.
 
 - **Edit Shopping Cart Items**: Users have the flexibility to adjust item quantities or remove items from their shopping carts.
 
