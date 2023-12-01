@@ -25,6 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\ByteStore.Application\ByteStore.Application.csproj" />
       <ProjectReference Include="..\ByteStore.Infrastructure\ByteStore.Infrastructure.csproj" />
       <ProjectReference Include="..\ByteStore.Shared\ByteStore.Shared.csproj" />
     </ItemGroup>

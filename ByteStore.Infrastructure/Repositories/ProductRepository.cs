@@ -41,14 +41,11 @@ public class ProductRepository : IProductRepository
 
         //This is just for testing if cache is avaible.
         //Thread.Sleep(5000);
-
-
         // var cacheData = JsonSerializer.Serialize(products);
         // await _cache.SetAsync(AllProductsKey, cacheData);
-
         //stopwatch.Stop();
-
         //Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
+        
         return products;
     }
 
