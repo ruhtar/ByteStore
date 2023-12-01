@@ -24,7 +24,7 @@
   width: 200px;
 }
 
-.mat-input-element {
+mat-input-element {
   font-size: 16px;
   padding: 10px;
   border: 1px solid #ccc;
@@ -95,14 +95,14 @@
 
 .filter-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  flex-direction: row;
-  padding: 20px;
+  flex-wrap: wrap;
   background-color: #f2f2f2;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin: 20px auto;
+  padding: 20px;
   max-width: 80%;
 }
 
@@ -160,4 +160,5 @@
 
 mat-form-field {
   min-height: 80px;
+  width: 300px;
 }

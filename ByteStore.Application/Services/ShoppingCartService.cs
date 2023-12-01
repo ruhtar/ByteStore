@@ -94,21 +94,23 @@ public class ShoppingCartService : IShoppingCartService
             return OrderStatus.ProductNotFound;
 
         var cartOrderItem = shoppingCart.OrderItems.FirstOrDefault(x => x.ProductId == itemToAdd.ProductId);
-        
+
         if (cartOrderItem == null) //this means that is the first time the item is in the user`s cart
+        {
             cartOrderItem = new OrderItem
             {
                 ProductId = itemToAdd.ProductId,
                 Quantity = 0 
             };
+            shoppingCart.OrderItems.Add(cartOrderItem);
+        } 
 
         if (availableProduct.ProductQuantity < cartOrderItem.Quantity + itemToAdd.Quantity)
             return OrderStatus.InvalidQuantity;
   
         cartOrderItem.Quantity += itemToAdd.Quantity;
         if (cartOrderItem.Quantity < 0) cartOrderItem.Quantity = 0;
-
-        shoppingCart.OrderItems.Add(cartOrderItem);
+        
 
         var data = Utils.Serializer(shoppingCart.OrderItems);
         
