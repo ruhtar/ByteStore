@@ -1,6 +1,5 @@
 ﻿using ByteStore.Domain.Entities;
 using ByteStore.Domain.ValueObjects;
-using ByteStore.Infrastructure.Repositories;
 using ByteStore.Shared.DTO;
 using Xunit;
 
@@ -50,8 +49,7 @@ public class ProductRepositoryTests
         // Arrange
         var productRepository = Utils.GetProductRepository();
 
-        var newProduct = Utils.GetProductMocks()[0];
-        await productRepository.AddProduct(newProduct);
+        var newProduct = await productRepository.AddProduct(Utils.GetProductMocks()[0]);
 
         // Act
         var result = await productRepository.GetProductById(newProduct.ProductId);
@@ -68,24 +66,23 @@ public class ProductRepositoryTests
         // Arrange
         var productRepository = Utils.GetProductRepository();
 
-        var newProduct = Utils.GetProductMocks()[0];
-        await productRepository.AddProduct(newProduct);
+        var newProduct = await productRepository.AddProduct(Utils.GetProductMocks()[0]);
 
         // Act
         var result = await productRepository.GetProductById(42);
 
         // Assert
+        Assert.NotEqual(newProduct.ProductId, 42);
         Assert.Null(result);
     }
     
     [Fact]
-    internal async Task UpdateProduct_ReturnsTrueOnSuccess()
+    internal async Task UpdateProduct_ReturnsTrue()
     {
         // Arrange
         var productRepository = Utils.GetProductRepository();
 
-        var newProduct = Utils.GetProductMocks()[0];
-        await productRepository.AddProduct(newProduct);
+        var newProduct = await productRepository.AddProduct(Utils.GetProductMocks()[0]);
 
         // Act
         var updateDto = new UpdateProductDto
@@ -108,13 +105,12 @@ public class ProductRepositoryTests
     }
     
     [Fact]
-    internal async Task UpdateProduct_ReturnsFalseOnSuccess()
+    internal async Task UpdateProduct_ReturnsFalse()
     {
         // Arrange
         var productRepository = Utils.GetProductRepository();
 
-        var newProduct = Utils.GetProductMocks()[0];
-        await productRepository.AddProduct(newProduct);
+        var newProduct = await productRepository.AddProduct(Utils.GetProductMocks()[0]);
 
         // Act
         var updateDto = new UpdateProductDto();
@@ -125,14 +121,12 @@ public class ProductRepositoryTests
     }
 
     [Fact]
-    internal async Task DeleteProduct_ReturnsTrueOnSuccess()
+    internal async Task DeleteProduct_ReturnsTrue()
     {
         // Arrange
         var productRepository = Utils.GetProductRepository();
 
-        // Add a product for testing
-        var newProduct = new Product { /* Set product properties */ };
-        await productRepository.AddProduct(newProduct);
+        var newProduct = await productRepository.AddProduct(Utils.GetProductMocks()[0]);
 
         // Act
         var result = await productRepository.DeleteProduct(newProduct.ProductId);
@@ -141,6 +135,22 @@ public class ProductRepositoryTests
         Assert.True(result);
     }
 
+    [Fact]
+    internal async Task DeleteProduct_ReturnsFalse()
+    {
+        // Arrange
+        var productRepository = Utils.GetProductRepository();
+
+        var newProduct = await productRepository.AddProduct(Utils.GetProductMocks()[0]);
+
+        // Act
+        var result = await productRepository.DeleteProduct(42);
+
+        // Assert
+        Assert.NotEqual(newProduct.ProductId, 42);
+        Assert.False(result);
+    }
+    
     [Fact]
     internal async Task GetReviews_ReturnsReviewsForProduct()
     {

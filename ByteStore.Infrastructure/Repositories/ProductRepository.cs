@@ -85,9 +85,8 @@ public class ProductRepository : IProductRepository
         if (product == null) return false;
 
         _context.Products.Remove(product);
-        await _context.SaveChangesAsync();
-
-        return true;
+        var changes = await _context.SaveChangesAsync();
+        return changes > 0;
     }
 
     public async Task<List<Review>?> GetReviews(int productId)
