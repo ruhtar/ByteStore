@@ -15,7 +15,7 @@ public class ProductService : IProductService
         _productRepository = productRepository;
     }
 
-    public async Task<List<Product>> GetAllProducts(GetProductsInputPagination input)
+    public async Task<List<Product?>> GetAllProducts(GetProductsInputPagination input)
     {
         return await _productRepository.GetAllProducts(input);
     }
@@ -25,7 +25,7 @@ public class ProductService : IProductService
         return await _productRepository.GetProductById(id);
     }
 
-    public async Task<Product> AddProduct(ProductDto productDto)
+    public async Task<Product?> AddProduct(ProductDto productDto)
     {
         var product = new Product
         {

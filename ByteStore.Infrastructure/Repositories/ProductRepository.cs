@@ -18,7 +18,7 @@ public class ProductRepository : IProductRepository
         // _cache = cache;
     }
 
-    public async Task<List<Product>> GetAllProducts(GetProductsInputPagination input)
+    public async Task<List<Product?>> GetAllProducts(GetProductsInputPagination input)
     {
         //This is just for testing if cache is avaible.
         //var stopwatch = new Stopwatch();
@@ -56,11 +56,11 @@ public class ProductRepository : IProductRepository
             .FirstOrDefaultAsync(x => x.ProductId == id);
     }
 
-    public async Task<Product> AddProduct(Product product)
+    public async Task<Product?> AddProduct(Product? product)
     {
         await _context.Products.AddAsync(product);
-        await _context.SaveChangesAsync();
-        return product;
+        var changes = await _context.SaveChangesAsync();
+        return changes > 0 ? product : null;
     }
 
     public async Task<bool> UpdateProduct(int id, UpdateProductDto product)

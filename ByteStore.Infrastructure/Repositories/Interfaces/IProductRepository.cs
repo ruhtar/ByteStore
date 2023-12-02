@@ -6,9 +6,9 @@ namespace ByteStore.Infrastructure.Repositories.Interfaces;
 
 public interface IProductRepository
 {
-    Task<Product> AddProduct(Product product);
+    Task<Product?> AddProduct(Product? product);
     Task<bool> DeleteProduct(int id);
-    Task<List<Product>> GetAllProducts(GetProductsInputPagination getProductsInputPagination);
+    Task<List<Product?>> GetAllProducts(GetProductsInputPagination getProductsInputPagination);
     Task<Product?> GetProductById(int id);
     Task<bool> UpdateProduct(int id, UpdateProductDto product);
     Task<Review> CreateReview(Review reviewDto);
