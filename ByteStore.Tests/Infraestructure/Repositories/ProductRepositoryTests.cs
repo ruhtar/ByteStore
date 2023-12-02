@@ -45,13 +45,11 @@ public class ProductRepositoryTests
     }
     
     [Fact]
-    public async Task GetProductById_ReturnsCorrectProduct()
+    internal async Task GetProductById_ReturnsCorrectProduct()
     {
         // Arrange
-        var dbContext = Utils.GetDbContext();
-        var productRepository = new ProductRepository(dbContext);
+        var productRepository = Utils.GetProductRepository();
 
-        // Add a product for testing
         var newProduct = Utils.GetProductMocks()[0];
         await productRepository.AddProduct(newProduct);
 
@@ -65,13 +63,11 @@ public class ProductRepositoryTests
     }
     
     [Fact]
-    public async Task GetProductById_ReturnsNull()
+    internal async Task GetProductById_ReturnsNull()
     {
         // Arrange
-        var dbContext = Utils.GetDbContext();
-        var productRepository = new ProductRepository(dbContext);
+        var productRepository = Utils.GetProductRepository();
 
-        // Add a product for testing
         var newProduct = Utils.GetProductMocks()[0];
         await productRepository.AddProduct(newProduct);
 
@@ -83,30 +79,56 @@ public class ProductRepositoryTests
     }
     
     [Fact]
-    public async Task UpdateProduct_ReturnsTrueOnSuccess()
+    internal async Task UpdateProduct_ReturnsTrueOnSuccess()
     {
         // Arrange
-        var dbContext = Utils.GetDbContext();
-        var productRepository = new ProductRepository(dbContext);
+        var productRepository = Utils.GetProductRepository();
 
-        // Add a product for testing
-        var newProduct = new Product { /* Set product properties */ };
+        var newProduct = Utils.GetProductMocks()[0];
         await productRepository.AddProduct(newProduct);
 
         // Act
-        var updateDto = new UpdateProductDto { /* Set updated properties */ };
+        var updateDto = new UpdateProductDto
+        {
+            Name = "NOME ATUALIZADO",
+            Price = 12121212121,
+            ProductQuantity = 11,
+            Description = "DESCRICAO ATUALIZADA"
+        };
         var result = await productRepository.UpdateProduct(newProduct.ProductId, updateDto);
+
+        var product = await productRepository.GetProductById(newProduct.ProductId);
 
         // Assert
         Assert.True(result);
+        Assert.Equal(product!.Name, updateDto.Name);
+        Assert.Equal(product.Price, updateDto.Price);
+        Assert.Equal(product.ProductQuantity, updateDto.ProductQuantity);
+        Assert.Equal(product.Description, updateDto.Description);
+    }
+    
+    [Fact]
+    internal async Task UpdateProduct_ReturnsFalseOnSuccess()
+    {
+        // Arrange
+        var productRepository = Utils.GetProductRepository();
+
+        var newProduct = Utils.GetProductMocks()[0];
+        await productRepository.AddProduct(newProduct);
+
+        // Act
+        var updateDto = new UpdateProductDto();
+        var result = await productRepository.UpdateProduct(newProduct.ProductId, updateDto);
+
+        // Assert
+        Assert.False(result);
     }
 
     [Fact]
-    public async Task DeleteProduct_ReturnsTrueOnSuccess()
+    internal async Task DeleteProduct_ReturnsTrueOnSuccess()
     {
         // Arrange
-        var dbContext = Utils.GetDbContext();
-        var productRepository = new ProductRepository(dbContext);
+        var productRepository = Utils.GetProductRepository();
 
         // Add a product for testing
         var newProduct = new Product { /* Set product properties */ };
@@ -120,12 +142,11 @@ public class ProductRepositoryTests
     }
 
     [Fact]
-    public async Task GetReviews_ReturnsReviewsForProduct()
+    internal async Task GetReviews_ReturnsReviewsForProduct()
     {
         // Arrange
-        var dbContext = Utils.GetDbContext();
-        var productRepository = new ProductRepository(dbContext);
-
+        var productRepository = Utils.GetProductRepository();
+        
         // Add a product with reviews for testing
         var newProduct = new Product { /* Set product properties */ };
         var newReview = new Review { /* Set review properties */ };
@@ -142,11 +163,10 @@ public class ProductRepositoryTests
     }
 
     [Fact]
-    public async Task CreateReview_ReturnsAddedReview()
+    internal async Task CreateReview_ReturnsAddedReview()
     {
         // Arrange
-        var dbContext = Utils.GetDbContext();
-        var productRepository = new ProductRepository(dbContext);
+        var productRepository = Utils.GetProductRepository();
 
         // Add a product for testing
         var newProduct = new Product { /* Set product properties */ };

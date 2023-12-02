@@ -75,8 +75,8 @@ public class ProductRepository : IProductRepository
         oldProduct.Name = string.IsNullOrEmpty(product.Name) ? oldProduct.Name : product.Name;
         oldProduct.Description = string.IsNullOrEmpty(product.Description) ? oldProduct.Description : product.Description;
 
-        await _context.SaveChangesAsync();
-        return true;
+        var changes = await _context.SaveChangesAsync();
+        return changes > 0;
     }
 
     public async Task<bool> DeleteProduct(int id)
