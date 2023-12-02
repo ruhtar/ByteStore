@@ -108,3 +108,53 @@ a {
   height: 245px;
   width: 30rem;
 }
+
+/* Adicione a seguinte regra de media query no final do seu arquivo CSS */
+@media only screen and (max-width: 480px) {
+  .login-container {
+    min-height: 100vh;
+  }
+
+  .login-box {
+    width: 100%;
+    max-width: none; /* Remova a limitação máxima de largura */
+    height: 100vh; /* Ocupar a altura da tela inteira */
+    padding: 20px; /* Adicionado espaçamento interno ao .login-box */
+    box-sizing: border-box; /* Garante que as bordas e o preenchimento não aumentem a largura/altura total */
+  }
+
+  .login-box h2 {
+    margin-bottom: 15px; /* Aumenta o espaçamento abaixo do título */
+  }
+
+  .login-box form label {
+    margin-bottom: 8px; /* Ajusta o espaçamento abaixo das labels */
+  }
+
+  .login-box form input {
+    margin-bottom: 15px; /* Ajusta o espaçamento abaixo dos inputs */
+  }
+
+  .signup-warning {
+    margin-top: 15px; /* Ajusta o espaçamento acima do aviso de signup */
+    margin-bottom: 0; /* Remove o espaçamento abaixo do aviso de signup */
+  }
+
+  .error-span {
+    margin-top: 10px; /* Ajusta o espaçamento acima das mensagens de erro */
+    margin-bottom: 10px; /* Ajusta o espaçamento abaixo das mensagens de erro */
+  }
+
+  .group-image,
+  .duo-image {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1450px) {
+  /* Hide the images in smaller screens */
+  .group-image,
+  .duo-image {
+    display: none;
+  }
+}
