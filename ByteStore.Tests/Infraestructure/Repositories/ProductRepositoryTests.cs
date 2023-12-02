@@ -9,7 +9,7 @@ namespace ByteStore.Tests.Infraestructure.Repositories;
 public class ProductRepositoryTests
 {
     [Fact]
-    internal async Task GetAllProducts_ReturnsCorrectProducts()
+    public async Task GetAllProducts_ReturnsCorrectProducts()
     {
         // Arrange
         var productRepository = Utils.GetProductRepository();
@@ -30,7 +30,7 @@ public class ProductRepositoryTests
     }
     
     [Fact]
-    internal async Task AddProduct_ReturnsAddedProduct()
+    public async Task AddProduct_ReturnsAddedProduct()
     {
         // Arrange
         var productRepository = Utils.GetProductRepository();
@@ -45,7 +45,7 @@ public class ProductRepositoryTests
     }
     
     [Fact]
-    internal async Task GetProductById_ReturnsCorrectProduct()
+    public async Task GetProductById_ReturnsCorrectProduct()
     {
         // Arrange
         var productRepository = Utils.GetProductRepository();
@@ -62,7 +62,7 @@ public class ProductRepositoryTests
     }
     
     [Fact]
-    internal async Task GetProductById_ReturnsNull()
+    public async Task GetProductById_ReturnsNull()
     {
         // Arrange
         var productRepository = Utils.GetProductRepository();
@@ -78,7 +78,7 @@ public class ProductRepositoryTests
     }
     
     [Fact]
-    internal async Task UpdateProduct_ReturnsTrue()
+    public async Task UpdateProduct_ReturnsTrue()
     {
         // Arrange
         var productRepository = Utils.GetProductRepository();
@@ -106,7 +106,7 @@ public class ProductRepositoryTests
     }
     
     [Fact]
-    internal async Task UpdateProduct_ReturnsFalse()
+    public async Task UpdateProduct_ReturnsFalse()
     {
         // Arrange
         var productRepository = Utils.GetProductRepository();
@@ -122,7 +122,7 @@ public class ProductRepositoryTests
     }
 
     [Fact]
-    internal async Task DeleteProduct_ReturnsTrue()
+    public async Task DeleteProduct_ReturnsTrue()
     {
         // Arrange
         var productRepository = Utils.GetProductRepository();
@@ -137,7 +137,7 @@ public class ProductRepositoryTests
     }
 
     [Fact]
-    internal async Task DeleteProduct_ReturnsFalse()
+    public async Task DeleteProduct_ReturnsFalse()
     {
         // Arrange
         var productRepository = Utils.GetProductRepository();
@@ -153,7 +153,7 @@ public class ProductRepositoryTests
     }
     
     [Fact]
-    internal async Task CreateReview_ReturnsAddedReview()
+    public async Task CreateReview_ReturnsAddedReview()
     {
         // Arrange
         var context = Utils.GetDbContext();
@@ -187,7 +187,7 @@ public class ProductRepositoryTests
     
     
     [Fact]
-    internal async Task GetReviews_ReturnsReviewsForProduct()
+    public async Task GetReviews_ReturnsReviewsForProduct()
     {
         // Arrange
         var context = Utils.GetDbContext();
