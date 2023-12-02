@@ -38,10 +38,17 @@ public class ProductRepositoryTests
         // Act
         var result = await productRepository.AddProduct(Utils.GetProductMocks()[0]);
 
+        var product = await productRepository.GetProductById(result.ProductId);
+
         // Assert
         Assert.NotNull(result);
         Assert.IsType<Product>(result);
-        Assert.Equal(Utils.GetProductMocks()[0]!.ProductId, result.ProductId);
+        Assert.Equal(Utils.GetProductMocks()[0].ProductId, result.ProductId);
+        Assert.Equal(Utils.GetProductMocks()[0].Name, product.Name);
+        Assert.Equal(Utils.GetProductMocks()[0].Rate, product.Rate);
+        Assert.Equal(Utils.GetProductMocks()[0].ProductQuantity, product.ProductQuantity);
+        Assert.Equal(Utils.GetProductMocks()[0].TimesRated, product.TimesRated);
+        Assert.Equal(Utils.GetProductMocks()[0].Price, product.Price);
     }
     
     [Fact]
@@ -117,8 +124,16 @@ public class ProductRepositoryTests
         var updateDto = new UpdateProductDto();
         var result = await productRepository.UpdateProduct(newProduct.ProductId, updateDto);
 
+        var unchangedProduct = await productRepository.GetProductById(newProduct.ProductId);
+
+        
         // Assert
         Assert.False(result);
+        Assert.Equivalent(unchangedProduct, newProduct);
+        Assert.Equal(unchangedProduct!.Name, newProduct.Name);
+        Assert.Equal(unchangedProduct.Price, newProduct.Price);
+        Assert.Equal(unchangedProduct.ProductQuantity, newProduct.ProductQuantity);
+        Assert.Equal(unchangedProduct.Description, newProduct.Description);
     }
 
     [Fact]
