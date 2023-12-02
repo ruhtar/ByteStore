@@ -159,7 +159,6 @@ public class ProductRepositoryTests
         var context = Utils.GetDbContext();
         var productRepository = new ProductRepository(context);
 
-        // Adicione um produto existente para testar
         var existingProduct = Utils.GetProductMocks()[0];
         context.Products.Add(existingProduct);
         await context.SaveChangesAsync();
@@ -194,7 +193,6 @@ public class ProductRepositoryTests
         var context = Utils.GetDbContext();
         var productRepository = new ProductRepository(context);
         
-        // Add a product with reviews for testing
         var existingProduct = Utils.GetProductMocks()[0];
         
         var newReview1 = new Review
