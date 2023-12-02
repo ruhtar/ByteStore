@@ -147,8 +147,12 @@ public class ProductRepositoryTests
         // Act
         var result = await productRepository.DeleteProduct(newProduct.ProductId);
 
+        var product = await productRepository.GetProductById(newProduct.ProductId);
+
+        
         // Assert
         Assert.True(result);
+        Assert.Null(product);
     }
 
     [Fact]
@@ -161,10 +165,13 @@ public class ProductRepositoryTests
 
         // Act
         var result = await productRepository.DeleteProduct(42);
-
+        
+        var product = await productRepository.GetProductById(newProduct.ProductId);
+        
         // Assert
         Assert.NotEqual(newProduct.ProductId, 42);
         Assert.False(result);
+        Assert.Equivalent(newProduct, product);
     }
     
     [Fact]
