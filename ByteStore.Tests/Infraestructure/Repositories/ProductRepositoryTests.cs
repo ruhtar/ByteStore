@@ -41,7 +41,7 @@ public class ProductRepositoryTests
         // Assert
         Assert.NotNull(result);
         Assert.IsType<Product>(result);
-        Assert.Equal(Utils.GetProductMocks()[0].ProductId, result.ProductId);
+        Assert.Equal(Utils.GetProductMocks()[0]!.ProductId, result.ProductId);
     }
     
     [Fact]
@@ -52,7 +52,7 @@ public class ProductRepositoryTests
         var productRepository = new ProductRepository(dbContext);
 
         // Add a product for testing
-        var newProduct = new Product { /* Set product properties */ };
+        var newProduct = Utils.GetProductMocks()[0];
         await productRepository.AddProduct(newProduct);
 
         // Act
@@ -62,6 +62,24 @@ public class ProductRepositoryTests
         Assert.NotNull(result);
         Assert.IsType<Product>(result);
         Assert.Equal(newProduct.ProductId, result.ProductId);
+    }
+    
+    [Fact]
+    public async Task GetProductById_ReturnsNull()
+    {
+        // Arrange
+        var dbContext = Utils.GetDbContext();
+        var productRepository = new ProductRepository(dbContext);
+
+        // Add a product for testing
+        var newProduct = Utils.GetProductMocks()[0];
+        await productRepository.AddProduct(newProduct);
+
+        // Act
+        var result = await productRepository.GetProductById(42);
+
+        // Assert
+        Assert.Null(result);
     }
     
     [Fact]

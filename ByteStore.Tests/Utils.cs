@@ -21,9 +21,9 @@ public abstract class Utils
         return new ProductRepository(dbContext);
     }
 
-internal static List<Product?> GetProductMocks()
+internal static List<Product> GetProductMocks()
 {
-    return new List<Product?>
+    return new List<Product>
     {
         new Product
         {
