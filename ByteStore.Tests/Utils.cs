@@ -17,7 +17,7 @@ public abstract class Utils
 
     internal static ProductRepository GetProductRepository()
     {
-        var dbContext = Utils.GetDbContext();
+        var dbContext = GetDbContext();
         return new ProductRepository(dbContext);
     }
 

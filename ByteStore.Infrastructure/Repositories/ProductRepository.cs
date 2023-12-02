@@ -98,10 +98,10 @@ public class ProductRepository : IProductRepository
         return product?.Reviews.ToList();
     }
 
-    public async Task<Review> CreateReview(Review review)
+    public async Task<Review?> CreateReview(Review? review)
     {
         await _context.Reviews.AddAsync(review);
-        await _context.SaveChangesAsync();
-        return review;
+        var changes = await _context.SaveChangesAsync();
+        return changes > 0 ? review : null;
     }
 }

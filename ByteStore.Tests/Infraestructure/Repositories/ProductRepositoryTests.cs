@@ -1,5 +1,6 @@
 ﻿using ByteStore.Domain.Entities;
 using ByteStore.Domain.ValueObjects;
+using ByteStore.Infrastructure.Repositories;
 using ByteStore.Shared.DTO;
 using Xunit;
 
@@ -152,43 +153,79 @@ public class ProductRepositoryTests
     }
     
     [Fact]
-    internal async Task GetReviews_ReturnsReviewsForProduct()
-    {
-        // Arrange
-        var productRepository = Utils.GetProductRepository();
-        
-        // Add a product with reviews for testing
-        var newProduct = new Product { /* Set product properties */ };
-        var newReview = new Review { /* Set review properties */ };
-        newProduct.Reviews = new List<Review> { newReview };
-        await productRepository.AddProduct(newProduct);
-
-        // Act
-        var result = await productRepository.GetReviews(newProduct.ProductId);
-
-        // Assert
-        Assert.NotNull(result);
-        Assert.IsType<List<Review>>(result);
-        Assert.Equal(newReview.Id, result.FirstOrDefault()?.Id);
-    }
-
-    [Fact]
     internal async Task CreateReview_ReturnsAddedReview()
     {
         // Arrange
-        var productRepository = Utils.GetProductRepository();
+        var context = Utils.GetDbContext();
+        var productRepository = new ProductRepository(context);
 
-        // Add a product for testing
-        var newProduct = new Product { /* Set product properties */ };
-        await productRepository.AddProduct(newProduct);
+        // Adicione um produto existente para testar
+        var existingProduct = Utils.GetProductMocks()[0];
+        context.Products.Add(existingProduct);
+        await context.SaveChangesAsync();
 
         // Act
-        var newReview = new Review { /* Set review properties */ };
+        var newReview = new Review
+        {
+            ProductId = existingProduct.ProductId,
+            UserId = 23,
+            Username = "Admin",
+            Rate = 3,
+            ReviewText = "TEXTO DA REVIEW"
+        };
+
         var result = await productRepository.CreateReview(newReview);
 
         // Assert
         Assert.NotNull(result);
         Assert.IsType<Review>(result);
-        Assert.Equal(newReview.Id, result.Id);
+        Assert.Equal(newReview.ProductId, result.ProductId);
+        Assert.Equal(newReview.UserId, result.UserId);
+        Assert.Equal(newReview.Username, result.Username);
+        Assert.Equal(newReview.Rate, result.Rate);
+        Assert.Equal(newReview.ReviewText, result.ReviewText);
+    }
+    
+    
+    [Fact]
+    internal async Task GetReviews_ReturnsReviewsForProduct()
+    {
+        // Arrange
+        var context = Utils.GetDbContext();
+        var productRepository = new ProductRepository(context);
+        
+        // Add a product with reviews for testing
+        var existingProduct = Utils.GetProductMocks()[0];
+        
+        var newReview1 = new Review
+        {
+            ProductId = existingProduct.ProductId,
+            UserId = 23,
+            Username = "Admin",
+            Rate = 3,
+            ReviewText = "TEXTO DA REVIEW"
+        };
+        
+        var newReview2 = new Review
+        {
+            ProductId = existingProduct.ProductId,
+            UserId = 4324,
+            Username = "JOAO GRILLO",
+            Rate = 4,
+            ReviewText = "TEXTO DA REVIEW 2"
+        };
+        
+        existingProduct.Reviews = new List<Review> { newReview1, newReview2 };
+        context.Products.Add(existingProduct);
+        await context.SaveChangesAsync();
+
+        // Act
+        var result = await productRepository.GetReviews(existingProduct.ProductId);
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.IsType<List<Review>>(result);
+        Assert.Equal(newReview1.Id, result[0].Id);
+        Assert.Equal(newReview2.Id, result[1].Id);
     }
 }

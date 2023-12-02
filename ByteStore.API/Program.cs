@@ -40,6 +40,7 @@ public class Program
                 connectionString,
                 ServerVersion.AutoDetect(connectionString),
                 x => x.MigrationsAssembly("ByteStore.Infrastructure")))
+            .AddScoped<AppDbContext>()
             .AddAuthorization()
             .AddCors();
 
