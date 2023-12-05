@@ -1,5 +1,6 @@
 ﻿using ByteStore.Application.Services;
 using ByteStore.Domain.Entities;
+using ByteStore.Domain.ValueObjects;
 using ByteStore.Infrastructure.Repositories.Interfaces;
 using ByteStore.Shared.DTO;
 using Moq;
@@ -119,7 +120,7 @@ public class ProductServiceTests
     }
     
     [Fact]
-    public async Task UpdateProduct_ShouldReturnTrue()
+    public async Task UpdateProduct()
     {
         //arrange
         var productRepo = new Mock<IProductRepository>();
@@ -145,35 +146,46 @@ public class ProductServiceTests
         //assert
         Assert.True(result);
         productRepo.Verify(x=>x.UpdateProduct(product.ProductId, productDto), Times.Once);
-
     }
-    
+
     [Fact]
-    public async Task UpdateProduct_ShouldReturnFalse()
+    public async Task CreateReview()
     {
-        //arrange
-        var productRepo = new Mock<IProductRepository>();
-        var product = Utils.GetProductsMock()[0];
+         //arrange
+         var productRepo = new Mock<IProductRepository>();
+         var product = Utils.GetProductsMock()[0];
 
-        productRepo.Setup(x => x.UpdateProduct(It.IsAny<int>(), It.IsAny<UpdateProductDto>())).ReturnsAsync(true);
+         var review = new Review
+         {
+             ProductId = product.ProductId,
+             Product = product,
+             UserId = Utils.GetUserMock().UserId,
+             Username = Utils.GetUserMock().Username,
+             ReviewText = "lalalalala",
+             Rate = 2
+         };
+         
+         var reviewDto = new ReviewDto
+         {
+             ProductId = product.ProductId,
+             UserId = Utils.GetUserMock().UserId,
+             Username = Utils.GetUserMock().Username,
+             ReviewText = "lalalalala",
+             Rate = 2
+         };
+         
+         productRepo.Setup(x => x.CreateReview(It.IsAny<Review>())).ReturnsAsync(review);
+         productRepo.Setup(x => x.GetProductById(product.ProductId)).ReturnsAsync(product);
+         
+         var productService = new ProductService(productRepo.Object);
 
-        var productService = new ProductService(productRepo.Object);
-        
-        var productDto = new UpdateProductDto
-        {
-            ProductId = product.ProductId,
-            Name = product.Name,
-            Price = product.Price,
-            ProductQuantity = product.ProductQuantity,
-            ImageStorageUrl = product.ImageStorageUrl,
-            Description = product.Description
-        };
-        
-        //act
-        var result = await productService.UpdateProduct(product.ProductId, productDto);
+         //act
+         var result = await productService.CreateReview(reviewDto);
 
-        //assert
-        Assert.True(result);
-        productRepo.Verify(x=>x.UpdateProduct(product.ProductId, productDto), Times.Once);
+         //assert
+         Assert.NotNull(result);
+         Assert.Equal(result, review);
+         productRepo.Verify(x=>x.GetProductById(product.ProductId), Times.Once);
+         productRepo.Verify(x=>x.CreateReview(It.IsAny<Review>()), Times.Once);
     }
 }
