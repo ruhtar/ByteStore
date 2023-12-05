@@ -125,7 +125,6 @@ public class ProductRepositoryTests
         var result = await productRepository.UpdateProduct(newProduct.ProductId, updateDto);
 
         var unchangedProduct = await productRepository.GetProductById(newProduct.ProductId);
-
         
         // Assert
         Assert.False(result);
