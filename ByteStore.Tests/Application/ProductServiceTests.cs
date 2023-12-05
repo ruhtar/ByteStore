@@ -59,7 +59,7 @@ public class ProductServiceTests
         
         //Assert
         Assert.NotNull(result);
-        Assert.Equal(result, product);
+        Assert.Equal(product, result);
     }
     
     [Fact]
@@ -78,5 +78,39 @@ public class ProductServiceTests
         
         //Assert
         Assert.Null(result);
+    }
+
+    [Fact]
+    public async Task AddProduct_ShouldReturnAddedProduct()
+    {
+        //arrange
+        var productRepo = new Mock<IProductRepository>();
+        var product = Utils.GetProductsMock()[0];
+        
+        productRepo.Setup(x => x.AddProduct(It.IsAny<Product>())).ReturnsAsync(product);
+
+        var productService = new ProductService(productRepo.Object);
+        
+        //Act
+        var productDto = new ProductDto
+        {
+            ProductId = product.ProductId,
+            Name = product.Name,
+            Price = product.Price,
+            ProductQuantity = product.ProductQuantity,
+            ImageStorageUrl = product.ImageStorageUrl,
+            Description = product.Description
+        };
+        var result = await productService.AddProduct(productDto);
+        
+        //Assert
+        Assert.NotNull(result);
+        Assert.Equal(productDto.Name, result.Name);
+        Assert.Equal(productDto.ProductQuantity, result.ProductQuantity);
+        Assert.Equal(productDto.Price, result.Price);
+        Assert.Equal(productDto.ImageStorageUrl, result.ImageStorageUrl);
+        Assert.Equal(productDto.Description, result.Description);
+
+        productRepo.Verify(repo => repo.AddProduct(It.IsAny<Product>()), Times.Once);
     }
 }
