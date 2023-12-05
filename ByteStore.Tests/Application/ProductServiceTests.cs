@@ -25,7 +25,7 @@ public class ProductServiceTests
         };
 
         productRepo.Setup(repo => repo.GetAllProducts(input))!
-            .ReturnsAsync(Utils.GetProductMocks());
+            .ReturnsAsync(Utils.GetProductsMock());
 
 
         var productService = new ProductService(productRepo.Object);
@@ -34,13 +34,49 @@ public class ProductServiceTests
         
         //Assert
         Assert.NotNull(result);
-        Assert.Equal(Utils.GetProductMocks().Count, result.Count);
+        Assert.Equal(Utils.GetProductsMock().Count, result.Count);
 
-        for (var i = 0; i < Utils.GetProductMocks().Count; i++)
+        for (var i = 0; i < Utils.GetProductsMock().Count; i++)
         {
-            Assert.Equal(Utils.GetProductMocks()[i].ProductId, result[i]?.ProductId);
-            Assert.Equal(Utils.GetProductMocks()[i].Name, result[i]?.Name);
-            Assert.Equal(Utils.GetProductMocks()[i].Price, result[i]?.Price);
+            Assert.Equal(Utils.GetProductsMock()[i].ProductId, result[i]?.ProductId);
+            Assert.Equal(Utils.GetProductsMock()[i].Name, result[i]?.Name);
+            Assert.Equal(Utils.GetProductsMock()[i].Price, result[i]?.Price);
         }
+    }
+
+    [Fact]
+    public async Task GetProductById_ReturnsAProduct()
+    {
+        //Arrange
+        var productRepo = new Mock<IProductRepository>();
+        var product = Utils.GetProductsMock()[0];
+        productRepo.Setup(x => x.GetProductById(product.ProductId)).ReturnsAsync(product);
+
+        var productService = new ProductService(productRepo.Object);
+
+        //Act
+        var result = await productService.GetProductById(product.ProductId);
+        
+        //Assert
+        Assert.NotNull(result);
+        Assert.Equal(result, product);
+    }
+    
+    [Fact]
+    public async Task GetProductById_ReturnsNull()
+    {
+        //Arrange
+        var productRepo = new Mock<IProductRepository>();
+        var product = Utils.GetProductsMock()[0];
+        var wrongId = product.ProductId + 1;
+        productRepo.Setup(x => x.GetProductById(product.ProductId)).ReturnsAsync(product);
+
+        var productService = new ProductService(productRepo.Object);
+
+        //Act
+        var result = await productService.GetProductById(wrongId);
+        
+        //Assert
+        Assert.Null(result);
     }
 }

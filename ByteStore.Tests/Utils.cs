@@ -83,7 +83,7 @@ public abstract class Utils
         };
     }
 
-    internal static List<Product> GetProductMocks()
+    internal static List<Product> GetProductsMock()
     {
         return new List<Product>
         {
