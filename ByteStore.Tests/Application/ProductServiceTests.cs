@@ -42,6 +42,7 @@ public class ProductServiceTests
             Assert.Equal(Utils.GetProductsMock()[i].Name, result[i]?.Name);
             Assert.Equal(Utils.GetProductsMock()[i].Price, result[i]?.Price);
         }
+        productRepo.Verify(x=>x.GetAllProducts(input), Times.Once);
     }
 
     [Fact]
@@ -60,6 +61,7 @@ public class ProductServiceTests
         //Assert
         Assert.NotNull(result);
         Assert.Equal(product, result);
+        productRepo.Verify(x=>x.GetProductById(product.ProductId), Times.Once);
     }
     
     [Fact]
@@ -78,6 +80,7 @@ public class ProductServiceTests
         
         //Assert
         Assert.Null(result);
+        productRepo.Verify(x=>x.GetProductById(wrongId), Times.Once);
     }
 
     [Fact]
@@ -141,5 +144,36 @@ public class ProductServiceTests
 
         //assert
         Assert.True(result);
+        productRepo.Verify(x=>x.UpdateProduct(product.ProductId, productDto), Times.Once);
+
+    }
+    
+    [Fact]
+    public async Task UpdateProduct_ShouldReturnFalse()
+    {
+        //arrange
+        var productRepo = new Mock<IProductRepository>();
+        var product = Utils.GetProductsMock()[0];
+
+        productRepo.Setup(x => x.UpdateProduct(It.IsAny<int>(), It.IsAny<UpdateProductDto>())).ReturnsAsync(true);
+
+        var productService = new ProductService(productRepo.Object);
+        
+        var productDto = new UpdateProductDto
+        {
+            ProductId = product.ProductId,
+            Name = product.Name,
+            Price = product.Price,
+            ProductQuantity = product.ProductQuantity,
+            ImageStorageUrl = product.ImageStorageUrl,
+            Description = product.Description
+        };
+        
+        //act
+        var result = await productService.UpdateProduct(product.ProductId, productDto);
+
+        //assert
+        Assert.True(result);
+        productRepo.Verify(x=>x.UpdateProduct(product.ProductId, productDto), Times.Once);
     }
 }
