@@ -5,7 +5,8 @@ namespace ByteStore.Domain.Entities;
 
 public class User
 {
-    [Key] [Column("Id")] public int UserId { get; set; }
+    [Key] [Column("Id")] 
+    public int UserId { get; set; }
 
     public string Username { get; set; }
 

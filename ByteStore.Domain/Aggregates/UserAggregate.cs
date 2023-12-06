@@ -8,7 +8,8 @@ namespace ByteStore.Domain.Aggregates;
 
 public class UserAggregate
 {
-    [Key] [Column("Id")] public int UserAggregateId { get; set; }
+    [Key] [Column("Id")] 
+    public int UserAggregateId { get; set; }
     public User User { get; set; }
     public Roles Role { get; set; }
     public Address Address { get; set; }

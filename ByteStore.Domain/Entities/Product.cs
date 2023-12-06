@@ -8,7 +8,8 @@ namespace ByteStore.Domain.Entities;
 
 public class Product
 {
-    [Key] [Column("Id")] public int ProductId { get; set; }
+    [Key] [Column("Id")] 
+    public int ProductId { get; set; }
     public int ProductQuantity { get; set; }
     public string Name { get; set; }
     public decimal Price { get; set; }
