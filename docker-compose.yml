@@ -23,13 +23,7 @@ services:
       context: .
       dockerfile: ByteStore.API/Dockerfile
     environment:
-      - JWT_SECRET=2445361D-43F8-4066-BBC8-4777CA0129BB
-      - HOST=mysql-db
-      - PORT=3306
-      - DATABASE=ByteStore
-      - USER=root
-      - PASSWORD=1234
-      - REDIS_LOCALHOST=redis 
+
 
     depends_on:
       - mysql-db
