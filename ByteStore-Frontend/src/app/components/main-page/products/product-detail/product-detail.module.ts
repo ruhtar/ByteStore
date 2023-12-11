@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterModule, Routes } from '@angular/router';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ButtonModule } from 'primeng/button';
 import { FooterModule } from 'src/app/components/footer/footer.module';
 import { HeaderModule } from 'src/app/components/header/header.module';
 import { ProductDetailComponent } from './product-detail.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
   declarations: [ProductDetailComponent, ReviewComponent],
   exports: [RouterModule],
   imports: [
+    ButtonModule,
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,

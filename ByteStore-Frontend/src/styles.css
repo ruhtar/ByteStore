@@ -2,11 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
 
-/* Reset CSS */
-/* Adapted from the Eric Meyer's Reset CSS v2.0 */
-
-/* Box sizing reset */
 html {
   box-sizing: border-box;
 }
@@ -17,7 +15,6 @@ html {
   box-sizing: inherit;
 }
 
-/* Remove default margin and padding */
 body,
 h1,
 h2,

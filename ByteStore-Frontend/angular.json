@@ -74,6 +74,8 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
               "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],

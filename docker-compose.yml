@@ -7,14 +7,14 @@ services:
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: ByteStore
     ports:
-      - "3307:3306" 
+      - "3307:3306"
     volumes:
       - my-datavolume:/var/lib/mysql
 
   redis:
     image: redis:latest
     ports:
-    - "6379:6379"  
+      - "6379:6379"
 
   bytestore.api:
     image: ${DOCKER_REGISTRY-}bytestore-api
@@ -23,7 +23,13 @@ services:
       context: .
       dockerfile: ByteStore.API/Dockerfile
     environment:
-#       TODO: - NAO COMMITAR AS CHAVES
+      - JWT_SECRET=2445361D-43F8-4066-BBC8-4777CA0129BB
+      - HOST=mysql-db
+      - PORT=3306
+      - DATABASE=ByteStore
+      - USER=root
+      - PASSWORD=1234
+      - REDIS_LOCALHOST=redis 
 
     depends_on:
       - mysql-db
@@ -31,7 +37,12 @@ services:
     ports:
       - "8080:80"
       - "8081:443"
-    
+    healthcheck:
+      test: [ "CMD-SHELL", "nc -z mysql-db 3306" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
   bytestore.frontend:
     image: bytestore-frontend-image
     restart: always
@@ -39,9 +50,9 @@ services:
       context: ./ByteStore-Frontend
       dockerfile: ./Dockerfile
     ports:
-      - "4200:80" 
+      - "4200:80"
     depends_on:
-      - bytestore.api 
+      - bytestore.api
 
 volumes:
   my-datavolume:
