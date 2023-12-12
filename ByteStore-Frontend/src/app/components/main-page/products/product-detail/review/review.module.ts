@@ -9,11 +9,13 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { ButtonModule } from 'primeng/button';
 import { ReviewComponent } from './review.component';
 
 @NgModule({
   declarations: [ReviewComponent],
   imports: [
+    ButtonModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,

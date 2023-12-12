@@ -13,6 +13,7 @@
   <p class="info">Stock: {{ product.productQuantity }} unit(s)</p>
   <p class="info">Rate: {{ product.rate | number: "1.0-0" }}</p>
   <p class="info">Number of reviews: {{ product.timesRated }}</p>
+
   <div *ngIf="logged" class="quantity-container">
     <p class="info">Quantity:</p>
     <input
@@ -21,14 +22,16 @@
       min="1"
       step="1"
       class="quantity-input"
+      pInputNumber
     />
     <button
       (click)="addToCart(userId, product, quantityToAdd)"
       class="add-button"
-    >
-      <i class="fa-solid fa-cart-shopping"></i>
-      Add to the shopping cart
-    </button>
+      pButton
+      label="Add to the shopping cart"
+      icon="pi pi-cart-plus"
+      iconPos="right"
+    ></button>
   </div>
 
   <div class="product-description" *ngIf="product.description">
@@ -39,9 +42,35 @@
   </div>
 
   <h2>Reviews</h2>
-  <button (click)="openModal()" class="add-button" *ngIf="logged">
-    Did you like the product? Rate it!
-  </button>
+  <button
+    (click)="openModal()"
+    pButton
+    class="add-button"
+    label="Did you like the product? Rate it!"
+    *ngIf="logged"
+    icon="pi pi-comment"
+    iconPos="right"
+  ></button>
+  <p-dialog header="Header" [(visible)]="visible" [style]="{ width: '50vw' }">
+    <div class="comment-form">
+      <p-rating [(ngModel)]="selectedRating" [cancel]="false"></p-rating>
+      <h3>Post a Comment</h3>
+      <textarea
+        pInputTextarea
+        rows="5"
+        cols="50"
+        placeholder="Your Comment"
+        [autoResize]="true"
+        [(ngModel)]="newCommentText"
+      ></textarea>
+      <button
+        pButton
+        type="button"
+        label="Review"
+        (click)="createReview(newCommentText)"
+      ></button>
+    </div>
+  </p-dialog>
   <div class="buyer-comments">
     <div class="comment" *ngFor="let review of reviews">
       <p class="comment-text">{{ review.reviewText }}</p>

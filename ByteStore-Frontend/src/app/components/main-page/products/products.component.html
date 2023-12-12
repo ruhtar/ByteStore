@@ -17,34 +17,41 @@
     </div>
 
     <div class="filter-section">
-      <mat-form-field>
-        <mat-label>Search products</mat-label>
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
         <input
-          matInput
-          type="search"
+          pInputText
           [(ngModel)]="filterValue"
+          placeholder="Search by name"
           (ngModelChange)="searchProducts()"
         />
-      </mat-form-field>
+      </span>
     </div>
 
     <div class="filter-section">
       <mat-label for="price-filter">Filter by Price:</mat-label>
       <div class="price-filter-inputs">
-        <input
-          matInput
+        <p-inputNumber
+          mode="decimal"
           type="number"
+          [minFractionDigits]="2"
           placeholder="Min"
           [(ngModel)]="range[0]"
         />
-        <input
-          matInput
+        <p-inputNumber
+          mode="decimal"
+          [minFractionDigits]="2"
           type="number"
           placeholder="Max"
           [(ngModel)]="range[1]"
         />
       </div>
-      <p-slider [(ngModel)]="range" [range]="true"></p-slider>
+      <p-slider
+        [(ngModel)]="range"
+        [range]="true"
+        [min]="0"
+        [max]="5000"
+      ></p-slider>
       <button
         (click)="filterByPrice()"
         pButton
@@ -70,6 +77,7 @@
 
       <p-button
         label="See more"
+        icon="pi pi-plus"
         iconPos="right"
         severity="info"
         [routerLink]="['/products', product.productId]"

@@ -10,7 +10,6 @@ import { OrderItem } from 'src/app/types/OrderItem';
 import { Product } from 'src/app/types/Product';
 import { Review } from 'src/app/types/Review';
 import Swal from 'sweetalert2';
-import { ReviewComponent } from './review/review.component';
 
 @Component({
   selector: 'app-product-detail',
@@ -18,12 +17,19 @@ import { ReviewComponent } from './review/review.component';
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent {
+  visible: boolean = false;
   quantityToAdd: number = 1;
   product = new Product();
   reviews: Review[] = [];
   userId!: number;
   logged!: boolean;
   productId!: number;
+  selectedRating!: number;
+  rates: number[] = [0, 1, 2, 3, 4, 5];
+  newCommentText!: string;
+  id!: number;
+  rating: any;
+  value!: number;
 
   constructor(
     private productService: ProductService,
@@ -78,24 +84,56 @@ export class ProductDetailComponent {
   }
 
   openModal() {
-    this.userService
-      .checkIfUserHasBoughtAProduct(this.product.productId)
-      .subscribe(
-        (response) => {
-          console.log(response.status);
-          if (response.status === 200)
-            this.dialogRef.open(ReviewComponent, { data: this.productId });
-        },
-        (error) => {
-          if (error.status === 401) {
-            Swal.fire(
-              'You must have bought the product to review it.',
-              '',
-              'error',
-            );
-          }
-        },
-        () => {},
-      );
+    this.visible = true;
+  }
+
+  createReview(comment: string) {
+    var username = this.tokenService.getDecodedJwt().name;
+    var userId = this.tokenService.getDecodedJwt().nameid;
+    const review = new Review();
+    review.productId = this.productId;
+    review.rate = this.selectedRating;
+    review.userId = userId;
+    review.reviewText = comment;
+    review.username = username;
+
+    this.productService.createReview(review).subscribe(
+      (response) => {
+        if (response.status === 200) {
+          Swal.fire('Review posted.', '', 'success').then(() =>
+            location.reload(),
+          );
+        }
+      },
+      (error) => {
+        Swal.fire(
+          'Whoops, something went wrong. Please, try again later.',
+          '',
+          'error',
+        );
+      },
+    );
   }
 }
+
+// openModal() {
+//   this.userService
+//     .checkIfUserHasBoughtAProduct(this.product.productId)
+//     .subscribe(
+//       (response) => {
+//         console.log(response.status);
+//         if (response.status === 200)
+//           this.dialogRef.open(ReviewComponent, { data: this.productId });
+//       },
+//       (error) => {
+//         if (error.status === 401) {
+//           Swal.fire(
+//             'You must have bought the product to review it.',
+//             '',
+//             'error',
+//           );
+//         }
+//       },
+//       () => {},
+//     );
+// }

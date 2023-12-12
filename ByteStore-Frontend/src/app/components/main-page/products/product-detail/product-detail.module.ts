@@ -10,6 +10,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { RouterModule, Routes } from '@angular/router';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { RatingModule } from 'primeng/rating';
 import { FooterModule } from 'src/app/components/footer/footer.module';
 import { HeaderModule } from 'src/app/components/header/header.module';
 import { ProductDetailComponent } from './product-detail.component';
@@ -26,6 +29,9 @@ const routes: Routes = [
   declarations: [ProductDetailComponent, ReviewComponent],
   exports: [RouterModule],
   imports: [
+    RatingModule,
+    InputTextareaModule,
+    DialogModule,
     ButtonModule,
     MatDialogModule,
     MatFormFieldModule,

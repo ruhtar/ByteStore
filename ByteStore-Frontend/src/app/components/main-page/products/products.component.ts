@@ -13,7 +13,7 @@ export class ProductsComponent {
   originalProducts!: Product[];
   minPrice: number = 0;
   maxPrice: number = 0;
-  range: number[] = [20, 80];
+  range: number[] = [150, 2000];
   filterValue: string = '';
   selectedOption: string = '';
   pageIndex = 0;
