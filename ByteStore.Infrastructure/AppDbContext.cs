@@ -61,10 +61,5 @@ public class AppDbContext : DbContext
         //     .HasForeignKey(scp => scp.ProductId);
 
         modelBuilder.Entity<SeederFlag>().Property(x=>x.IsSeeded).HasDefaultValue(false);
-
-        modelBuilder.Entity<Product>()
-            .HasMany(e => e.Reviews)
-            .WithOne(e => e.Product)
-            .HasForeignKey(e => e.ProductId);
     }
 }

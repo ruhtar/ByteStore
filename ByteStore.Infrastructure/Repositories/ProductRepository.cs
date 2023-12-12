@@ -74,6 +74,8 @@ public class ProductRepository : IProductRepository
         oldProduct.Price = product.Price ?? oldProduct.Price;
         oldProduct.Name = string.IsNullOrEmpty(product.Name) ? oldProduct.Name : product.Name;
         oldProduct.Description = string.IsNullOrEmpty(product.Description) ? oldProduct.Description : product.Description;
+        oldProduct.TimesRated = product.TimesRated ?? oldProduct.TimesRated;
+        oldProduct.Rate = product.Rate ?? oldProduct.Rate;
 
         var changes = await _context.SaveChangesAsync();
         return changes > 0;

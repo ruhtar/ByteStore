@@ -158,7 +158,6 @@ public class ProductServiceTests
          var review = new Review
          {
              ProductId = product.ProductId,
-             Product = product,
              UserId = Utils.GetUserMock().UserId,
              Username = Utils.GetUserMock().Username,
              ReviewText = "lalalalala",
