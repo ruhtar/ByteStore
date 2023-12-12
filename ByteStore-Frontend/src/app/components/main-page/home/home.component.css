@@ -51,7 +51,7 @@ section {
   }
 }
 
-@keyframes slideInImage {
+/* @keyframes slideInImage {
   0% {
     transform: translateX(100%);
     opacity: 0;
@@ -60,7 +60,7 @@ section {
     transform: translateX(0);
     opacity: 1;
   }
-}
+} */
 
 figure.snip0019 {
   color: #fff;
@@ -73,6 +73,7 @@ figure.snip0019 {
   width: 100%;
   background: #000000;
   text-align: center;
+  border-radius: 10px;
 }
 figure.snip0019 * {
   -webkit-box-sizing: border-box;

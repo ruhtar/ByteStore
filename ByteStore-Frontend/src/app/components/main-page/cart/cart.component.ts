@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { TokenService } from 'src/app/services/token/token.service';
@@ -11,12 +12,14 @@ import Swal from 'sweetalert2';
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
+  providers: [MessageService],
 })
 export class CartComponent {
   constructor(
     private tokenService: TokenService,
     private cartService: CartService,
     public authService: AuthService,
+    private messageService: MessageService,
   ) {}
   logged!: boolean;
   isCartEmpty: boolean = true;
@@ -128,6 +131,13 @@ export class CartComponent {
     this.cartService.addToCart(this.userId, orderItem).subscribe((response) => {
       if (response.status === 200) {
         product.productQuantity += quantity;
+        if (quantity > 0) {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Product added.',
+          });
+        }
         this.calculateTotalPrice();
       }
     });

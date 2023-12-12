@@ -10,6 +10,9 @@
           <p>Quantity</p>
           <div class="quantity-controls">
             <button
+              type="button"
+              pButton
+              pRipple
               class="takeaway-button"
               [ngClass]="{
                 'takeaway-button-remove ': product.productQuantity === 1
@@ -19,7 +22,14 @@
               <i class="fa-solid fa-minus"></i>
             </button>
             <span class="quantity">{{ product.productQuantity }}</span>
-            <button class="add-button" (click)="changeItemQuantity(product, 1)">
+            <p-toast></p-toast>
+            <button
+              type="button"
+              pButton
+              pRipple
+              class="add-button"
+              (click)="changeItemQuantity(product, 1)"
+            >
               <i class="fa-solid fa-plus"></i>
             </button>
           </div>

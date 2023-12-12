@@ -47,7 +47,7 @@ export class ProductsComponent {
     this.exibidProducts = [...this.originalProducts];
     this.searchProducts();
     this.filterByPrice();
-    // this.sortProducts();
+    this.sortProducts();
   }
 
   filterByPrice() {
