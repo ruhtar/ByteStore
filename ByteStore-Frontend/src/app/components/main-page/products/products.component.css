@@ -77,24 +77,9 @@ mat-input-element {
   height: 6.25rem;
 }
 
-.see-more {
-  font-size: 16px;
-  padding: 10px;
-  background-color: var(--yellow);
-  color: #000000;
-  border: none;
-  font-weight: 400;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.see-more:hover {
-  transform: scale(1.05);
-}
-
 .filter-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;

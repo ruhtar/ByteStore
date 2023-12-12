@@ -31,33 +31,28 @@
     <div class="filter-section">
       <mat-label for="price-filter">Filter by Price:</mat-label>
       <div class="price-filter-inputs">
-        <mat-form-field>
-          <span class="dollar-sign">$</span>
-          <input
-            matInput
-            type="number"
-            id="min-price"
-            min="0"
-            placeholder="Min Price"
-            [(ngModel)]="minPrice"
-            [value]="minPrice"
-          />
-        </mat-form-field>
-        <mat-form-field>
-          <span class="dollar-sign">$</span>
-          <input
-            matInput
-            type="number"
-            min="0"
-            id="max-price"
-            placeholder="Max Price"
-            [(ngModel)]="maxPrice"
-            [value]="maxPrice"
-          />
-        </mat-form-field>
+        <input
+          matInput
+          type="number"
+          placeholder="Min"
+          [(ngModel)]="range[0]"
+        />
+        <input
+          matInput
+          type="number"
+          placeholder="Max"
+          [(ngModel)]="range[1]"
+        />
       </div>
+      <p-slider [(ngModel)]="range" [range]="true"></p-slider>
+      <button
+        (click)="filterByPrice()"
+        pButton
+        type="button"
+        label="Apply"
+        class="filter-price-button"
+      ></button>
     </div>
-    <button (click)="filterByPrice()" class="filter-price-button">Apply</button>
   </div>
 
   <section class="products">
@@ -73,10 +68,13 @@
       </p>
       <!-- <p class="product-quantity">Stock: {{ product.productQuantity }}</p> -->
 
-      <button [routerLink]="['/products', product.productId]" class="see-more">
-        See more
-        <i class="fa-solid fa-plus"></i>
-      </button>
+      <p-button
+        label="See more"
+        iconPos="right"
+        severity="info"
+        [routerLink]="['/products', product.productId]"
+      >
+      </p-button>
     </div>
   </section>
   <mat-paginator

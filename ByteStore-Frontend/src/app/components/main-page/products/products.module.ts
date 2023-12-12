@@ -6,6 +6,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterModule, Routes } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { SliderModule } from 'primeng/slider';
 import { FooterModule } from '../../footer/footer.module';
 import { HeaderModule } from '../../header/header.module';
 import { ProductsComponent } from './products.component';
@@ -29,6 +31,8 @@ const ProductRoute: Routes = [
 @NgModule({
   declarations: [ProductsComponent],
   imports: [
+    SliderModule,
+    ButtonModule,
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
