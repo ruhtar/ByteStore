@@ -91,8 +91,6 @@ export class ProductDetailComponent {
     var username = this.tokenService.getDecodedJwt().name;
     var userId = this.tokenService.getDecodedJwt().nameid;
     const review = new Review();
-    console.log(this.selectedRating);
-    console.log(typeof this.selectedRating);
     review.productId = this.productId;
     review.rate = this.selectedRating;
     review.userId = userId;
@@ -117,25 +115,3 @@ export class ProductDetailComponent {
     );
   }
 }
-
-// openModal() {
-//   this.userService
-//     .checkIfUserHasBoughtAProduct(this.product.productId)
-//     .subscribe(
-//       (response) => {
-//         console.log(response.status);
-//         if (response.status === 200)
-//           this.dialogRef.open(ReviewComponent, { data: this.productId });
-//       },
-//       (error) => {
-//         if (error.status === 401) {
-//           Swal.fire(
-//             'You must have bought the product to review it.',
-//             '',
-//             'error',
-//           );
-//         }
-//       },
-//       () => {},
-//     );
-// }

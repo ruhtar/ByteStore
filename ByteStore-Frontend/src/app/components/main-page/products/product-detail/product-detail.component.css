@@ -80,8 +80,6 @@
   height: 38px; /* Definindo a mesma altura que o botão */
   width: 4rem;
   font-size: 18px; /* Ajustando o tamanho da fonte */
-  border: 1px solid #ddd; /* Adicionando uma borda para maior destaque */
-  border-radius: 5px;
   padding: 0.2rem; /* Adicionando um pequeno preenchimento interno */
 }
 

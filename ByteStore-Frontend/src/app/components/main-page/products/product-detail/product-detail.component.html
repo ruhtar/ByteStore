@@ -12,10 +12,15 @@
   />
   <p class="info">Stock: {{ product.productQuantity }} unit(s)</p>
   <p class="info">Rate: {{ product.rate | number: "1.0-0" }}</p>
+  <p-rating
+    [(ngModel)]="product.rate"
+    [readonly]="true"
+    [cancel]="false"
+  ></p-rating>
   <p class="info">Number of reviews: {{ product.timesRated }}</p>
 
   <div *ngIf="logged" class="quantity-container">
-    <p class="info">Quantity:</p>
+    <label class="info">Quantity:</label>
     <input
       type="number"
       [(ngModel)]="quantityToAdd"

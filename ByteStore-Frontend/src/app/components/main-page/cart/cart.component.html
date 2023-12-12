@@ -25,19 +25,23 @@
           </div>
         </div>
         <button
+          pButton
           class="remove-btn"
+          icon="pi pi-trash"
           (click)="removeProductFromTheCart(product.productId)"
-        >
-          <i class="fa-solid fa-trash fa-beat"></i>
-        </button>
+        ></button>
       </div>
     </div>
     <div class="summary">
       <h2>Cart summary</h2>
       <p>Total: $ {{ totalPrice | number: "1.2-2" }}</p>
-      <button class="checkout-button" (click)="buyOrder()">
-        Complete purchase
-      </button>
+      <p-button
+        (click)="buyOrder()"
+        label="Complete purchase"
+        icon="pi pi-wallet"
+        severity="info"
+        outlined="true"
+      ></p-button>
     </div>
   </section>
   <section class="cart-message" *ngIf="!logged">

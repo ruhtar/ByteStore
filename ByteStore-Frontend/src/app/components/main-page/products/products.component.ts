@@ -11,8 +11,6 @@ import { Product } from 'src/app/types/Product';
 export class ProductsComponent {
   exibidProducts!: Product[];
   originalProducts!: Product[];
-  minPrice: number = 0;
-  maxPrice: number = 0;
   range: number[] = [150, 2000];
   filterValue: string = '';
   selectedOption: string = '';
@@ -35,7 +33,6 @@ export class ProductsComponent {
   }
 
   searchProducts() {
-    this.filterByPrice();
     const filterLowerCase = this.filterValue.toLowerCase();
 
     this.exibidProducts = this.exibidProducts.filter((product) => {
@@ -46,19 +43,24 @@ export class ProductsComponent {
     // this.filterByPrice();
   }
 
+  filterProducts() {
+    this.searchProducts();
+    this.filterByPrice();
+  }
+
   filterByPrice() {
     this.exibidProducts = this.originalProducts; //To avoid filtering the same list over and over again
-    this.sortProducts();
-    if (this.minPrice > 0 || this.maxPrice > 0) {
+    // this.sortProducts();
+    if (this.range[0] > 0 || this.range[1] > 0) {
       this.exibidProducts = this.exibidProducts.filter((product) => {
-        if (this.minPrice > 0 && this.maxPrice > 0) {
+        if (this.range[0] > 0 && this.range[1] > 0) {
           return (
-            product.price >= this.minPrice && product.price <= this.maxPrice
+            product.price >= this.range[0] && product.price <= this.range[1]
           );
-        } else if (this.minPrice > 0) {
-          return product.price >= this.minPrice;
-        } else if (this.maxPrice > 0) {
-          return product.price <= this.maxPrice;
+        } else if (this.range[0] > 0) {
+          return product.price >= this.range[0];
+        } else if (this.range[1] > 0) {
+          return product.price <= this.range[1];
         }
         return true;
       });

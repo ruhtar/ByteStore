@@ -11,12 +11,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { RatingModule } from 'primeng/rating';
 import { FooterModule } from 'src/app/components/footer/footer.module';
 import { HeaderModule } from 'src/app/components/header/header.module';
 import { ProductDetailComponent } from './product-detail.component';
-import { ReviewComponent } from './review/review.component';
 
 const routes: Routes = [
   {
@@ -26,9 +26,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ProductDetailComponent, ReviewComponent],
+  declarations: [ProductDetailComponent],
   exports: [RouterModule],
   imports: [
+    InputNumberModule,
     RatingModule,
     InputTextareaModule,
     DialogModule,
