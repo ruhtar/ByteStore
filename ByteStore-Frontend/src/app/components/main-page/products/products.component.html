@@ -20,6 +20,7 @@
       <span class="p-input-icon-left">
         <i class="pi pi-search"></i>
         <input
+          type="search"
           pInputText
           [(ngModel)]="filterValue"
           placeholder="Search by name"
@@ -72,7 +73,6 @@
         <i class="fa-solid fa-hand-holding-dollar"></i>
         $ {{ product.price | number: "1.2-2" }}
       </p>
-      <!-- <p class="product-quantity">Stock: {{ product.productQuantity }}</p> -->
 
       <p-button
         label="See more"
