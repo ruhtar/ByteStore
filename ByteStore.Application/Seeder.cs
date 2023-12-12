@@ -80,6 +80,7 @@ public class Seeder : IHostedService
                 Name = "Amazfit Huami 2022 model",
                 Price = 100M,
                 ProductQuantity = 10,
+                
                 ImageStorageUrl =
                     "https://firebasestorage.googleapis.com/v0/b/bytestore-dd3c8.appspot.com/o/ByteStore%2Frelogio.jpg?alt=media&token=2a56a1d2-4650-4e94-86b6-34a3c2e0c392",
                 Description =
@@ -270,16 +271,16 @@ public class Seeder : IHostedService
         };
         foreach (var product in products)
         {
+            var random = new Random();
+            // Atribuir valores aleatórios para Rate entre 3.0 e 5.0
+            product.Rate = Math.Round(random.NextDouble() * (5.0 - 3.0) + 3.0, 2);
+
+            // Atribuir valores aleatórios para TimesRated entre 10 e 100
+            product.TimesRated = random.Next(10, 101);
+            
             var productService = scope.ServiceProvider.GetRequiredService<IProductService>();
 
-            await productService.AddProduct(new ProductDto
-            {
-                Name = product.Name,
-                Price = product.Price,
-                ProductQuantity = product.ProductQuantity,
-                ImageStorageUrl = product.ImageStorageUrl,
-                Description = product.Description
-            });
+            await productService.AddProduct(product);
         }
     }
 }

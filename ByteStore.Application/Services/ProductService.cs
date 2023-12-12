@@ -33,7 +33,9 @@ public class ProductService : IProductService
             ProductQuantity = productDto.ProductQuantity,
             Price = productDto.Price,
             ImageStorageUrl = productDto.ImageStorageUrl,
-            Description = productDto.Description
+            Description = productDto.Description,
+            Rate = productDto.Rate,
+            TimesRated = productDto.TimesRated
         };
         return await _productRepository.AddProduct(product);
     }
