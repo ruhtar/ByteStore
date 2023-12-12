@@ -43,59 +43,44 @@ export class ProductsComponent {
     // this.filterByPrice();
   }
 
-  filterProducts() {
+  applyFilters() {
+    this.exibidProducts = [...this.originalProducts];
     this.searchProducts();
     this.filterByPrice();
+    // this.sortProducts();
   }
 
   filterByPrice() {
-    this.exibidProducts = this.originalProducts; //To avoid filtering the same list over and over again
-    // this.sortProducts();
     if (this.range[0] > 0 || this.range[1] > 0) {
       this.exibidProducts = this.exibidProducts.filter((product) => {
-        if (this.range[0] > 0 && this.range[1] > 0) {
-          return (
-            product.price >= this.range[0] && product.price <= this.range[1]
-          );
-        } else if (this.range[0] > 0) {
-          return product.price >= this.range[0];
-        } else if (this.range[1] > 0) {
-          return product.price <= this.range[1];
-        }
-        return true;
+        return (
+          (this.range[0] <= 0 || product.price >= this.range[0]) &&
+          (this.range[1] <= 0 || product.price <= this.range[1])
+        );
       });
     }
   }
 
   sortProducts() {
-    if (this.selectedOption === 'name') this.orderByName(this.exibidProducts);
-    if (this.selectedOption === 'priceAsc')
+    if (this.selectedOption === 'name') {
+      this.orderByName(this.exibidProducts);
+    } else if (this.selectedOption === 'priceAsc') {
       this.sortByPriceAsc(this.exibidProducts);
-    if (this.selectedOption === 'priceDesc')
+    } else if (this.selectedOption === 'priceDesc') {
       this.sortByPriceDesc(this.exibidProducts);
+    }
   }
 
   orderByName(list: Product[]) {
-    list.sort((a, b) => {
-      const nomeA = a.name.toLowerCase();
-      const nomeB = b.name.toLowerCase();
-
-      if (nomeA < nomeB) return -1;
-      if (nomeA > nomeB) return 1;
-      return 0;
-    });
+    list.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   sortByPriceAsc(list: Product[]) {
-    list.sort((a, b) => {
-      return a.price - b.price;
-    });
+    list.sort((a, b) => a.price - b.price);
   }
 
   sortByPriceDesc(list: Product[]) {
-    list.sort((a, b) => {
-      return b.price - a.price;
-    });
+    list.sort((a, b) => b.price - a.price);
   }
 
   pageChanged(event: any): void {
