@@ -104,3 +104,10 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.glow {
+  mask-composite: intersect;
+  mask-clip: padding-box, border-box;
+  mask: linear-gradient(#0000, #0000),
+    conic-gradient(#0000 0deg, #ffff, #0000 45deg);
+}

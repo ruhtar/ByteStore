@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { ProductService } from 'src/app/services/product/product.service';
@@ -15,6 +16,7 @@ import Swal from 'sweetalert2';
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
+  providers: [MessageService],
 })
 export class ProductDetailComponent {
   visible: boolean = false;
@@ -38,6 +40,7 @@ export class ProductDetailComponent {
     private authService: AuthService,
     private userService: UserService,
     private dialogRef: MatDialog,
+    private messageService: MessageService,
   ) {}
   ngOnInit() {
     let paramMap = this.route.snapshot.paramMap.get('id');
@@ -83,7 +86,18 @@ export class ProductDetailComponent {
   }
 
   openModal() {
-    this.visible = true;
+    this.userService.checkIfUserHasBoughtAProduct(this.productId).subscribe(
+      (isAllowed) => {
+        this.visible = true;
+      },
+      (error) => {
+        this.messageService.add({
+          severity: 'warn',
+          summary: 'Warn',
+          detail: 'You must have brought the product to review it.',
+        });
+      },
+    );
   }
 
   createReview(comment: string) {

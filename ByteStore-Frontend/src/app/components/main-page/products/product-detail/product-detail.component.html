@@ -47,15 +47,19 @@
   </div>
 
   <h2>Reviews</h2>
-  <button
-    (click)="openModal()"
-    pButton
-    class="add-button"
-    label="Did you like the product? Rate it!"
-    *ngIf="logged"
-    icon="pi pi-comment"
-    iconPos="right"
-  ></button>
+  <div>
+    <p-toast life="6000"></p-toast>
+    <button
+      (click)="openModal()"
+      pButton
+      pRipple
+      class="add-button"
+      label="Did you like the product? Rate it!"
+      *ngIf="logged"
+      icon="pi pi-comment"
+      iconPos="right"
+    ></button>
+  </div>
   <p-dialog
     header="Leave a review!"
     [(visible)]="visible"

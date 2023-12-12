@@ -1,7 +1,13 @@
 ﻿<div class="login-container">
   <div class="login-box">
     <a routerLink="/home">
-      <i class="fa-solid fa-house" style="color: var(--purple)"></i> Home page
+      <span style="margin-right: 8px">
+        <i class="fas fa-arrow-left"></i>
+      </span>
+      <span>
+        <i class="fa-solid fa-house" style="color: var(--purple)"></i>
+      </span>
+      Home page
     </a>
     <h2>Login</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" #formDir="ngForm">

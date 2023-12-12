@@ -15,7 +15,7 @@ export class ProductsComponent {
   filterValue: string = '';
   selectedOption: string = '';
   pageIndex = 0;
-  pageSize = 5;
+  pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 15, 20];
   constructor(private productService: ProductService) {}
 
