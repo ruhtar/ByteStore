@@ -67,7 +67,12 @@ public class ProductService : IProductService
             Rate = reviewDto.Rate,
             ReviewText = reviewDto.ReviewText
         };
-        
+
+        await UpdateProduct(reviewDto.ProductId, new UpdateProductDto
+        {
+            Rate = product.Rate,
+            TimesRated = product.TimesRated
+        });
         return await _productRepository.CreateReview(review);
     }
 

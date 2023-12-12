@@ -25,7 +25,6 @@ export class ProductDetailComponent {
   logged!: boolean;
   productId!: number;
   selectedRating!: number;
-  rates: number[] = [0, 1, 2, 3, 4, 5];
   newCommentText!: string;
   id!: number;
   rating: any;
@@ -88,9 +87,12 @@ export class ProductDetailComponent {
   }
 
   createReview(comment: string) {
+    this.visible = false;
     var username = this.tokenService.getDecodedJwt().name;
     var userId = this.tokenService.getDecodedJwt().nameid;
     const review = new Review();
+    console.log(this.selectedRating);
+    console.log(typeof this.selectedRating);
     review.productId = this.productId;
     review.rate = this.selectedRating;
     review.userId = userId;

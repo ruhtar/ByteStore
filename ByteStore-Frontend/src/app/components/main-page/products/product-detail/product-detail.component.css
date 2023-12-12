@@ -111,3 +111,11 @@ a {
   position: relative;
   min-height: 100vh;
 }
+
+.comment-form textarea {
+  height: 150px;
+  min-height: 150px;
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+}

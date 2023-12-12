@@ -51,7 +51,11 @@
     icon="pi pi-comment"
     iconPos="right"
   ></button>
-  <p-dialog header="Header" [(visible)]="visible" [style]="{ width: '50vw' }">
+  <p-dialog
+    header="Leave a review!"
+    [(visible)]="visible"
+    [style]="{ width: '50vw' }"
+  >
     <div class="comment-form">
       <p-rating [(ngModel)]="selectedRating" [cancel]="false"></p-rating>
       <h3>Post a Comment</h3>
