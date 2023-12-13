@@ -18,7 +18,6 @@ public class ShoppingCartService : IShoppingCartService
     private readonly ICacheConfigs _cache;
     private const string CartItemKey = "CartItemKey";
 
-
     public ShoppingCartService(IShoppingCartRepository shoppingCartRepository, IProductRepository productRepository,
         ICacheConfigs cache, IUserRepository userRepository)
     {
