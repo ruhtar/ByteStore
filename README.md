@@ -53,7 +53,7 @@ This project is a personal endeavor, crafted to enhance proficiency in various t
 
     - 1:1 (One-to-One): Linking related data in a one-to-one relationship, like Users and theirs ShoppingCarts.
     - 1:N (One-to-Many): Managing relationships where one entity is related to multiple others, like Reviews of a Product.
-    - N:N (Many-to-Many): Handling complex associations between multiple entities, like Products and ShoppingCarts, using OrderItem as Junction Table.
+    - N:N (Many-to-Many): Handling complex associations between multiple entities, like Products and ShoppingCarts.
 
 ### Caching:
 
