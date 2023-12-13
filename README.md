@@ -10,23 +10,23 @@ Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers
 
 - **Users and Shopping Carts**: ByteStore allows users to create accounts and manage their shopping carts.
 
-- **Products and OrderItems**: The platform offers a catalog of products and users can add items to their shopping carts.
+- **Products and OrderItems**: The platform offers a catalog of products and users can add them to their shopping carts.
 
 - **Products reviews**: The platform shows how many people have reviewed a product. You can also check each individual rate followed by a comment about the purchase.
 
 ### User Authentication and Security:
 
-- **Signup**: Users can sign up by providing a unique username, a secure password, and their address information. Passwords undergo hashing and salting for maximum security, ensuring the safety of sensitive user data. Passwords must have capital letters, number and special characters.
+- **Signup**: Users can sign up by providing a unique username, a secure password, and their address information. Passwords undergo hashing (`PBKDF2`) and salting for maximum security, ensuring the safety of sensitive user data. Passwords must have capital letters, number and special characters.
 
-- **Signin**: Registered users can log in with their credentials, and the system generates a JWT token that is stored in Local Storage. This token gives the system important information and grants access to protected routes and resources.
+- **Signin**: Registered users can log in with their credentials, and the system generates a JWT token that is stored in Local Storage. This token is validated on the backend and gives the system important information and grants access to protected routes and resources.
 
 ### Shopping Features:
 
-- **View Products**: Users can explore the product listings in the store and check products photos, prices, number of items in stock, descriptions and check other user's reviews about a specific product. All of this is complete with filters for names and prices. Sorting options by alphabetical and price order, in ascending and descending order, make navigation easier. Also, there is a pagination system in frontend and backend for more usability.
+- **View Products**: Users can explore the product listings in the store and check products photos, prices, number of items in stock, descriptions and check other user's reviews about a specific product. All of this is complete with filters for names and prices. Sorting options by alphabetical and price order, in ascending and descending order, make navigation easier. Also, there is a pagination system in frontend and backend for more usability and scalability.
 
 - **Shopping Cart**: Logged-in users can add and remove products to their shopping carts and proceed to make purchases. If a user isn't logged in, they'll be prompted to do so before accessing their cart.
 
-- **Edit Shopping Cart Items**: Users have the flexibility to adjust item quantities or remove items from their shopping carts.
+- **Edit Shopping Cart Items**: Users have the flexibility to adjust item quantities or remove items from their shopping carts. They can also check their Cart Summary to see the total cost of their purchase.
 
 ### User Interactions:
 
