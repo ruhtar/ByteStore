@@ -1,4 +1,4 @@
-# ByteStore Ecommerce Project - Work in Progress 🛒🤑
+# ByteStore Ecommerce Project 🛒🤑
 
 ![ByteStoreLogo](https://i.postimg.cc/zD355jBh/bytestore.jpg)
 
@@ -13,7 +13,7 @@ This project is a personal endeavor, crafted to enhance proficiency in various t
 - Docker, 
 - Firebase,
 - Redis cache,
-- Unit tests and integration tests using XUnit,
+- Unit tests and integration tests using XUnit and Moq,
 - Repository Pattern,
 - Domain Services,
 - Domain Driven Design
