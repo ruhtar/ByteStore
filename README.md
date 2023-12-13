@@ -38,8 +38,10 @@ Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers
 
     - This distributed cache enables the application to share cached data across multiple instances, reducing the need for frequent database queries and delivering improved overall performance.
  
-### Running the app
+### Running the app:
+
 - **Seeder**: ByteStore has a builtin Seeder Hosted Service that will populate the database on the first time you run the application. It will create some products and create a user called `Admin`, with a password that is `!123Qwe`, that you can test right away.
+- 
 - **Docker and Docker Compose**: To run the application with no problems and little setup, you can just run a `docker compose up -d` and the application will do the rest for you. 
 
 # API Endpoint Description
