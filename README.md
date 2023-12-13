@@ -1,6 +1,6 @@
 # ByteStore Ecommerce Project 🛒🤑
 
-![ByteStoreLogo](https://i.postimg.cc/zD355jBh/bytestore.jpg)
+![ByteStore](https://i.ibb.co/8rJ7NBV/bytestore.png)
 
 Welcome to ByteStore, your go-to fullstack e-commerce platform! 🚀
 
