@@ -55,6 +55,8 @@ This project is a personal endeavor, crafted to enhance proficiency in various t
     - 1:N (One-to-Many): Managing relationships where one entity is related to multiple others, like Reviews of a Product.
     - N:N (Many-to-Many): Handling complex associations between multiple entities, like Products and ShoppingCarts.
 
+- **Image Storage**: In adherence to best practices, ByteStore avoids storing images directly in the database. Instead, images are securely managed in a FileStorage system hosted on Firebase. This approach optimizes performance and promotes cleaner database management.
+
 ### Caching:
 
 - **Distributed Caching with Redis**: The system takes performance a step further with distributed caching using Redis. This distributed cache enhances application performance and scalability by storing cached data in a distributed memory store accessible by all instances of the application.
