@@ -2,7 +2,17 @@
 
 ![ByteStoreLogo](https://i.postimg.cc/zD355jBh/bytestore.jpg)
 
-Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers a comprehensive range of features that cater to both customers and the security-conscious, all built on a robust tech stack that includes .NET, Entity Framework Core, Angular, MySQL, JWT, Docker, Firebase, and Redis cache.
+Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers a comprehensive range of features that cater to both customers and the security-conscious, all built on a robust tech stack that includes:
+- .NET 6,
+- Entity Framework Core,
+- Angular, MySQL,
+- JWT,
+- Docker, 
+- Firebase,
+- Redis cache,
+- Repository Pattern,
+- Domain Services,
+- Domain Driven Design
 
 ## Project Overview
 
@@ -38,7 +48,7 @@ Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers
 
 - **Distributed Caching with Redis**: The system takes performance a step further with distributed caching using Redis. This distributed cache enhances application performance and scalability by storing cached data in a distributed memory store accessible by all instances of the application.
 
-    - When the `GetAllProductsAsync` method in the `ProductRepository` is invoked, it first checks if the requested data exists in the Redis cache. If found, it's served directly from the cache. If not, the data is fetched from the database, serialized, and stored in Redis for future use.
+    - When the `GetProductById` method in the `ProductRepository` is invoked, it first checks if the requested data exists in the Redis cache. If found, it's served directly from the cache. If not, the data is fetched from the database, serialized, and stored in Redis for future use.
 
     - This distributed cache enables the application to share cached data across multiple instances, reducing the need for frequent database queries and delivering improved overall performance.
  
