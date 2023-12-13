@@ -1,5 +1,7 @@
-﻿using ByteStore.Domain.Entities;
+﻿using System.Text.Json;
+using ByteStore.Domain.Entities;
 using ByteStore.Domain.ValueObjects;
+using ByteStore.Infrastructure.Cache;
 using ByteStore.Infrastructure.Repositories.Interfaces;
 using ByteStore.Shared.DTO;
 using Microsoft.EntityFrameworkCore;
@@ -9,13 +11,13 @@ namespace ByteStore.Infrastructure.Repositories;
 public class ProductRepository : IProductRepository
 {
     private readonly AppDbContext _context;
-    // private readonly ICacheConfigs _cache;
-    // private const string AllProductsKey = "AllProductsKeys";
+    private readonly ICacheConfigs _cache;
+    private const string GetById = "ProductByIdKeys";
 
-    public ProductRepository(AppDbContext context) //, ICacheConfigs cache
+    public ProductRepository(AppDbContext context, ICacheConfigs cache)
     {
         _context = context;
-        // _cache = cache;
+        _cache = cache;
     }
 
     public async Task<List<Product?>> GetAllProducts(GetProductsInputPagination input)
@@ -51,9 +53,27 @@ public class ProductRepository : IProductRepository
 
     public async Task<Product?> GetProductById(int id)
     {
-        return await _context.Products
+        var cache = await _cache.GetFromCacheAsync<Product>(GetById);
+        if (cache != null)
+        {
+            //This is just for testing if cache is avaible.
+            //stopwatch.Stop();
+            //Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
+            return cache;
+        }
+
+        var product = await _context.Products
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.ProductId == id);
+        
+        //This is just for testing if cache is avaible.
+        //Thread.Sleep(5000);
+        var cacheData = JsonSerializer.Serialize(product);
+        await _cache.SetAsync(GetById, cacheData);
+        //stopwatch.Stop();
+        //Console.WriteLine($"Execution Time: {stopwatch.Elapsed.TotalSeconds} seconds");
+
+        return product;
     }
 
     public async Task<Product?> AddProduct(Product? product)

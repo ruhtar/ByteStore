@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using ByteStore.Domain.Entities;
-
-namespace ByteStore.Domain.ValueObjects;
+﻿namespace ByteStore.Domain.ValueObjects;
 
 public class Review
 {

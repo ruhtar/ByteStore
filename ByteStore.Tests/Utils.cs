@@ -17,11 +17,11 @@ public abstract class Utils
         return new AppDbContext(dbOptionsBuilder.Options);
     }
 
-    internal static ProductRepository GetProductRepository()
-    {
-        var dbContext = GetDbContext();
-        return new ProductRepository(dbContext);
-    }
+    // internal static ProductRepository GetProductRepository()
+    // {
+    //     var dbContext = GetDbContext();
+    //     return new ProductRepository(dbContext);
+    // }
     
     internal static UserRepository GetUserRepository()
     {

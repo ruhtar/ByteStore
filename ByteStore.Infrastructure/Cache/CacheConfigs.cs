@@ -29,8 +29,8 @@ public class CacheConfigs : ICacheConfigs
     private static DistributedCacheEntryOptions GetCacheOptions()
     {
         var options = new DistributedCacheEntryOptions();
-        options.SetSlidingExpiration(TimeSpan.FromSeconds(7));
-        options.SetAbsoluteExpiration(TimeSpan.FromSeconds(15));
+        options.SetSlidingExpiration(TimeSpan.FromSeconds(3));
+        options.SetAbsoluteExpiration(TimeSpan.FromSeconds(7));
         return options;
     }
 }

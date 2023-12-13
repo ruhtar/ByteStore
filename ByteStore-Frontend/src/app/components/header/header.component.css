@@ -37,6 +37,10 @@ nav a {
   gap: 20px;
 }
 
+.container h1 span {
+  color: var(--yellow);
+}
+
 img {
   width: 80px;
 }

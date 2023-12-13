@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace ByteStore.Domain;
+﻿namespace ByteStore.Domain;
 
 public class SeederFlag
 {
