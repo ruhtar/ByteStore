@@ -120,7 +120,7 @@ public class ProductServiceTests
     }
     
     [Fact]
-    public async Task UpdateProduct()
+    public async Task UpdateProduct_ShouldReturnTrue()
     {
         //arrange
         var productRepo = new Mock<IProductRepository>();
@@ -147,9 +147,38 @@ public class ProductServiceTests
         Assert.True(result);
         productRepo.Verify(x=>x.UpdateProduct(product.ProductId, productDto), Times.Once);
     }
+    
+    [Fact]
+    public async Task UpdateProduct_ShouldReturnFalse()
+    {
+        //arrange
+        var productRepo = new Mock<IProductRepository>();
+        var product = Utils.GetProductsMock()[0];
+
+        productRepo.Setup(x => x.UpdateProduct(It.IsAny<int>(), It.IsAny<UpdateProductDto>())).ReturnsAsync(false);
+
+        var productService = new ProductService(productRepo.Object);
+        
+        var productDto = new UpdateProductDto
+        {
+            ProductId = product.ProductId,
+            Name = product.Name,
+            Price = product.Price,
+            ProductQuantity = product.ProductQuantity,
+            ImageStorageUrl = product.ImageStorageUrl,
+            Description = product.Description
+        };
+        
+        //act
+        var result = await productService.UpdateProduct(product.ProductId ,productDto);
+
+        //assert
+        Assert.False(result);
+        productRepo.Verify(x=>x.UpdateProduct(product.ProductId, productDto), Times.Once);
+    }
 
     [Fact]
-    public async Task CreateReview()
+    public async Task CreateReview_ShouldReturnNotNull()
     {
          //arrange
          var productRepo = new Mock<IProductRepository>();
@@ -160,7 +189,7 @@ public class ProductServiceTests
              ProductId = product.ProductId,
              UserId = Utils.GetUserMock().UserId,
              Username = Utils.GetUserMock().Username,
-             ReviewText = "lalalalala",
+             ReviewText = "BALDURSGATE3 É GOTY FÁCIL",
              Rate = 2
          };
          
@@ -169,7 +198,7 @@ public class ProductServiceTests
              ProductId = product.ProductId,
              UserId = Utils.GetUserMock().UserId,
              Username = Utils.GetUserMock().Username,
-             ReviewText = "lalalalala",
+             ReviewText = "BALDURSGATE3 É GOTY FÁCIL",
              Rate = 2
          };
          
@@ -186,6 +215,46 @@ public class ProductServiceTests
          Assert.Equal(result, review);
          productRepo.Verify(x=>x.GetProductById(product.ProductId), Times.Once);
          productRepo.Verify(x=>x.CreateReview(It.IsAny<Review>()), Times.Once);
+    }
+    
+    [Fact]
+    public async Task CreateReview_ShouldReturnNull()
+    {
+        //arrange
+        var productRepo = new Mock<IProductRepository>();
+        var product = Utils.GetProductsMock()[0];
+
+        var review = new Review
+        {
+            ProductId = product.ProductId,
+            UserId = Utils.GetUserMock().UserId,
+            Username = Utils.GetUserMock().Username,
+            ReviewText = "BALDURSGATE3 É GOTY FÁCIL",
+            Rate = 5
+        };
+         
+        var reviewDto = new ReviewDto
+        {
+            ProductId = product.ProductId,
+            UserId = Utils.GetUserMock().UserId,
+            Username = Utils.GetUserMock().Username,
+            ReviewText = "BALDURSGATE3 É GOTY FÁCIL",
+            Rate = 5
+        };
+         
+        productRepo.Setup(x => x.CreateReview(It.IsAny<Review>())).ReturnsAsync(review);
+        productRepo.Setup(x => x.GetProductById(product.ProductId)).ReturnsAsync((Product)null);
+         
+        var productService = new ProductService(productRepo.Object);
+
+        //act
+        var result = await productService.CreateReview(reviewDto);
+
+        //assert
+        Assert.Null(result);
+        Assert.NotEqual(result, review);
+        productRepo.Verify(x=>x.GetProductById(product.ProductId), Times.Once);
+        productRepo.Verify(x=>x.CreateReview(It.IsAny<Review>()), Times.Never);
     }
 
     [Fact]
