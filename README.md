@@ -13,6 +13,7 @@ This project is a personal endeavor, crafted to enhance proficiency in various t
 - Docker, 
 - Firebase,
 - Redis cache,
+- Unit tests and integration tests using XUnit,
 - Repository Pattern,
 - Domain Services,
 - Domain Driven Design
