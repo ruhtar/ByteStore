@@ -2,7 +2,7 @@
 
 ![ByteStoreLogo](https://i.postimg.cc/zD355jBh/bytestore.jpg)
 
-Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers a comprehensive range of features that cater to both customers and the security-conscious, all built on a robust tech stack that includes:
+Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers a comprehensive range of features that cater to both customers and the security-conscious, all built on a robust tech stack/patterns that includes:
 - .NET 6,
 - Entity Framework Core,
 - Angular, MySQL,
