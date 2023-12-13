@@ -12,6 +12,8 @@ Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers
 
 - **Products and OrderItems**: The platform offers a catalog of products and users can add items to their shopping carts.
 
+- **Products reviews**: The platform shows how many people have reviewed a product. You can also check each individual rate followed by a comment about the purchase.
+
 ### User Authentication and Security:
 
 - **Signup**: Users can sign up by providing a unique username, a secure password, and their address information. Passwords undergo hashing and salting for maximum security, ensuring the safety of sensitive user data. Passwords must have capital letters, number and special characters.
@@ -42,9 +44,11 @@ Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers
  
 ### Running the app:
 
-- **Seeder**: ByteStore has a builtin Seeder Hosted Service that will populate the database on the first time you run the application. It will create some products and create a user called `Admin`, with a password that is `!123Qwe`, that you can test right away.
+- **Auto Migrator**: ByteStore has an Auto Migrator that... duh... runs the database migrations automatically, so don't worry about them.
+
+- **Seeder**: ByteStore has a builtin Seeder Hosted Service that will populate the database on the first time you run the application. It will create some products and create a user called `Admin`, with a password that is `!123Qwe`, that you can use right away.
   
-- **Docker and Docker Compose**: To run the application with no problems and little setup, you can just run a `docker compose up -d` and the application will do the rest for you. 
+- **Docker and Docker Compose**: To run the application with no problems and little setup, just run a `docker compose up -d` and the application will do the rest for you. After that, browse to `http://localhost:4200/`.
 
 # API Endpoint Description
 
