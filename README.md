@@ -47,6 +47,8 @@ This project is a personal endeavor, crafted to enhance proficiency in various t
 
 - **Edit User Information**: Users can update their registration information, including addresses and passwords, at their convenience.
 
+- **Check purchase history**: Users can check on `My Account` a list of bought products, their quantity, their price and the date that the purchase was made.
+
 ### Data storage:
 
 - **Database Design**: ByteStore utilizes the MySQL relational database with the following relationships:
