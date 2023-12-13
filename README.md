@@ -1,6 +1,22 @@
 # ByteStore Ecommerce Project - Work in Progress 🛒🤑
 
-Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers a comprehensive range of features that cater to both customers and the security-conscious, all built on a robust tech stack that includes .NET, Entity Framework Core, Angular, MySQL, JWT, Docker, Firebase, and Redis cache.
+![ByteStoreLogo](https://i.postimg.cc/zD355jBh/bytestore.jpg)
+
+Welcome to ByteStore, your go-to fullstack e-commerce platform! 🚀
+
+This project is a personal endeavor, crafted to enhance proficiency in various technologies and patterns. ByteStore offers a comprehensive range of features that cater to both customers and the security-conscious, all built on a robust tech stack/patterns that includes:
+
+- .NET 6,
+- Entity Framework Core,
+- Angular, MySQL,
+- JWT,
+- Docker, 
+- Firebase,
+- Redis cache,
+- Unit tests and integration tests using XUnit,
+- Repository Pattern,
+- Domain Services,
+- Domain Driven Design
 
 ## Project Overview
 
@@ -8,21 +24,23 @@ Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers
 
 - **Users and Shopping Carts**: ByteStore allows users to create accounts and manage their shopping carts.
 
-- **Products and OrderItems**: The platform offers a catalog of products and users can add items to their shopping carts.
+- **Products and OrderItems**: The platform offers a catalog of products and users can add them to their shopping carts.
+
+- **Products reviews**: The platform shows how many people have reviewed a product. You can also check each individual rate followed by a comment about the purchase.
 
 ### User Authentication and Security:
 
-- **Signup**: Users can sign up by providing a unique username, a secure password, and their address information. Passwords undergo hashing and salting for maximum security, ensuring the safety of sensitive user data. Passwords must have capital letters, number and special characters.
+- **Signup**: Users can sign up by providing a unique username, a secure password, and their address information. Passwords undergo hashing (`PBKDF2`) and salting for maximum security, ensuring the safety of sensitive user data. Passwords must have capital letters, number and special characters.
 
-- **Signin**: Registered users can log in with their credentials, and the system generates a JWT token that is stored in Local Storage. This token gives the system important information and grants access to protected routes and resources.
+- **Signin**: Registered users can log in with their credentials, and the system generates a JWT token that is stored in Local Storage. This token is validated on the backend and gives the system important information and grants access to protected routes and resources.
 
 ### Shopping Features:
 
-- **View Products**: Users can explore the product listings in the store and check products photos, prices, number of items in stock, descriptions and check other user's reviews about a specific product. All of this is complete with filters for names and prices. Sorting options by alphabetical and price order, in ascending and descending order, make navigation easier. Also, there is a pagination system in frontend and backend for more usability.
+- **View Products**: Users can explore the product listings in the store and check products photos, prices, number of items in stock, descriptions and check other user's reviews about a specific product. All of this is complete with filters for names and prices. Sorting options by alphabetical and price order, in ascending and descending order, make navigation easier. Also, there is a pagination system in frontend and backend for more usability and scalability.
 
 - **Shopping Cart**: Logged-in users can add and remove products to their shopping carts and proceed to make purchases. If a user isn't logged in, they'll be prompted to do so before accessing their cart.
 
-- **Edit Shopping Cart Items**: Users have the flexibility to adjust item quantities or remove items from their shopping carts.
+- **Edit Shopping Cart Items**: Users have the flexibility to adjust item quantities or remove items from their shopping carts. They can also check their Cart Summary to see the total cost of their purchase.
 
 ### User Interactions:
 
@@ -30,13 +48,33 @@ Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers
 
 - **Edit User Information**: Users can update their registration information, including addresses and passwords, at their convenience.
 
-### Caching for Performance:
+- **Check purchase history**: Users can check on `My Account` a list of bought products, their quantity, their price and the date that the purchase was made.
+
+### Data storage:
+
+- **Database Design**: ByteStore utilizes the MySQL relational database with the following relationships:
+
+    - 1:1 (One-to-One): Linking related data in a one-to-one relationship, like Users and their ShoppingCarts.
+    - 1:N (One-to-Many): Managing relationships where one entity is related to multiple others, like Reviews of a Product.
+    - N:N (Many-to-Many): Handling complex associations between multiple entities, like Products and ShoppingCarts.
+
+- **Image Storage**: In adherence to best practices, ByteStore avoids storing images directly in the database. Instead, images are securely managed in a FileStorage system hosted on Firebase. This approach optimizes performance and promotes cleaner database management.
+
+### Caching:
 
 - **Distributed Caching with Redis**: The system takes performance a step further with distributed caching using Redis. This distributed cache enhances application performance and scalability by storing cached data in a distributed memory store accessible by all instances of the application.
 
-    - When the `GetAllProductsAsync` method in the `ProductRepository` is invoked, it first checks if the requested data exists in the Redis cache. If found, it's served directly from the cache. If not, the data is fetched from the database, serialized, and stored in Redis for future use.
+    - When the `GetProductById` method in the `ProductRepository` is invoked, it first checks if the requested data exists in the Redis cache. If found, it's served directly from the cache. If not, the data is fetched from the database, serialized, and stored in Redis for future use.
 
     - This distributed cache enables the application to share cached data across multiple instances, reducing the need for frequent database queries and delivering improved overall performance.
+ 
+# Running the app:
+
+- **Auto Migrator**: ByteStore has an Auto Migrator that... duh... runs the database migrations automatically, so don't worry about them.
+
+- **Seeder**: ByteStore also has a builtin Seeder Hosted Service that will populate the database on the first time you run the application. It will create some products and create a user called `Admin`, with a password that is `!123Qwe`, that you can use right away.
+  
+- **Docker and Docker Compose**: To run the application with no problems and little setup, just run a `docker compose up -d` and the application will do the rest for you. After that, browse to `http://localhost:4200/`.
 
 # API Endpoint Description
 
