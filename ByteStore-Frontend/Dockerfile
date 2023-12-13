@@ -7,7 +7,7 @@ WORKDIR /usr/local/app
 COPY . .
 
 # Install project dependencies
-RUN npm install
+RUN npm install --force
 
 # Build the Angular app for production
 RUN npm run build
