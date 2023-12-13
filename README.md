@@ -51,7 +51,7 @@ This project is a personal endeavor, crafted to enhance proficiency in various t
 
 - **Database Design**: ByteStore utilizes the MySQL relational database with the following relationships:
 
-    - 1:1 (One-to-One): Linking related data in a one-to-one relationship, like Users and theirs ShoppingCarts.
+    - 1:1 (One-to-One): Linking related data in a one-to-one relationship, like Users and their ShoppingCarts.
     - 1:N (One-to-Many): Managing relationships where one entity is related to multiple others, like Reviews of a Product.
     - N:N (Many-to-Many): Handling complex associations between multiple entities, like Products and ShoppingCarts.
 
@@ -69,7 +69,7 @@ This project is a personal endeavor, crafted to enhance proficiency in various t
 
 - **Auto Migrator**: ByteStore has an Auto Migrator that... duh... runs the database migrations automatically, so don't worry about them.
 
-- **Seeder**: ByteStore has a builtin Seeder Hosted Service that will populate the database on the first time you run the application. It will create some products and create a user called `Admin`, with a password that is `!123Qwe`, that you can use right away.
+- **Seeder**: ByteStore also has a builtin Seeder Hosted Service that will populate the database on the first time you run the application. It will create some products and create a user called `Admin`, with a password that is `!123Qwe`, that you can use right away.
   
 - **Docker and Docker Compose**: To run the application with no problems and little setup, just run a `docker compose up -d` and the application will do the rest for you. After that, browse to `http://localhost:4200/`.
 
