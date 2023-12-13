@@ -1,5 +1,7 @@
 # ByteStore Ecommerce Project - Work in Progress 🛒🤑
 
+![ByteStoreLogo](https://i.postimg.cc/zD355jBh/bytestore.jpg)
+
 Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers a comprehensive range of features that cater to both customers and the security-conscious, all built on a robust tech stack that includes .NET, Entity Framework Core, Angular, MySQL, JWT, Docker, Firebase, and Redis cache.
 
 ## Project Overview
@@ -41,7 +43,7 @@ Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers
 ### Running the app:
 
 - **Seeder**: ByteStore has a builtin Seeder Hosted Service that will populate the database on the first time you run the application. It will create some products and create a user called `Admin`, with a password that is `!123Qwe`, that you can test right away.
-- 
+  
 - **Docker and Docker Compose**: To run the application with no problems and little setup, you can just run a `docker compose up -d` and the application will do the rest for you. 
 
 # API Endpoint Description
