@@ -187,4 +187,42 @@ public class ProductServiceTests
          productRepo.Verify(x=>x.GetProductById(product.ProductId), Times.Once);
          productRepo.Verify(x=>x.CreateReview(It.IsAny<Review>()), Times.Once);
     }
+
+    [Fact]
+    public async Task GetReviewsByProductId_ReturnsNull_WhenReviewsNotFound()
+    {
+        // Arrange
+        var productId = 1;
+        var mockProductRepository = new Mock<IProductRepository>();
+        mockProductRepository.Setup(repo => repo.GetReviews(productId)).ReturnsAsync((List<Review>)null);
+        var productService = new ProductService(mockProductRepository.Object);
+
+        // Act
+        var result = await productService.GetReviewsByProductId(productId);
+
+        // Assert
+        Assert.Null(result);
+    }
+    
+    [Fact]
+    public async Task GetReviewsByProductId_ReturnsReviewDtoList_WhenReviewsFound()
+    {
+        // Arrange
+        var productId = 1;
+        var mockProductRepository = new Mock<IProductRepository>();
+        var mockReviewList = new List<Review>
+        {
+            new Review { UserId = 1, Username = "user1", Rate = 5, ReviewText = "Great product" },
+            new Review { UserId = 2, Username = "user2", Rate = 4, ReviewText = "Good product" }
+        };
+        mockProductRepository.Setup(repo => repo.GetReviews(productId)).ReturnsAsync(mockReviewList);
+        var productService = new ProductService(mockProductRepository.Object);
+
+        // Act
+        var result = await productService.GetReviewsByProductId(productId);
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal(mockReviewList.Count, result.Count);
+    }
 }
