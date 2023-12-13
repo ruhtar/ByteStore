@@ -9,10 +9,9 @@ namespace ByteStore.Application.Services;
 
 public class TokenService : ITokenService
 {
-    public string GenerateToken(int userId, string username, Roles role)
+    public string GenerateToken(int userId, string username, Roles role, byte[] key)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET"));
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
@@ -31,9 +30,8 @@ public class TokenService : ITokenService
         return tokenHandler.WriteToken(token);
     }
 
-    public bool ValidateToken(string token)
+    public bool ValidateToken(string token, byte[] key)
     {
-        var key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET"));
 
         var tokenHandler = new JwtSecurityTokenHandler();
         var tokenValidationParameters = new TokenValidationParameters

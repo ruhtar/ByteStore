@@ -10,7 +10,7 @@ public class PasswordHasherTest
     {
         // Arrange
         var passwordHasher = new PasswordHasher();
-        var password = "MyStrongPassword123";
+        const string password = "MyStrongPassword123";
 
         // Act
         var hashedPassword = passwordHasher.Hash(password);
@@ -25,8 +25,8 @@ public class PasswordHasherTest
     {
         // Arrange
         var passwordHasher = new PasswordHasher();
-        var correctPassword = "MyStrongPassword123";
-        var incorrectPassword = "WrongPassword456";
+        const string correctPassword = "MyStrongPassword123";
+        const string incorrectPassword = "WrongPassword456";
 
         // Act
         var hashedPassword = passwordHasher.Hash(correctPassword);
@@ -41,7 +41,7 @@ public class PasswordHasherTest
     {
         // Arrange
         var passwordHasher = new PasswordHasher();
-        var password = "MyStrongPassword123";
+        const string password = "MyStrongPassword123";
 
         // Act
         var hashedPassword = passwordHasher.Hash(password);

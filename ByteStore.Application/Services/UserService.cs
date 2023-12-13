@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Text;
+using System.Text.Json;
 using ByteStore.Application.Services.Interfaces;
 using ByteStore.Application.Validator;
 using ByteStore.Domain.Aggregates;
@@ -43,11 +44,15 @@ public class UserService : IUserService
         if (userRegistered == null) return string.Empty;
 
         var isPasswordValid = _passwordHasher.Validate(userRegistered.User.Password, user.Password);
-        if (isPasswordValid)
-            return _tokenService.GenerateToken(userRegistered.User.UserId, userRegistered.User.Username,
-                userRegistered.Role);
-
-        return string.Empty;
+        if (!isPasswordValid)
+        {
+            return string.Empty;
+        }
+        
+        var key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET"));
+        
+        return _tokenService.GenerateToken(userRegistered.User.UserId, userRegistered.User.Username,
+            userRegistered.Role, key);
     }
 
     public async Task EditUserAddress(Address address, int userId)
@@ -78,7 +83,7 @@ public class UserService : IUserService
     {
         return await _userRepository.CheckIfUserHasBoughtAProduct(userId, productId);
     }
-    
+
     public async Task RegisterUser(SignupUserDto user)
     {
         var hashedPassword = _passwordHasher.Hash(user.User.Password);

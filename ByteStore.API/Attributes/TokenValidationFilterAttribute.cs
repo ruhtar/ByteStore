@@ -1,4 +1,5 @@
-﻿using ByteStore.Application.Services.Interfaces;
+﻿using System.Text;
+using ByteStore.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -32,8 +33,9 @@ public class TokenValidationFilter : IAuthorizationFilter
         }
         
         token = token.Replace("Bearer ", "");
-
-        if (!_tokenService.ValidateToken(token))
+        var key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET"));
+        
+        if (!_tokenService.ValidateToken(token, key))
         {
             context.Result = new UnauthorizedResult();
         }
