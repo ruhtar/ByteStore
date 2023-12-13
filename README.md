@@ -42,7 +42,7 @@ Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers
 
     - This distributed cache enables the application to share cached data across multiple instances, reducing the need for frequent database queries and delivering improved overall performance.
  
-### Running the app:
+# Running the app:
 
 - **Auto Migrator**: ByteStore has an Auto Migrator that... duh... runs the database migrations automatically, so don't worry about them.
 
