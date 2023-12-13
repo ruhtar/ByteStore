@@ -47,7 +47,15 @@ This project is a personal endeavor, crafted to enhance proficiency in various t
 
 - **Edit User Information**: Users can update their registration information, including addresses and passwords, at their convenience.
 
-### Caching for Performance:
+### Data storage:
+
+- **Database Design**: ByteStore utilizes the MySQL relational database with the following relationships:
+
+    - 1:1 (One-to-One): Linking related data in a one-to-one relationship, like Users and theirs ShoppingCarts.
+    - 1:N (One-to-Many): Managing relationships where one entity is related to multiple others, like Reviews of a Product.
+    - N:N (Many-to-Many): Handling complex associations between multiple entities, like Products and ShoppingCarts, using OrderItem as Junction Table.
+
+### Caching:
 
 - **Distributed Caching with Redis**: The system takes performance a step further with distributed caching using Redis. This distributed cache enhances application performance and scalability by storing cached data in a distributed memory store accessible by all instances of the application.
 
