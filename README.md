@@ -74,7 +74,7 @@ This project is a personal endeavor, crafted to enhance proficiency in various t
 
 - **Seeder**: ByteStore also has a builtin Seeder Hosted Service that will populate the database on the first time you run the application. It will create some products and create a user called `Admin`, with a password that is `!123Qwe`, that you can use right away.
   
-- **Docker and Docker Compose**: To run the application with no problems and little setup, just run a `docker compose up -d` and the application will do the rest for you. After that, browse to `http://localhost:4200/`.
+- **Docker and Docker Compose**: To run the application with no problems and little setup, just clone the repository using `git clone https://github.com/ruhtar/ByteStore.git` and run a `docker compose up -d` on the root folder and the application will do the rest for you. After that, browse to `http://localhost:4200/`.
 
 # API Endpoint Description
 
