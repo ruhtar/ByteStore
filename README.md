@@ -37,6 +37,10 @@ Welcome to ByteStore, your go-to fullstack e-commerce platform! ByteStore offers
     - When the `GetAllProductsAsync` method in the `ProductRepository` is invoked, it first checks if the requested data exists in the Redis cache. If found, it's served directly from the cache. If not, the data is fetched from the database, serialized, and stored in Redis for future use.
 
     - This distributed cache enables the application to share cached data across multiple instances, reducing the need for frequent database queries and delivering improved overall performance.
+ 
+### Running the app
+- **Seeder**: ByteStore has a builtin Seeder Hosted Service that will populate the database on the first time you run the application. It will create some products and create a user called Admin, with a password that is !123Qwe, that you can test right away.
+- **Docker and Docker Compose**: To run the application without any more problems, you can just run a `docker compose up -d` and the application will do the rest for you. 
 
 # API Endpoint Description
 
