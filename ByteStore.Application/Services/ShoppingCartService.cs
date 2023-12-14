@@ -3,7 +3,6 @@ using ByteStore.Shared.Enums;
 using ByteStore.Application.Services.Interfaces;
 using ByteStore.Domain;
 using ByteStore.Domain.Entities;
-using ByteStore.Infrastructure.Cache;
 using ByteStore.Infrastructure.Repositories.Interfaces;
 using ByteStore.Shared.Utils;
 
@@ -14,15 +13,12 @@ public class ShoppingCartService : IShoppingCartService
     private readonly IShoppingCartRepository _shoppingCartRepository;
     private readonly IUserRepository _userRepository;
     private readonly IProductRepository _productRepository;
-    private readonly ICacheConfigs _cache;
-    private const string CartItemKey = "CartItemKey";
 
     public ShoppingCartService(IShoppingCartRepository shoppingCartRepository, IProductRepository productRepository,
-        ICacheConfigs cache, IUserRepository userRepository)
+        IUserRepository userRepository)
     {
         _shoppingCartRepository = shoppingCartRepository;
         _productRepository = productRepository;
-        _cache = cache;
         _userRepository = userRepository;
     }
 
