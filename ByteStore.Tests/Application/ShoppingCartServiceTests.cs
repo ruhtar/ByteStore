@@ -22,11 +22,10 @@ public class ShoppingCartServiceTests
         var productRepositoryMock = new Mock<IProductRepository>();
         var userRepositoryMock = new Mock<IUserRepository>();
 
-        // Mock data
         var list = new List<OrderItem>
         {
-            new() { ProductId = 1, Quantity = 2 },
-            new() { ProductId = 2, Quantity = 1 }
+            new() { ProductId = Utils.GetProductsMock()[0].ProductId, Quantity = Utils.GetProductsMock()[0].ProductQuantity },
+            new() { ProductId = Utils.GetProductsMock()[1].ProductId, Quantity = Utils.GetProductsMock()[1].ProductQuantity },
         };
         
         var shoppingCart = new ShoppingCart
@@ -42,29 +41,15 @@ public class ShoppingCartServiceTests
             ShoppingCartId = shoppingCart.ShoppingCartId,
             OrderItems = list
         };
-
-        var product1 = new Product
-        {
-            ProductId = 1,
-            ProductQuantity = 5,
-            // Add other properties
-        };
-
-        var product2 = new Product
-        {
-            ProductId = 2,
-            ProductQuantity = 3,
-            // Add other properties
-        };
-
+        
         shoppingCartRepositoryMock.Setup(repo => repo.GetShoppingCartByUserAggregateId(userAggregateId))
             .ReturnsAsync(shoppingCartDto);
 
         productRepositoryMock.Setup(repo => repo.GetProductById(1))
-            .ReturnsAsync(product1);
+            .ReturnsAsync(Utils.GetProductsMock()[0]);
 
         productRepositoryMock.Setup(repo => repo.GetProductById(2))
-            .ReturnsAsync(product2);
+            .ReturnsAsync(Utils.GetProductsMock()[1]);
 
         var service = new ShoppingCartService(shoppingCartRepositoryMock.Object, productRepositoryMock.Object, userRepositoryMock.Object);
 
@@ -73,9 +58,77 @@ public class ShoppingCartServiceTests
 
         // Assert
         Assert.Equal(BuyOrderStatus.Completed, result);
-        shoppingCartRepositoryMock.Verify(repo => repo.RemoveProductFromCart(userAggregateId, It.IsAny<int>()), Times.Never);
-        productRepositoryMock.Verify(repo => repo.UpdateProduct(It.IsAny<int>(), It.IsAny<UpdateProductDto>()), Times.Exactly(2));
-        userRepositoryMock.Verify(repo => repo.UpdatePurchaseHistory(userAggregateId, It.IsAny<List<Product>>()), Times.Once);
-        shoppingCartRepositoryMock.Verify(repo => repo.BuyOrder(userAggregateId), Times.Once);
+        
+        shoppingCartRepositoryMock
+            .Verify(repo => repo.RemoveProductFromCart(userAggregateId, It.IsAny<int>()), Times.Never);
+        
+        productRepositoryMock
+            .Verify(repo => repo.UpdateProduct(It.IsAny<int>(), It.IsAny<UpdateProductDto>()), Times.Exactly(2));
+        
+        userRepositoryMock
+            .Verify(repo => repo.UpdatePurchaseHistory(userAggregateId, It.IsAny<List<Product>>()), Times.Once);
+        
+        shoppingCartRepositoryMock
+            .Verify(repo => repo.BuyOrder(userAggregateId), Times.Once);
+    }
+    
+    [Fact]
+    public async Task BuyOrder_InvalidQuantity()
+    {
+        // Arrange
+        const int userAggregateId = 1;
+        var shoppingCartRepositoryMock = new Mock<IShoppingCartRepository>();
+        var productRepositoryMock = new Mock<IProductRepository>();
+        var userRepositoryMock = new Mock<IUserRepository>();
+
+        var list = new List<OrderItem>
+        {
+            new() { ProductId = Utils.GetProductsMock()[0].ProductId, Quantity = Utils.GetProductsMock()[0].ProductQuantity },
+            new() { ProductId = Utils.GetProductsMock()[1].ProductId, Quantity = Utils.GetProductsMock()[1].ProductQuantity },
+        };
+        
+        var shoppingCart = new ShoppingCart
+        {
+            ShoppingCartId = 1,
+            UserAggregateId = userAggregateId,
+            OrderItems = JsonSerializer.SerializeToUtf8Bytes(list) 
+        };
+        
+        var shoppingCartDto = new ShoppingCartDto
+        {
+            UserAggregateId = userAggregateId,
+            ShoppingCartId = shoppingCart.ShoppingCartId,
+            OrderItems = list
+        };
+
+        var product1 = new Product
+        {
+            ProductId = 1,
+            ProductQuantity = 3,
+        };
+
+        shoppingCartRepositoryMock.Setup(repo => repo.GetShoppingCartByUserAggregateId(userAggregateId))
+            .ReturnsAsync(shoppingCartDto);
+
+        productRepositoryMock.Setup(repo => repo.GetProductById(1))
+            .ReturnsAsync(product1);
+
+        var service = new ShoppingCartService(shoppingCartRepositoryMock.Object, productRepositoryMock.Object, userRepositoryMock.Object);
+
+        // Act
+        var result = await service.BuyOrder(userAggregateId);
+
+        // Assert
+        Assert.Equal(BuyOrderStatus.InvalidQuantity, result);
+        
+        productRepositoryMock
+            .Verify(repo => repo.UpdateProduct(It.IsAny<int>(), It.IsAny<UpdateProductDto>()), Times.Never);
+
+        userRepositoryMock
+            .Verify(repo => repo.UpdatePurchaseHistory(userAggregateId, It.IsAny<List<Product>>()),
+            Times.Never);
+        
+        shoppingCartRepositoryMock
+            .Verify(repo => repo.BuyOrder(userAggregateId), Times.Never);
     }
 }
