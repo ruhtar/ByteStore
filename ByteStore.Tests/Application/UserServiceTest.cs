@@ -6,7 +6,6 @@ using ByteStore.Domain.Entities;
 using ByteStore.Domain.ValueObjects;
 using ByteStore.Infrastructure.Hasher;
 using ByteStore.Infrastructure.Repositories.Interfaces;
-using Microsoft.AspNetCore.Identity;
 using Moq;
 using Xunit;
 
@@ -29,7 +28,7 @@ public class UserServiceTest
         passwordHasherMock.Setup(hasher => hasher.Validate(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
         tokenServiceMock.Setup(tokenService =>
-            tokenService.GenerateToken(Utils.GetUserMock().UserId, It.IsAny<string>(), Roles.Seller)).Returns("JWT VALIDO");
+            tokenService.GenerateToken(Utils.GetUserMock().UserId, Utils.GetUserMock().Username, Roles.User)).Returns("JWT VALIDO");
         
         var authService = new UserService(userRepositoryMock.Object, passwordHasherMock.Object, tokenServiceMock.Object, userValidatorMock.Object);
 
@@ -38,8 +37,15 @@ public class UserServiceTest
 
         // Assert
         Assert.Equal("JWT VALIDO", result);
+        
         tokenServiceMock.Verify(tokenService => 
-            tokenService.GenerateToken(Utils.GetUserMock().UserId, Utils.GetUserMock().Username, Roles.Seller), Times.Once);
+            tokenService.GenerateToken(Utils.GetUserMock().UserId, Utils.GetUserMock().Username, Roles.User), Times.Once);
+        
+        userRepositoryMock.Verify(repo =>
+            repo.GetUserAggregateByUsername(Utils.GetUserAggregateMock().User.Username), Times.Once);
+
+        passwordHasherMock.Verify(hasher =>
+            hasher.Validate(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
     }
     
     
@@ -48,7 +54,7 @@ public class UserServiceTest
     {
         // Arrange
         var userRepositoryMock = new Mock<IUserRepository>();
-        userRepositoryMock.Setup(repo => repo.GetUserAggregateByUsername(It.IsAny<string>()))
+        userRepositoryMock.Setup(repo => repo.GetUserAggregateByUsername(Utils.GetUserMock().Username))
             .ReturnsAsync((UserAggregate)null);
 
         var passwordHasherMock = new Mock<IPasswordHasher>();
@@ -62,5 +68,51 @@ public class UserServiceTest
 
         // Assert
         Assert.Equal(string.Empty, result);
+        
+        tokenServiceMock.Verify(tokenService => 
+            tokenService.GenerateToken(Utils.GetUserMock().UserId, Utils.GetUserMock().Username, Roles.User), Times.Never);
+        
+        userRepositoryMock.Verify(repo =>
+            repo.GetUserAggregateByUsername("nonexistentuser"), Times.Once);
+
+        passwordHasherMock.Verify(hasher =>
+            hasher.Validate(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+    }
+    
+    [Fact]
+    public async Task AuthenticateUser_WhenInvalidPassword_ReturnsEmptyToken()
+    {
+        // Arrange
+        var userRepositoryMock = new Mock<IUserRepository>();
+        var passwordHasherMock = new Mock<IPasswordHasher>();
+        var tokenServiceMock = new Mock<ITokenService>();
+        var userValidatorMock = new Mock<IUserValidator>();
+
+        // Mock user retrieval by returning a user with a known username
+        userRepositoryMock.Setup(repo => repo.GetUserAggregateByUsername(Utils.GetUserMock().Username))
+            .ReturnsAsync(Utils.GetUserAggregateMock());
+
+        // Mock password validation to always return false
+        passwordHasherMock.Setup(hasher => hasher.Validate(It.IsAny<string>(), It.IsAny<string>())).Returns(false);
+
+        var authService = new UserService(userRepositoryMock.Object, passwordHasherMock.Object, tokenServiceMock.Object, userValidatorMock.Object);
+
+        // Act
+        var result = await authService.AuthenticateUser(new User { Username = Utils.GetUserMock().Username, Password = "invalidPassword" });
+
+        // Assert
+        Assert.Equal(string.Empty, result);
+
+        // Verify that GetUserAggregateByUsername was called with the correct username
+        userRepositoryMock.Verify(repo =>
+            repo.GetUserAggregateByUsername(Utils.GetUserMock().Username), Times.Once);
+
+        // Verify that Validate method of passwordHasherMock was called with the correct parameters
+        passwordHasherMock.Verify(hasher =>
+            hasher.Validate(It.IsAny<string>(), "invalidPassword"), Times.Once);
+
+        // Ensure that GenerateToken was not called
+        tokenServiceMock.Verify(tokenService =>
+            tokenService.GenerateToken(It.IsAny<int>(), It.IsAny<string>(), Roles.User), Times.Never);
     }
 }

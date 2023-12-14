@@ -39,10 +39,11 @@ public class UserService : IUserService
         {
             return string.Empty;
         }
-        
-        
-        return _tokenService.GenerateToken(userRegistered.User.UserId, userRegistered.User.Username,
+
+
+        var token = _tokenService.GenerateToken(userRegistered.User.UserId, userRegistered.User.Username,
             userRegistered.Role);
+        return token;
     }
 
     public async Task EditUserAddress(Address address, int userId)
