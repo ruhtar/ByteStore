@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Security.Cryptography;
+using System.Text;
 using ByteStore.Application.Services;
 using ByteStore.Application.Services.Interfaces;
 using ByteStore.Domain.ValueObjects;
@@ -8,7 +9,8 @@ namespace ByteStore.Tests.Application
 {
     public class TokenServiceTests
     {
-        private static readonly byte[] Key = Encoding.ASCII.GetBytes("ESSAEHUMACHAVESUPERSECRETA");
+        private static readonly string StringKey = "this is my custom Secret key for authentication";
+        private static readonly byte[] Key = Encoding.ASCII.GetBytes(StringKey);
 
         [Fact]
         public void GenerateToken_ReturnsNonEmptyToken()
@@ -54,10 +56,11 @@ namespace ByteStore.Tests.Application
 
         private static string GenerateValidToken(ITokenService tokenService)
         {
+            Environment.SetEnvironmentVariable("JWT_SECRET", StringKey);
             var userId = 1;
             var username = "john.doe";
             var role = Roles.User;
-            return tokenService.GenerateToken(userId, username, role, Key);
+            return tokenService.GenerateToken(userId, username, role);
         }
     }
 }

@@ -19,17 +19,14 @@ public class UserService : IUserService
     private readonly IPasswordHasher _passwordHasher;
     private readonly ITokenService _tokenService;
     private readonly IUserValidator _userValidator;
-    private readonly ICacheConfigs _cache;
-    private const string UserPurchaseHistoryKey = "UserPurchaseHistoryKey";
 
     public UserService(IUserRepository userRepository, IPasswordHasher passwordHasher, ITokenService tokenService,
-        IUserValidator userValidator, ICacheConfigs cache)
+        IUserValidator userValidator)
     {
         _userRepository = userRepository;
         _passwordHasher = passwordHasher;
         _tokenService = tokenService;
         _userValidator = userValidator;
-        _cache = cache;
     }
 
     public async Task<string> AuthenticateUser(User user)
@@ -49,10 +46,9 @@ public class UserService : IUserService
             return string.Empty;
         }
         
-        var key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET"));
         
         return _tokenService.GenerateToken(userRegistered.User.UserId, userRegistered.User.Username,
-            userRegistered.Role, key);
+            userRegistered.Role);
     }
 
     public async Task EditUserAddress(Address address, int userId)
