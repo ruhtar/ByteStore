@@ -63,7 +63,7 @@ public class ShoppingCartServiceTests
             .Verify(repo => repo.RemoveProductFromCart(userAggregateId, It.IsAny<int>()), Times.Never);
         
         productRepositoryMock
-            .Verify(repo => repo.UpdateProduct(It.IsAny<int>(), It.IsAny<UpdateProductDto>()), Times.Exactly(2));
+            .Verify(repo => repo.DeleteProduct(It.IsAny<int>()), Times.Exactly(2));
         
         userRepositoryMock
             .Verify(repo => repo.UpdatePurchaseHistory(userAggregateId, It.IsAny<List<Product>>()), Times.Once);
