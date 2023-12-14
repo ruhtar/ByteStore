@@ -1,4 +1,4 @@
-﻿using ByteStore.Domain.ValueObjects;
+﻿using ByteStore.Domain;
 
 namespace ByteStore.Shared.DTO;
 

@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using ByteStore.Domain;
 using ByteStore.Domain.Aggregates;
 using ByteStore.Domain.ValueObjects;
 using ByteStore.Infrastructure.Repositories.Interfaces;

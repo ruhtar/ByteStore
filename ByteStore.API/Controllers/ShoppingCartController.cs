@@ -1,6 +1,6 @@
 ﻿using ByteStore.API.Attributes;
 using ByteStore.Application.Services.Interfaces;
-using ByteStore.Domain.ValueObjects;
+using ByteStore.Domain;
 using ByteStore.Shared.DTO;
 using ByteStore.Shared.Enums;
 using Microsoft.AspNetCore.Authorization;

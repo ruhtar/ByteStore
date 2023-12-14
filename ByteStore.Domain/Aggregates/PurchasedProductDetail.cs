@@ -1,6 +1,6 @@
 ﻿using ByteStore.Domain.Entities;
 
-namespace ByteStore.Domain.ValueObjects;
+namespace ByteStore.Domain.Aggregates;
 
 public class PurchasedProductDetail
 {

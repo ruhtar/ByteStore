@@ -1,4 +1,4 @@
-﻿namespace ByteStore.Domain.ValueObjects; 
+﻿namespace ByteStore.Domain; 
 
 public class OrderItem
 {
