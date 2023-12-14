@@ -1,6 +1,5 @@
 ﻿using ByteStore.Application.Validator;
 using ByteStore.Domain.Aggregates;
-using ByteStore.Domain.Entities;
 using ByteStore.Domain.ValueObjects;
 using ByteStore.Infrastructure.Repositories.Interfaces;
 using ByteStore.Shared.DTO;
@@ -23,7 +22,7 @@ public class UserValidatorTests
         var userValidator = new UserValidator(userRepositoryMock.Object);
         var validUser = new SignupUserDto
         {
-            User = new User { Username = "newuser", Password = "!ValidPassword123" },
+            User = Utils.GetUserMock(),
             Role = Roles.User
         };
 
@@ -42,9 +41,11 @@ public class UserValidatorTests
         var userValidator = new UserValidator(userRepositoryMock.Object);
         var invalidPasswordUser = new SignupUserDto
         {
-            User = new User { Username = "newuser", Password = "invalid" },
+            User = Utils.GetUserMock(),
             Role = Roles.User
         };
+
+        invalidPasswordUser.User.Password = "1234";
 
         // Act
         var result = await userValidator.ValidateUser(invalidPasswordUser);
@@ -62,13 +63,13 @@ public class UserValidatorTests
         userRepositoryMock.Setup(repo => repo.GetUserAggregate(It.IsAny<UserAggregate>()))
             .ReturnsAsync(new UserAggregate()
             {
-                User = new User { Username = "existinguser", Password = "!123ValidPassword123" }
+                User = Utils.GetUserMock()
             });
 
         var userValidator = new UserValidator(userRepositoryMock.Object);
         var existingUsernameUser = new SignupUserDto
         {
-            User = new User { Username = "existinguser", Password = "!123ValidPassword123" },
+            User = Utils.GetUserMock(),
             Role = Roles.User
         };
 
