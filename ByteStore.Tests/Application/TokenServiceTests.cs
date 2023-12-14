@@ -9,8 +9,8 @@ namespace ByteStore.Tests.Application
 {
     public class TokenServiceTests
     {
-        private static readonly string StringKey = "this is my custom Secret key for authentication";
-        private static readonly byte[] Key = Encoding.ASCII.GetBytes(StringKey);
+        private const string JwtKeyMock = "this is my custom Secret key for authentication";
+        private static readonly byte[] KeyMock = Encoding.ASCII.GetBytes(JwtKeyMock);
 
         [Fact]
         public void GenerateToken_ReturnsNonEmptyToken()
@@ -34,7 +34,7 @@ namespace ByteStore.Tests.Application
             var validToken = GenerateValidToken(tokenService);
 
             // Act
-            var result = tokenService.ValidateToken(validToken, Key);
+            var result = tokenService.ValidateToken(validToken, KeyMock);
 
             // Assert
             Assert.True(result);
@@ -45,10 +45,10 @@ namespace ByteStore.Tests.Application
         {
             // Arrange
             var tokenService = new TokenService();
-            var invalidToken = "invalid.token.string";
+            const string invalidToken = "invalid.token.string";
 
             // Act
-            var result = tokenService.ValidateToken(invalidToken, Key);
+            var result = tokenService.ValidateToken(invalidToken, KeyMock);
 
             // Assert
             Assert.False(result);
@@ -56,10 +56,10 @@ namespace ByteStore.Tests.Application
 
         private static string GenerateValidToken(ITokenService tokenService)
         {
-            Environment.SetEnvironmentVariable("JWT_SECRET", StringKey);
-            var userId = 1;
-            var username = "john.doe";
-            var role = Roles.User;
+            Environment.SetEnvironmentVariable("JWT_SECRET", JwtKeyMock);
+            const int userId = 1;
+            const string username = "john.doe";
+            const Roles role = Roles.User;
             return tokenService.GenerateToken(userId, username, role);
         }
     }

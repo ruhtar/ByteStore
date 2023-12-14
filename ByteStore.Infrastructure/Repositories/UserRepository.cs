@@ -35,11 +35,12 @@ public class UserRepository : IUserRepository
         return ChangePasswordStatusResponse.Sucess;
     }
 
-    public async Task<UserAggregate?> GetUserAggregate(UserAggregate user)
+    public async Task<UserAggregate?> GetUserAggregateByUsername(string username)
     {
         return await _context.UserAggregates
             .AsNoTracking()
-            .Include(x => x.User).FirstOrDefaultAsync(u => u.User.Username == user.User.Username);
+            .Include(x => x.User)
+            .FirstOrDefaultAsync(u => u.User.Username == username);
     }
 
     public async Task EditUserAddress(Address address, int userId)

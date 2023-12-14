@@ -9,7 +9,7 @@ public interface IUserRepository
 {
     Task RegisterUser(UserAggregate user);
     Task<ChangePasswordStatusResponse> UpdateUserPassword(int userId, string hashedPassword);
-    Task<UserAggregate?> GetUserAggregate(UserAggregate user);
+    Task<UserAggregate?> GetUserAggregateByUsername(string username);
     Task EditUserAddress(Address address, int userId);
     Task<Address?> GetUserAddress(int userId);
     Task UpdatePurchaseHistory(int userId, IEnumerable<Product> purchasedProducts);

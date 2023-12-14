@@ -31,13 +31,7 @@ public class UserService : IUserService
 
     public async Task<string> AuthenticateUser(User user)
     {
-        var userRegistered = await _userRepository.GetUserAggregate(new UserAggregate()
-        {
-            User = new User
-            {
-                Username = user.Username
-            }
-        });
+        var userRegistered = await _userRepository.GetUserAggregateByUsername(user.Username);
         if (userRegistered == null) return string.Empty;
 
         var isPasswordValid = _passwordHasher.Validate(userRegistered.User.Password, user.Password);

@@ -47,14 +47,12 @@ public class TokenService : ITokenService
 
         try
         {
-            SecurityToken validatedToken;
-            var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out validatedToken);
-            // O token é válido se chegarmos até aqui sem exceções.
+            tokenHandler.ValidateToken(token, tokenValidationParameters, out _);
             return true;
         }
         catch (Exception)
         {
-            // O token é inválido.
+            // Invalid token.
             return false;
         }
     }

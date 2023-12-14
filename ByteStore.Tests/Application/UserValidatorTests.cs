@@ -16,7 +16,7 @@ public class UserValidatorTests
     {
         // Arrange
         var userRepositoryMock = new Mock<IUserRepository>();
-        userRepositoryMock.Setup(repo => repo.GetUserAggregate(It.IsAny<UserAggregate>()))
+        userRepositoryMock.Setup(repo => repo.GetUserAggregateByUsername(It.IsAny<string>()))
             .ReturnsAsync((UserAggregate)null);
 
         var userValidator = new UserValidator(userRepositoryMock.Object);
@@ -60,7 +60,7 @@ public class UserValidatorTests
     {
         // Arrange
         var userRepositoryMock = new Mock<IUserRepository>();
-        userRepositoryMock.Setup(repo => repo.GetUserAggregate(It.IsAny<UserAggregate>()))
+        userRepositoryMock.Setup(repo => repo.GetUserAggregateByUsername(It.IsAny<string>()))
             .ReturnsAsync(new UserAggregate()
             {
                 User = Utils.GetUserMock()
