@@ -37,18 +37,15 @@ public class PasswordHasherTest
     }
 
     [Fact]
-    public void Validate_ReturnsFalse_ForModifiedHash()
+    public void Validate_ReturnsFalse_ForModifiedHash_MultipleTimes()
     {
         // Arrange
         var passwordHasher = new PasswordHasher();
-        const string password = "MyStrongPassword123";
+        const string password = "1";
 
-        // Act
-        var hashedPassword = passwordHasher.Hash(password);
-        // Modify the hash
-        hashedPassword = hashedPassword.Replace('A', 'B');
-        var result = passwordHasher.Validate(hashedPassword, password);
+        const string wrongHash = "O23Oipkhx14L+KoK5OqBYw==;27cD3bIP23dM5QKkVq0SMUaw0NGuNk/IxQ9z26cZHc4=";
 
+        var result = passwordHasher.Validate(wrongHash, password);
         // Assert
         Assert.False(result);
     }

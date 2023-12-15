@@ -103,16 +103,35 @@ public class UserServiceTest
         // Assert
         Assert.Equal(string.Empty, result);
 
-        // Verify that GetUserAggregateByUsername was called with the correct username
         userRepositoryMock.Verify(repo =>
             repo.GetUserAggregateByUsername(Utils.GetUserMock().Username), Times.Once);
 
-        // Verify that Validate method of passwordHasherMock was called with the correct parameters
         passwordHasherMock.Verify(hasher =>
             hasher.Validate(It.IsAny<string>(), "invalidPassword"), Times.Once);
 
-        // Ensure that GenerateToken was not called
         tokenServiceMock.Verify(tokenService =>
             tokenService.GenerateToken(It.IsAny<int>(), It.IsAny<string>(), Roles.User), Times.Never);
     }
+    
+    [Fact]
+    public async Task EditUserAddress_ValidAddress_EditsUserAddress()
+    {
+        // Arrange
+        var userRepositoryMock = new Mock<IUserRepository>();
+        var passwordHasherMock = new Mock<IPasswordHasher>();
+        var tokenServiceMock = new Mock<ITokenService>();
+        var userValidatorMock = new Mock<IUserValidator>();
+        
+        var userService = new UserService(userRepositoryMock.Object, passwordHasherMock.Object, tokenServiceMock.Object, userValidatorMock.Object);
+
+        const int userId = 1;
+
+        // Act
+        await userService.EditUserAddress(Utils.GetAddressMock(), userId);
+
+        // Assert
+        userRepositoryMock.Verify(repo =>
+            repo.EditUserAddress(It.IsAny<Address>(), userId), Times.Once);
+    }
+
 }

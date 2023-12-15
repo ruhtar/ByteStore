@@ -23,11 +23,11 @@ public abstract class Utils
     //     return new ProductRepository(dbContext);
     // }
     
-    internal static UserRepository GetUserRepository()
-    {
-        var dbContext = GetDbContext();
-        return new UserRepository(dbContext, GetShoppingCartRepository());
-    }
+    // internal static UserRepository GetUserRepository()
+    // {
+    //     var dbContext = GetDbContext();
+    //     return new UserRepository(dbContext, GetShoppingCartRepository());
+    // }
     
     internal static ShoppingCartRepository GetShoppingCartRepository()
     {
