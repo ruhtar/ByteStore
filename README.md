@@ -13,9 +13,8 @@ This project is a personal endeavor, crafted to enhance proficiency in various t
 - JWT,
 - Docker, 
 - Firebase,
-- Redis cache,
+- Redis cache distributed cache,
 - Unit tests and integration tests using XUnit and Moq,
-- Unit of Work
 - Repository Pattern,
 - Domain Services,
 - Domain Driven Design
