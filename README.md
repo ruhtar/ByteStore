@@ -8,12 +8,14 @@ This project is a personal endeavor, crafted to enhance proficiency in various t
 
 - .NET 6,
 - Entity Framework Core,
-- Angular, MySQL,
+- Angular,
+- MySQL,
 - JWT,
 - Docker, 
 - Firebase,
 - Redis cache,
 - Unit tests and integration tests using XUnit and Moq,
+- Unit of Work
 - Repository Pattern,
 - Domain Services,
 - Domain Driven Design
@@ -28,7 +30,7 @@ This project is a personal endeavor, crafted to enhance proficiency in various t
 
 - **Products reviews**: The platform shows how many people have reviewed a product. You can also check each individual rate followed by a comment about the purchase.
 
-### User Authentication and Security:
+### User Authentication/Authorization and Security:
 
 - **Signup**: Users can sign up by providing a unique username, a secure password, and their address information. Passwords undergo hashing (`PBKDF2`) and salting for maximum security, ensuring the safety of sensitive user data. Passwords must have capital letters, number and special characters.
 

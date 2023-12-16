@@ -4,7 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --verbose --no-aot --build-optimizer false",
+    "dev": "ng build --stats-json --source-map=false --watch --build-optimizer=false --configuration development",
+    "prod": "ng build --stats-json --source-map=false --watch --build-optimizer=false --configuration development",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
