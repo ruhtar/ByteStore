@@ -1,4 +1,4 @@
-# ByteStore Ecommerce Project 🛒🤑
+# ByteStore🛒🤑
 
 ![ByteStoreLogo](https://i.postimg.cc/zD355jBh/bytestore.jpg)
 
