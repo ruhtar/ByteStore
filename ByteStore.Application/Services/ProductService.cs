@@ -1,6 +1,5 @@
 ﻿using ByteStore.Application.Services.Interfaces;
 using ByteStore.Domain.Entities;
-using ByteStore.Domain.ValueObjects;
 using ByteStore.Infrastructure.Repositories.Interfaces;
 using ByteStore.Shared.DTO;
 
@@ -58,7 +57,7 @@ public class ProductService : IProductService
         else
         {
             product.TimesRated++;
-            product.Rate = ((product.Rate * (product.TimesRated - 1)) + reviewDto.Rate) / product.TimesRated;
+            product.Rate = (product.Rate * (product.TimesRated - 1) + reviewDto.Rate) / product.TimesRated;
         }
 
         var review = new Review

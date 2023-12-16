@@ -15,7 +15,7 @@ public static class DependencyInjectionExtensions
         services.AddTransient<ITokenService, TokenService>();
         services.AddTransient<IProductRepository, ProductRepository>();
         services.AddTransient<IProductRepository, ProductRepository>();
-        services.AddTransient<ICacheConfigs, CacheConfigs>();
+        services.AddTransient<ICacheService, CacheService>();
         services.AddTransient<IProductService, ProductService>();
         services.AddTransient<IProductService, ProductService>();
         services.AddTransient<IUserRepository, UserRepository>();
