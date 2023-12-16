@@ -21,8 +21,8 @@ public class UserRepository : IUserRepository
     public async Task RegisterUser(UserAggregate userAggregate)
     {
         await _context.UserAggregates.AddAsync(userAggregate);
+        await _shoppingCartRepository.CreateShoppingCart(userAggregate);
         await _context.SaveChangesAsync();
-        await _shoppingCartRepository.CreateShoppingCart(userAggregate.UserAggregateId);
     }
 
     public async Task<ChangePasswordStatusResponse> UpdateUserPassword(int userId, string hashedPassword)

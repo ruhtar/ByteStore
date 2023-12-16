@@ -72,7 +72,7 @@ export class FormComponent {
       this.userForm.valid
     ) {
       Swal.fire(
-        'Your password must have capital letters, numbers and special characters',
+        'Your password must have at least 6 characters, capital letters, numbers and special characters',
         '',
         'error',
       );

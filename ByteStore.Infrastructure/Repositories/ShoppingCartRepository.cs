@@ -19,15 +19,14 @@ public class ShoppingCartRepository : IShoppingCartRepository
         _context = context;
     }
 
-    public async Task CreateShoppingCart(int userAggregateId)
+    public async Task CreateShoppingCart(UserAggregate userAggregate)
     {
         var shoppingCart = new ShoppingCart
         {
-            UserAggregateId = userAggregateId,
+            UserAggregate = userAggregate,
             OrderItems = Utils.Serializer(new List<OrderItem>())
         };
         await _context.ShoppingCarts.AddAsync(shoppingCart);
-        await _context.SaveChangesAsync();
     }
     
     public async Task<ShoppingCartDto?> GetShoppingCartByUserAggregateId(int userAggregateId)
