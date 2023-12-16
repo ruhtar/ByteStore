@@ -23,7 +23,7 @@ This project is a personal endeavor, crafted to enhance proficiency in various t
 
 ### Core Entities:
 
-- **Users and Shopping Carts**: ByteStore allows users to create accounts and manage their shopping carts.
+- **Users and Shopping Carts**: ByteStore allows users to create accounts and manage their shopping carts. Users can seamlessly modify the quantity of products, remove items, view the total balance of their cart, and proceed to checkout for a smooth purchasing experience.
 
 - **Products and OrderItems**: The platform offers a catalog of products and users can add them to their shopping carts.
 
