@@ -15,8 +15,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { RatingModule } from 'primeng/rating';
 import { ToastModule } from 'primeng/toast';
-import { FooterModule } from 'src/app/components/footer/footer.module';
-import { HeaderModule } from 'src/app/components/header/header.module';
+import { FooterModule } from 'src/app/shared/footer/footer.module';
+import { HeaderModule } from 'src/app/shared/header/header.module';
 import { ProductDetailComponent } from './product-detail.component';
 
 const routes: Routes = [

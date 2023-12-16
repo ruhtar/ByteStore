@@ -10,8 +10,8 @@ import { ButtonModule } from 'primeng/button';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { SliderModule } from 'primeng/slider';
-import { FooterModule } from '../../footer/footer.module';
-import { HeaderModule } from '../../header/header.module';
+import { FooterModule } from 'src/app/shared/footer/footer.module';
+import { HeaderModule } from '../../../shared/header/header.module';
 import { ProductsComponent } from './products.component';
 
 const ProductRoute: Routes = [

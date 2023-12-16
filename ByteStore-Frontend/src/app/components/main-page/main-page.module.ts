@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FooterModule } from '../footer/footer.module';
-import { HeaderModule } from '../header/header.module';
+import { FooterModule } from 'src/app/shared/footer/footer.module';
+import { HeaderModule } from '../../shared/header/header.module';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { MainPageComponent } from './main-page.component';
