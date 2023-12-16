@@ -37,7 +37,7 @@ public class PasswordHasherTest
     }
 
     [Fact]
-    public void Validate_ReturnsFalse_ForModifiedHash_MultipleTimes()
+    public void Validate_ReturnsFalse_ForModifiedHash()
     {
         // Arrange
         var passwordHasher = new PasswordHasher();

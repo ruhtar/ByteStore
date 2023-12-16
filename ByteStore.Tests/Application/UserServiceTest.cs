@@ -14,7 +14,7 @@ namespace ByteStore.Tests.Application;
 public class UserServiceTest
 {
     [Fact]
-    public async Task AuthenticateUser_WhenUserRegistered_ReturnsJwt()
+    public async Task AuthenticateUser_WhenUserRegistered_ReturnsToken()
     {
         // Arrange
         var userRepositoryMock = new Mock<IUserRepository>();
@@ -50,7 +50,7 @@ public class UserServiceTest
     
     
     [Fact]
-    public async Task AuthenticateUser_WhenUserNotRegistered_ReturnsEmptyString()
+    public async Task AuthenticateUser_WhenUserNotRegistered_ReturnsEmptyToken()
     {
         // Arrange
         var userRepositoryMock = new Mock<IUserRepository>();
@@ -114,7 +114,7 @@ public class UserServiceTest
     }
     
     [Fact]
-    public async Task EditUserAddress_ValidAddress_EditsUserAddress()
+    public async Task EditUserAddress_WhenValidAddress_EditsUserAddress()
     {
         // Arrange
         var userRepositoryMock = new Mock<IUserRepository>();

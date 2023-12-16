@@ -95,5 +95,12 @@
       ></p-rating>
     </div>
   </div>
+  <div *ngIf="reviews.length === 0">
+    <div class="comment">
+      <p class="comment-text">
+        <em>Looks like this product has no comments yet.</em>
+      </p>
+    </div>
+  </div>
 </div>
 <app-footer></app-footer>
