@@ -66,6 +66,8 @@ This project is a personal endeavor, crafted to enhance proficiency in various t
 - **Distributed Caching with Redis**: The system takes performance a step further with distributed caching using Redis. This distributed cache enhances application performance and scalability by storing cached data in a distributed memory store accessible by all instances of the application.
 
     - When the `GetProductById` method in the `ProductRepository` is invoked, it first checks if the requested data exists in the Redis cache. If found, it's served directly from the cache. If not, the data is fetched from the database, serialized, and stored in Redis for future use.
+ 
+    - To keep cache's consistency, the `UpdateProduct` method in `ProductRepository` also updates cache's data. Also, when a product is deleted via `DeleteProduct` method, its cache is invalidated.
 
     - This distributed cache enables the application to share cached data across multiple instances, reducing the need for frequent database queries and delivering improved overall performance.
  
