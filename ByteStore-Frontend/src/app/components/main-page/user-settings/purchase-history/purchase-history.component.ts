@@ -9,6 +9,8 @@ import { UserService } from 'src/app/services/user/user.service';
 export class PurchaseHistoryComponent {
   sortField!: string;
   sortOrder!: number;
+  searchText: string = '';
+  filteredProducts!: any;
 
   products!: any;
   constructor(private userService: UserService) {}
@@ -27,9 +29,15 @@ export class PurchaseHistoryComponent {
     { label: 'Purchase Date (Desc)', value: '!PurchaseDate' },
   ];
 
-  onSortChange(event: { value: any }) {
-    const value = event.value;
-    this.sortField = value;
-    this.sortOrder = value.startsWith('!') ? -1 : 1;
+  onSortChange(event: any) {
+    let value = event.value;
+
+    if (value.indexOf('!') === 0) {
+      this.sortOrder = -1;
+      this.sortField = value.substring(1, value.length);
+    } else {
+      this.sortOrder = 1;
+      this.sortField = value;
+    }
   }
 }

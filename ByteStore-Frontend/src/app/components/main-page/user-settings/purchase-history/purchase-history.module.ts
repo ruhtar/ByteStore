@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule, Routes } from '@angular/router';
 import { DataViewModule } from 'primeng/dataview';
@@ -24,6 +25,7 @@ const route: Routes = [
     MatListModule,
     RouterModule.forChild(route),
     CommonModule,
+    FormsModule,
   ],
 })
 export class PurchaseHistoryModule {}

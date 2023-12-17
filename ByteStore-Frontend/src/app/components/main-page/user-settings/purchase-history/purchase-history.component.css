@@ -2,7 +2,10 @@
   margin: 20px;
 }
 
-/* Estilos para o cabe?alho do p-dataView */
+.wrapper {
+  min-width: 900px;
+}
+
 .p-dataView header {
   display: flex;
   justify-content: space-between;
@@ -13,12 +16,10 @@
   margin-right: 10px;
 }
 
-/* Estilos para o campo de pesquisa no cabe?alho */
 .p-inputText {
   width: 200px;
 }
 
-/* Estilos para os itens do p-dataView em layout de grade */
 .product-grid-item {
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -35,18 +36,12 @@
   margin: 5px 0;
 }
 
-/* Estilos para o layout de grade */
 .layout-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
 }
 
-.container {
-  width: 900px;
-}
-
-/* Estilos espec?ficos para telas menores (responsividade) */
 @media (max-width: 767px) {
   .product-grid-item {
     width: 100%;

@@ -1,38 +1,34 @@
-<p-dataView
-  #dv
-  [value]="products"
-  [paginator]="true"
-  [rows]="5"
-  [sortField]="sortField"
-  [sortOrder]="sortOrder"
-  layout="grid"
->
-  <ng-template pTemplate="header">
-    <div>
-      <p-dropdown
-        [options]="sortOptions"
-        placeholder="Sort By"
-        [showClear]="true"
-        (onChange)="onSortChange($event)"
-      ></p-dropdown>
-    </div>
-    <div>
-      <span class="p-input-icon-left p-mb-2 p-mb-md-0">
-        <i class="pi pi-search"></i>
-        <input type="search" pInputText placeholder="Search" />
-      </span>
-    </div>
-  </ng-template>
-  <ng-template let-product pTemplate="gridItem">
-    <div class="container">
-      <div class="product-grid-item card">
-        <div class="product-grid-item-top">
-          <h1>{{ product.Product.Name }}</h1>
-        </div>
-        <p>Quantity: {{ product.Product.ProductQuantity }}</p>
-        <p>Price: {{ product.Product.Price | number: "1.2-2" }}</p>
-        <p matListItemLine>{{ product.PurchaseDate | date }}</p>
+<div class="wrapper">
+  <p-dataView
+    #dv
+    [value]="products"
+    [paginator]="true"
+    [rows]="5"
+    [sortField]="sortField"
+    [sortOrder]="sortOrder"
+    layout="grid"
+  >
+    <ng-template pTemplate="header">
+      <div>
+        <p-dropdown
+          [options]="sortOptions"
+          placeholder="Sort By"
+          [showClear]="true"
+          (onChange)="onSortChange($event)"
+        ></p-dropdown>
       </div>
-    </div>
-  </ng-template>
-</p-dataView>
+    </ng-template>
+    <ng-template let-product pTemplate="gridItem">
+      <div class="container">
+        <div class="product-grid-item card">
+          <div class="product-grid-item-top">
+            <h1>{{ product.Product.Name }}</h1>
+          </div>
+          <p>Quantity: {{ product.Product.ProductQuantity }}</p>
+          <p>Price: {{ product.Product.Price | number: "1.2-2" }}</p>
+          <p matListItemLine>{{ product.PurchaseDate | date }}</p>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
+</div>
