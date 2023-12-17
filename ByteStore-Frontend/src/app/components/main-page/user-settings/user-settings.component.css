@@ -40,3 +40,10 @@
   justify-content: center;
   align-items: center;
 }
+
+.router-container2 {
+  background-color: #777acf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,11 +1,38 @@
-<div class="purchase-history">
-  <h2>Purchase History</h2>
-  <mat-list-item class="purchase-item" *ngFor="let purchase of products">
-    <h3 matListItemTitle>{{ purchase.Product.Name }}</h3>
-    <div class="product-details">
-      <p>Quantity: {{ purchase.Product.ProductQuantity }} |</p>
-      <p>Price: {{ purchase.Product.Price | number: "1.2-2" }} |</p>
-      <p matListItemLine>{{ purchase.PurchaseDate | date }}</p>
+<p-dataView
+  #dv
+  [value]="products"
+  [paginator]="true"
+  [rows]="5"
+  [sortField]="sortField"
+  [sortOrder]="sortOrder"
+  layout="grid"
+>
+  <ng-template pTemplate="header">
+    <div>
+      <p-dropdown
+        [options]="sortOptions"
+        placeholder="Sort By"
+        [showClear]="true"
+        (onChange)="onSortChange($event)"
+      ></p-dropdown>
     </div>
-  </mat-list-item>
-</div>
+    <div>
+      <span class="p-input-icon-left p-mb-2 p-mb-md-0">
+        <i class="pi pi-search"></i>
+        <input type="search" pInputText placeholder="Search" />
+      </span>
+    </div>
+  </ng-template>
+  <ng-template let-product pTemplate="gridItem">
+    <div class="container">
+      <div class="product-grid-item card">
+        <div class="product-grid-item-top">
+          <h1>{{ product.Product.Name }}</h1>
+        </div>
+        <p>Quantity: {{ product.Product.ProductQuantity }}</p>
+        <p>Price: {{ product.Product.Price | number: "1.2-2" }}</p>
+        <p matListItemLine>{{ product.PurchaseDate | date }}</p>
+      </div>
+    </div>
+  </ng-template>
+</p-dataView>

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DataViewModule } from 'primeng/dataview';
 import { FooterModule } from 'src/app/shared/footer/footer.module';
 import { HeaderModule } from '../../../shared/header/header.module';
 import { UserSettingsComponent } from './user-settings.component';
@@ -40,6 +41,7 @@ const UserSettingsRoutes: Routes = [
 @NgModule({
   declarations: [UserSettingsComponent],
   imports: [
+    DataViewModule,
     CommonModule,
     RouterModule.forChild(UserSettingsRoutes),
     HeaderModule,

@@ -1,59 +1,54 @@
-.purchase-history {
+.p-dataView {
+  margin: 20px;
+}
+
+/* Estilos para o cabe?alho do p-dataView */
+.p-dataView header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.p-input-icon-left {
+  margin-right: 10px;
+}
+
+/* Estilos para o campo de pesquisa no cabe?alho */
+.p-inputText {
+  width: 200px;
+}
+
+/* Estilos para os itens do p-dataView em layout de grade */
+.product-grid-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.product-grid-item h1 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.product-grid-item p {
+  margin: 5px 0;
+}
+
+/* Estilos para o layout de grade */
+.layout-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 20px;
-  margin: 20px;
-  flex: none; /* Desativa o flex do pai */
+  gap: 20px;
 }
 
-.purchase-item {
-  border: 1px solid #ccc;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centraliza itens verticalmente */
-  text-align: center;
-  background-color: white;
-  border-radius: 8px;
+.container {
+  width: 900px;
 }
 
-h2 {
-  color: white;
-  text-shadow: 1px 1px 0 black;
-}
-
-.product-image {
-  max-width: 100px;
-  max-height: 100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center; /* Centraliza a imagem verticalmente */
-}
-
-.product-image img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain; /* Mantém a proporção da imagem sem distorção */
-}
-
-.product-details {
-  display: flex; /* Adiciona um display flex para alinhar os itens lado a lado */
-  justify-content: space-between; /* Espa?o igual entre os itens */
-  padding: 10px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 24px;
-  margin: 10px 0; /* Adiciona margem na parte superior e inferior do título */
-}
-
-h3 {
-  font-size: 18px;
-  margin: 5px 0; /* Adiciona margem na parte superior e inferior do subtítulo */
-}
-
-p {
-  font-size: 14px; /* Defina um tamanho de fonte menor para as informa??es de quantidade, pre?o e data */
-  margin: 5px 0; /* Adiciona margem na parte superior e inferior do par?grafo */
+/* Estilos espec?ficos para telas menores (responsividade) */
+@media (max-width: 767px) {
+  .product-grid-item {
+    width: 100%;
+  }
 }
