@@ -1,4 +1,4 @@
-# ByteStore Ecommerce Project 🛒🤑
+# ByteStore🛒🤑
 
 ![ByteStoreLogo](https://i.postimg.cc/zD355jBh/bytestore.jpg)
 
@@ -13,9 +13,8 @@ This project is a personal endeavor, crafted to enhance proficiency in various t
 - JWT,
 - Docker, 
 - Firebase,
-- Redis cache,
+- Redis cache distributed cache,
 - Unit tests and integration tests using XUnit and Moq,
-- Unit of Work
 - Repository Pattern,
 - Domain Services,
 - Domain Driven Design
@@ -24,7 +23,7 @@ This project is a personal endeavor, crafted to enhance proficiency in various t
 
 ### Core Entities:
 
-- **Users and Shopping Carts**: ByteStore allows users to create accounts and manage their shopping carts.
+- **Users and Shopping Carts**: ByteStore allows users to create accounts and manage their shopping carts. Users can seamlessly modify the quantity of products, remove items, view the total balance of their cart, and proceed to checkout.
 
 - **Products and OrderItems**: The platform offers a catalog of products and users can add them to their shopping carts.
 
